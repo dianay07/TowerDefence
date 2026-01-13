@@ -40,3 +40,4 @@
 #*.[pP][pP][sS][mM]
 /Intermediate
 /.vs/TowerDefence
+*.sln
