@@ -1,6 +1,6 @@
 #include "TDTowerPawn.h"
-#include "Components/StaticMeshComponent.h"
 #include "AbilitySystemComponent.h"
+#include "TDTowerSet.h"
 
 ATDTowerPawn::ATDTowerPawn()
 {
@@ -10,6 +10,8 @@ ATDTowerPawn::ATDTowerPawn()
 	RootComponent = StaticMeshComp;
 
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("Ability System"));
+
+	TowerSet = CreateDefaultSubobject<UTDTowerSet>(TEXT("TowerSet")); 
 }
 
 void ATDTowerPawn::BeginPlay()
