@@ -118,5 +118,5 @@ Build/*/**
 # Cache files for the editor to use
 **/DerivedDataCache/*
 
-# .vsconfing file
 **/vsconfig/*
+.vsconfig
