@@ -1,0 +1,19 @@
+[
+	{
+		"Name": "NewRow",
+		"StartTime": 2,
+		"EnemyType": "Purple",
+		"SpawnCount": 5,
+		"SpawnDeley": 2,
+		"DelayRemaining": 0
+	},
+	{
+		"Name": "NewRow_0",
+		"StartTime": 3,
+		"EnemyType": "Green",
+		"SpawnCount": 4,
+		"SpawnDeley": 2,
+		"DelayRemaining": 0
+	}
+
+]
