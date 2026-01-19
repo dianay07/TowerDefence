@@ -13,6 +13,18 @@ enum class EEnemyType : uint8
 	Yellow
 };
 
+UENUM(BlueprintType)
+enum class ETowerActions : uint8
+{
+	None,
+	BuildTurret,
+	BuildBallista,
+	BuildCatapult,
+	BuildCannon,
+	Upgrade,
+	BreakDown
+};
+
 USTRUCT(BlueprintType)
 struct FWaveData : public FTableRowBase
 {
