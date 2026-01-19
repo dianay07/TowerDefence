@@ -19,17 +19,17 @@ struct FWaveData : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float StartTime;
+	float StartTime = 0.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EEnemyType EnemyType;
+	EEnemyType EnemyType = EEnemyType::None;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 SpawnCount;
+	int32 SpawnCount = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float SpawnDeley;
+	float SpawnDeley = 0.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float DelayRemaining;
+	float DelayRemaining = 0.f;
 };
