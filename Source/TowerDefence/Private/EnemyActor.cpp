@@ -24,11 +24,17 @@ void AEnemyActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(EnemySet->GetHealthAttribute()).AddUObject(this, &AEnemyActor::OnHealthAttributeChanged);
 }
 
 UAbilitySystemComponent* AEnemyActor::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+void AEnemyActor::OnHealthAttributeChanged(const FOnAttributeChangeData& Data)
+{
+	OnHealthChanged(Data.OldValue, Data.NewValue);
 }
 
 void AEnemyActor::PostInitializeComponents()

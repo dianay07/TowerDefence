@@ -1,10 +1,9 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "AbilitySystemInterface.h"
+#include "GameplayAbilitySpec.h"
 #include "EnemyActor.generated.h"
 
 UCLASS()
@@ -32,6 +31,10 @@ protected:
 
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
+	virtual void OnHealthAttributeChanged(const FOnAttributeChangeData& Data);
+
+	UFUNCTION(BlueprintImplementableEvent, Category="GAS")
+	void OnHealthChanged(float OldValue, float NewValue);
 
 public:	
 	virtual void PostInitializeComponents() override;
