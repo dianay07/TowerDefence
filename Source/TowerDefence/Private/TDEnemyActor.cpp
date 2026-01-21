@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "EnemyActor.h"
+#include "TDEnemyActor.h"
 #include "AbilitySystemComponent.h"
 #include "TDEnemySet.h"
 
 // Sets default values
-AEnemyActor::AEnemyActor()
+ATDEnemyActor::ATDEnemyActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	SceneRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRootComp"));
@@ -24,24 +24,24 @@ AEnemyActor::AEnemyActor()
 }
 
 // Called when the game starts or when spawned
-void AEnemyActor::BeginPlay()
+void ATDEnemyActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(EnemySet->GetHealthAttribute()).AddUObject(this, &AEnemyActor::OnHealthAttributeChanged);
+
+	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(EnemySet->GetHealthAttribute()).AddUObject(this, &ATDEnemyActor::OnHealthAttributeChanged);
 }
 
-UAbilitySystemComponent* AEnemyActor::GetAbilitySystemComponent() const
+UAbilitySystemComponent* ATDEnemyActor::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
 
-void AEnemyActor::OnHealthAttributeChanged(const FOnAttributeChangeData& Data)
+void ATDEnemyActor::OnHealthAttributeChanged(const FOnAttributeChangeData& Data)
 {
 	OnHealthChanged(Data.OldValue, Data.NewValue);
 }
 
-void AEnemyActor::PostInitializeComponents()
+void ATDEnemyActor::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 
@@ -50,7 +50,7 @@ void AEnemyActor::PostInitializeComponents()
 }
 
 // Called every frame
-void AEnemyActor::Tick(float DeltaTime)
+void ATDEnemyActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
