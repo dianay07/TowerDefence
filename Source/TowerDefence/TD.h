@@ -45,3 +45,51 @@ struct FWaveData : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float DelayRemaining = 0.f;
 };
+
+UENUM(BlueprintType)
+enum class ETowerType : uint8
+{
+	None,
+	Turret,
+	Ballista,
+	Catapult,
+	Cannon,
+	
+};
+
+
+USTRUCT(BlueprintType)
+struct FTowerData : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETowerType EnemyType = ETowerType::None;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString TowerName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 BuildCost = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 UpgradeCost1 = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 UpgradeCost2 = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 UpgradeCost3 = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Range = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float FireRate = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Damage = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Radius = 0.f;
+};
