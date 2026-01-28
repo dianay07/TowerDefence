@@ -120,3 +120,6 @@ Build/*/**
 
 **/vsconfig/*
 .vsconfig
+
+# Documents Folder
+**/Documents/*
