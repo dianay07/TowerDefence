@@ -121,5 +121,6 @@ Build/*/**
 **/vsconfig/*
 .vsconfig
 
-# Documents Folder
-**/Documents/*
+# .drawio.bkp Files
+**/Documents/**/*.drawio.bkp
+**/Documents/**/*.drawio
