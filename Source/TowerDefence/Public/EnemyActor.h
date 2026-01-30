@@ -31,7 +31,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+ 
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	virtual void OnHealthAttributeChanged(const FOnAttributeChangeData& Data);
