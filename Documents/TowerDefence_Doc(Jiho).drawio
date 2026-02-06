@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
   <diagram name="페이지-1" id="lpVqzZzAFqdNTfSxdOuV">
-    <mxGraphModel dx="2147" dy="2496" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="891" dy="1832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -828,6 +828,172 @@
         </mxCell>
         <mxCell id="2WersUipw_JWop6f0dAA-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Spec 이 있고&amp;nbsp;&lt;div&gt;Assign Tag Set vy Caller Magnitude 를 통해서 안에 값을 채운다.&lt;/div&gt;&lt;div&gt;핸들에 해당 정보들이 들어 있음&lt;/div&gt;" vertex="1">
           <mxGeometry height="96" width="442.5" x="3330" y="5864" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Pawn&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Tower_Base&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="150" x="4430" y="4390" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Tower HUD 통신" vertex="1">
+          <mxGeometry height="97" width="510" x="4452" y="4065" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-11" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="StaticMesh Component" vertex="1">
+          <mxGeometry height="80" width="80" x="4560" y="4200" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-12" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Box" vertex="1">
+          <mxGeometry height="80" width="80" x="4660" y="4200" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-13" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Weapon" vertex="1">
+          <mxGeometry height="80" width="80" x="4760" y="4220" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-14" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Highlight&lt;div&gt;( 마우스로 선택된 타워 )&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="4750" y="4310" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-15" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-1" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-11" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4720" y="4490" as="sourcePoint" />
+            <mxPoint x="4770" y="4440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-16" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-1" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-12" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4660" y="4432" as="sourcePoint" />
+            <mxPoint x="4732" y="4390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-17" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-1" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-13" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4640" y="4440" as="sourcePoint" />
+            <mxPoint x="4727" y="4485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-18" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-1" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4620" y="4413" as="sourcePoint" />
+            <mxPoint x="4692" y="4400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-19" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" value="Ablility System Component" vertex="1">
+          <mxGeometry height="80" width="80" x="4465" y="4190" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-21" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-19" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4600" y="4550" as="sourcePoint" />
+            <mxPoint x="4650" y="4500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-22" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-1" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4600" y="4520" as="sourcePoint" />
+            <mxPoint x="4840" y="4520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-23" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;div style=&quot;text-align: left;&quot;&gt;Blueprint Interface&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;BPI Tower Action&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="150" x="4790" y="4440" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-27" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-28" connectable="0" parent="x6e5URqXCd51J-8SKXj4-27" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Create" vertex="1">
+          <mxGeometry relative="1" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Tower Manager" vertex="1">
+          <mxGeometry height="60" width="120" x="6000" y="4050" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-32" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-26" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Tower Base" vertex="1">
+          <mxGeometry height="80" width="80" x="6020" y="4200" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="설치 가능한 타일에&lt;div&gt;투명 상태로 Tower Base 생성&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="6166" y="4210" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-39" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x6e5URqXCd51J-8SKXj4-38" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Tower Manager - Tick" vertex="1">
+          <mxGeometry height="60" width="180" x="5246" y="4420" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-37" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x6e5URqXCd51J-8SKXj4-36" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-34" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Blueprint Function Lib&lt;div&gt;BPFL_Utility&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="5010" y="4267.5" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-44" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x6e5URqXCd51J-8SKXj4-43" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-35" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="TDPlayer Pawn&lt;div&gt;BP_Player&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="120" x="5286" y="4500" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-42" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-45" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-36" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Get Tower Under Mouse&amp;nbsp;&lt;div&gt;- Get Hit Result Under Cursor for Objects&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="5246" y="4267.5" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-38" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Set Highlight" vertex="1">
+          <mxGeometry height="60" width="180" x="5506" y="4420" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-47" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x6e5URqXCd51J-8SKXj4-46" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-43" parent="1" style="whiteSpace=wrap;html=1;" value="Event Left MouseButton" vertex="1">
+          <mxGeometry height="60" width="184" x="5504" y="4530" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-49" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-51" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="5834" y="4810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-46" parent="1" style="whiteSpace=wrap;html=1;" value="Tower Select" vertex="1">
+          <mxGeometry height="60" width="132" x="5768" y="4530" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-51" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Spawn -&amp;nbsp;BP_TowerActions" vertex="1">
+          <mxGeometry height="120" width="120" x="5774" y="4650" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-55" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x6e5URqXCd51J-8SKXj4-54" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-52" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" value="Widget&lt;div&gt;Widget Class&lt;/div&gt;&lt;div&gt;WBP_TowerAction&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="120" x="5986" y="4650" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-53" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-51" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x6e5URqXCd51J-8SKXj4-52" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="5500" y="4610" as="sourcePoint" />
+            <mxPoint x="5550" y="4560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-54" parent="1" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="화면에서 보이는 UI&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="6186" y="4680" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-56" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;div style=&quot;text-align: left;&quot;&gt;Blueprint Interface&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;BPI Tower Action&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="130" x="6200" y="4310" as="geometry" />
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-57" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-56" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" target="x6e5URqXCd51J-8SKXj4-26" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="5800" y="4570" as="sourcePoint" />
+            <mxPoint x="5850" y="4520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-58" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-60" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="x6e5URqXCd51J-8SKXj4-56" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="5800" y="4570" as="sourcePoint" />
+            <mxPoint x="5850" y="4520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-61" edge="1" parent="1" source="x6e5URqXCd51J-8SKXj4-52" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="x6e5URqXCd51J-8SKXj4-60" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="6046" y="4650" as="sourcePoint" />
+            <mxPoint x="6219" y="4421" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x6e5URqXCd51J-8SKXj4-60" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Function Bind" vertex="1">
+          <mxGeometry height="60" width="120" x="6120" y="4490" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
