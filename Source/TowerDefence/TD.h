@@ -93,3 +93,20 @@ struct FTowerData : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Radius = 0.f;
 };
+
+UENUM(BlueprintType)
+enum class EQualityOptionType : uint8
+{
+	None,
+	Overall,
+	ViewDistance,
+	Shadow,
+	GlobalIllumination,
+	Reflections,
+	AntiAliasing,
+	Texture,
+	VisualEffect,
+	PostProcessing,
+	Foliage,
+	Shading
+};
