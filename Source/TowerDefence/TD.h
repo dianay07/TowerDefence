@@ -110,3 +110,14 @@ enum class EQualityOptionType : uint8
 	Foliage,
 	Shading
 };
+
+UENUM(BlueprintType)
+enum class ETileType : uint8
+{
+	None,
+	Grass,
+	Dirt,
+	StraightPath,
+	CornerPath,
+	EndPath
+};
