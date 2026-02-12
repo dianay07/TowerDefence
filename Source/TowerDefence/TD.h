@@ -121,3 +121,31 @@ enum class ETileType : uint8
 	CornerPath,
 	EndPath
 };
+
+
+USTRUCT(BlueprintType)
+struct FBuildHelperData
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETileType TileType = ETileType::None;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 RotationAroundZ = 0;
+};
+
+USTRUCT(BlueprintType)
+struct FAddedTileData
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<AActor> TileActor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETileType TileType = ETileType::None;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 RotationAroundZ = 0;
+};
