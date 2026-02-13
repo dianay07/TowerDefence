@@ -11,12 +11,12 @@ class TOWERDEFENCE_API ATDPooledGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
-	TMap<TSubclassOf<ATDPoolActor>, TArray<ATDPoolActor*>> ActorPool;
+	TMap<TSubclassOf<AActor>, TArray<AActor*>> ActorPool;
 	
 public:
 	UFUNCTION(BlueprintCallable)
-	AActor* GetPoolActorFromClass(TSubclassOf<ATDPoolActor> TDPoolActorClass, FTransform Transform, AActor* NewOwner);
+	AActor* GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner);
 	
 	UFUNCTION(BlueprintCallable)
-	void PoolActor(ATDPoolActor* TDPoolActor);
+	void PoolActor(AActor* PoolActor);
 };

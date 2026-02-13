@@ -2,10 +2,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "TDPoolActorInterface.h"
 #include "TDPoolActor.generated.h"
 
 UCLASS()
-class TOWERDEFENCE_API ATDPoolActor : public AActor
+class TOWERDEFENCE_API ATDPoolActor : public AActor, public ITDPoolActorInterface
 {
 	GENERATED_BODY()
 	

@@ -1,17 +1,17 @@
 #include "TDPooledGameMode.h"
 
-AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<ATDPoolActor> TDPoolActorClass, FTransform Transform, AActor* NewOwner)
+AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
-	if (!TDPoolActorClass)
+	if (!ActorClass || !ActorClass->ImplementsInterface(UTDPoolActorInterface::StaticClass()))
 	{
 		return nullptr;
 	}
 
-	ATDPoolActor* PoolActor = nullptr;
+	AActor* PoolActor = nullptr;
 
-	if (ActorPool.Contains(TDPoolActorClass))
+	if (ActorPool.Contains(ActorClass))
 	{
-		TArray<ATDPoolActor*>* PoolActorArray = ActorPool.Find(TDPoolActorClass);
+		TArray<AActor*>* PoolActorArray = ActorPool.Find(ActorClass);
 
 		if (PoolActorArray && !PoolActorArray->IsEmpty())
 		{
@@ -20,41 +20,45 @@ AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<ATDPoolActor> TDPoo
 	}
 
 	if (!PoolActor)
-		PoolActor = Cast<ATDPoolActor>(GetWorld()->SpawnActor<AActor>(TDPoolActorClass));
+		PoolActor = Cast<AActor>(GetWorld()->SpawnActor<AActor>(ActorClass));
 
 	if(PoolActor)
 	{
 		PoolActor->SetActorTransform(Transform);
 		PoolActor->SetOwner(NewOwner);
-		PoolActor->OnRemovedFromPool();
+		ITDPoolActorInterface* PoolActorInter = Cast<ITDPoolActorInterface>(PoolActor);
+		if (PoolActorInter)
+		{
+			PoolActorInter->OnRemovedFromPool();
+		}	
 	}
 
 	return PoolActor;
 }
 
-void ATDPooledGameMode::PoolActor(ATDPoolActor* TDPoolActor)
+void ATDPooledGameMode::PoolActor(AActor* PoolActor)
 {
-	if(!TDPoolActor)
+	if(!PoolActor || !Cast<ITDPoolActorInterface>(PoolActor))
 	{
 		return;
 	}
 
-	TSubclassOf<ATDPoolActor> TDPoolActorClass = TDPoolActor->GetClass();
-	if (ActorPool.Contains(TDPoolActorClass))
+	TSubclassOf<AActor> ActorClass = PoolActor->GetClass();
+	if (ActorPool.Contains(ActorClass))
 	{
-		TArray<ATDPoolActor*>* PoolActorArray = ActorPool.Find(TDPoolActorClass);
+		TArray<AActor*>* PoolActorArray = ActorPool.Find(ActorClass);
 
 		if (PoolActorArray)
 		{
-			PoolActorArray->Add(TDPoolActor);
+			PoolActorArray->Add(PoolActor);
 		}
 	}
 	else
 	{
-		TArray<ATDPoolActor*> PoolActorArray;
-		PoolActorArray.Add(TDPoolActor);
-		ActorPool.Add(TDPoolActorClass, PoolActorArray);
+		TArray<AActor*> PoolActorArray;
+		PoolActorArray.Add(PoolActor);
+		ActorPool.Add(ActorClass, PoolActorArray);
 	}
 
-	TDPoolActor->OnAddedToPool();
+	Cast<ITDPoolActorInterface>(PoolActor)->OnAddedToPool();
 }
