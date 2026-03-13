@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
   <diagram name="페이지-1" id="lpVqzZzAFqdNTfSxdOuV">
-    <mxGraphModel dx="713" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1074" dy="2105" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1101,6 +1101,24 @@
         </mxCell>
         <mxCell id="x6e5URqXCd51J-8SKXj4-97" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="USaveObject -&amp;gt; Save&lt;div&gt;Serialize Value 값과 Size 를 체크를 해서 Archive 내부의 Byte 맴버에 Memcpy를 이용하여 데이터 복사.&amp;nbsp;&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="210" x="6810" y="5970" as="geometry" />
+        </mxCell>
+        <mxCell id="r66q23IYyNV-BmCizMHL-3" edge="1" parent="1" source="r66q23IYyNV-BmCizMHL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="r66q23IYyNV-BmCizMHL-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r66q23IYyNV-BmCizMHL-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="BP_TowerBase" vertex="1">
+          <mxGeometry height="80" width="120" x="2682.5" y="6150" as="geometry" />
+        </mxCell>
+        <mxCell id="r66q23IYyNV-BmCizMHL-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="SetTowerAttr 함수" vertex="1">
+          <mxGeometry height="80" width="120" x="2882.5" y="6150" as="geometry" />
+        </mxCell>
+        <mxCell id="r66q23IYyNV-BmCizMHL-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Make Outgoing Spec" vertex="1">
+          <mxGeometry height="80" width="120" x="2879.75" y="6250" as="geometry" />
+        </mxCell>
+        <mxCell id="r66q23IYyNV-BmCizMHL-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="AssignTagSetby&amp;nbsp;&lt;div&gt;Caller Magnitude&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="3048.5" y="6250" as="geometry" />
+        </mxCell>
+        <mxCell id="r66q23IYyNV-BmCizMHL-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="ApplyGameplay&lt;div&gt;EffectSpecToSelf&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="3228" y="6250" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
