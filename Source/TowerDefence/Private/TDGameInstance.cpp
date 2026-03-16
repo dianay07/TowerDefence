@@ -1,11 +1,8 @@
 #include "TDGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "TDMainSaveGame.h"
-#include "OnlineSubsystem.h"
-#include "OnlineSessionSettings.h"
 
 const FString MainSaveSlotName = TEXT("MainSave");
-const FName TD_SESSION_NAME = NAME_GameSession;
 
 UTDGameInstance::UTDGameInstance()
 {
@@ -17,275 +14,10 @@ UTDGameInstance::UTDGameInstance()
 
 void UTDGameInstance::Init()
 {
-	Super::Init();
-
 	LoadMain();
 
-	// OnlineSubsystem 초기화
-	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
-	if (OnlineSubsystem)
-	{
-		OnlineSessionInterface = OnlineSubsystem->GetSessionInterface();
-		UE_LOG(LogTemp, Log, TEXT("OnlineSubsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("OnlineSubsystem을 찾을 수 없습니다."));
-	}
+	Super::Init();
 }
-
-// ─────────────────────────────────────────────────────────
-// 게임 맵 경로 설정
-// ─────────────────────────────────────────────────────────
-
-void UTDGameInstance::SetGameMapPath(const FString& MapPath)
-{
-	GameMapPath = MapPath;
-}
-
-// ─────────────────────────────────────────────────────────
-// 세션 생성
-// ─────────────────────────────────────────────────────────
-
-void UTDGameInstance::CreateSession(int32 NumPublicConnections, bool bIsLAN)
-{
-	if (!OnlineSessionInterface.IsValid())
-	{
-		OnCreateSessionCompleteDelegate.Broadcast(false);
-		return;
-	}
-
-	// 이미 존재하는 세션이 있으면 먼저 제거
-	FNamedOnlineSession* ExistingSession = OnlineSessionInterface->GetNamedSession(TD_SESSION_NAME);
-	if (ExistingSession)
-	{
-		bPendingCreateAfterDestroy = true;
-		PendingNumConnections = NumPublicConnections;
-		bPendingIsLAN = bIsLAN;
-		DestroySession();
-		return;
-	}
-
-	// 델리게이트 등록
-	CreateSessionCompleteDelegateHandle = OnlineSessionInterface->AddOnCreateSessionCompleteDelegate_Handle(
-		FOnCreateSessionCompleteDelegate::CreateUObject(this, &UTDGameInstance::OnCreateSessionComplete)
-	);
-
-	// 세션 설정
-	TSharedPtr<FOnlineSessionSettings> Settings = MakeShared<FOnlineSessionSettings>();
-	Settings->bIsLANMatch = bIsLAN;
-	Settings->NumPublicConnections = NumPublicConnections;
-	Settings->bAllowJoinInProgress = true;
-	Settings->bAllowInvites = true;
-	Settings->bShouldAdvertise = true;
-	Settings->bUsesPresence = !bIsLAN;
-	Settings->bUseLobbiesIfAvailable = !bIsLAN;
-
-	Settings->Set(FName(TEXT("SERVER_NAME")), FString(TEXT("TowerDefence_Host")), EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
-
-	if (!OnlineSessionInterface->CreateSession(0, TD_SESSION_NAME, *Settings))
-	{
-		OnlineSessionInterface->ClearOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegateHandle);
-		OnCreateSessionCompleteDelegate.Broadcast(false);
-	}
-}
-
-void UTDGameInstance::OnCreateSessionComplete(FName SessionName, bool bWasSuccessful)
-{
-	if (OnlineSessionInterface.IsValid())
-	{
-		OnlineSessionInterface->ClearOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegateHandle);
-	}
-
-	UE_LOG(LogTemp, Log, TEXT("세션 생성 %s: %s"), *SessionName.ToString(), bWasSuccessful ? TEXT("성공") : TEXT("실패"));
-	OnCreateSessionCompleteDelegate.Broadcast(bWasSuccessful);
-}
-
-// ─────────────────────────────────────────────────────────
-// 세션 검색
-// ─────────────────────────────────────────────────────────
-
-void UTDGameInstance::FindSessions(bool bIsLAN)
-{
-	if (!OnlineSessionInterface.IsValid())
-	{
-		OnFindSessionsCompleteDelegate.Broadcast(false);
-		return;
-	}
-
-	FindSessionsCompleteDelegateHandle = OnlineSessionInterface->AddOnFindSessionsCompleteDelegate_Handle(
-		FOnFindSessionsCompleteDelegate::CreateUObject(this, &UTDGameInstance::OnFindSessionsComplete)
-	);
-
-	SessionSearch = MakeShared<FOnlineSessionSearch>();
-	SessionSearch->MaxSearchResults = 20;
-	SessionSearch->bIsLanQuery = bIsLAN;
-
-	if (!bIsLAN)
-	{
-		SessionSearch->QuerySettings.Set(FName(TEXT("presence")), true, EOnlineComparisonOp::Equals);
-	}
-
-	if (!OnlineSessionInterface->FindSessions(0, SessionSearch.ToSharedRef()))
-	{
-		OnlineSessionInterface->ClearOnFindSessionsCompleteDelegate_Handle(FindSessionsCompleteDelegateHandle);
-		OnFindSessionsCompleteDelegate.Broadcast(false);
-	}
-}
-
-void UTDGameInstance::OnFindSessionsComplete(bool bWasSuccessful)
-{
-	if (OnlineSessionInterface.IsValid())
-	{
-		OnlineSessionInterface->ClearOnFindSessionsCompleteDelegate_Handle(FindSessionsCompleteDelegateHandle);
-	}
-
-	FoundSessions.Empty();
-
-	if (bWasSuccessful && SessionSearch.IsValid())
-	{
-		for (const FOnlineSessionSearchResult& Result : SessionSearch->SearchResults)
-		{
-			FTDSessionInfo Info;
-			Result.Session.OwningUserName.IsEmpty()
-				? Info.HostName = TEXT("Unknown")
-				: Info.HostName = Result.Session.OwningUserName;
-
-			Info.MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
-			Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
-			Info.bIsLAN = Result.Session.SessionSettings.bIsLANMatch;
-
-			FoundSessions.Add(Info);
-		}
-	}
-
-	UE_LOG(LogTemp, Log, TEXT("세션 검색 완료: %d개 발견"), FoundSessions.Num());
-	OnFindSessionsCompleteDelegate.Broadcast(bWasSuccessful);
-}
-
-// ─────────────────────────────────────────────────────────
-// 세션 참가
-// ─────────────────────────────────────────────────────────
-
-void UTDGameInstance::JoinFoundSession(int32 Index)
-{
-	if (!OnlineSessionInterface.IsValid() || !SessionSearch.IsValid())
-	{
-		OnJoinSessionCompleteDelegate.Broadcast(false);
-		return;
-	}
-
-	if (!SessionSearch->SearchResults.IsValidIndex(Index))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("잘못된 세션 인덱스: %d"), Index);
-		OnJoinSessionCompleteDelegate.Broadcast(false);
-		return;
-	}
-
-	JoinSessionCompleteDelegateHandle = OnlineSessionInterface->AddOnJoinSessionCompleteDelegate_Handle(
-		FOnJoinSessionCompleteDelegate::CreateUObject(this, &UTDGameInstance::OnJoinSessionComplete)
-	);
-
-	OnlineSessionInterface->JoinSession(0, TD_SESSION_NAME, SessionSearch->SearchResults[Index]);
-}
-
-void UTDGameInstance::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result)
-{
-	if (OnlineSessionInterface.IsValid())
-	{
-		OnlineSessionInterface->ClearOnJoinSessionCompleteDelegate_Handle(JoinSessionCompleteDelegateHandle);
-	}
-
-	bool bSuccess = (Result == EOnJoinSessionCompleteResult::Success);
-
-	if (bSuccess)
-	{
-		FString ConnectURL;
-		if (OnlineSessionInterface->GetResolvedConnectString(SessionName, ConnectURL))
-		{
-			APlayerController* PC = GetFirstLocalPlayerController();
-			if (PC)
-			{
-				UE_LOG(LogTemp, Log, TEXT("서버에 접속합니다: %s"), *ConnectURL);
-				PC->ClientTravel(ConnectURL, ETravelType::TRAVEL_Absolute);
-			}
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("연결 URL을 가져오는 데 실패했습니다."));
-			bSuccess = false;
-		}
-	}
-
-	UE_LOG(LogTemp, Log, TEXT("세션 참가 %s"), bSuccess ? TEXT("성공") : TEXT("실패"));
-	OnJoinSessionCompleteDelegate.Broadcast(bSuccess);
-}
-
-// ─────────────────────────────────────────────────────────
-// 세션 제거
-// ─────────────────────────────────────────────────────────
-
-void UTDGameInstance::DestroySession()
-{
-	if (!OnlineSessionInterface.IsValid())
-	{
-		OnDestroySessionCompleteDelegate.Broadcast(false);
-		return;
-	}
-
-	DestroySessionCompleteDelegateHandle = OnlineSessionInterface->AddOnDestroySessionCompleteDelegate_Handle(
-		FOnDestroySessionCompleteDelegate::CreateUObject(this, &UTDGameInstance::OnDestroySessionComplete)
-	);
-
-	if (!OnlineSessionInterface->DestroySession(TD_SESSION_NAME))
-	{
-		OnlineSessionInterface->ClearOnDestroySessionCompleteDelegate_Handle(DestroySessionCompleteDelegateHandle);
-		bPendingCreateAfterDestroy = false;
-		OnDestroySessionCompleteDelegate.Broadcast(false);
-	}
-}
-
-void UTDGameInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
-{
-	if (OnlineSessionInterface.IsValid())
-	{
-		OnlineSessionInterface->ClearOnDestroySessionCompleteDelegate_Handle(DestroySessionCompleteDelegateHandle);
-	}
-
-	if (bPendingCreateAfterDestroy && bWasSuccessful)
-	{
-		bPendingCreateAfterDestroy = false;
-		CreateSession(PendingNumConnections, bPendingIsLAN);
-		return;
-	}
-
-	bPendingCreateAfterDestroy = false;
-	OnDestroySessionCompleteDelegate.Broadcast(bWasSuccessful);
-}
-
-// ─────────────────────────────────────────────────────────
-// 게임 맵 이동 (호스트 전용)
-// ─────────────────────────────────────────────────────────
-
-void UTDGameInstance::ServerTravelToGameMap()
-{
-	if (GameMapPath.IsEmpty())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("GameMapPath가 설정되지 않았습니다."));
-		return;
-	}
-
-	UWorld* World = GetWorld();
-	if (World)
-	{
-		FString TravelURL = GameMapPath + TEXT("?listen");
-		World->ServerTravel(TravelURL);
-	}
-}
-
-// ─────────────────────────────────────────────────────────
-// 저장 슬롯
-// ─────────────────────────────────────────────────────────
 
 int32 UTDGameInstance::GetSaveSlot()
 {
@@ -318,11 +50,10 @@ void UTDGameInstance::SaveMain()
 	if (!MainSaveGame)
 	{
 		UE_LOG(LogTemp, Error, TEXT("Failed to create MainSaveGame"));
-		return;
 	}
 
 	MainSaveGame->SaveSlotIndex = SaveSlotIndex;
-	if (!UGameplayStatics::SaveGameToSlot(MainSaveGame, MainSaveSlotName, 0))
+	if(!UGameplayStatics::SaveGameToSlot(MainSaveGame, MainSaveSlotName, 0))
 	{
 		UE_LOG(LogTemp, Error, TEXT("Failed to save MainSaveGame"));
 	}
