@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
   <diagram name="페이지-1" id="eEU-8S3AU0XS_DwYXdel">
-    <mxGraphModel dx="702" dy="604" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1213" dy="1002" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -109,37 +109,37 @@
           <mxGeometry height="95" width="220" x="1750" y="1190" as="geometry" />
         </mxCell>
         <mxCell id="nYRWSuvBfACys_Zh3A_y-43" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=#00CC66;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 18px;&quot;&gt;MakeOutgoingSpec&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;br&gt;&lt;/h1&gt;&lt;div&gt;UAbilitySystemGlobals() 를 통해 FGameplayEffectContextHandle ( Effect Context ) 를 할당 받는다.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;이후 Data 안에 actor &amp;amp; avatar에 대한 정보 추가 한다.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;UGameplayEffect 인자로 추가로 받는데&amp;nbsp; Attritude 정보이다.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;이 정보로&amp;nbsp;FGameplayEffectSpec를 만드는데&lt;/div&gt;&lt;div&gt;위에서 얘기한 Effect Context 정보와 Effect &amp;amp; Level 가 들어간다.&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Level 은 float 값이며 Effect 가 적용되는&amp;nbsp; 계층같아 보임&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;GameplayEffectSpec 초기화&amp;nbsp;&lt;/div&gt;&lt;div&gt;- Level 에 대한 내용와 주기에 대한 내용&lt;/div&gt;&lt;div&gt;Modifiers 라는 맴버가 있는데 Attr 에 대한 맴버들 , 수정될 수 있는&amp;nbsp;&lt;/div&gt;&lt;div&gt;목록을 관리 하는 것으로 보임.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;UGameplayEffect&amp;gt; Def;&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;UGameplayEffect == GE_towerAttribute set&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;CapturedRelevantAttributes &lt;/font&gt;- 어디선가 처리 하는 곳 이 있을듯.&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;duration, modifiers, Executions 관리.&lt;/b&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="480" width="350" x="2010" y="1550" as="geometry" />
+          <mxGeometry height="480" width="350" x="2440" y="1550" as="geometry" />
         </mxCell>
         <mxCell id="nYRWSuvBfACys_Zh3A_y-44" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=#00CC66;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;FGameplayAbilityActorInfo&lt;/font&gt;&lt;/h1&gt;&lt;p&gt; 어빌리티가 자주 접근해야 하는 소유 액터(Owning Actor)의 데이터 캐&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;다.&lt;/span&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="360" width="350" x="2420" y="1210" as="geometry" />
+          <mxGeometry height="360" width="350" x="2850" y="1235" as="geometry" />
         </mxCell>
         <mxCell id="nYRWSuvBfACys_Zh3A_y-45" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;strokeColor=#00CC66;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;(FGameplayEffectSpecHandle SpecHandle, FGameplayTag DataTag, float Magnitude)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px; white-space: normal;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;FGameplayEffectSpec* Spec = SpecHandle.Data.Get();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px; white-space: normal;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;SetByCallerTagMagnitudes.FindOrAdd(DataTag) = Magnitude;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;SetByCallerTagMagnitudes &lt;/b&gt;에 데이터 추가.&lt;/span&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;h1&gt;&lt;b&gt;ExecuteGameplayEffect(*OurCopyOfSpec, PredictionKey); 계산&lt;/b&gt;&lt;/h1&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;h2&gt;&lt;b&gt;ActiveGameplayEffects.ExecuteActiveEffectsFrom(Spec, PredictionKey);&lt;/b&gt;&lt;/h2&gt;" vertex="1">
-          <mxGeometry height="520" width="700" x="2000" y="2110" as="geometry" />
+          <mxGeometry height="520" width="700" x="2430" y="2110" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-1" parent="1" style="text;whiteSpace=wrap;" value="TagName = &quot;Tower.Range.SetByCaller&quot;" vertex="1">
-          <mxGeometry height="40" width="240" x="2080" y="2710" as="geometry" />
+          <mxGeometry height="40" width="240" x="2510" y="2710" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-2" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;table style=&quot;border-collapse:collapse;empty-cells:show;&quot;&gt;&#xa;&lt;tbody&gt;&lt;tr&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-left: #000000 1px solid;border-right-style: none;&quot;&gt;&lt;/th&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;Name&lt;/th&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;Value&lt;/th&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;Type&lt;/th&gt;&lt;/tr&gt;&#xa;&lt;tr&gt;&lt;td style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-left: #000000 1px solid;border-right-style: none;padding:2px;&quot;&gt;▶&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;[0]&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;{Attribute={AttributeName=L&quot;Range&quot; Attribute=&quot;Range&quot; AttributeOwner=0x000001f180980c80 (Name=&quot;TDTowerSet&quot;, InternalFlags=ReachabilityFlag0 | Native | RootSet (1107312640)) } ...}&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;FGameplayModifierInfo&lt;/td&gt;&lt;/tr&gt;&#xa;&lt;tr&gt;&lt;td style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-left: #000000 1px solid;border-right-style: none;padding:2px;&quot;&gt;▶&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;[1]&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;{Attribute={AttributeName=L&quot;FireRate&quot; Attribute=&quot;FireRate&quot; AttributeOwner=0x000001f180980c80 (Name=&quot;TDTowerSet&quot;, InternalFlags=ReachabilityFlag0 | Native | RootSet (1107312640)) } ...}&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;FGameplayModifierInfo&lt;/td&gt;&lt;/tr&gt;&#xa;&lt;tr&gt;&lt;td style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-left: #000000 1px solid;border-right-style: none;padding:2px;&quot;&gt;▶&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;[2]&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;{Attribute={AttributeName=L&quot;Damage&quot; Attribute=&quot;Damage&quot; AttributeOwner=0x000001f180980c80 (Name=&quot;TDTowerSet&quot;, InternalFlags=ReachabilityFlag0 | Native | RootSet (1107312640)) } ...}&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;FGameplayModifierInfo&lt;/td&gt;&lt;/tr&gt;&#xa;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
-          <mxGeometry height="450" width="560" x="2040" y="2760" as="geometry" />
+          <mxGeometry height="450" width="560" x="2470" y="2760" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-3" parent="1" style="text;whiteSpace=wrap;" value="FGameplayEffectSpec::CalculateModifierMagnitudes()" vertex="1">
-          <mxGeometry height="40" width="320" x="2040" y="3240" as="geometry" />
+          <mxGeometry height="40" width="320" x="2470" y="3240" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-4" parent="1" style="text;whiteSpace=wrap;" value="GetAttributeCaptureDefinitions(ReqCaptureDefs);" vertex="1">
-          <mxGeometry height="40" width="300" x="2030" y="3320" as="geometry" />
+          <mxGeometry height="40" width="300" x="2460" y="3320" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-5" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;br&gt;SetByCallerTagMagnitudes&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;table style=&quot;border-collapse:collapse;empty-cells:show;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-left: #000000 1px solid;border-right-style: none;&quot;&gt;&lt;/th&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;Name&lt;/th&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;Value&lt;/th&gt;&lt;th style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;border-top: #000000 1px solid;border-bottom: #000000 1px solid;padding:2px;font-weight:bold;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;Type&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-left: #000000 1px solid;border-right-style: none;padding:2px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;[{TagName=&quot;Tower.Range.SetByCaller&quot; }]&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;200.000000&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;float&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-left: #000000 1px solid;border-right-style: none;padding:2px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;[{TagName=&quot;Tower.FireRate.SetByCaller&quot; }]&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;0.250000000&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;float&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-left: #000000 1px solid;border-right-style: none;padding:2px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;[{TagName=&quot;Tower.Damage.SetByCaller&quot; }]&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;5.00000000&lt;/td&gt;&lt;td style=&quot;padding-left:2px;padding-top:2px; padding-bottom:2px; padding-right:2px;font-size:11.0pt;font-family:Calibri;margin:0px;font-weight:normal;border-bottom: #000000 1px solid;border-top-style: none;border-right: #000000 1px solid;border-left-style: none;&quot;&gt;float&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
-          <mxGeometry height="190" width="420" x="2020" y="3460" as="geometry" />
+          <mxGeometry height="190" width="420" x="2450" y="3460" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-8" parent="1" style="text;whiteSpace=wrap;" value="&#xa;FGameplayEffectSpec&#xa;&#xa; Def-&gt;Modifiers[idx].EvaluatedMagnitude 에 값이 담겨져서 나옴" vertex="1">
-          <mxGeometry height="140" width="540" x="2001" y="3650" as="geometry" />
+          <mxGeometry height="140" width="540" x="2431" y="3650" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-9" parent="1" style="text;whiteSpace=wrap;" value="AttributeSetClass = 0x000001f180980c80 (Name=&quot;TDTowerSet&quot;, InternalFlags=ReachabilityFlag0 | Native | RootSet (1107312640))" vertex="1">
-          <mxGeometry height="50" width="560" x="2000" y="3780" as="geometry" />
+          <mxGeometry height="50" width="560" x="2430" y="3780" as="geometry" />
         </mxCell>
         <mxCell id="AlmbfbU9BrlZsr6ofALa-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Tag -&amp;gt; 적용 하는 순서까지만 정리 하면 될듯" vertex="1">
-          <mxGeometry height="60" width="120" x="1920" y="3940" as="geometry" />
+          <mxGeometry height="60" width="120" x="2350" y="3940" as="geometry" />
         </mxCell>
         <mxCell id="PdAiLjVkm_v_aVdh6ajv-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="언리얼 문서 정리" vertex="1">
           <mxGeometry height="60" width="240" x="3520" y="80" as="geometry" />
@@ -491,6 +491,162 @@
         </mxCell>
         <mxCell id="vFj8RdBDAteb_KP7ydhF-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&amp;nbsp;ActivatableAbilities.Items 는 Effect 인지 Attr 인지 생성할 때 추가 함. 확인해 볼 것." vertex="1">
           <mxGeometry height="60" width="590" x="2120" y="6310" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-37" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="H5xSHpDF82UMvOfV-2qi-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-38" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="H5xSHpDF82UMvOfV-2qi-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-87" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="H5xSHpDF82UMvOfV-2qi-86">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-39" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="AbilitySystemComponent" vertex="1">
+          <mxGeometry height="70" width="200" x="810" y="6850" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-40" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="H5xSHpDF82UMvOfV-2qi-42" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-41" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="MakeOutgoingSpec" vertex="1">
+          <mxGeometry height="60" width="140" x="962.19" y="7980" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-42" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="FGameplayEffectSpecHandle 리턴" vertex="1">
+          <mxGeometry height="60" width="240" x="1182.19" y="7980" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-43" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="FGameplayEffectSpecHandle" vertex="1">
+          <mxGeometry height="120" width="355" x="1472.8200000000002" y="7980" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-44" parent="H5xSHpDF82UMvOfV-2qi-43" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="TSharedPtr&amp;lt;FGameplayEffectSpec&amp;gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;Data" vertex="1">
+          <mxGeometry height="30" width="355" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-45" parent="H5xSHpDF82UMvOfV-2qi-43" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 2" vertex="1">
+          <mxGeometry height="30" width="355" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-46" parent="H5xSHpDF82UMvOfV-2qi-43" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 3" vertex="1">
+          <mxGeometry height="30" width="355" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-47" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="FGameplayEffectSpec" vertex="1">
+          <mxGeometry height="180" width="355" x="1622.19" y="8165" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-48" parent="H5xSHpDF82UMvOfV-2qi-47" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="주석 내용" vertex="1">
+          <mxGeometry height="30" width="355" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-49" parent="H5xSHpDF82UMvOfV-2qi-47" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="What UGameplayEffect (const data) - 어떤 데이터 인지" vertex="1">
+          <mxGeometry height="30" width="355" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-50" parent="H5xSHpDF82UMvOfV-2qi-47" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="TObjectPtr&amp;lt;const UGameplayEffect&amp;gt; Def;" vertex="1">
+          <mxGeometry height="30" width="355" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-51" parent="H5xSHpDF82UMvOfV-2qi-47" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="What Level - 어떤 래밸인지&amp;nbsp;" vertex="1">
+          <mxGeometry height="30" width="355" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-52" parent="H5xSHpDF82UMvOfV-2qi-47" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Who instigated - 누가 발동 했는지" vertex="1">
+          <mxGeometry height="30" width="355" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-53" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="H5xSHpDF82UMvOfV-2qi-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-54" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="UGameplayEffect" vertex="1">
+          <mxGeometry height="120" width="355" x="1848.44" y="8405" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-55" parent="H5xSHpDF82UMvOfV-2qi-54" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="TSharedPtr&amp;lt;FGameplayEffectSpec&amp;gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;Data" vertex="1">
+          <mxGeometry height="30" width="355" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-56" parent="H5xSHpDF82UMvOfV-2qi-54" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 2" vertex="1">
+          <mxGeometry height="30" width="355" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-57" parent="H5xSHpDF82UMvOfV-2qi-54" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 3" vertex="1">
+          <mxGeometry height="30" width="355" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-58" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="H5xSHpDF82UMvOfV-2qi-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-59" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Gameplay Effect&lt;/h1&gt;&lt;span class=&quot;ͼl&quot;&gt;Actor에 &quot;적용(applied)&quot;되는 기능들의 묶음이다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; * 즉, Actor에 &quot;영향을 주는(affects)&quot; 요소라고 생각하면 된다.&lt;/span&gt;&lt;div&gt;&lt;span class=&quot;ͼl&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span class=&quot;ͼl&quot;&gt;&lt;span class=&quot;ͼl&quot;&gt;Gameplay Effect는 에셋이므로 런타임에서 변경 불가능(immutable)하다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; * 다만 런타임에 GE를 생성하는 예외적인 경우가 있지만,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; * 한 번 생성 및 설정이 완료되면 그 데이터는 변경되지 않는다.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="342" x="2255.81" y="8075" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-60" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Gameplay Effects와 수명(Lifetime)&lt;/h1&gt;&lt;span class=&quot;ͼl&quot;&gt;GE는 즉시 실행될 수도 있고 아닐 수도 있다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *    즉시 실행되지 않는 경우 지속 시간(duration)을 가지며, (무한일 수도 있음)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *    이러한 GE는 Active Gameplay Effects Container에 추가된다.&lt;/span&gt;&lt;div&gt;&lt;span class=&quot;ͼl&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span class=&quot;ͼl&quot;&gt;&lt;span class=&quot;ͼl&quot;&gt;예외: 클라이언트에서 서버보다 앞서 Gameplay Effect를 &quot;예측(prediction)&quot;하는 경우,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *    이를 지속형 효과처럼 취급하고 서버의 확인을 기다린다.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="342" x="2251.81" y="8285" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-61" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Gameplay Effect Spec&lt;/h1&gt;&lt;span class=&quot;ͼl&quot;&gt;&amp;nbsp; - Gameplay Effect Spec은 Gameplay Effect의 런타임 버전이다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *    즉, 에셋인 GE를 감싸는 인스턴스 데이터 래퍼라고 볼 수 있다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  - 따라서 Blueprint 기능은 Gameplay Effect 자체보다&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *    Gameplay Effect Spec을 중심으로 동작하며,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *    이는 AbilitySystemBlueprintLibrary에도 반영되어 있다.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="180" width="342" x="2247.81" y="8525" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-62" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="H5xSHpDF82UMvOfV-2qi-64" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-63" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="GiveAbility" vertex="1">
+          <mxGeometry height="60" width="140" x="1060" y="6900" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-64" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;AbilitySystemComponent-&amp;gt;GiveAbility(&lt;b&gt;FGameplayAbilitySpec&lt;/b&gt;(DefaultAbility, 1, -1, this));&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="565.62" x="1280" y="6900" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-65" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;FGameplayAbilitySpec&lt;/b&gt;" vertex="1">
+          <mxGeometry height="170" width="355" x="2040.62" y="6840" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-66" parent="H5xSHpDF82UMvOfV-2qi-65" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="외부에서 이 Spec을 참조하기 위한 핸들(handle)" vertex="1">
+          <mxGeometry height="30" width="355" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-67" parent="H5xSHpDF82UMvOfV-2qi-65" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="FGameplayAbilitySpecHandle Handle;" vertex="1">
+          <mxGeometry height="30" width="355" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-68" parent="H5xSHpDF82UMvOfV-2qi-65" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="해당 Spec이 참조하는 Ability (항상 CDO)&lt;br data-start=&quot;61&quot; data-end=&quot;64&quot;&gt;&lt;br/&gt;※ 원래는 const여야 하지만, 현재는 여러 곳에서 수정되고 있음" vertex="1">
+          <mxGeometry height="50" width="355" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-69" parent="H5xSHpDF82UMvOfV-2qi-65" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="TObjectPtr&amp;lt;UGameplayAbility&amp;gt; Ability;" vertex="1">
+          <mxGeometry height="30" width="355" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-70" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;FGameplayAbilitySpec&lt;/h1&gt;Abilities는 플레이어나 외부 게임 로직에 의해 활성화될 수 있는&lt;br data-start=&quot;70&quot; data-end=&quot;73&quot;&gt;&lt;br/&gt;커스텀 게임플레이 로직을 정의한다." vertex="1">
+          <mxGeometry height="110" width="342" x="2432.12" y="6790" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-72" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="ABILITYLIST_SCOPE_LOCK();&lt;br&gt;FGameplayAbilitySpec&amp;amp; OwnedSpec =&lt;font style=&quot;color: rgb(255, 8, 0);&quot;&gt; &lt;b&gt;ActivatableAbilities.Items&lt;/b&gt;&lt;/font&gt;[ActivatableAbilities.Items.Add(Spec)];" vertex="1">
+          <mxGeometry height="80" width="612.5" x="1053.13" y="7080" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-83" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="H5xSHpDF82UMvOfV-2qi-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="FGameplayAbilitySpecContainer ActivatableAbilities;" vertex="1">
+          <mxGeometry height="60" width="254.38" x="1695.62" y="7090" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-79" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;text-align: center; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;FGameplayAbilitySpecContainer&lt;/span&gt;&lt;span style=&quot;text-align: center; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;Abilities는 플레이어나 외부 게임 로직에 의해 활성화될 수 있는&lt;/span&gt;&lt;/h1&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  활성화할 수 있는 Ability 목록&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *      - 인스턴싱되지 않는 Ability와 실행 단위로 인스턴싱되는 Ability는 CDO를 포함한다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *      - Actor 단위로 인스턴싱되는 Ability는 실제 인스턴스를 사용한다 (CDO 아님)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  이 배열은 시스템 동작에 필수적인 요소는 아니다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  &#39;Actor에 Ability를 부여하는&#39; 편의 기능에 가깝다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  또한 Ability는 AbilitySystemComponent 없이도 동작할 수 있다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  예를 들어 StaticMeshActor에서 실행되는 Ability를 작성할 수도 있다.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  Ability가 인스턴싱이나 AbilitySystemComponent가 제공하는 기능을 필요로 하지 않는다면,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ͼl&quot;&gt; *  해당 컴포넌트 없이도 정상적으로 동작할 수 있다.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="360" width="372" x="2032.12" y="7026" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-80" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="GiveAbility - Actor 와 Ablilirty 와 연결 및 Effect가 생성 했으면 Effect 와도 연결해주며&amp;nbsp;&lt;b style=&quot;color: rgb(255, 8, 0);&quot;&gt;ActivatableAbilities&amp;nbsp;&lt;/b&gt;데이터 를 추가 한다." vertex="1">
+          <mxGeometry height="46" width="742.5" x="1050" y="7270" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-84" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;OnGiveAbility(OwnedSpec);&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="346.87" x="1050" y="7180" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-85" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Spec Handle - Actor 연결&lt;/b&gt;&lt;div&gt;&lt;b&gt;Actor Avatar 와&amp;nbsp; Spec 연결&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="46" width="430" x="1432.5" y="7192" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-89" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="H5xSHpDF82UMvOfV-2qi-88" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-86" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="MakeEffectContext" vertex="1">
+          <mxGeometry height="60" width="140" x="1042.19" y="7490" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-88" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="FGameplayEffectContextHandle EffectContext = AbilitySystemComponent-&amp;gt;MakeEffectContext()" vertex="1">
+          <mxGeometry height="60" width="587.81" x="1262.19" y="7490" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-91" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;FGameplayEffectContext&lt;/h1&gt;&lt;p data-start=&quot;31&quot; data-end=&quot;126&quot;&gt;&lt;b&gt;인스티게이터(Instigator)와 위치, 타겟 등의 관련 데이터를 저장하는 데이터 구조체이다.&lt;/b&gt;&lt;br data-start=&quot;84&quot; data-end=&quot;87&quot;&gt;&lt;br&gt;게임에서는 이 구조체를 상속하여 게임 특화 정보를 추가할 수 있다.&lt;/p&gt;&lt;br&gt;&lt;p data-start=&quot;128&quot; data-end=&quot;202&quot; data-is-last-node=&quot;&quot; data-is-only-node=&quot;&quot;&gt;이 구조체는 이펙트 실행 전반에 걸쳐 전달되므로,&lt;br data-start=&quot;155&quot; data-end=&quot;158&quot;&gt;&lt;br&gt;실행 과정에서 발생하는 일시적인(transient) 정보를 추적하기에 적합하다.&lt;/p&gt;" vertex="1">
+          <mxGeometry height="230" width="342" x="1930" y="7440" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-92" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;FGameplayEffectContextHandle&lt;/h1&gt;&lt;p data-start=&quot;31&quot; data-end=&quot;126&quot;&gt;FGameplayEffectContext 또는 그 하위 클래스를 감싸는 Handle로,&lt;br data-start=&quot;79&quot; data-end=&quot;82&quot;&gt;&lt;br/&gt;다형성(polymorphism)을 지원하고 올바르게 복제(replication)되도록 하기 위한 것이다.&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="450" x="1920" y="7710" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-93" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Context.AddInstigator(AbilityActorInfo-&amp;gt;OwnerActor.Get(), AbilityActorInfo-&amp;gt;AvatarActor.Get())" vertex="1">
+          <mxGeometry height="60" width="587.81" x="1257.81" y="7580" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-94" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="FGameplayEffectContext 의 호출이 되어지는데 여기서EffectCauser 와&amp;nbsp; Insitigator 에 대한 ASC 를 등록한다.&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="430" x="1290" y="7670" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-97" edge="1" parent="1" source="H5xSHpDF82UMvOfV-2qi-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="H5xSHpDF82UMvOfV-2qi-96" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-95" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="AssignTagSetByCallerMagnitude" vertex="1">
+          <mxGeometry height="60" width="305" x="957.19" y="8480" as="geometry" />
+        </mxCell>
+        <mxCell id="H5xSHpDF82UMvOfV-2qi-96" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;FGameplayEffectSpec* Spec = SpecHandle.Data.Get();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;if (Spec)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&#x9;&lt;/span&gt;Spec-&amp;gt;SetSetByCallerMagnitude(DataTag, Magnitude);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;}&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="467.81" x="1132.19" y="8590" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

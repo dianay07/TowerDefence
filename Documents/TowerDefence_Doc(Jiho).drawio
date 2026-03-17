@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
   <diagram name="페이지-1" id="lpVqzZzAFqdNTfSxdOuV">
-    <mxGraphModel dx="1074" dy="2105" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="764" dy="1880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1105,6 +1105,9 @@
         <mxCell id="r66q23IYyNV-BmCizMHL-3" edge="1" parent="1" source="r66q23IYyNV-BmCizMHL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="r66q23IYyNV-BmCizMHL-2" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="uy5POG7qWLzG4lEqbM2p-2" edge="1" parent="1" source="r66q23IYyNV-BmCizMHL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="uy5POG7qWLzG4lEqbM2p-1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="r66q23IYyNV-BmCizMHL-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="BP_TowerBase" vertex="1">
           <mxGeometry height="80" width="120" x="2682.5" y="6150" as="geometry" />
         </mxCell>
@@ -1119,6 +1122,21 @@
         </mxCell>
         <mxCell id="r66q23IYyNV-BmCizMHL-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="ApplyGameplay&lt;div&gt;EffectSpecToSelf&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="120" x="3228" y="6250" as="geometry" />
+        </mxCell>
+        <mxCell id="uy5POG7qWLzG4lEqbM2p-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="자식 클래스&lt;div&gt;발리스타, 캐논 etc&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="2682.5" y="6310" as="geometry" />
+        </mxCell>
+        <mxCell id="uy5POG7qWLzG4lEqbM2p-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="DefaultAbility 등록" vertex="1">
+          <mxGeometry height="80" width="120" x="2675.75" y="6410" as="geometry" />
+        </mxCell>
+        <mxCell id="uy5POG7qWLzG4lEqbM2p-6" edge="1" parent="1" source="uy5POG7qWLzG4lEqbM2p-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="uy5POG7qWLzG4lEqbM2p-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uy5POG7qWLzG4lEqbM2p-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="초기화 과정에서&amp;nbsp;" vertex="1">
+          <mxGeometry height="80" width="120" x="2682.5" y="6510" as="geometry" />
+        </mxCell>
+        <mxCell id="uy5POG7qWLzG4lEqbM2p-5" parent="1" style="whiteSpace=wrap;html=1;" value="AbilitySystemComponent-&amp;gt;GiveAbility(FGameplayAbilitySpec(DefaultAbility, 1, -1, this));&lt;div&gt;호출.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="387.5" x="2831" y="6520" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
