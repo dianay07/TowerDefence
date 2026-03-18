@@ -21,16 +21,27 @@ void UTDGameInstance::Init()
 
 	LoadMain();
 
-	// OnlineSubsystem 초기화
+	// OnlineSubsystem 초기화 (bForceLAN은 이 시점에 한 번만 결정)
 	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
 	if (OnlineSubsystem)
 	{
 		OnlineSessionInterface = OnlineSubsystem->GetSessionInterface();
-		UE_LOG(LogTemp, Log, TEXT("OnlineSubsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString());
+
+		// OnlineSubsystemNull은 LAN 전용 → 이후 모든 세션 호출에 LAN 강제
+		if (OnlineSubsystem->GetSubsystemName() == FName(TEXT("NULL")))
+		{
+			bForceLAN = true;
+		}
+
+		UE_LOG(LogTemp, Log, TEXT("OnlineSubsystem: %s / ForceLAN: %s"),
+			*OnlineSubsystem->GetSubsystemName().ToString(),
+			bForceLAN ? TEXT("true") : TEXT("false"));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("OnlineSubsystem을 찾을 수 없습니다."));
+		// Subsystem 자체가 없으면 LAN으로 폴백
+		bForceLAN = true;
+		UE_LOG(LogTemp, Warning, TEXT("OnlineSubsystem을 찾을 수 없습니다. LAN 강제."));
 	}
 }
 
@@ -49,6 +60,8 @@ void UTDGameInstance::SetGameMapPath(const FString& MapPath)
 
 void UTDGameInstance::CreateSession(int32 NumPublicConnections, bool bIsLAN)
 {
+	if (bForceLAN) bIsLAN = true;
+
 	if (!OnlineSessionInterface.IsValid())
 	{
 		OnCreateSessionCompleteDelegate.Broadcast(false);
@@ -81,7 +94,8 @@ void UTDGameInstance::CreateSession(int32 NumPublicConnections, bool bIsLAN)
 	Settings->bUsesPresence = !bIsLAN;
 	Settings->bUseLobbiesIfAvailable = !bIsLAN;
 
-	Settings->Set(FName(TEXT("SERVER_NAME")), FString(TEXT("TowerDefence_Host")), EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+	FString ServerNameToSet = PendingServerName.IsEmpty() ? TEXT("TowerDefence_Host") : PendingServerName;
+	Settings->Set(FName(TEXT("SERVER_NAME")), ServerNameToSet, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 
 	if (!OnlineSessionInterface->CreateSession(0, TD_SESSION_NAME, *Settings))
 	{
@@ -98,6 +112,7 @@ void UTDGameInstance::OnCreateSessionComplete(FName SessionName, bool bWasSucces
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("세션 생성 %s: %s"), *SessionName.ToString(), bWasSuccessful ? TEXT("성공") : TEXT("실패"));
+
 	OnCreateSessionCompleteDelegate.Broadcast(bWasSuccessful);
 }
 
@@ -107,6 +122,8 @@ void UTDGameInstance::OnCreateSessionComplete(FName SessionName, bool bWasSucces
 
 void UTDGameInstance::FindSessions(bool bIsLAN)
 {
+	if (bForceLAN) bIsLAN = true;
+
 	if (!OnlineSessionInterface.IsValid())
 	{
 		OnFindSessionsCompleteDelegate.Broadcast(false);
@@ -120,6 +137,7 @@ void UTDGameInstance::FindSessions(bool bIsLAN)
 	SessionSearch = MakeShared<FOnlineSessionSearch>();
 	SessionSearch->MaxSearchResults = 20;
 	SessionSearch->bIsLanQuery = bIsLAN;
+	SessionSearch->TimeoutInSeconds = 10.0f;
 
 	if (!bIsLAN)
 	{
@@ -147,13 +165,20 @@ void UTDGameInstance::OnFindSessionsComplete(bool bWasSuccessful)
 		for (const FOnlineSessionSearchResult& Result : SessionSearch->SearchResults)
 		{
 			FTDSessionInfo Info;
-			Result.Session.OwningUserName.IsEmpty()
-				? Info.HostName = TEXT("Unknown")
-				: Info.HostName = Result.Session.OwningUserName;
-
+			Info.HostName = Result.Session.OwningUserName.IsEmpty() ? TEXT("Unknown") : Result.Session.OwningUserName;
 			Info.MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
 			Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
 			Info.bIsLAN = Result.Session.SessionSettings.bIsLANMatch;
+
+			FString ParsedServerName;
+			if (Result.Session.SessionSettings.Get(FName(TEXT("SERVER_NAME")), ParsedServerName))
+			{
+				Info.ServerName = ParsedServerName;
+			}
+			else
+			{
+				Info.ServerName = Info.HostName;
+			}
 
 			FoundSessions.Add(Info);
 		}
@@ -281,6 +306,16 @@ void UTDGameInstance::ServerTravelToGameMap()
 		FString TravelURL = GameMapPath + TEXT("?listen");
 		World->ServerTravel(TravelURL);
 	}
+}
+
+// ─────────────────────────────────────────────────────────
+// 호스트 편의 함수 (세션 생성 + 자동 ServerTravel)
+// ─────────────────────────────────────────────────────────
+
+void UTDGameInstance::HostGame(FString ServerName, int32 MaxPlayers, bool bIsLAN)
+{
+	PendingServerName = ServerName.IsEmpty() ? TEXT("TowerDefence_Host") : ServerName;
+	CreateSession(MaxPlayers, bIsLAN);
 }
 
 // ─────────────────────────────────────────────────────────

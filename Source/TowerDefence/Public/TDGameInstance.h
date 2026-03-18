@@ -18,6 +18,9 @@ struct FTDSessionInfo
 	FString HostName;
 
 	UPROPERTY(BlueprintReadOnly)
+	FString ServerName;
+
+	UPROPERTY(BlueprintReadOnly)
 	int32 CurrentPlayers = 0;
 
 	UPROPERTY(BlueprintReadOnly)
@@ -68,10 +71,16 @@ class TOWERDEFENCE_API UTDGameInstance : public UGameInstance
 	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
 
+	// Subsystem이 NULL일 때 LAN 강제 여부 (Init에서 결정)
+	bool bForceLAN = false;
+
 	// 세션 생성 후 이동할 맵 (DestroySession 후 재생성 시 재사용)
 	bool bPendingCreateAfterDestroy = false;
 	int32 PendingNumConnections = 2;
 	bool bPendingIsLAN = false;
+
+	// HostGame() 전용 내부 상태
+	FString PendingServerName;
 
 public:
 	UTDGameInstance();
@@ -128,6 +137,10 @@ public:
 	/** 세션 생성 후 호스트가 게임 맵으로 이동 (서버 트래블) */
 	UFUNCTION(BlueprintCallable, Category = "Session")
 	void ServerTravelToGameMap();
+
+	/** 세션 생성 + 자동 ServerTravel을 한 번에 처리 (Host 전용 편의 함수) */
+	UFUNCTION(BlueprintCallable, Category = "Session")
+	void HostGame(FString ServerName = TEXT("TowerDefence_Host"), int32 MaxPlayers = 2, bool bIsLAN = false);
 
 	// ─────────────────────────────────────────
 	// 저장 슬롯 API
