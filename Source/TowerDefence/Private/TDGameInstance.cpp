@@ -27,12 +27,6 @@ void UTDGameInstance::Init()
 	{
 		OnlineSessionInterface = OnlineSubsystem->GetSessionInterface();
 
-		// OnlineSubsystemNull은 LAN 전용 → 이후 모든 세션 호출에 LAN 강제
-		if (OnlineSubsystem->GetSubsystemName() == FName(TEXT("NULL")))
-		{
-			bForceLAN = true;
-		}
-
 		UE_LOG(LogTemp, Log, TEXT("OnlineSubsystem: %s / ForceLAN: %s"),
 			*OnlineSubsystem->GetSubsystemName().ToString(),
 			bForceLAN ? TEXT("true") : TEXT("false"));
@@ -92,6 +86,7 @@ void UTDGameInstance::CreateSession(int32 NumPublicConnections, bool bIsLAN)
 	Settings->bAllowInvites = true;
 	Settings->bShouldAdvertise = true;
 	Settings->bUsesPresence = !bIsLAN;
+	Settings->bAllowJoinViaPresence = !bIsLAN;
 	Settings->bUseLobbiesIfAvailable = !bIsLAN;
 
 	FString ServerNameToSet = PendingServerName.IsEmpty() ? TEXT("TowerDefence_Host") : PendingServerName;

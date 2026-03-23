@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /d/Develope/UE5/TowerDefence -name *.ini -o -name DefaultGame.ini -o -name DefaultEngine.ini)",
+      "Bash(find /d/Develope/UE5/TowerDefence/Content/Blueprints -type f -name *.uasset)"
+    ]
+  }
+}
