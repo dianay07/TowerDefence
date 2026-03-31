@@ -25,13 +25,12 @@ protected:
 	class UTDEnemySet* EnemySet;
 
 public:
-	// Sets default values for this actor's properties
 	ATDEnemyActor();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	virtual void OnHealthAttributeChanged(const FOnAttributeChangeData& Data);
 
@@ -41,9 +40,5 @@ protected:
 public:
 	virtual void PostInitializeComponents() override;
 
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-
 };
