@@ -142,8 +142,8 @@ void ATowerManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SpawnTowers();
-	ImportData();
+	//SpawnTowers();
+	//ImportData();
 
 
 }
