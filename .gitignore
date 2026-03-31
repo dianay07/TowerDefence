@@ -123,3 +123,9 @@ Build/*/**
 
 # .drawio.bkp Files
 **/Documents/**/*.drawio.bkp
+/Python
+/Plugins/UnrealMCP
+/.claude
+.mcp.json
+Docs/TODO.md
+*.md
