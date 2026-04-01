@@ -12,7 +12,7 @@ class ATDGameState;
 //class UTDEventManagerComponent;
 class USoundClass;
 
-class ATDPlayerPawn;
+class ATDPlayerCharacter;
 class UTDGameInstance;
 class UTDGameUserSettings;
 class ATDEnemyActor;
@@ -50,7 +50,7 @@ public:
 	// ── 유틸리티 ─────────────────────────────────────────────────
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
-	static ATDPlayerPawn* GetPlayer(const UObject* WorldContextObject);
+	static ATDPlayerCharacter* GetPlayer(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
 	static UTDGameInstance* GetTDGameInstance(const UObject* WorldContextObject);

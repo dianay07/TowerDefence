@@ -3,7 +3,7 @@
 #include "TDGameUserSettings.h"
 #include "TDEnemyActor.h"
 #include "TDTowerPawn.h"
-#include "TDPlayerPawn.h"
+#include "TDPlayerCharacter.h"
 #include "TDGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "AbilitySystemBlueprintLibrary.h"
@@ -53,9 +53,9 @@ UTDEventManagerComponent* UTDFL_Utility::GetEventManager(const UObject* WorldCon
 }
 */
 
-ATDPlayerPawn* UTDFL_Utility::GetPlayer(const UObject* WorldContextObject)
+ATDPlayerCharacter* UTDFL_Utility::GetPlayer(const UObject* WorldContextObject)
 {
-	return Cast<ATDPlayerPawn>(UGameplayStatics::GetPlayerPawn(WorldContextObject, 0));
+	return Cast<ATDPlayerCharacter>(UGameplayStatics::GetPlayerPawn(WorldContextObject, 0));
 }
 
 UTDGameInstance* UTDFL_Utility::GetTDGameInstance(const UObject* WorldContextObject)
