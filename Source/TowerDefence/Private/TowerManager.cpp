@@ -66,7 +66,6 @@ void ATowerManager::SpawnTowers()
 void ATowerManager::UpdateHightlight()
 {
 	// Sequence Then 0: Get Tower Under Mouse
-	bool bIsFound = false;
 	ATDTowerPawn* TowerResult = UTDFL_Utility::GetTowerUnderMouse(GetWorld());
 	ATDTowerPawn* NewTower = nullptr;
 	if (TowerResult)
@@ -96,10 +95,9 @@ void ATowerManager::UpdateHightlight()
 void ATowerManager::ImportData()
 {
 	TArray<FName> OutRowNames;
-	UDataTableFunctionLibrary::GetDataTableRowNames(BP_DT_TowerData.Get(), OutRowNames);
-
 	if (!IsValid(BP_DT_TowerData.Get())) return;
 
+	UDataTableFunctionLibrary::GetDataTableRowNames(BP_DT_TowerData.Get(), OutRowNames);
 	// Get Data Table Row Names
 	TArray<FName> RowNames = BP_DT_TowerData.Get()->GetRowNames();
 
@@ -116,7 +114,6 @@ void ATowerManager::ImportData()
 		if (!Row) continue;
 
 		// Row Found ¡æ Add
-		//TowerData.Add(*Row, Row->EnemyType)
 		TowerData.Add(Row->EnemyType, *Row);
 	}
 }
