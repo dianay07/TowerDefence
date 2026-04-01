@@ -6,7 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "TowerDefence/TD.h"
 #include "Engine/DataTable.h"
-#include "TDPooledGameMode.h"
 
 #include "TowerManager.generated.h"
 
@@ -27,9 +26,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn")
 	TSoftObjectPtr<UDataTable> BP_DT_TowerData;  // 에디터에서 BP 클래스 지정
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn")
-	TSoftObjectPtr<ATDPooledGameMode> BP_GameMode;  // 에디터에서 BP 클래스 지정
 
 public:	
 	// Sets default values for this actor's properties

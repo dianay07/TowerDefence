@@ -14,7 +14,6 @@ ATowerManager::ATowerManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 void ATowerManager::SpawnTowers()
@@ -96,10 +95,8 @@ void ATowerManager::UpdateHightlight()
 
 void ATowerManager::ImportData()
 {
-
 	TArray<FName> OutRowNames;
 	UDataTableFunctionLibrary::GetDataTableRowNames(BP_DT_TowerData.Get(), OutRowNames);
-
 
 	if (!IsValid(BP_DT_TowerData.Get())) return;
 
@@ -141,11 +138,8 @@ bool ATowerManager::GetTowerData(ETowerType TowerType, FTowerData& OutTowerData)
 void ATowerManager::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//SpawnTowers();
-	//ImportData();
-
-
+	SpawnTowers();
+	ImportData();
 }
 
 // Called every frame
@@ -154,7 +148,6 @@ void ATowerManager::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	UpdateHightlight();
-
 }
 
 
