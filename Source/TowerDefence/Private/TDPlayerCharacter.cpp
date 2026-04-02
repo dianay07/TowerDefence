@@ -1,20 +1,25 @@
 #include "TDPlayerCharacter.h"
 #include "TDPlayerPawn.h"
 #include "TDTowerPawn.h"
-#include "Camera/CameraComponent.h"
-#include "GameFramework/SpringArmComponent.h"
+#include "TDGameState.h"
+#include "TDFL_Utility.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
+#include "Kismet/GameplayStatics.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Blueprint/UserWidget.h"
 
 ATDPlayerCharacter::ATDPlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	// 루트: 카메라 앵커 전용 (메시 없음)
+	// 루트: 카메라 앵커 전용
 	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("CameraRoot"));
 	SetRootComponent(Root);
 
+	// SpringArm
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->TargetArmLength = 600.f;
@@ -25,9 +30,11 @@ ATDPlayerCharacter::ATDPlayerCharacter()
 	SpringArmComp->bInheritRoll   = false;
 	SpringArmComp->bDoCollisionTest = false;
 
+	// Camera
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	CameraComp->bUsePawnControlRotation = false;
+
 }
 
 void ATDPlayerCharacter::BeginPlay()
@@ -50,8 +57,16 @@ void ATDPlayerCharacter::BeginPlay()
 	{
 		FActorSpawnParameters Params;
 		Params.Owner = this;
-		PlayerPawn = GetWorld()->SpawnActor<ATDPlayerPawn>(
-			PlayerPawnClass, GetActorLocation(), FRotator::ZeroRotator, Params);
+		PlayerPawn = GetWorld()->SpawnActor<ATDPlayerPawn>(PlayerPawnClass, GetActorLocation(), FRotator::ZeroRotator, Params);
+	}
+
+	if(HUDClass)
+	{
+		HUDWidget = CreateWidget(GetWorld(), HUDClass);
+		if (HUDWidget)
+		{
+			HUDWidget->AddToViewport();
+		}
 	}
 }
 
@@ -90,10 +105,11 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 
 	if (!Dir.IsZero())
 	{
-		// 카메라 Yaw 기준 Forward/Right로 이동 (Pawn 회전과 무관)
-		FRotator CameraYaw(0.f, SpringArmComp->GetComponentRotation().Yaw, 0.f);
-		FVector Forward = FRotationMatrix(CameraYaw).GetUnitAxis(EAxis::X);
-		FVector Right   = FRotationMatrix(CameraYaw).GetUnitAxis(EAxis::Y);
+		// Camera RightVector 기준으로 수평 이동 방향 계산 (Roll/Yaw 무관)
+		FVector Right = CameraComp->GetRightVector();
+		Right.Z = 0.f;
+		Right = Right.GetSafeNormal();
+		FVector Forward = FVector::CrossProduct(Right, FVector::UpVector).GetSafeNormal();
 		SetActorLocation(GetActorLocation() + (Forward * Dir.Y + Right * Dir.X) * EdgeScrollSpeed * DeltaTime);
 	}
 }
@@ -101,10 +117,19 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 void ATDPlayerCharacter::HandleCameraMove(const FInputActionValue& Value)
 {
 	const FVector2D V = Value.Get<FVector2D>();
-	FRotator CameraYaw(0.f, SpringArmComp->GetComponentRotation().Yaw, 0.f);
-	FVector Forward = FRotationMatrix(CameraYaw).GetUnitAxis(EAxis::X);
-	FVector Right   = FRotationMatrix(CameraYaw).GetUnitAxis(EAxis::Y);
+	FVector Right = CameraComp->GetRightVector();
+	Right.Z = 0.f;
+	Right = Right.GetSafeNormal();
+	FVector Forward = FVector::CrossProduct(Right, FVector::UpVector).GetSafeNormal();
 	SetActorLocation(GetActorLocation() + (Forward * V.Y + Right * V.X) * EdgeScrollSpeed * GetWorld()->GetDeltaSeconds());
+}
+
+void ATDPlayerCharacter::NotifyBaseHealthDecreased()
+{
+	if (ATDGameState* GS = UTDFL_Utility::GetTDGameState(this))
+	{
+		GS->DecreaseBaseHealth();
+	}
 }
 
 void ATDPlayerCharacter::HandleClick()

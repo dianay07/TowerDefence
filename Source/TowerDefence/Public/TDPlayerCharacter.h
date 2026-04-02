@@ -10,6 +10,9 @@ class UCameraComponent;
 class UInputMappingContext;
 class UInputAction;
 class ATDPlayerPawn;
+class UUserWidget;
+
+class ATDTowerPawn;
 
 UCLASS()
 class TOWERDEFENCE_API ATDPlayerCharacter : public APawn
@@ -25,19 +28,27 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	// ── 컴포넌트 (카메라만, 메시 없음) ──────────────────────
+	// ── 컴포넌트 (카메라만) ──────────────────────
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* CameraComp;
 
-	// ── 플레이어 폰 (맵 위 시각적 캐릭터) ────────────────────
+	// ── 플레이어 폰 (맵 위=캐릭터) ────────────────────
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
 	TSubclassOf<ATDPlayerPawn> PlayerPawnClass;
 
 	UPROPERTY()
 	ATDPlayerPawn* PlayerPawn;
+
+	// ── UI ────────────────────────────────────────
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> HUDClass;
+
+	UPROPERTY()
+	UUserWidget* HUDWidget;
+
 
 	// ── 입력 ─────────────────────────────────────────────────
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
@@ -54,10 +65,22 @@ private:
 	float EdgeScrollThreshold = 20.f;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Camera|EdgeScroll")
-	float EdgeScrollSpeed = 1500.f;
+	float EdgeScrollSpeed = 1000.f;
 
+public:
 	// ── 함수 ─────────────────────────────────────────────────
 	void HandleCameraMove(const FInputActionValue& Value);
 	void HandleClick();
 	void TickEdgeScroll(float DeltaTime);
+
+	// ── 포팅 진행중 함수 ─────────────────────────────────────────────────
+	void SelectTower(ATDTowerPawn* Tower);
+	void UnSelectTower();
+
+	void OnCoinsChanged(int32 Change, int32 Coins);
+	void OnHealthChanged(int32 HeartHealth, int32 MaxHeartHealth);
+
+	// 적이 경로 끝 도달 시 외부에서 호출 → GameState 체력 감소
+	UFUNCTION(BlueprintCallable, Category = "TD|Player")
+	void NotifyBaseHealthDecreased();
 };
