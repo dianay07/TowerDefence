@@ -41,6 +41,9 @@ protected:
 	void UpdateHightlight();
 	UFUNCTION(BlueprintCallable, Category = "TowerManager")
 	void ImportData();
+	
+public:
+	// Get Set Interface
 	UFUNCTION(BlueprintCallable, Category = "TowerManager")
 	bool GetTowerData(ETowerType TowerType, FTowerData& OutTowerData);
 public:	
