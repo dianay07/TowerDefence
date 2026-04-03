@@ -43,16 +43,16 @@ protected:
     FTowerData TowerData;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionTop;
+    ETowerActions TowerActionTop = ETowerActions::BuildTurret;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionLeft;
+    ETowerActions TowerActionLeft = ETowerActions::BuildBallista;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionRight;
+    ETowerActions TowerActionRight = ETowerActions::BuildCatapult;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionBottom;
+    ETowerActions TowerActionBottom= ETowerActions::BuildCannon;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
     int32 UpgradeLevel;

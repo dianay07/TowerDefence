@@ -23,7 +23,7 @@ ATDTowerBase::ATDTowerBase()
 
 float ATDTowerBase::GetRange() const
 {
-    // jiho: Tag 는 Range 인지 Damage 인지 별도의 String 으로 입력하는데 아래 부분은 없음 확인 필요
+    // ATTRIBUTE_ACCESSORS_BASIC Define 에 포함되어 있는 인터페이스로 보임.
     bool bFound = false;
     float Value = AbilitySystemComponent->GetGameplayAttributeValue(UTDTowerSet::GetRangeAttribute(), bFound);
     return Value;
@@ -132,33 +132,56 @@ void ATDTowerBase::UnSelect()
 
 void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRefund, FString& OutDescription)
 {
-    // UpgradeLevel에 따라 다음 업그레이드 비용 반환
-    // BreakDown은 건설 비용의 절반 환급
+    OutCostOrRefund = 0;
+    OutDescription  = TEXT("");
+
+    // [Sequence Then 0] Get Tower Manager → Is Valid Branch
+    TArray<AActor*> FoundActors;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATowerManager::StaticClass(), FoundActors);
+    if (FoundActors.IsEmpty())
+    {
+        return;
+    }
+
+    ATowerManager* TowerManager = Cast<ATowerManager>(FoundActors[0]);
+    if (!IsValid(TowerManager))
+    {
+        return;
+    }
+
+    // [Sequence Then 1] Switch on ETowerActions
     switch (TowerAction)
     {
     case ETowerActions::BuildTurret:
+    {
+        TowerManager->GetTowerData(ETowerType::Turret, TowerData);
+    }
     case ETowerActions::BuildBallista:
+    {
+        TowerManager->GetTowerData(ETowerType::Ballista, TowerData);
+
+    }
     case ETowerActions::BuildCatapult:
+    {
+        TowerManager->GetTowerData(ETowerType::Catapult, TowerData);
+
+    }
     case ETowerActions::BuildCannon:
-        OutCostOrRefund = TowerData.BuildCost;
-        OutDescription  = TowerData.TowerName;
-        break;
+    {
+        TowerManager->GetTowerData(ETowerType::Cannon, TowerData);
+    }
 
     case ETowerActions::Upgrade:
-        if      (UpgradeLevel == 0) OutCostOrRefund = TowerData.UpgradeCost1;
-        else if (UpgradeLevel == 1) OutCostOrRefund = TowerData.UpgradeCost2;
-        else                        OutCostOrRefund = TowerData.UpgradeCost3;
-        OutDescription = FString::Printf(TEXT("%s Lv%d"), *TowerData.TowerName, UpgradeLevel + 1);
+        OutCostOrRefund = GetUpgradeCost();
+        OutDescription  = FString::Printf(TEXT("Upgrade the %s for mo Power"), *TowerData.TowerName);
         break;
 
     case ETowerActions::BreakDown:
-        OutCostOrRefund = TowerData.BuildCost / 2;
-        OutDescription  = TEXT("Refund");
+        OutCostOrRefund = GetBreakdownRefund();
+        OutDescription  = TEXT("Break Down");
         break;
 
     default:
-        OutCostOrRefund = 0;
-        OutDescription  = TEXT("");
         break;
     }
 }
@@ -192,6 +215,7 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
         // jiho - 로직이 비었음 BP 함수를 호출해야 되서. 부가 사항은 아래 더 있음.
         // BP_Player의 UnSelectTower 호출은 BP 이벤트로 처리
         // C++ 베이스에 추가 시 여기서 직접 호출 가능
+        //BP_Player->UnSelecTower();
     }
 
     // [Sequence Then 1] 비용/환급 계산 및 코인 처리
@@ -325,5 +349,5 @@ void ATDTowerBase::SetTowerAttributes()
 
 void ATDTowerBase::SetHighlight(bool IsHightlighted)
 {
-	HighlightStaticMeshComp->SetVisibility(IsHightlighted);
+	HighlightStaticMeshComp->SetVisibility(IsHightlighted, true);
 }
