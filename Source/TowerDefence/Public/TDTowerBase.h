@@ -21,7 +21,7 @@ class TOWERDEFENCE_API ATDTowerBase : public ATDTowerPawn
 	ATDTowerBase();
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Mesh, meta = (AllowPrivateAccess = "true"))
-	UChildActorComponent* ChildActorCompWeapon;
+	UChildActorComponent* ChildActorWeaponComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Mesh, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* HighlightStaticMeshComp;
@@ -79,6 +79,10 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, Category = "TowerBase|Classes")
     TSubclassOf<AActor> BaseTowerClass;  // BreakDown 시 되돌릴 빈 타워
+protected:
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
+
 public:
 
 	UFUNCTION(BlueprintCallable, Category = "TowerBase")

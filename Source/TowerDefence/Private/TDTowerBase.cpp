@@ -17,8 +17,33 @@ ATDTowerBase::ATDTowerBase()
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
 	BoxComp->SetupAttachment(RootComponent);
 	
-	ChildActorCompWeapon = CreateDefaultSubobject<UChildActorComponent>(TEXT("ChildActorWeapon"));
-	ChildActorCompWeapon->SetupAttachment(RootComponent);
+    ChildActorWeaponComp = CreateDefaultSubobject<UChildActorComponent>(TEXT("ChildActorWeapon"));
+    ChildActorWeaponComp->SetupAttachment(RootComponent);
+}
+
+void ATDTowerBase::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // [Cast To BP_Weapon] ChildActorWeaponComp의 Child Actor 가져오기
+    AActor* ChildActor = ChildActorWeaponComp->GetChildActor();
+
+    // SET Weapon
+    Weapon = ChildActor;
+
+    // jiho: Weapon의 Tower = Self, Target = ? 설정은 BP 전용 변수라 인터페이스 필요
+    // Weapon이 ITDWeaponInterface를 구현하면 Execute_SetTowerRef(Weapon, this) 형태로 호출
+
+    // Get Tower Data
+    GetTowerData();
+}
+
+void ATDTowerBase::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+
+    // Try Activate Ability by Class (Allow Remote Activation = true)
+    AbilitySystemComponent->TryActivateAbilityByClass(DefaultAbility, true);
 }
 
 float ATDTowerBase::GetRange() const
@@ -222,7 +247,7 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
     int32 CostOrRefund = 0;
     FString Description;
     // jiho - 코인관련된 기능을 뺏음
-    //GetTowerDetails(TowerAction, CostOrRefund, Description);
+    GetTowerDetails(TowerAction, CostOrRefund, Description);
 
     // 스폰할 타워 클래스 (None이면 Then 2에서 스폰 스킵)
     TSubclassOf<AActor> NewTowerClass = nullptr;
