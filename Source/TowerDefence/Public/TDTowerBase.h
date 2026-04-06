@@ -61,8 +61,8 @@ protected:
     bool IsDataValid = false;
 
     // BP에서 TowerActions 위젯 클래스 설정
-    UPROPERTY(EditDefaultsOnly, Category = "TowerBase")
-    TSubclassOf<AActor> TowerActionsClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
+    TSubclassOf<AActor> BP_TowerActionsClass;
 
     // DoTowerAction 에서 스폰할 타워 클래스 (BP 디폴트에서 설정)
     UPROPERTY(EditDefaultsOnly, Category = "TowerBase|Classes")

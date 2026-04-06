@@ -99,50 +99,43 @@ bool ATDTowerBase::CanUpgrade() const
 
 void ATDTowerBase::Select()
 {
-    // [Sequence Then 0] Switch on TowerActionTop
-    // Upgrade 액션일 때만 처리
-    ETowerActions ThisTowerActionTop;
+    // SET This Tower Action Top = TowerActionTop (현재 값 읽기)
+    ETowerActions ThisTowerActionTop = TowerActionTop;
 
-    ThisTowerActionTop = TowerActionTop;
+    // [Sequence Then 0] Upgrade 타입이면 CanUpgrade 검증
+    if (ThisTowerActionTop == ETowerActions::Upgrade)
+    {
+        if (!CanUpgrade())
+        {
+            // 업그레이드 불가 → 액션 초기화 후 리턴
+            TowerActionTop = ETowerActions::None;
+            return;
+        }
+    }
 
-    if (ThisTowerActionTop != ETowerActions::Upgrade)
+    // [Sequence Then 1] TowerActionsClass 스폰 (Upgrade 가능 or 그 외 모든 타입)
+    if (!BP_TowerActionsClass)
     {
         return;
     }
 
+    FVector SpawnLocation = GetActorLocation();
+    SpawnLocation.Z += 100.f;
 
-    // [Sequence Then 1] Branch: CanUpgrade?
-    if (CanUpgrade())
-    {
-        // SpawnActor BP Tower Actions
-        // 위치: 현재 액터 위치 + Z 100
-        FVector SpawnLocation = GetActorLocation();
-        SpawnLocation.Z += 100.f;
+    FActorSpawnParameters SpawnParams;
+    SpawnParams.Owner = this;
+    SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-        FActorSpawnParameters SpawnParams;
-        SpawnParams.Owner = this;
-        SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(
+        BP_TowerActionsClass,
+        SpawnLocation,
+        FRotator::ZeroRotator,
+        SpawnParams
+    );
 
-        AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(
-            TowerActionsClass,
-            SpawnLocation,
-            FRotator::ZeroRotator,
-            SpawnParams
-        );
-
-        // SET BP_TowerActions = Return Value
-        BP_TowerActions = SpawnedActor;
-
-        // 스폰된 액터에 현재 타워의 Action 슬롯 값 전달
-        // (BP Tower Actions 측에서 Owner를 통해 읽거나, 별도 인터페이스로 전달 필요)
-
-        // Jiho:BP_TowerActions -> 에 Enum 값을 설정 하는 부분이 있는데 별도 처리 해야함.
-    }
-    else
-    {
-        // 업그레이드 불가 시 TowerActionTop 초기화
-        TowerActionTop = ETowerActions::None;
-    }
+    // SET BP_TowerActions = Return Value
+    // (Tower Action Top/Left/Right/Bottom 값은 Owner(self)를 통해 BP 측에서 읽도록 처리)
+    BP_TowerActions = SpawnedActor;
 }
 
 void ATDTowerBase::UnSelect()
