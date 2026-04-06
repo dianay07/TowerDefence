@@ -3,11 +3,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "TDPoolActor.h"
-#include "TDPooledGameMode.generated.h"
+#include "TDObjectPooled.generated.h"
 
 
 UCLASS()
-class TOWERDEFENCE_API ATDPooledGameMode : public AGameModeBase
+class TOWERDEFENCE_API ATDObjectPooled : public AGameModeBase
 {
 	GENERATED_BODY()
 

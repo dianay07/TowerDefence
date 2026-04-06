@@ -144,4 +144,6 @@ void ATDPlayerCharacter::HandleClick()
 	if (HitResult.GetActor() && HitResult.GetActor()->IsA<ATDTowerPawn>()) return;
 
 	PlayerPawn->SetMoveTarget(HitResult.Location);
+
+	// 클릭위치에 타워 검출 기능은 BP로
 }

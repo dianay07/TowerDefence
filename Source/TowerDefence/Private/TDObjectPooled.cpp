@@ -1,6 +1,6 @@
-#include "TDPooledGameMode.h"
+#include "TDObjectPooled.h"
 
-AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
+AActor* ATDObjectPooled::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
 	if (!ActorClass || !ActorClass->ImplementsInterface(UTDPoolActorInterface::StaticClass()))
 	{
@@ -36,7 +36,7 @@ AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass,
 	return PoolActor;
 }
 
-void ATDPooledGameMode::PoolActor(AActor* PoolActor)
+void ATDObjectPooled::PoolActor(AActor* PoolActor)
 {
 	if(!PoolActor || !Cast<ITDPoolActorInterface>(PoolActor))
 	{

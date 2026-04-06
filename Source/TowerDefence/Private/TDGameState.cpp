@@ -16,10 +16,14 @@ void ATDGameState::DecreaseBaseHealth()
 	// Phase 2: Broadcast를 OnRep_BaseHealth()로 이전
 }
 
+int32 ATDGameState::GetCoins() const
+{
+	return SharedCoin;
+}
 
 bool ATDGameState::HasCoins(int32 Amount) const
 {
-	return SharedCoin >= Amount;
+	return GetCoins() >= Amount;
 }
 
 void ATDGameState::CoinChange(int32 change)

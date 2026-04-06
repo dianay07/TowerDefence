@@ -1,6 +1,11 @@
-#include "TDPooledGameMode.h"
+#include "TDGameMode.h"
 
-AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
+ATDGameMode::ATDGameMode()
+{
+	EventManager = CreateDefaultSubobject<UTDEventManager>(TEXT("EventManager"));
+}
+
+AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
 	if (!ActorClass || !ActorClass->ImplementsInterface(UTDPoolActorInterface::StaticClass()))
 	{
@@ -22,7 +27,7 @@ AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass,
 	if (!PoolActor)
 		PoolActor = Cast<AActor>(GetWorld()->SpawnActor<AActor>(ActorClass));
 
-	if(PoolActor)
+	if (PoolActor)
 	{
 		PoolActor->SetActorTransform(Transform);
 		PoolActor->SetOwner(NewOwner);
@@ -36,9 +41,9 @@ AActor* ATDPooledGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass,
 	return PoolActor;
 }
 
-void ATDPooledGameMode::PoolActor(AActor* PoolActor)
+void ATDGameMode::PoolActor(AActor* PoolActor)
 {
-	if(!PoolActor || !Cast<ITDPoolActorInterface>(PoolActor))
+	if (!PoolActor || !Cast<ITDPoolActorInterface>(PoolActor))
 	{
 		return;
 	}

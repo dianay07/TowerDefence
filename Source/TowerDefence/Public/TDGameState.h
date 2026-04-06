@@ -37,6 +37,9 @@ public:
 	void DecreaseBaseHealth();
 
 	UFUNCTION(BlueprintPure, Category = "TD|GameState")
+	int32 GetCoins() const;
+
+	UFUNCTION(BlueprintPure, Category = "TD|GameState")
 	bool HasCoins(int32 Amount) const;
 
 	// SharedCoinChanged 이벤트

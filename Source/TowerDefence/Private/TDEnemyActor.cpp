@@ -3,6 +3,7 @@
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffect.h"
 #include "TDEnemySet.h"
+#include "TDGameMode.h"
 
 ATDEnemyActor::ATDEnemyActor()
 {
@@ -44,6 +45,13 @@ void ATDEnemyActor::InitializeASC()
 		SpecHandle, FGameplayTag::RequestGameplayTag(FName("Enemy.Damage.SetByCaller")),    InitialDamage);
 
 	AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan,
+			FString::Printf(TEXT("[%s] Health=%.1f | MoveSpeed=%.1f | Damage=%.1f"),
+				*GetName(), InitialHealth, InitialMoveSpeed, InitialDamage));
+	}
 }
 
 UAbilitySystemComponent* ATDEnemyActor::GetAbilitySystemComponent() const
@@ -54,6 +62,23 @@ UAbilitySystemComponent* ATDEnemyActor::GetAbilitySystemComponent() const
 void ATDEnemyActor::OnHealthAttributeChanged(const FOnAttributeChangeData& Data)
 {
 	OnHealthChanged(Data.OldValue, Data.NewValue);
+
+	if (Data.NewValue <= 0.f && !IsDead)
+	{
+		IsDead = true;
+		OnEnemyDied();
+	}
+}
+
+void ATDEnemyActor::OnEnemyDied()
+{
+	OnDied.Broadcast();
+	PlayDeathAnimation();
+
+	if (ATDGameMode* GM = Cast<ATDGameMode>(GetWorld()->GetAuthGameMode()))
+	{
+		GM->EventManager->BroadcastEnemyDied(this);
+	}
 }
 
 void ATDEnemyActor::PostInitializeComponents()

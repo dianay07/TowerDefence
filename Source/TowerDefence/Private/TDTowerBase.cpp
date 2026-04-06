@@ -2,7 +2,7 @@
 
 
 #include "TDTowerBase.h"
-#include "TDPooledGameMode.h"
+#include "TDGameMode.h"
 #include "TowerManager.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffectTypes.h"
@@ -223,7 +223,7 @@ void ATDTowerBase::UpgradeTower()
 
 void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
 {
-    ATDPooledGameMode* GM = Cast<ATDPooledGameMode>(UGameplayStatics::GetGameMode(this));
+    ATDGameMode* GM = Cast<ATDGameMode>(UGameplayStatics::GetGameMode(this));
 
     // [Sequence Then 0] 플레이어의 현재 선택 해제
     // (BP Player에 UnSelectTower 함수가 존재한다고 가정 — BP 측에서 연결 필요)

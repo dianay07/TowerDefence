@@ -6,6 +6,8 @@
 #include "GameplayAbilitySpec.h"
 #include "TDEnemyActor.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
+
 UCLASS()
 class TOWERDEFENCE_API ATDEnemyActor : public AActor, public IAbilitySystemInterface
 {
@@ -37,6 +39,12 @@ protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
 	float InitialDamage = 10.f;
 
+	UPROPERTY(BlueprintReadOnly, Category = "State")
+	bool IsDead = false;
+
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnDied OnDied;
+
 public:
 	ATDEnemyActor();
 
@@ -50,7 +58,11 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "GAS")
 	void OnHealthChanged(float OldValue, float NewValue);
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Events")
+	void PlayDeathAnimation();
+
 	void InitializeASC();
+	void OnEnemyDied();
 
 public:
 	virtual void PostInitializeComponents() override;
