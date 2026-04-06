@@ -1,5 +1,7 @@
 #include "TDEnemyActor.h"
 #include "AbilitySystemComponent.h"
+#include "AbilitySystemBlueprintLibrary.h"
+#include "GameplayEffect.h"
 #include "TDEnemySet.h"
 
 ATDEnemyActor::ATDEnemyActor()
@@ -21,6 +23,27 @@ void ATDEnemyActor::BeginPlay()
 	Super::BeginPlay();
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(EnemySet->GetHealthAttribute()).AddUObject(this, &ATDEnemyActor::OnHealthAttributeChanged);
+
+	InitializeASC();
+}
+
+void ATDEnemyActor::InitializeASC()
+{
+	if (!DefaultEffect) return;
+	FGameplayEffectSpecHandle SpecHandle = AbilitySystemComponent->MakeOutgoingSpec(DefaultEffect, 1.f, AbilitySystemComponent->MakeEffectContext());
+
+	if (!SpecHandle.IsValid()) return;
+
+	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(
+		SpecHandle, FGameplayTag::RequestGameplayTag(FName("Enemy.Health.SetByCaller")),    InitialHealth);
+
+	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(
+		SpecHandle, FGameplayTag::RequestGameplayTag(FName("Enemy.MoveSpeed.SetByCaller")), InitialMoveSpeed);
+
+	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(
+		SpecHandle, FGameplayTag::RequestGameplayTag(FName("Enemy.Damage.SetByCaller")),    InitialDamage);
+
+	AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
 }
 
 UAbilitySystemComponent* ATDEnemyActor::GetAbilitySystemComponent() const
