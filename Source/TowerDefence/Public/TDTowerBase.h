@@ -43,18 +43,6 @@ protected:
     FTowerData TowerData;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionTop = ETowerActions::BuildTurret;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionLeft = ETowerActions::BuildBallista;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionRight = ETowerActions::BuildCatapult;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    ETowerActions TowerActionBottom= ETowerActions::BuildCannon;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
     int32 UpgradeLevel;
 
     UPROPERTY(BlueprintReadWrite, Category = "TowerBase")
@@ -79,6 +67,19 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, Category = "TowerBase|Classes")
     TSubclassOf<AActor> BaseTowerClass;  // BreakDown 시 되돌릴 빈 타워
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
+	ETowerActions TowerActionTop = ETowerActions::BuildTurret;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
+	ETowerActions TowerActionLeft = ETowerActions::BuildBallista;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
+	ETowerActions TowerActionRight = ETowerActions::BuildCatapult;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
+	ETowerActions TowerActionBottom = ETowerActions::BuildCannon;
+
 protected:
     virtual void BeginPlay() override;
     virtual void Tick(float DeltaTime) override;
