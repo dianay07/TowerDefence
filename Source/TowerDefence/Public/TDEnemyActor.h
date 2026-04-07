@@ -6,6 +6,8 @@
 #include "GameplayAbilitySpec.h"
 #include "TDEnemyActor.generated.h"
 
+class ATDPath;
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
 
 UCLASS()
@@ -30,6 +32,7 @@ protected:
 	TSubclassOf<class UGameplayEffect> DefaultEffect;
 
 protected:
+	// ── 적 스테이터스 ────────────────────────────────────────────────
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
 	float InitialHealth = 100.f;
 
@@ -45,8 +48,16 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	bool IsDead = false;
 
+	// ── 적 사망 이벤트 ────────────────────────────────────────────────
 	UPROPERTY(BlueprintAssignable, Category = "Events")
 	FOnDied OnDied;
+
+	// ── 경로 이동 ────────────────────────────────────────────────
+	UPROPERTY()
+	ATDPath* CurrentPath;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Path")
+	float Distance = 0.f;
 
 public:
 	ATDEnemyActor();
@@ -69,6 +80,11 @@ protected:
 
 public:
 	virtual void PostInitializeComponents() override;
-
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable, Category = "TD|Enemy")
+	void InitializePath(ATDPath* Path);
+
+	UFUNCTION(BlueprintCallable, Category = "TD|Enemy")
+	float Advance(float DeltaTime);
 };

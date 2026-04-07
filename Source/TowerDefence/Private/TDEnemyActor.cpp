@@ -5,6 +5,7 @@
 #include "TDEnemySet.h"
 #include "TDGameMode.h"
 #include "TDGameState.h"
+#include "TDPathActor.h"
 
 ATDEnemyActor::ATDEnemyActor()
 {
@@ -96,4 +97,33 @@ void ATDEnemyActor::PostInitializeComponents()
 void ATDEnemyActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ATDEnemyActor::InitializePath(ATDPath* Path)
+{
+	CurrentPath = Path;
+	Distance = 0.f;
+	
+	if (CurrentPath)
+		SetActorLocation(CurrentPath->GetLocation(0.f));
+}
+
+float ATDEnemyActor::Advance(float DeltaTime)
+{
+	if (!CurrentPath || IsDead) return Distance;
+
+	Distance += EnemySet->GetMoveSpeed() * DeltaTime;
+
+	// Path의 끝까지 도달하면
+	if (Distance >= CurrentPath->GetLength())
+	{
+		if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
+			GS->DecreaseBaseHealth();
+
+		Destroy();
+		return Distance;
+	}
+
+	SetActorLocation(CurrentPath->GetLocation(Distance));
+	return Distance;
 }
