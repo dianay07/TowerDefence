@@ -39,6 +39,9 @@ protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
 	float InitialDamage = 10.f;
 
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
+	int32 RewardCoin = 100;
+
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	bool IsDead = false;
 

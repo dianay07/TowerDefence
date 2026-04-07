@@ -5,7 +5,7 @@
 #include "TDGameState.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBaseHealthChanged, int32, CurrentHealth, int32, MaxHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnSharedCoinChanged, int32, Change, int32, Coin);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCoinsChanged, int32, Change, int32, Coin);
 
 UCLASS()
 class TOWERDEFENCE_API ATDGameState : public AGameStateBase
@@ -44,7 +44,7 @@ public:
 
 	// SharedCoinChanged 이벤트
 	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
-	FOnSharedCoinChanged OnSharedCoinChanged;
+	FOnCoinsChanged OnCoinsChanged;
 
 	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
 	void CoinChange(int32 change);

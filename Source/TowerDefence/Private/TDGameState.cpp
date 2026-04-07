@@ -30,6 +30,6 @@ void ATDGameState::CoinChange(int32 change)
 {
 	// Phase 2: if (!HasAuthority()) return;
 	SharedCoin = FMath::Max(0, SharedCoin + change);
-	OnSharedCoinChanged.Broadcast(change, SharedCoin);
+	OnCoinsChanged.Broadcast(change, SharedCoin);
 	// Phase 2: Broadcast를 OnRep_SharedCoin()로 이전
 }

@@ -4,6 +4,7 @@
 #include "GameplayEffect.h"
 #include "TDEnemySet.h"
 #include "TDGameMode.h"
+#include "TDGameState.h"
 
 ATDEnemyActor::ATDEnemyActor()
 {
@@ -74,6 +75,11 @@ void ATDEnemyActor::OnEnemyDied()
 {
 	OnDied.Broadcast();
 	PlayDeathAnimation();
+
+	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
+	{
+		GS->CoinChange(RewardCoin);
+	}
 
 	if (ATDGameMode* GM = Cast<ATDGameMode>(GetWorld()->GetAuthGameMode()))
 	{
