@@ -23,19 +23,22 @@ ATDTowerBase::ATDTowerBase()
 
 void ATDTowerBase::BeginPlay()
 {
-    Super::BeginPlay();
+    // jiho : BP Class 맴버에 접근하기 위해서 BP-BeginPlay 에서 임시처리
+    // C++ 코드로 모두 변경되면 해당 로직은 여기로 가져온다.
+    // 
+    //Super::BeginPlay();
 
     // [Cast To BP_Weapon] ChildActorWeaponComp의 Child Actor 가져오기
-    AActor* ChildActor = ChildActorWeaponComp->GetChildActor();
+    //AActor* ChildActor = ChildActorWeaponComp->GetChildActor();
 
     // SET Weapon
-    Weapon = ChildActor;
+   // Weapon = ChildActor;
 
     // jiho: Weapon의 Tower = Self, Target = ? 설정은 BP 전용 변수라 인터페이스 필요
     // Weapon이 ITDWeaponInterface를 구현하면 Execute_SetTowerRef(Weapon, this) 형태로 호출
 
     // Get Tower Data
-    GetTowerData();
+    //GetTowerData();
 }
 
 void ATDTowerBase::Tick(float DeltaTime)
