@@ -1,10 +1,52 @@
 #include "TDGameMode.h"
+#include "TDGameInstance.h"
+#include "TDGameState.h"
+#include "Kismet/GameplayStatics.h"
+#include "TDFL_Utility.h"
 
 ATDGameMode::ATDGameMode()
 {
-	EventManager = CreateDefaultSubobject<UTDEventManager>(TEXT("EventManager"));
+	EventManager = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
+	WaveManager  = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
 }
 
+void ATDGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+
+}
+
+// ── Game State ────────────────────────────────────────────────────────────────
+
+void ATDGameMode::GameEnded(bool bWin)
+{
+	UGameplayStatics::SetGamePaused(this, true);
+
+	if (bWin)
+	{
+		// TODO: UTDGameInstance::OnLevelComplete() 포팅 필요
+		UTDGameInstance* GI = Cast<UTDGameInstance>(GetGameInstance());
+		// if (GI) GI->OnLevelComplete();
+	}
+}
+
+void ATDGameMode::CheckIfWin()
+{
+	if (WaveManager->DoEnemiesRemain())
+		GameEnded(true);
+	else
+		GameEnded(false);
+}
+
+void ATDGameMode::CheckIfLoss()
+{
+	if (UTDFL_Utility::GetTDGameState(this)->BaseHealth <= 0)
+	{
+		GameEnded(false);
+	}
+}
+
+// ── Pool ──────────────────────────────────────────────────────────────────────
 AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
 	if (!ActorClass || !ActorClass->ImplementsInterface(UTDPoolActorInterface::StaticClass()))

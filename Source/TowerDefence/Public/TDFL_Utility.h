@@ -7,9 +7,9 @@
 
 class ATDGameMode;
 class ATDGameState;
-//class UTDWaveManagerComponent;
+class UTDWaveManagerComponent;
 //class UTDTowerManagerComponent;
-//class UTDEventManagerComponent;
+class UTDEventManagerComponent;
 class USoundClass;
 
 class ATDPlayerCharacter;
@@ -27,25 +27,25 @@ class TOWERDEFENCE_API UTDFL_Utility : public UBlueprintFunctionLibrary
 public:
 	// ── GameMode / GameState ──────────────────────────────────────
 
-	//UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
-	//static ATDGameMode* GetTDGameMode(const UObject* WorldContextObject);
+	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
+	static ATDGameMode* GetTDGameMode(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static ATDGameState* GetTDGameState(const UObject* WorldContextObject);
 
-	/*
+	
 	// ── Manager (현재 GameMode에 저장됨) ─────────────────────────
 	// TODO: Phase 2+ 에서 GameState로 이전
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDWaveManagerComponent* GetWaveManager(const UObject* WorldContextObject);
 
-	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
-	static UTDTowerManagerComponent* GetTowerManager(const UObject* WorldContextObject);
+	/*UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
+	static UTDTowerManagerComponent* GetTowerManager(const UObject* WorldContextObject);*/
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDEventManagerComponent* GetEventManager(const UObject* WorldContextObject);
-	*/
+	
 
 	// ── 유틸리티 ─────────────────────────────────────────────────
 

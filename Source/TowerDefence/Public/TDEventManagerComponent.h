@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "TDEventManager.generated.h"
+#include "TDEventManagerComponent.generated.h"
 
 class ATDEnemyActor;
 
@@ -10,7 +10,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemyDied,     ATDEnemyActor*, En
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemyAttacked, ATDEnemyActor*, Enemy);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class TOWERDEFENCE_API UTDEventManager : public UActorComponent
+class TOWERDEFENCE_API UTDEventManagerComponent : public UActorComponent
 {
 	GENERATED_BODY()
 

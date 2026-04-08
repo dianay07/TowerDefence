@@ -8,6 +8,7 @@
 #include "TDTowerPawn.h" // For AStaticMeshActor Class Reference
 #include "TDFL_Utility.h" // For BP Util
 #include "Kismet/DataTableFunctionLibrary.h" // Get DataTable
+#include "TDWaveManagerComponent.h"
 
 // Sets default values
 ATowerManager::ATowerManager()

@@ -87,4 +87,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "TD|Enemy")
 	float Advance(float DeltaTime);
+
+	FORCEINLINE float GetDistance() const { return Distance; }
 };

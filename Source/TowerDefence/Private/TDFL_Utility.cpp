@@ -10,48 +10,50 @@
 #include "AbilitySystemComponent.h"
 
 // ATDGameMode, Manager 컴포넌트 헤더는 Step 14 완료 후 추가
-// #include "TDGameMode.h"
-// #include "TDWaveManagerComponent.h"
+ #include "TDGameMode.h"
+ #include "TDWaveManagerComponent.h"
 // #include "TDTowerManagerComponent.h"
-// #include "TDEventManagerComponent.h"
+ #include "TDEventManagerComponent.h"
 
-//ATDGameMode* UTDFL_Utility::GetTDGameMode(const UObject* WorldContextObject)
-//{
-//	// TODO: Step 14 완료 후 Cast<ATDGameMode> 적용
-//	// return Cast<ATDGameMode>(UGameplayStatics::GetGameMode(WorldContextObject));
-//	return nullptr;
-//}
+ATDGameMode* UTDFL_Utility::GetTDGameMode(const UObject* WorldContextObject)
+{
+	return Cast<ATDGameMode>(UGameplayStatics::GetGameMode(WorldContextObject));
+}
 
 ATDGameState* UTDFL_Utility::GetTDGameState(const UObject* WorldContextObject)
 {
 	return Cast<ATDGameState>(UGameplayStatics::GetGameState(WorldContextObject));
 }
 
-/*
+
 UTDWaveManagerComponent* UTDFL_Utility::GetWaveManager(const UObject* WorldContextObject)
 {
-	// TODO: Step 14 완료 후 구현
-	// ATDGameMode* GM = GetTDGameMode(WorldContextObject);
-	// return GM ? GM->WaveManager : nullptr;
-	return nullptr;
+	 ATDGameMode* GM = GetTDGameMode(WorldContextObject);
+	 
+	 if (GM)
+		 return GM->WaveManager;
+	 else
+		 return nullptr;
 }
 
-UTDTowerManagerComponent* UTDFL_Utility::GetTowerManager(const UObject* WorldContextObject)
-{
-	// TODO: Step 14 완료 후 구현
-	// ATDGameMode* GM = GetTDGameMode(WorldContextObject);
-	// return GM ? GM->TowerManager : nullptr;
-	return nullptr;
-}
+//UTDTowerManagerComponent* UTDFL_Utility::GetTowerManager(const UObject* WorldContextObject)
+//{
+//	 TODO: Step 14 완료 후 구현
+//	 ATDGameMode* GM = GetTDGameMode(WorldContextObject);
+//	 return GM ? GM->TowerManager : nullptr;
+//	return nullptr;
+//}
 
 UTDEventManagerComponent* UTDFL_Utility::GetEventManager(const UObject* WorldContextObject)
 {
-	// TODO: Step 14 완료 후 구현
-	// ATDGameMode* GM = GetTDGameMode(WorldContextObject);
-	// return GM ? GM->EventManager : nullptr;
-	return nullptr;
+	ATDGameMode* GM = GetTDGameMode(WorldContextObject);
+
+	if (GM)
+		return GM->EventManager;
+	else
+		return nullptr;
 }
-*/
+
 
 ATDPlayerCharacter* UTDFL_Utility::GetPlayer(const UObject* WorldContextObject)
 {

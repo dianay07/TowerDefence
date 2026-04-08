@@ -4,6 +4,7 @@
 #include "GameplayEffect.h"
 #include "TDEnemySet.h"
 #include "TDGameMode.h"
+#include "TDEventManagerComponent.h"
 #include "TDGameState.h"
 #include "TDPathActor.h"
 
@@ -114,7 +115,7 @@ float ATDEnemyActor::Advance(float DeltaTime)
 
 	Distance += EnemySet->GetMoveSpeed() * DeltaTime;
 
-	// PathÀÇ ³¡±îÁö µµ´ÞÇÏ¸é
+	// Path ëì— ë„ë‹¬í–ˆì„ ë•Œ
 	if (Distance >= CurrentPath->GetLength())
 	{
 		if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
