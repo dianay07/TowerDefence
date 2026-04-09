@@ -19,12 +19,26 @@ class ATDEnemyActor;
 class ATDTowerPawn;
 class UStaticMeshComponent;
 
+static TAutoConsoleVariable<int32> CVarDevMode(
+	TEXT("TD.Dev.Mode"),
+	1,
+	TEXT("Dev Mode")
+);
+
 UCLASS()
 class TOWERDEFENCE_API UTDFL_Utility : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
 public:
+	// ── DevMode /  ──────────────────────────────────────
+	// TDFL_Utility.h - 기존 유틸 파일에 추가
+	UFUNCTION(BlueprintPure, Category = "TD|Utility")
+	static int32 GetCVarDevMode();
+
+	UFUNCTION(BlueprintCallable, Category = "TD|Utility")
+	static void SetCVarDevMode(int32 DevMode);
+
 	// ── GameMode / GameState ──────────────────────────────────────
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))

@@ -15,6 +15,16 @@
 // #include "TDTowerManagerComponent.h"
  #include "TDEventManagerComponent.h"
 
+int32 UTDFL_Utility::GetCVarDevMode()
+{
+	return CVarDevMode.GetValueOnGameThread();
+}
+
+void UTDFL_Utility::SetCVarDevMode(int32 DevMode)
+{
+	CVarDevMode->Set(DevMode);
+}
+
 ATDGameMode* UTDFL_Utility::GetTDGameMode(const UObject* WorldContextObject)
 {
 	return Cast<ATDGameMode>(UGameplayStatics::GetGameMode(WorldContextObject));
