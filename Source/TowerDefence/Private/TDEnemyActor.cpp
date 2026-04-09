@@ -121,7 +121,6 @@ float ATDEnemyActor::Advance(float DeltaTime)
 		if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
 			GS->DecreaseBaseHealth();
 
-		Destroy();
 		return Distance;
 	}
 

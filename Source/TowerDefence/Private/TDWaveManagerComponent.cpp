@@ -86,8 +86,9 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 
 	for(int i = 0; i < ExpiredEnemies.Num(); i++)
 	{
+		ATDEnemyActor* Enemy = ExpiredEnemies[i];
 		Enemies.Remove(ExpiredEnemies[i]);
-		ExpiredEnemies[i]->Destroy();
+		Enemy->Destroy();
 
 		if (!DoEnemiesRemain())
 		{
@@ -95,6 +96,8 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 			//GetTDGameMode(this)->CheckIfWin();
 		}
 	}
+
+	ExpiredEnemies.Empty();
 }
 
 void UTDWaveManagerComponent::ImportData() 
