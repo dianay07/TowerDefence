@@ -14,6 +14,10 @@ void ATDGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (EventManager && WaveManager && !EventManager->OnEnemyDied.IsAlreadyBound(WaveManager, &UTDWaveManagerComponent::OnEnemyDied))
+	{
+		EventManager->OnEnemyDied.AddDynamic(WaveManager, &UTDWaveManagerComponent::OnEnemyDied);
+	}
 }
 
 // ── Game State ────────────────────────────────────────────────────────────────

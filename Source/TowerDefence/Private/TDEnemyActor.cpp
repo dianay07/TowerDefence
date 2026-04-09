@@ -66,7 +66,7 @@ void ATDEnemyActor::OnHealthAttributeChanged(const FOnAttributeChangeData& Data)
 {
 	OnHealthChanged(Data.OldValue, Data.NewValue);
 
-	if (Data.NewValue <= 0.f && !IsDead)
+	if (Data.NewValue <= 0.f && !IsDead && !IsActorBeingDestroyed())
 	{
 		IsDead = true;
 		OnEnemyDied();
@@ -83,10 +83,18 @@ void ATDEnemyActor::OnEnemyDied()
 		GS->CoinChange(RewardCoin);
 	}
 
-	if (ATDGameMode* GM = Cast<ATDGameMode>(GetWorld()->GetAuthGameMode()))
+	GetWorld()->GetTimerManager().SetTimerForNextTick([this]()
 	{
-		GM->EventManager->BroadcastEnemyDied(this);
-	}
+		if (!IsValid(this)) return;
+
+		if (ATDGameMode* GM = Cast<ATDGameMode>(GetWorld()->GetAuthGameMode()))
+		{
+			GM->EventManager->BroadcastEnemyDied(this);
+		}
+	});
+
+	if (!IsActorBeingDestroyed())
+		Destroy();
 }
 
 void ATDEnemyActor::PostInitializeComponents()

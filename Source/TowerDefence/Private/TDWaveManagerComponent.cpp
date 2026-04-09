@@ -1,6 +1,7 @@
 #include "TDWaveManagerComponent.h"
 #include "TDEnemyActor.h"
 #include "TDFL_Utility.h"
+#include "TDGameMode.h"
 #include "TDPathActor.h"
 #include "Kismet/DataTableFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
@@ -75,13 +76,18 @@ void UTDWaveManagerComponent::UpdateWave(float Delta)
 
 void UTDWaveManagerComponent::AdvanceEnemies(float Delta) 
 {
-	for (int i = 0; i < Enemies.Num(); i++)
+	for (int i = Enemies.Num() - 1; i >= 0; i--)
 	{
-		// TODO : ���� Path�� 1�� ���̴� 0���� ���� ����, ��ȹ�� �Ѱ��� �ʿ� ���� path ���� �� ���� ����
+		if (!IsValid(Enemies[i]))
+		{
+			Enemies.RemoveAt(i);
+			continue;
+		}
+
 		if(!(Enemies[i]->Advance(Delta) < PathLengths[0]))
 		{
 			ExpiredEnemies.Add(Enemies[i]);
-		}	
+		}
 	}
 
 	for(int i = 0; i < ExpiredEnemies.Num(); i++)
@@ -90,10 +96,9 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 		Enemies.Remove(ExpiredEnemies[i]);
 		Enemy->Destroy();
 
-		if (!DoEnemiesRemain())
+		if (DoEnemiesRemain())
 		{
-			// ���� �ȿű�
-			//GetTDGameMode(this)->CheckIfWin();
+			UTDFL_Utility::GetTDGameMode(this)->CheckIfWin();
 		}
 	}
 
@@ -159,9 +164,9 @@ ATDEnemyActor* UTDWaveManagerComponent::GetFurthestEnemy(FVector Location, float
 
 void UTDWaveManagerComponent::OnEnemyDied(ATDEnemyActor* Enemy)
 {
-	// TOOD : Check ���
-	Enemies.Remove(Enemy);
+	if (!IsValid(Enemy)) return;
 
+	Enemies.Remove(Enemy);
 	KillCount++;
 }
 
