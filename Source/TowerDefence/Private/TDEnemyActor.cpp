@@ -75,26 +75,15 @@ void ATDEnemyActor::OnHealthAttributeChanged(const FOnAttributeChangeData& Data)
 
 void ATDEnemyActor::OnEnemyDied()
 {
-	OnDied.Broadcast();
-	PlayDeathAnimation();
+	if (IsActorBeingDestroyed()) return;
 
 	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
 	{
 		GS->CoinChange(RewardCoin);
 	}
 
-	GetWorld()->GetTimerManager().SetTimerForNextTick([this]()
-	{
-		if (!IsValid(this)) return;
-
-		if (ATDGameMode* GM = Cast<ATDGameMode>(GetWorld()->GetAuthGameMode()))
-		{
-			GM->EventManager->BroadcastEnemyDied(this);
-		}
-	});
-
-	if (!IsActorBeingDestroyed())
-		Destroy();
+	OnDied.Broadcast(this);
+	Destroy();
 }
 
 void ATDEnemyActor::PostInitializeComponents()
@@ -128,6 +117,9 @@ float ATDEnemyActor::Advance(float DeltaTime)
 	{
 		if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
 			GS->DecreaseBaseHealth();
+
+		if (ATDGameMode* GM = Cast<ATDGameMode>(GetWorld()->GetAuthGameMode()))
+			GM->CheckIfLoss();
 
 		return Distance;
 	}

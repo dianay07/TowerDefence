@@ -6,6 +6,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBaseHealthChanged, int32, CurrentHealth, int32, MaxHealth);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCoinsChanged, int32, Change, int32, Coin);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameEnded, bool, bWin);
 
 UCLASS()
 class TOWERDEFENCE_API ATDGameState : public AGameStateBase
@@ -48,4 +49,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
 	void CoinChange(int32 change);
+
+	// GameEnded 이벤트
+	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
+	FOnGameEnded OnGameEnded;
+
+	void BroadcastGameEnded(bool bWin);
 };

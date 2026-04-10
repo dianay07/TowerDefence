@@ -93,7 +93,13 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 	for(int i = 0; i < ExpiredEnemies.Num(); i++)
 	{
 		ATDEnemyActor* Enemy = ExpiredEnemies[i];
-		Enemies.Remove(ExpiredEnemies[i]);
+		if (!IsValid(Enemy))
+		{
+			Enemies.Remove(Enemy);
+			continue;
+		}
+
+		Enemies.Remove(Enemy);
 		Enemy->Destroy();
 
 		if (DoEnemiesRemain())
@@ -140,6 +146,7 @@ void UTDWaveManagerComponent::SpawnEnemy(EEnemyType EnemyType)
 
 	Enemies.Add(Enemy);
 	Enemy->InitializePath(Paths[0]);
+	Enemy->OnDied.AddDynamic(this, &UTDWaveManagerComponent::OnEnemyDied);
 }
 
 ATDEnemyActor* UTDWaveManagerComponent::GetFurthestEnemy(FVector Location, float Radius)
@@ -168,6 +175,17 @@ void UTDWaveManagerComponent::OnEnemyDied(ATDEnemyActor* Enemy)
 
 	Enemies.Remove(Enemy);
 	KillCount++;
+
+	UE_LOG(LogTemp, Warning, TEXT("[WaveManager] KillCount: %.0f | Enemies Remaining: %d"), KillCount, Enemies.Num());
+
+	ATDGameMode* GM = Cast<ATDGameMode>(GetOwner());
+	if (IsValid(GM))
+	{
+		if (IsValid(GM->EventManager))
+			GM->EventManager->BroadcastEnemyDied(Enemy);
+
+		GM->CheckIfWin();
+	}
 }
 
 TArray<ATDEnemyActor*> UTDWaveManagerComponent::GetEnemiesInRange(FVector Location, float Radius)

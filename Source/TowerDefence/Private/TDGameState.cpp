@@ -33,3 +33,8 @@ void ATDGameState::CoinChange(int32 change)
 	OnCoinsChanged.Broadcast(change, SharedCoin);
 	// Phase 2: Broadcast를 OnRep_SharedCoin()로 이전
 }
+
+void ATDGameState::BroadcastGameEnded(bool bWin)
+{
+	OnGameEnded.Broadcast(bWin);
+}

@@ -8,7 +8,7 @@
 
 class ATDPath;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDied, ATDEnemyActor*, Enemy);
 
 UCLASS()
 class TOWERDEFENCE_API ATDEnemyActor : public AActor, public IAbilitySystemInterface
@@ -48,10 +48,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	bool IsDead = false;
 
-	// ── 적 사망 이벤트 ────────────────────────────────────────────────
-	UPROPERTY(BlueprintAssignable, Category = "Events")
-	FOnDied OnDied;
-
 	// ── 경로 이동 ────────────────────────────────────────────────
 	UPROPERTY()
 	ATDPath* CurrentPath;
@@ -60,6 +56,10 @@ protected:
 	float Distance = 0.f;
 
 public:
+	// ── 적 사망 이벤트 ────────────────────────────────────────────────
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnDied OnDied;
+
 	ATDEnemyActor();
 
 protected:

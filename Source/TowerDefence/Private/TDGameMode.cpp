@@ -13,11 +13,6 @@ ATDGameMode::ATDGameMode()
 void ATDGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (EventManager && WaveManager && !EventManager->OnEnemyDied.IsAlreadyBound(WaveManager, &UTDWaveManagerComponent::OnEnemyDied))
-	{
-		EventManager->OnEnemyDied.AddDynamic(WaveManager, &UTDWaveManagerComponent::OnEnemyDied);
-	}
 }
 
 // ── Game State ────────────────────────────────────────────────────────────────
@@ -25,6 +20,12 @@ void ATDGameMode::BeginPlay()
 void ATDGameMode::GameEnded(bool bWin)
 {
 	UGameplayStatics::SetGamePaused(this, true);
+
+	// 이벤트 송신
+	if (ATDGameState* GS = GetGameState<ATDGameState>())
+	{
+		GS->BroadcastGameEnded(bWin);
+	}
 
 	if (bWin)
 	{
@@ -38,8 +39,6 @@ void ATDGameMode::CheckIfWin()
 {
 	if (WaveManager->DoEnemiesRemain())
 		GameEnded(true);
-	else
-		GameEnded(false);
 }
 
 void ATDGameMode::CheckIfLoss()

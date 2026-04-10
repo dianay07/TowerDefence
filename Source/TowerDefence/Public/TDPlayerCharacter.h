@@ -49,6 +49,9 @@ private:
 	UPROPERTY()
 	UUserWidget* HUDWidget;
 
+	UFUNCTION(BlueprintCallable, Category = "UI")
+	FORCEINLINE UUserWidget* GetHUDWidget() const { return HUDWidget; }
+
 
 	// ── 입력 ─────────────────────────────────────────────────
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
