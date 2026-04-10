@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="v8sy0bbAZWDdj3i4Xo4w">
-    <mxGraphModel dx="816" dy="1155" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1552" dy="1155" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -17,7 +17,7 @@
             <mxPoint x="120" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BA7eRpfcSyoPDys3qxkB-6" value="TowerBase BP" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="BA7eRpfcSyoPDys3qxkB-6" value="&lt;div&gt;BP&lt;/div&gt;TowerManager&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="70" y="255" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="BA7eRpfcSyoPDys3qxkB-7" value="BP TowerBase" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -37,7 +37,7 @@
         <mxCell id="BA7eRpfcSyoPDys3qxkB-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="BA7eRpfcSyoPDys3qxkB-10" target="BA7eRpfcSyoPDys3qxkB-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BA7eRpfcSyoPDys3qxkB-10" value="TowerManager BP" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="BA7eRpfcSyoPDys3qxkB-10" value="BP&lt;div&gt;TowerManager&amp;nbsp;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="55" y="990" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="OsxiBgBRLkIKTH1CxuuV-8" value="Actor&amp;nbsp;&lt;div&gt;World 에 배치해서 사용중&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -48,7 +48,7 @@
             <mxPoint x="260" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="OsxiBgBRLkIKTH1CxuuV-11" value="DT_TowerData&lt;div&gt;( Data Table )&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-11" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;BP&lt;/span&gt;_TowerData&lt;div&gt;( Data Table )&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="30" y="380" width="110" height="110" as="geometry" />
         </mxCell>
         <mxCell id="OsxiBgBRLkIKTH1CxuuV-17" value="TowerBase BP" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
@@ -62,7 +62,7 @@
             <mxPoint x="280" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="OsxiBgBRLkIKTH1CxuuV-23" value="Util&lt;div&gt;- Get Tower Under&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-23" value="BP Util&lt;div&gt;- Get Tower Under&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="230" y="450" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="OsxiBgBRLkIKTH1CxuuV-25" value="Actor ( BP TowerBase) 와&amp;nbsp; 통신" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -95,8 +95,10 @@
             <mxPoint x="811" y="680" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="OsxiBgBRLkIKTH1CxuuV-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-43" target="OsxiBgBRLkIKTH1CxuuV-47">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-43">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="1300" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="OsxiBgBRLkIKTH1CxuuV-50" value="TSoftObjectPtr&amp;lt;UDataTable&amp;gt; BP_DT_TowerData" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="OsxiBgBRLkIKTH1CxuuV-49">
           <mxGeometry x="-0.2333" y="-4" relative="1" as="geometry">
@@ -109,11 +111,144 @@
         <mxCell id="OsxiBgBRLkIKTH1CxuuV-46" value="&lt;div&gt;BP TowerBase 와 통신하는 부분을 위해&amp;nbsp;&lt;/div&gt;&lt;div&gt;TowerManager 에서 BP Class 를 지정한다.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="500" y="1020" width="250" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="OsxiBgBRLkIKTH1CxuuV-47" value="DT_TowerData&lt;div&gt;(&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Data Asset&lt;/span&gt;&amp;nbsp;)&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="359" y="1300" width="110" height="110" as="geometry" />
-        </mxCell>
         <mxCell id="OsxiBgBRLkIKTH1CxuuV-48" value="&amp;nbsp;BT- Data Asset 사용을 위해" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="510" y="1295" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-51" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="30" y="1550" as="sourcePoint" />
+            <mxPoint x="811" y="1550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="OsxiBgBRLkIKTH1CxuuV-54">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="210" y="1950" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-65" value="Spawn" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="OsxiBgBRLkIKTH1CxuuV-55">
+          <mxGeometry x="0.1802" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-53" target="OsxiBgBRLkIKTH1CxuuV-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-53" value="BP TowerManager&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1640" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-54" target="OsxiBgBRLkIKTH1CxuuV-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-54" value="BP TowerAction" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1900" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-56" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;BP&lt;/span&gt;_TowerData&lt;div&gt;( Data Table )&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="354" y="1300" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-57" target="OsxiBgBRLkIKTH1CxuuV-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-60" value="Tower 와의 통신" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="OsxiBgBRLkIKTH1CxuuV-59">
+          <mxGeometry x="0.233" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-57" value="BP Util&lt;div&gt;- Get Tower Under&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1640" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-61" value="BP TowerBase&amp;nbsp;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1910" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-62" value="&lt;span style=&quot;text-align: center;&quot;&gt;BP TowerAction&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="OsxiBgBRLkIKTH1CxuuV-61">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-68" value="BPI ( 추상 클래스 )" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="10" y="1800" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-69" value="TowerAction" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="OsxiBgBRLkIKTH1CxuuV-68">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-70" value="GetTowerDetail" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="OsxiBgBRLkIKTH1CxuuV-68">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-73" target="OsxiBgBRLkIKTH1CxuuV-75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-73" value="Create&amp;nbsp;WBP_TowerActionSlot&lt;div&gt;( Widget )&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="494" y="1865" width="170" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-75" value="BP_ 파생 타워 생성" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="750" y="1880" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-78" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-75" target="OsxiBgBRLkIKTH1CxuuV-79">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="840" y="2150" as="sourcePoint" />
+            <mxPoint x="960" y="1840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-79" value="BP_Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="930" y="1810" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-80" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-79">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="980" y="2110" as="sourcePoint" />
+            <mxPoint x="1180" y="1850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-85" value="통신" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="OsxiBgBRLkIKTH1CxuuV-80">
+          <mxGeometry x="0.0706" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-81" value="BP_Wave Manager" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="1810" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-82" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="OsxiBgBRLkIKTH1CxuuV-81">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1240" y="1950" as="sourcePoint" />
+            <mxPoint x="1410" y="1850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-84" value="통신" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="OsxiBgBRLkIKTH1CxuuV-82">
+          <mxGeometry x="0.0133" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-83" value="EnemyActor" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="1810" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-87" value="TD TowerBase" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="20" y="2100" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-88" value="&lt;span style=&quot;text-align: center;&quot;&gt;BP TowerAction&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="OsxiBgBRLkIKTH1CxuuV-87">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-89" value="SubOfClass - Type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="OsxiBgBRLkIKTH1CxuuV-87">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-91" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="10" y="2040" as="sourcePoint" />
+            <mxPoint x="1630" y="2040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-92" value="BPI ( 추상 클래스 ) 삭제 , Base Function 에 추가" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="190" y="2100" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-93" value="파생 타워 생성 하는 로직에서 BP Class 를 가져다 쓰는 부분을 TD TowerBase 의 Class 멤버로 대체" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="190" y="2160" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-96" value="&lt;div&gt;TD ToerBase 설정 필요&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1050" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-97" value="&amp;nbsp;BT- Data Asset 설정필요" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1110" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-99" value="&lt;span style=&quot;text-align: left;&quot;&gt;SubOfClass - Type 설정필요&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="530" y="2100" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OsxiBgBRLkIKTH1CxuuV-100" value="TD TowerBase 의 Editor 활용 및 자식들의 Eidtor 활용을 위해 C 포팅한 객체를 부모로 BP 타입을 하나더 만듬&lt;br&gt;TD_BP 의 이름으로 시작함" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="190" y="2220" width="300" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
