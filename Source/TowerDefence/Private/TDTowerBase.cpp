@@ -291,12 +291,11 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
 
     FActorSpawnParameters SpawnParams;
     SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-    SpawnParams.Owner = this;
 
     AActor* NewTower = GetWorld()->SpawnActor<AActor>(NewTowerClass, GetActorTransform(), SpawnParams);
     if (IsValid(NewTower))
     {
-       // Destroy();
+       Destroy();
     }
 }
 
