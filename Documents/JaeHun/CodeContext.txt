@@ -1,0 +1,108 @@
+─────────────────────────────────────────────
+ATDGameState
+─────────────────────────────────────────────
+-> 게임 전역 상태 관리 (코인 / 기지 체력 / 웨이브)
+-> SharedCoin (기본값 2000), BaseHealth, MaxBaseHealth, CurrentWave 변수 보유
+-> CoinChange(int32) : 코인 증감 처리
+-> DecreaseBaseHealth() : 기지 체력 감소 처리
+-> HasCoins(int32) : 코인 충분 여부 반환 (const)
+-> OnCoinsChanged 델리게이트 : 코인 변경 시 브로드캐스트 (Change, Coin)
+-> OnBaseHealthChanged 델리게이트 : 체력 변경 시 브로드캐스트 (Current, Max)
+
+
+─────────────────────────────────────────────
+UTDFL_Utility
+─────────────────────────────────────────────
+-> 전역 접근자 및 GAS 유틸 모음 (BlueprintFunctionLibrary)
+-> GetTDGameState / GetPlayer / GetTDGameInstance / GetGameUserSetting : 전역 객체 접근자
+-> EnemyDamage : GAS를 통한 적 데미지 적용
+-> GetVolume / SetVolume : 오디오 볼륨 조회·설정
+-> GetVideoQuality / SetVideoQuality : 비디오 품질 조회·설정
+-> GetTowerUnderMouse / GetStaticMeshUnderMouse : 마우스 아래 액터 레이캐스트
+-> (Step 14 완료 후) GetTDGameMode / GetWaveManager / GetTowerManager / GetEventManager 주석 해제 예정
+
+
+─────────────────────────────────────────────
+ATDPath
+─────────────────────────────────────────────
+-> Spline 기반 적 이동 경로 액터
+-> SplineComponent 보유, BP_Path 리패런팅 완료
+-> GetBakedWaypoints(int32 NumPoints = 20) : 경로를 N개 균등 분할한 월드 좌표 배열 반환
+-> GetLength() : 스플라인 전체 길이 반환
+-> GetLocation(float Distance) : 특정 거리 지점의 월드 좌표 반환
+
+
+─────────────────────────────────────────────
+ATDPlayerCharacter
+─────────────────────────────────────────────
+-> 카메라 제어 전용 Pawn (플레이어 시점 앵커)
+-> SpringArmComponent + CameraComponent 보유
+-> EnhancedInput(IMC_Default / IA_Move) 기반 WASD 카메라 패닝
+-> 화면 엣지 감지 EdgeScroll 패닝 지원
+-> 마우스 클릭 시 ATDPlayerPawn에게 이동 명령 전달 (IA_Click)
+-> ATDGameState의 OnBaseHealthChanged 델리게이트 구독 (NotifyBaseHealthDecreased)
+
+
+─────────────────────────────────────────────
+ATDPlayerPawn
+─────────────────────────────────────────────
+-> 실제 캐릭터 토큰 Pawn (화면에 보이는 유닛)
+-> SkeletalMeshComponent 보유
+-> SetMoveTarget(FVector) : 목표 지점으로 Click-to-Move 이동
+-> SnapToGround() : 지형에 맞춰 Z축 스냅 처리
+-> Phase 2에서 서버 RPC로 이동 동기화 예정
+
+
+─────────────────────────────────────────────
+UTDWaveManagerComponent
+─────────────────────────────────────────────
+-> 웨이브 진행 및 적 스폰 관리 (GameMode 소속 컴포넌트, 서버 전용)
+-> WaveDataTable 참조하여 웨이브별 적 종류·수량·딜레이 로드
+-> StartNextWave() : 다음 웨이브 시작, 스폰 타이머 구동
+-> 스폰 시 ATDPath 경로 참조하여 ATDEnemyActor에 경로 전달
+-> OnWaveComplete 델리게이트 : 웨이브 종료 시 브로드캐스트
+-> OnAllWavesComplete 델리게이트 : 전체 웨이브 클리어 시 브로드캐스트
+
+
+─────────────────────────────────────────────
+UTDEventManagerComponent
+─────────────────────────────────────────────
+-> 게임플레이 사건 전용 이벤트 허브 (GameMode 소속 컴포넌트)
+-> OnEnemyDied(ATDEnemyActor*) : 적 사망 멀티캐스트 델리게이트
+-> OnEnemyAttacked(ATDEnemyActor*) : 적의 기지 공격 멀티캐스트 델리게이트
+-> 코인·체력 상태 이벤트는 ATDGameState 담당 (역할 분리)
+
+
+─────────────────────────────────────────────
+ATDPoolActor
+─────────────────────────────────────────────
+-> 오브젝트 풀링 가능한 액터의 기반 클래스
+-> ATDGameMode의 풀 시스템에서 GetPoolActorFromClass()로 꺼내어 사용
+-> 반환 시 비활성화·위치 초기화 처리 포함
+-> ATDProjectile 등 풀링이 필요한 액터가 이 클래스를 상속
+
+
+─────────────────────────────────────────────
+UTDBaseSet / UTDEnemySet / UTDTowerSet
+─────────────────────────────────────────────
+-> GAS(Gameplay Ability System) AttributeSet 계층 구조
+-> UTDBaseSet : PreAttributeChange에서 Clamp 처리 (공통 기반)
+-> UTDEnemySet : Health, MoveSpeed, Damage 어트리뷰트 (ATDEnemyActor 소속 ASC에 등록)
+-> UTDTowerSet : Range, FireRate, Damage 어트리뷰트 (ATDTowerPawn 소속 ASC에 등록)
+
+
+─────────────────────────────────────────────
+UTDGameInstance
+─────────────────────────────────────────────
+-> 세션 간 유지되는 게임 인스턴스
+-> 세이브 슬롯 저장·불러오기 관리
+-> Phase 3에서 OnlineSubsystem 세션 기능 추가 예정
+
+
+─────────────────────────────────────────────
+UTDGameUserSettings
+─────────────────────────────────────────────
+-> 플레이어 설정 저장·적용
+-> 오디오 볼륨 (마스터 / 음악 / 효과음) 조회·설정
+-> 비디오 품질 (전체 / 개별 항목) 조회·설정
+-> UTDFL_Utility를 통해 어디서든 접근 가능
