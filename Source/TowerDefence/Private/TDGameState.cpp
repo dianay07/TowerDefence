@@ -2,12 +2,10 @@
 
 ATDGameState::ATDGameState()
 {
-	SharedCoin = 2000;
-	BaseHealth = 20;
-	MaxBaseHealth = 20;
-	CurrentWave = 0;
+	// 초기값은 헤더 선언부에서 설정
 }
 
+// ── 기지 체력 ─────────────────────────────────────────────────────────────────
 void ATDGameState::DecreaseBaseHealth()
 {
 	// Phase 2: if (!HasAuthority()) return;
@@ -16,6 +14,7 @@ void ATDGameState::DecreaseBaseHealth()
 	// Phase 2: Broadcast를 OnRep_BaseHealth()로 이전
 }
 
+// ── 코인 ──────────────────────────────────────────────────────────────────────
 int32 ATDGameState::GetCoins() const
 {
 	return SharedCoin;
@@ -33,6 +32,8 @@ void ATDGameState::CoinChange(int32 change)
 	OnCoinsChanged.Broadcast(change, SharedCoin);
 	// Phase 2: Broadcast를 OnRep_SharedCoin()로 이전
 }
+
+// ── 게임 종료 ─────────────────────────────────────────────────────────────────
 
 void ATDGameState::BroadcastGameEnded(bool bWin)
 {

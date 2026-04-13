@@ -15,13 +15,22 @@ class TOWERDEFENCE_API ATDEnemyActor : public AActor, public IAbilitySystemInter
 {
 	GENERATED_BODY()
 
-protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh, meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* StaticMeshComp;
+public:
+	ATDEnemyActor();
 
+	virtual void PostInitializeComponents() override;
+	virtual void Tick(float DeltaTime) override;
+
+// ── 컴포넌트 ──────────────────────────────────────────────────────────────────
+protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* SceneRootComp;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh, meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* StaticMeshComp;
+
+// ── GAS & 스탯 초기화 ─────────────────────────────────────────────────────────
+protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
 	class UAbilitySystemComponent* AbilitySystemComponent;
 
@@ -31,8 +40,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GAS")
 	TSubclassOf<class UGameplayEffect> DefaultEffect;
 
-protected:
-	// ── 적 스테이터스 ────────────────────────────────────────────────
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
 	float InitialHealth = 100.f;
 
@@ -45,43 +52,27 @@ protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
 	int32 RewardCoin = 100;
 
-	UPROPERTY(BlueprintReadOnly, Category = "State")
-	bool IsDead = false;
+protected:
+	virtual void BeginPlay() override;
+	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	void InitializeASC();
+	virtual void OnHealthAttributeChanged(const FOnAttributeChangeData& Data);
 
-	// ── 경로 이동 ────────────────────────────────────────────────
+	UFUNCTION(BlueprintImplementableEvent, Category = "GAS")
+	void OnHealthChanged(float OldValue, float NewValue);
+
+// ── 경로 이동 ─────────────────────────────────────────────────────────────────
+protected:
 	UPROPERTY()
 	ATDPath* CurrentPath;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Path")
 	float Distance = 0.f;
 
-public:
-	// ── 적 사망 이벤트 ────────────────────────────────────────────────
-	UPROPERTY(BlueprintAssignable, Category = "Events")
-	FOnDied OnDied;
-
-	ATDEnemyActor();
-
-protected:
-	virtual void BeginPlay() override;
-
-	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-
-	virtual void OnHealthAttributeChanged(const FOnAttributeChangeData& Data);
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "GAS")
-	void OnHealthChanged(float OldValue, float NewValue);
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-	void PlayDeathAnimation();
-
-	void InitializeASC();
-	void OnEnemyDied();
+	UPROPERTY(BlueprintReadOnly, Category = "State")
+	bool IsDead = false;
 
 public:
-	virtual void PostInitializeComponents() override;
-	virtual void Tick(float DeltaTime) override;
-
 	UFUNCTION(BlueprintCallable, Category = "TD|Enemy")
 	void InitializePath(ATDPath* Path);
 
@@ -89,4 +80,15 @@ public:
 	float Advance(float DeltaTime);
 
 	FORCEINLINE float GetDistance() const { return Distance; }
+
+// ── 사망 이벤트 ───────────────────────────────────────────────────────────────
+protected:
+	void OnEnemyDied();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Events")
+	void PlayDeathAnimation();
+
+public:
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnDied OnDied;
 };

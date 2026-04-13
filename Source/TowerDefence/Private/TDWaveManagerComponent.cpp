@@ -15,6 +15,7 @@ void UTDWaveManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// 씬에 배치된 모든 경로 액터 수집
 	TArray<AActor*> FoundPaths;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATDPath::StaticClass(), FoundPaths);
 	for (AActor* Actor : FoundPaths)
@@ -35,47 +36,37 @@ void UTDWaveManagerComponent::TickComponent(float DeltaTime, ELevelTick TickType
 	UpdateWave(DeltaTime);
 }
 
+// ── 웨이브 진행 ───────────────────────────────────────────────────────────────
+
 void UTDWaveManagerComponent::UpdateWave(float Delta)
 {
 	AdvanceEnemies(Delta);
 
+	// 각 웨이브 데이터를 순회하며 스폰 타이밍 제어
 	for(int i = 0; i < WaveData.Num(); i++)
 	{
-		int32 LocalSpawnCount = 0;
-		float LocalDelayRemining = 0.f;
-
-		// GetWorld()->GetTimeSeconds() == GetGameTimeInSeconds(this)
 		if(GetWorld()->GetTimeSeconds() > WaveData[i].StartTime)
 		{
-			LocalSpawnCount = WaveData[i].SpawnCount;
+			if (WaveData[i].SpawnCount <= 0) continue;
 
-			if (LocalSpawnCount > 0)
+			float LocalDelayRemining = WaveData[i].DelayRemaining - Delta;
+
+			if(LocalDelayRemining <= 0.f)
 			{
-				LocalDelayRemining = WaveData[i].DelayRemaining - Delta;
-
-				if(LocalDelayRemining <= 0.f)
-				{
-					SpawnEnemy(WaveData[i].EnemyType);
-					LocalDelayRemining = WaveData[i].SpawnDeley;
-					LocalSpawnCount--;
-				}
-
-				FWaveData NewData;
-				NewData.StartTime = WaveData[i].StartTime;
-				NewData.EnemyType = WaveData[i].EnemyType;
-				NewData.SpawnCount = LocalSpawnCount;
-				NewData.SpawnDeley = WaveData[i].SpawnDeley;
-				NewData.DelayRemaining = LocalDelayRemining;
-
-				// BP -> SetArrayElem
-				WaveData[i] = NewData;
+				// 적 스폰 후 딜레이 리셋 및 카운트 감소
+				SpawnEnemy(WaveData[i].EnemyType);
+				LocalDelayRemining = WaveData[i].SpawnDeley;
+				WaveData[i].SpawnCount--;
 			}
+
+			WaveData[i].DelayRemaining = LocalDelayRemining;
 		}
 	}
 }
 
-void UTDWaveManagerComponent::AdvanceEnemies(float Delta) 
+void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 {
+	// 경로 끝에 도달한 적 처리
 	for (int i = Enemies.Num() - 1; i >= 0; i--)
 	{
 		if (!IsValid(Enemies[i]))
@@ -90,6 +81,7 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 		}
 	}
 
+	// 만료 적 제거
 	for(int i = 0; i < ExpiredEnemies.Num(); i++)
 	{
 		ATDEnemyActor* Enemy = ExpiredEnemies[i];
@@ -111,50 +103,59 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 	ExpiredEnemies.Empty();
 }
 
-void UTDWaveManagerComponent::ImportData() 
+// ── 데이터 로드 ───────────────────────────────────────────────────────────────
+void UTDWaveManagerComponent::ImportData()
 {
-	TArray<FName> OutRowNames;
-	
 	if (!IsValid(DataTable)) return;
+
+	// 데이터 테이블에서 웨이브 정보 로드
+	TArray<FName> OutRowNames;
 	UDataTableFunctionLibrary::GetDataTableRowNames(DataTable, OutRowNames);
 
 	for(int i = 0; i < OutRowNames.Num(); i++)
 	{
 		FWaveData* Row = DataTable->FindRow<FWaveData>(OutRowNames[i], TEXT("ImportData"));
-		
 		if (!Row) continue;
 		WaveData.Add(*Row);
+
+		TotalEnemyCount += Row->SpawnCount;
 	}
 
+	// 경로 길이 캐싱
 	for(int i = 0; i < Paths.Num(); i++)
 	{
 		PathLengths.Add(Paths[i]->GetLength());
 	}
 }
 
+// ── 적 스폰 ───────────────────────────────────────────────────────────────────
 void UTDWaveManagerComponent::SpawnEnemy(EEnemyType EnemyType)
 {
-	TSubclassOf<ATDEnemyActor>* EnemyActor = EnemyTypeClass.Find(EnemyType);                          
-	
+	TSubclassOf<ATDEnemyActor>* EnemyActor = EnemyTypeClass.Find(EnemyType);
+
 	if (!EnemyActor || !*EnemyActor) return;
 	if (Paths.IsEmpty() || !IsValid(Paths[0])) return;
-	
+
+	// 경로 시작 위치에 적 스폰
 	FTransform SpawnTransform(Paths[0]->GetLocation(0.f));
-	ATDEnemyActor * Enemy = GetWorld()->SpawnActor<ATDEnemyActor>(*EnemyActor, SpawnTransform);
-	
+	ATDEnemyActor* Enemy = GetWorld()->SpawnActor<ATDEnemyActor>(*EnemyActor, SpawnTransform);
+
 	if (!IsValid(Enemy)) return;
 
 	Enemies.Add(Enemy);
 	Enemy->InitializePath(Paths[0]);
+	// 사망 이벤트 바인딩
 	Enemy->OnDied.AddDynamic(this, &UTDWaveManagerComponent::OnEnemyDied);
 }
 
+// ── 적 조회 ───────────────────────────────────────────────────────────────────
 ATDEnemyActor* UTDWaveManagerComponent::GetFurthestEnemy(FVector Location, float Radius)
 {
+	// 범위 내에서 가장 멀리 진행한 적 반환
 	float HighDist = 0.f;
 	ATDEnemyActor* HighEnemy = nullptr;
 
-	for(int i = 0; i< Enemies.Num(); i++)
+	for(int i = 0; i < Enemies.Num(); i++)
 	{
 		if (FVector::Dist(Enemies[i]->GetActorLocation(), Location) <= Radius)
 		{
@@ -169,6 +170,23 @@ ATDEnemyActor* UTDWaveManagerComponent::GetFurthestEnemy(FVector Location, float
 	return HighEnemy;
 }
 
+TArray<ATDEnemyActor*> UTDWaveManagerComponent::GetEnemiesInRange(FVector Location, float Radius)
+{
+	// 범위 내 모든 적 반환
+	TArray<ATDEnemyActor*> TheEnemies;
+
+	for (int i = 0; i < Enemies.Num(); i++)
+	{
+		if (FVector::Dist(Enemies[i]->GetActorLocation(), Location) <= Radius)
+		{
+			TheEnemies.Add(Enemies[i]);
+		}
+	}
+
+	return TheEnemies;
+}
+
+// ── 사망 이벤트 ───────────────────────────────────────────────────────────────
 void UTDWaveManagerComponent::OnEnemyDied(ATDEnemyActor* Enemy)
 {
 	if (!IsValid(Enemy)) return;
@@ -181,6 +199,7 @@ void UTDWaveManagerComponent::OnEnemyDied(ATDEnemyActor* Enemy)
 	ATDGameMode* GM = Cast<ATDGameMode>(GetOwner());
 	if (IsValid(GM))
 	{
+		// EventManager에 사망 이벤트 전파
 		if (IsValid(GM->EventManager))
 			GM->EventManager->BroadcastEnemyDied(Enemy);
 
@@ -188,23 +207,11 @@ void UTDWaveManagerComponent::OnEnemyDied(ATDEnemyActor* Enemy)
 	}
 }
 
-TArray<ATDEnemyActor*> UTDWaveManagerComponent::GetEnemiesInRange(FVector Location, float Radius)
-{
-	TArray<ATDEnemyActor*> TheEnemies;
-	
-	for (int i = 0; i < Enemies.Num(); i++)
-	{
-		if (FVector::Dist(Enemies[i]->GetActorLocation(), Location) <= Radius)
-		{
-			TheEnemies.Add(Enemies[i]);
-		}
-	}
-
-	return TheEnemies;
-}
+// ── 웨이브 상태 확인 ──────────────────────────────────────────────────────────
 
 bool UTDWaveManagerComponent::DoEnemiesRemain() const
 {
+	// 살아있는 적이 없고 스폰할 적도 없으면 true
 	if (Enemies.IsEmpty())
 	{
 		for(int i = 0; i < WaveData.Num(); i++)

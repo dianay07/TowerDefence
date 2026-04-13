@@ -14,16 +14,18 @@ class TOWERDEFENCE_API UTDEventManagerComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+// ── 적 사망 이벤트 ────────────────────────────────────────────────────────────
 public:
 	UPROPERTY(BlueprintAssignable, Category = "Events")
 	FOnEnemyDied OnEnemyDied;
 
-	UPROPERTY(BlueprintAssignable, Category = "Events")
-	FOnEnemyAttacked OnEnemyAttacked;
-
-public:
 	UFUNCTION(BlueprintCallable, Category = "Events")
 	void BroadcastEnemyDied(ATDEnemyActor* Enemy);
+
+// ── 적 공격 이벤트 ────────────────────────────────────────────────────────────
+public:
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnEnemyAttacked OnEnemyAttacked;
 
 	UFUNCTION(BlueprintCallable, Category = "Events")
 	void BroadcastEnemyAttacked(ATDEnemyActor* Enemy);

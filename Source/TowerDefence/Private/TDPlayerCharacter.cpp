@@ -19,7 +19,7 @@ ATDPlayerCharacter::ATDPlayerCharacter()
 	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("CameraRoot"));
 	SetRootComponent(Root);
 
-	// SpringArm
+	// SpringArm 설정
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->TargetArmLength = 600.f;
@@ -30,17 +30,17 @@ ATDPlayerCharacter::ATDPlayerCharacter()
 	SpringArmComp->bInheritRoll   = false;
 	SpringArmComp->bDoCollisionTest = false;
 
-	// Camera
+	// 카메라 설정
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	CameraComp->bUsePawnControlRotation = false;
-
 }
 
 void ATDPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Enhanced Input 매핑 컨텍스트 등록
 	if (APlayerController* PC = Cast<APlayerController>(GetController()))
 	{
 		PC->bShowMouseCursor = true;
@@ -60,7 +60,8 @@ void ATDPlayerCharacter::BeginPlay()
 		PlayerPawn = GetWorld()->SpawnActor<ATDPlayerPawn>(PlayerPawnClass, GetActorLocation(), FRotator::ZeroRotator, Params);
 	}
 
-	if(HUDClass)
+	// HUD 위젯 생성 및 뷰포트 추가
+	if (HUDClass)
 	{
 		HUDWidget = CreateWidget(GetWorld(), HUDClass);
 		if (HUDWidget)
@@ -80,11 +81,32 @@ void ATDPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	// Enhanced Input 액션 바인딩
 	if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		EIC->BindAction(MoveAction,  ETriggerEvent::Triggered, this, &ATDPlayerCharacter::HandleCameraMove);
 		EIC->BindAction(ClickAction, ETriggerEvent::Started,   this, &ATDPlayerCharacter::HandleClick);
 	}
+}
+
+// ── 카메라 이동 ───────────────────────────────────────────────────────────────
+
+void ATDPlayerCharacter::GetCameraAxes(FVector& OutForward, FVector& OutRight) const
+{
+	// 카메라 RightVector 기준으로 수평 이동 방향 계산 (Z 무시)
+	OutRight = CameraComp->GetRightVector();
+	OutRight.Z = 0.f;
+	OutRight = OutRight.GetSafeNormal();
+	OutForward = FVector::CrossProduct(OutRight, FVector::UpVector).GetSafeNormal();
+}
+
+void ATDPlayerCharacter::HandleCameraMove(const FInputActionValue& Value)
+{
+	// WASD 입력으로 카메라 패닝
+	const FVector2D V = Value.Get<FVector2D>();
+	FVector Forward, Right;
+	GetCameraAxes(Forward, Right);
+	SetActorLocation(GetActorLocation() + (Forward * V.Y + Right * V.X) * EdgeScrollSpeed * GetWorld()->GetDeltaSeconds());
 }
 
 void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
@@ -97,6 +119,7 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 	float MX, MY;
 	if (!PC->GetMousePosition(MX, MY)) return;
 
+	// 마우스가 화면 가장자리에 있으면 카메라 스크롤
 	FVector2D Dir = FVector2D::ZeroVector;
 	if      (MX < EdgeScrollThreshold)          Dir.X = -1.f;
 	else if (MX > VX - EdgeScrollThreshold)     Dir.X =  1.f;
@@ -105,32 +128,13 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 
 	if (!Dir.IsZero())
 	{
-		// Camera RightVector 기준으로 수평 이동 방향 계산 (Roll/Yaw 무관)
-		FVector Right = CameraComp->GetRightVector();
-		Right.Z = 0.f;
-		Right = Right.GetSafeNormal();
-		FVector Forward = FVector::CrossProduct(Right, FVector::UpVector).GetSafeNormal();
+		FVector Forward, Right;
+		GetCameraAxes(Forward, Right);
 		SetActorLocation(GetActorLocation() + (Forward * Dir.Y + Right * Dir.X) * EdgeScrollSpeed * DeltaTime);
 	}
 }
 
-void ATDPlayerCharacter::HandleCameraMove(const FInputActionValue& Value)
-{
-	const FVector2D V = Value.Get<FVector2D>();
-	FVector Right = CameraComp->GetRightVector();
-	Right.Z = 0.f;
-	Right = Right.GetSafeNormal();
-	FVector Forward = FVector::CrossProduct(Right, FVector::UpVector).GetSafeNormal();
-	SetActorLocation(GetActorLocation() + (Forward * V.Y + Right * V.X) * EdgeScrollSpeed * GetWorld()->GetDeltaSeconds());
-}
-
-void ATDPlayerCharacter::NotifyBaseHealthDecreased()
-{
-	if (ATDGameState* GS = UTDFL_Utility::GetTDGameState(this))
-	{
-		GS->DecreaseBaseHealth();
-	}
-}
+// ── 클릭 처리 ─────────────────────────────────────────────────────────────────
 
 void ATDPlayerCharacter::HandleClick()
 {
@@ -145,5 +149,16 @@ void ATDPlayerCharacter::HandleClick()
 
 	PlayerPawn->SetMoveTarget(HitResult.Location);
 
-	// 클릭위치에 타워 검출 기능은 BP로
+	// 클릭 위치에 타워 검출 기능은 BP로
+}
+
+// ── 기지 체력 ─────────────────────────────────────────────────────────────────
+
+void ATDPlayerCharacter::NotifyBaseHealthDecreased()
+{
+	// 외부에서 호출 → GameState 체력 감소
+	if (ATDGameState* GS = UTDFL_Utility::GetTDGameState(this))
+	{
+		GS->DecreaseBaseHealth();
+	}
 }

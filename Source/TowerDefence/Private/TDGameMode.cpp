@@ -6,6 +6,7 @@
 
 ATDGameMode::ATDGameMode()
 {
+	// 게임 관리 컴포넌트 생성
 	EventManager = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
 	WaveManager  = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
 }
@@ -15,17 +16,17 @@ void ATDGameMode::BeginPlay()
 	Super::BeginPlay();
 }
 
-// ── Game State ────────────────────────────────────────────────────────────────
+// ── 게임 상태 ─────────────────────────────────────────────────────────────────
 
 void ATDGameMode::GameEnded(bool bWin)
 {
-	UGameplayStatics::SetGamePaused(this, true);
-
-	// 이벤트 송신
+	// 결과 이벤트 브로드캐스트 후 일시정지
 	if (ATDGameState* GS = GetGameState<ATDGameState>())
 	{
 		GS->BroadcastGameEnded(bWin);
 	}
+
+	UGameplayStatics::SetGamePaused(this, true);
 
 	if (bWin)
 	{
@@ -37,19 +38,22 @@ void ATDGameMode::GameEnded(bool bWin)
 
 void ATDGameMode::CheckIfWin()
 {
+	// 모든 적이 처리됐으면 승리
 	if (WaveManager->DoEnemiesRemain())
 		GameEnded(true);
 }
 
 void ATDGameMode::CheckIfLoss()
 {
+	// 기지 체력이 0이면 패배
 	if (UTDFL_Utility::GetTDGameState(this)->BaseHealth <= 0)
 	{
 		GameEnded(false);
 	}
 }
 
-// ── Pool ──────────────────────────────────────────────────────────────────────
+// ── 액터 풀 ───────────────────────────────────────────────────────────────────
+
 AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
 	if (!ActorClass || !ActorClass->ImplementsInterface(UTDPoolActorInterface::StaticClass()))
@@ -59,10 +63,10 @@ AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTran
 
 	AActor* PoolActor = nullptr;
 
+	// 풀에 재사용 가능한 액터가 있으면 꺼내 사용
 	if (ActorPool.Contains(ActorClass))
 	{
 		TArray<AActor*>* PoolActorArray = ActorPool.Find(ActorClass);
-
 		if (PoolActorArray && !PoolActorArray->IsEmpty())
 		{
 			PoolActor = PoolActorArray->Pop();
@@ -93,11 +97,11 @@ void ATDGameMode::PoolActor(AActor* PoolActor)
 		return;
 	}
 
+	// 풀에 액터 반환
 	TSubclassOf<AActor> ActorClass = PoolActor->GetClass();
 	if (ActorPool.Contains(ActorClass))
 	{
 		TArray<AActor*>* PoolActorArray = ActorPool.Find(ActorClass);
-
 		if (PoolActorArray)
 		{
 			PoolActorArray->Add(PoolActor);

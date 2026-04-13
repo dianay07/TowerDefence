@@ -16,6 +16,8 @@ class TOWERDEFENCE_API ATDGameState : public AGameStateBase
 public:
 	ATDGameState();
 
+// ── 게임 데이터 ───────────────────────────────────────────────────────────────
+public:
 	// Phase 2에서 ReplicatedUsing=OnRep_* 으로 교체 예정
 	UPROPERTY(BlueprintReadOnly, Category = "Game")
 	int32 SharedCoin = 2000;
@@ -29,13 +31,18 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Game")
 	int32 CurrentWave = 0;
 
+// ── 기지 체력 ─────────────────────────────────────────────────────────────────
 public:
-	// HearthHealthChaged 이벤트
 	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
 	FOnBaseHealthChanged OnBaseHealthChanged;
 
 	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
 	void DecreaseBaseHealth();
+
+// ── 코인 ──────────────────────────────────────────────────────────────────────
+public:
+	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
+	FOnCoinsChanged OnCoinsChanged;
 
 	UFUNCTION(BlueprintPure, Category = "TD|GameState")
 	int32 GetCoins() const;
@@ -43,14 +50,11 @@ public:
 	UFUNCTION(BlueprintPure, Category = "TD|GameState")
 	bool HasCoins(int32 Amount) const;
 
-	// SharedCoinChanged 이벤트
-	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
-	FOnCoinsChanged OnCoinsChanged;
-
 	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
 	void CoinChange(int32 change);
 
-	// GameEnded 이벤트
+// ── 게임 종료 ─────────────────────────────────────────────────────────────────
+public:
 	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
 	FOnGameEnded OnGameEnded;
 

@@ -11,7 +11,6 @@ class UInputMappingContext;
 class UInputAction;
 class ATDPlayerPawn;
 class UUserWidget;
-
 class ATDTowerPawn;
 
 UCLASS()
@@ -27,33 +26,30 @@ protected:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+// ── 카메라 & 엣지 스크롤 ──────────────────────────────────────────────────────
 private:
-	// ── 컴포넌트 (카메라만) ──────────────────────
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* CameraComp;
 
-	// ── 플레이어 폰 (맵 위=캐릭터) ────────────────────
-	UPROPERTY(EditDefaultsOnly, Category = "Player")
-	TSubclassOf<ATDPlayerPawn> PlayerPawnClass;
+	UPROPERTY(EditDefaultsOnly, Category = "Camera|EdgeScroll")
+	float EdgeScrollThreshold = 20.f;
 
-	UPROPERTY()
-	ATDPlayerPawn* PlayerPawn;
+	UPROPERTY(EditDefaultsOnly, Category = "Camera|EdgeScroll")
+	float EdgeScrollSpeed = 1000.f;
 
-	// ── UI ────────────────────────────────────────
-	UPROPERTY(EditAnywhere, Category = "UI")
-	TSubclassOf<UUserWidget> HUDClass;
+private:
+	// 카메라 기준 Forward/Right 벡터 계산 (Z 무시)
+	void GetCameraAxes(FVector& OutForward, FVector& OutRight) const;
 
-	UPROPERTY()
-	UUserWidget* HUDWidget;
+public:
+	void HandleCameraMove(const FInputActionValue& Value);
+	void TickEdgeScroll(float DeltaTime);
 
-	UFUNCTION(BlueprintCallable, Category = "UI")
-	FORCEINLINE UUserWidget* GetHUDWidget() const { return HUDWidget; }
-
-
-	// ── 입력 ─────────────────────────────────────────────────
+// ── 입력 ──────────────────────────────────────────────────────────────────────
+private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputMappingContext* DefaultMappingContext;
 
@@ -63,27 +59,35 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* ClickAction;		// 좌클릭 → 플레이어 폰 이동
 
-	// ── Edge Scroll ──────────────────────────────────────────
-	UPROPERTY(EditDefaultsOnly, Category = "Camera|EdgeScroll")
-	float EdgeScrollThreshold = 20.f;
+public:
+	void HandleClick();
 
-	UPROPERTY(EditDefaultsOnly, Category = "Camera|EdgeScroll")
-	float EdgeScrollSpeed = 1000.f;
+// ── 플레이어 폰 ───────────────────────────────────────────────────────────────
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "Player")
+	TSubclassOf<ATDPlayerPawn> PlayerPawnClass;
+
+	UPROPERTY()
+	ATDPlayerPawn* PlayerPawn;
 
 public:
-	// ── 함수 ─────────────────────────────────────────────────
-	void HandleCameraMove(const FInputActionValue& Value);
-	void HandleClick();
-	void TickEdgeScroll(float DeltaTime);
-
-	// ── 포팅 진행중 함수 ─────────────────────────────────────────────────
 	void SelectTower(ATDTowerPawn* Tower);
 	void UnSelectTower();
+
+	UFUNCTION(BlueprintCallable, Category = "TD|Player")
+	void NotifyBaseHealthDecreased();
 
 	void OnCoinsChanged(int32 Change, int32 Coins);
 	void OnHealthChanged(int32 HeartHealth, int32 MaxHeartHealth);
 
-	// 적이 경로 끝 도달 시 외부에서 호출 → GameState 체력 감소
-	UFUNCTION(BlueprintCallable, Category = "TD|Player")
-	void NotifyBaseHealthDecreased();
+// ── UI ────────────────────────────────────────────────────────────────────────
+private:
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> HUDClass;
+
+	UPROPERTY()
+	UUserWidget* HUDWidget;
+
+	UFUNCTION(BlueprintCallable, Category = "UI")
+	FORCEINLINE UUserWidget* GetHUDWidget() const { return HUDWidget; }
 };
