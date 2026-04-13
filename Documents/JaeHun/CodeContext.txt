@@ -1,4 +1,15 @@
 ─────────────────────────────────────────────
+ATDGameMode
+─────────────────────────────────────────────
+-> 게임 전체 흐름 제어 및 오브젝트 풀 관리 (서버 전용)
+-> UTDWaveManagerComponent, UTDEventManagerComponent, UTDTowerManagerComponent 소유 및 초기화
+-> 오브젝트 풀링 : GetPoolActorFromClass(TSubclassOf<ATDPoolActor>) 로 풀에서 액터 꺼내기
+-> 풀 반환 시 액터 비활성화 및 재사용 대기 상태로 전환
+-> EnemyClassMap : EEnemyType → 스폰할 BP 클래스 매핑 테이블
+-> RegisteredPaths : 레벨 내 ATDPath 목록 수집 (WaveManager에 경로 전달용)
+-> (진행 중) WaveManager / TowerManager 컴포넌트 연결 및 BeginPlay 초기화 완성 예정
+
+─────────────────────────────────────────────
 ATDGameState
 ─────────────────────────────────────────────
 -> 게임 전역 상태 관리 (코인 / 기지 체력 / 웨이브)
@@ -71,15 +82,6 @@ UTDEventManagerComponent
 -> OnEnemyDied(ATDEnemyActor*) : 적 사망 멀티캐스트 델리게이트
 -> OnEnemyAttacked(ATDEnemyActor*) : 적의 기지 공격 멀티캐스트 델리게이트
 -> 코인·체력 상태 이벤트는 ATDGameState 담당 (역할 분리)
-
-
-─────────────────────────────────────────────
-ATDPoolActor
-─────────────────────────────────────────────
--> 오브젝트 풀링 가능한 액터의 기반 클래스
--> ATDGameMode의 풀 시스템에서 GetPoolActorFromClass()로 꺼내어 사용
--> 반환 시 비활성화·위치 초기화 처리 포함
--> ATDProjectile 등 풀링이 필요한 액터가 이 클래스를 상속
 
 
 ─────────────────────────────────────────────
