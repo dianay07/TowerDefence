@@ -5,7 +5,7 @@
 #include "TDTowerBase.h"
 #include "TDFL_Utility.h"
 #include "TDWaveManagerComponent.h"
-#include "TDPooledGameMode.h"
+#include "TDGameMode.h"
 #include "Kismet/KismetMathLibrary.h"
 
 ATD_Weapon::ATD_Weapon()
@@ -30,6 +30,9 @@ void ATD_Weapon::BeginPlay()
 void ATD_Weapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	FindEnemy();
+	FaceEnemy();
 }
 
 void ATD_Weapon::FindEnemy()
@@ -87,8 +90,8 @@ void ATD_Weapon::FireAtEnemy()
 
 	FTransform SpawnTransform(FireRotation, FireLocation, FVector::OneVector);
 
-	// Cast to BP_GameMode → Get Pool Actor from Class
-	ATDPooledGameMode* GM = Cast<ATDPooledGameMode>(GetWorld()->GetAuthGameMode());
+	// Get Pool Actor from Class via UTDFL_Utility
+	ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
 	if (!IsValid(GM))
 	{
 		return;
@@ -103,17 +106,23 @@ void ATD_Weapon::FireAtEnemy()
 	// SET Projectile
 	Projectile = PooledActor;
 
-	// Sequence Then 0: Projectile->Target = Target
-	// Sequence Then 1: Projectile->Projectile = Projectile (self ref, BP 전용 - 스킵)
-	// Sequence Then 2: Projectile->Target = Target (중복)
-	//                  Projectile->Damage  = Tower->GetDamage()
-	//                  Projectile->Radius  = Tower->GetRadius()
-	// → Projectile이 C++ 클래스 없는 BP 전용이라 인터페이스로 전달 필요
-	//   현재는 리플렉션으로 프로퍼티 직접 설정
-	if (UFunction* Func = PooledActor->FindFunction(TEXT("SetProjectileData")))
+	// BP 함수 SetProjectileData(Target, Damage, Radius) 호출
+	/*if (UFunction* Func = PooledActor->FindFunction(TEXT("SetProjectileData")))
 	{
-		// BP 측에서 SetProjectileData(Target, Damage, Radius) 구현 필요
-	}
+		struct FSetProjectileDataParams
+		{
+			AActor* Target;
+			float Damage;
+			float Radius;
+		};
+
+		FSetProjectileDataParams Params;
+		Params.Target = Target;
+		Params.Damage = Tower->GetDamage();
+		Params.Radius = Tower->GetRadius();
+
+		PooledActor->ProcessEvent(Func, &Params);
+	}*/
 
 	// 프로퍼티 직접 설정 (BP 변수명 기준)
 	if (FObjectProperty* TargetProp = FindFProperty<FObjectProperty>(PooledActor->GetClass(), TEXT("Target")))
