@@ -12,8 +12,11 @@ ATD_Weapon::ATD_Weapon()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
+	RootComponent = DefaultSceneRoot;
+
 	Bottom = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Bottom"));
-	RootComponent = Bottom;
+	Bottom->SetupAttachment(DefaultSceneRoot);
 
 	Top = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Top"));
 	Top->SetupAttachment(Bottom);
