@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "TDPoolActor.h"
 #include "GameplayEffect.h"
+
 #include "TDProjectile.generated.h"
 
 class ATDEnemyActor;
@@ -25,34 +26,40 @@ public:
 
 	// ── Components ───────────────────────────────────────────────
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<USceneComponent> DefaultSceneRoot;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UStaticMeshComponent> StaticMesh;
 
 	// ── Variables ────────────────────────────────────────────────
 	UPROPERTY(BlueprintReadWrite, Category = "Projectile")
 	TObjectPtr<ATDEnemyActor> Target;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Projectile")
-	float LastDistance = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+	float LastDistance = 99999.f;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile")
-	float Damage = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+	float Damage = 10.f;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile")
-	float Speed = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+	float Speed = 10.f;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 	float Radius = 0.f;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 	TSubclassOf<UGameplayEffect> BP_GE_DamageClass;
 
 	// ── Functions ────────────────────────────────────────────────
 	UFUNCTION(BlueprintCallable, Category = "Projectile")
-	void MoveTowardsTarget();
+	void MoveTowardsTarget(float Delta);
 
 	UFUNCTION(BlueprintCallable, Category = "Projectile")
 	void OnHitTarget();
 
 	UFUNCTION(BlueprintCallable, Category = "Projectile")
 	void SetProjectileData(ATDEnemyActor* InTarget, float InDamage, float InRadius);
+
+	virtual void OnAddedToPool();
+	virtual void OnRemovedFromPool();
 };

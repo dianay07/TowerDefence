@@ -9,8 +9,24 @@ ATDProjectile::ATDProjectile()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
+	RootComponent = DefaultSceneRoot;
+
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
-	RootComponent = StaticMesh;
+	StaticMesh->SetupAttachment(DefaultSceneRoot);
+}
+
+void ATDProjectile::OnAddedToPool()
+{
+	Super::OnAddedToPool();
+}
+
+void ATDProjectile::OnRemovedFromPool()
+{
+	Super::OnRemovedFromPool();  // OnPoolSpawned() 호출 포함
+
+	// Event OnPoolSpawned → SET LastDistance = 99999
+	LastDistance = 99999.f;
 }
 
 void ATDProjectile::BeginPlay()
@@ -21,9 +37,11 @@ void ATDProjectile::BeginPlay()
 void ATDProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+    MoveTowardsTarget(DeltaTime);
 }
 
-void ATDProjectile::MoveTowardsTarget()
+void ATDProjectile::MoveTowardsTarget(float Delta)
 {
     // [Image 1] Target 유효성 체크
     if (!IsValid(Target))
@@ -45,12 +63,12 @@ void ATDProjectile::MoveTowardsTarget()
     if (bOvershot)
     {
         OnHitTarget();
+        LastDistance = 99999.f;
         return;
     }
 
     // [Image 2] 새 위치 계산: CurrentLocation + Direction * Speed * DeltaTime
-    float DeltaTime    = GetWorld()->GetDeltaSeconds();
-    FVector NewLocation = SelfLocation + Direction * Speed * DeltaTime;
+    FVector NewLocation = SelfLocation + Direction * Speed * Delta;
 
     // [Image 3] Set Actor Location
     SetActorLocation(NewLocation);

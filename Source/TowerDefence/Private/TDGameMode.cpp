@@ -56,10 +56,11 @@ void ATDGameMode::CheckIfLoss()
 
 AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
-	if (!ActorClass || !ActorClass->ImplementsInterface(UTDPoolActorInterface::StaticClass()))
+	/*ITDPoolActorInterface* CastCheck = Cast<ITDPoolActorInterface>(ActorClass);
+	if (!ActorClass || !CastCheck)
 	{
 		return nullptr;
-	}
+	}*/
 
 	AActor* PoolActor = nullptr;
 
@@ -80,11 +81,11 @@ AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTran
 	{
 		PoolActor->SetActorTransform(Transform);
 		PoolActor->SetOwner(NewOwner);
-		ITDPoolActorInterface* PoolActorInter = Cast<ITDPoolActorInterface>(PoolActor);
+	/*	ITDPoolActorInterface* PoolActorInter = Cast<ITDPoolActorInterface>(PoolActor);
 		if (PoolActorInter)
 		{
 			PoolActorInter->OnRemovedFromPool();
-		}
+		}*/
 	}
 
 	return PoolActor;
