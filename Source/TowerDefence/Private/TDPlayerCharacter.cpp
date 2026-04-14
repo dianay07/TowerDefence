@@ -23,7 +23,7 @@ ATDPlayerCharacter::ATDPlayerCharacter()
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->TargetArmLength = 600.f;
-	SpringArmComp->SetRelativeRotation(FRotator(0.0f, -50.f, 90.f));
+	SpringArmComp->SetRelativeRotation(FRotator(-50.f, 90.f, 0.f));
 	SpringArmComp->bUsePawnControlRotation = false;
 	SpringArmComp->bInheritPitch  = false;
 	SpringArmComp->bInheritYaw    = false;
@@ -93,11 +93,12 @@ void ATDPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 void ATDPlayerCharacter::GetCameraAxes(FVector& OutForward, FVector& OutRight) const
 {
-	// 카메라 RightVector 기준으로 수평 이동 방향 계산 (Z 무시)
-	OutRight = CameraComp->GetRightVector();
-	OutRight.Z = 0.f;
-	OutRight = OutRight.GetSafeNormal();
-	OutForward = FVector::CrossProduct(OutRight, FVector::UpVector).GetSafeNormal();
+	// GetForwardVector()는 Roll 영향 없이 카메라 수평 방향 반환 (Roll=90 등 케이스 대응)
+	FVector CamForward = CameraComp->GetForwardVector();
+	CamForward.Z = 0.f;
+	OutForward = CamForward.GetSafeNormal();
+	// UE 좌수계: Cross(Up, Forward) = Right
+	OutRight = FVector::CrossProduct(FVector::UpVector, OutForward).GetSafeNormal();
 }
 
 void ATDPlayerCharacter::HandleCameraMove(const FInputActionValue& Value)
