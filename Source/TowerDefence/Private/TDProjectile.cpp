@@ -46,14 +46,6 @@ void ATDProjectile::MoveTowardsTarget(float Delta)
     // [Image 1] Target 유효성 체크
     if (!IsValid(Target))
     {
-        // 타겟이 없는 경우 미사일을 PoolActor 에 다시 등록
-        ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
-        if (!IsValid(GM))
-        {
-            return;
-        }
-        GM->PoolActor(this);
-
         return;
     }
 
