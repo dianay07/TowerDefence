@@ -61,6 +61,7 @@ void ATD_Weapon::FaceEnemy()
 {
 	if (!IsValid(Target))
 	{
+		Target = nullptr;
 		return;
 	}
 
@@ -80,6 +81,7 @@ void ATD_Weapon::FireAtEnemy()
 	// GET Target → Is Valid
 	if (!IsValid(Target) || !IsValid(Tower) || !ProjectileClass)
 	{
+		Target = nullptr;
 		return;
 	}
 
@@ -139,6 +141,7 @@ void ATD_Weapon::FireAtEnemy()
 		RadiusProp->SetPropertyValue_InContainer(PooledActor, Tower->GetRadius());
 	}*/
 	Projectile->SetProjectileData(Target, Tower->GetDamage(), Tower->GetRadius());
+	Target = nullptr;
 }
 
 void ATD_Weapon::GetFirePoint(FVector& OutLocation, FRotator& OutRotation)

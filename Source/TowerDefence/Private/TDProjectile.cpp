@@ -46,6 +46,15 @@ void ATDProjectile::MoveTowardsTarget(float Delta)
     // [Image 1] Target 유효성 체크
     if (!IsValid(Target))
     {
+        Target = nullptr;
+        // 타겟이 없는 경우 미사일을 PoolActor 에 다시 등록
+        ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
+        if (!IsValid(GM))
+        {
+            return;
+        }
+        GM->PoolActor(this);
+
         return;
     }
 
@@ -84,6 +93,7 @@ void ATDProjectile::OnHitTarget()
 {
     // 1. Damage Enemy
     UTDFL_Utility::EnemyDamage(Target, Damage, BP_GE_DamageClass);
+    Target = nullptr;
 
     // 2. Get Game Mode → Pool Actor(Self)
     ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
