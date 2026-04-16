@@ -177,20 +177,22 @@ void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRe
     case ETowerActions::BuildTurret:
     {
         TowerManager->GetTowerData(ETowerType::Turret, TowerData);
+        break;
     }
     case ETowerActions::BuildBallista:
     {
         TowerManager->GetTowerData(ETowerType::Ballista, TowerData);
-
+        break;
     }
     case ETowerActions::BuildCatapult:
     {
         TowerManager->GetTowerData(ETowerType::Catapult, TowerData);
-
+        break;
     }
     case ETowerActions::BuildCannon:
     {
         TowerManager->GetTowerData(ETowerType::Cannon, TowerData);
+        break;
     }
 
     case ETowerActions::Upgrade:
