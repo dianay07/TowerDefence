@@ -297,6 +297,7 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
     AActor* NewTower = GetWorld()->SpawnActor<AActor>(NewTowerClass, GetActorTransform(), SpawnParams);
     if (IsValid(NewTower))
     {
+       UnSelect();
        Destroy();
     }
 }
