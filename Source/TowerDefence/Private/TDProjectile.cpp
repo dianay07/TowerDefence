@@ -52,7 +52,7 @@ void ATDProjectile::MoveTowardsTarget(float Delta)
     // [Image 2] 방향 및 거리 계산
     FVector SelfLocation   = GetActorLocation();
     FVector TargetLocation = Target->GetActorLocation();
-    FVector Direction      = SelfLocation - TargetLocation;
+    FVector Direction      = TargetLocation - SelfLocation;
     float Distance         = Direction.Length();
     Direction.Normalize();
 
@@ -80,7 +80,6 @@ void ATDProjectile::MoveTowardsTarget(float Delta)
     // [Image 3] SET Last Distance = Distance
     LastDistance = Distance;
 }
-
 void ATDProjectile::OnHitTarget()
 {
     // 1. Damage Enemy
@@ -94,7 +93,6 @@ void ATDProjectile::OnHitTarget()
     }
     GM->PoolActor(this);
 }
-
 void ATDProjectile::SetProjectileData(ATDEnemyActor* InTarget, float InDamage, float InRadius)
 {
     // Cast To BP_EnemyBase → Cast Failed 시 리턴

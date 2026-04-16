@@ -104,7 +104,8 @@ void ATD_Weapon::FireAtEnemy()
 	}
 
 	// SET Projectile
-	Projectile = PooledActor;
+
+	Projectile = Cast<ATDProjectile>(PooledActor);
 
 	// BP 함수 SetProjectileData(Target, Damage, Radius) 호출
 	/*if (UFunction* Func = PooledActor->FindFunction(TEXT("SetProjectileData")))
@@ -125,7 +126,7 @@ void ATD_Weapon::FireAtEnemy()
 	}*/
 
 	// 프로퍼티 직접 설정 (BP 변수명 기준)
-	if (FObjectProperty* TargetProp = FindFProperty<FObjectProperty>(PooledActor->GetClass(), TEXT("Target")))
+	/*if (FObjectProperty* TargetProp = FindFProperty<FObjectProperty>(PooledActor->GetClass(), TEXT("Target")))
 	{
 		TargetProp->SetObjectPropertyValue_InContainer(PooledActor, Target);
 	}
@@ -136,7 +137,8 @@ void ATD_Weapon::FireAtEnemy()
 	if (FFloatProperty* RadiusProp = FindFProperty<FFloatProperty>(PooledActor->GetClass(), TEXT("Radius")))
 	{
 		RadiusProp->SetPropertyValue_InContainer(PooledActor, Tower->GetRadius());
-	}
+	}*/
+	Projectile->SetProjectileData(Target, Tower->GetDamage(), Tower->GetRadius());
 }
 
 void ATD_Weapon::GetFirePoint(FVector& OutLocation, FRotator& OutRotation)

@@ -1,9 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+	// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "TDProjectile.h"
+
 #include "TD_Weapon.generated.h"
 
 class ATDEnemyActor;
@@ -38,7 +40,7 @@ public:
 	TObjectPtr<ATDEnemyActor> Target;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
-	TSubclassOf<AActor> ProjectileClass;
+	TSubclassOf<ATDProjectile> ProjectileClass;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Weapon")
 	TObjectPtr<ATDTowerBase> Tower;
@@ -50,7 +52,7 @@ public:
 	int32 FirePointIndex = 0;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Weapon")
-	TObjectPtr<AActor> Projectile;
+	TObjectPtr<ATDProjectile> Projectile;
 
 	// ── Functions ────────────────────────────────────────────────
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
