@@ -94,9 +94,23 @@ void ATDEnemyActor::OnEnemyDied()
 	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
 		GS->CoinChange(RewardCoin);
 
-	// 사망 이벤트 브로드캐스트 후 파괴
+	// 사망 이벤트 브로드캐스트 (WaveManager 목록 제거)
 	OnDied.Broadcast(this);
-	Destroy();
+
+	// 이동/충돌 즉시 중단 후 애니메이션 재생, DeathDelay 후 파괴
+	SetActorEnableCollision(false);
+	PlayDeathAnimation();
+
+	GetWorldTimerManager().SetTimer(
+		DeathTimerHandle,
+		this, &ATDEnemyActor::DestroyAfterDelay,
+		DeathDelay, false);
+}
+
+void ATDEnemyActor::DestroyAfterDelay()
+{
+	if (!IsActorBeingDestroyed())
+		Destroy();
 }
 
 // ── 경로 이동 ─────────────────────────────────────────────────────────────────

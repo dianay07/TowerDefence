@@ -83,7 +83,13 @@ public:
 
 // ── 사망 이벤트 ───────────────────────────────────────────────────────────────
 protected:
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stats")
+	float DeathDelay = 1.5f;
+
+	FTimerHandle DeathTimerHandle;
+
 	void OnEnemyDied();
+	void DestroyAfterDelay();
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Events")
 	void PlayDeathAnimation();

@@ -92,7 +92,6 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 		}
 
 		Enemies.Remove(Enemy);
-		Enemy->Destroy();
 
 		if (DoEnemiesRemain())
 		{
