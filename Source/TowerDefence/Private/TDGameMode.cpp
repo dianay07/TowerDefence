@@ -21,12 +21,13 @@ void ATDGameMode::BeginPlay()
 void ATDGameMode::GameEnded(bool bWin)
 {
 	// 결과 이벤트 브로드캐스트 후 일시정지
-	if (ATDGameState* GS = GetGameState<ATDGameState>())
+	// 0417 : 테스트 위해 게임 종료 로직 잠시 보류
+	/*if (ATDGameState* GS = GetGameState<ATDGameState>())
 	{
 		GS->BroadcastGameEnded(bWin);
 	}
 
-	UGameplayStatics::SetGamePaused(this, true);
+	UGameplayStatics::SetGamePaused(this, true);*/
 
 	if (bWin)
 	{

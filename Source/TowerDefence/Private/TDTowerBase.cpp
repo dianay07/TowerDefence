@@ -3,6 +3,7 @@
 
 #include "TDTowerBase.h"
 #include "TDGameMode.h"
+#include "TDGameState.h"
 #include "TowerManager.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffectTypes.h"
@@ -208,6 +209,8 @@ void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRe
     default:
         break;
     }
+
+    OutCostOrRefund = TowerData.BuildCost;
 }
 
 void ATDTowerBase::UpgradeTower()
@@ -229,7 +232,8 @@ void ATDTowerBase::UpgradeTower()
 
 void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
 {
-    ATDGameMode* GM = Cast<ATDGameMode>(UGameplayStatics::GetGameMode(this));
+    // JaeHoon : coin 관련 기능은 GameMode에서 GameState로 이양
+    ATDGameState* GameState = Cast<ATDGameState>(UGameplayStatics::GetGameState(this));
 
     // [Sequence Then 0] 플레이어의 현재 선택 해제
     // (BP Player에 UnSelectTower 함수가 존재한다고 가정 — BP 측에서 연결 필요)
@@ -254,22 +258,22 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
     if (TowerAction == ETowerActions::BreakDown)
     {
         // 철거: 코인 환급 후 빈 타워로 교체
-        if (IsValid(GM))
+        if (IsValid(GameState))
         {
-            //GM->RefundCoins(CostOrRefund);
+            GameState->CoinChange(CostOrRefund);
         }
         NewTowerClass = BaseTowerClass;
     }
     else
     {
         // 건설/업그레이드: 코인 차감 시도
-        //if (!IsValid(GM) || !GM->SpendCoins(CostOrRefund))
-        //{
-        //    return;  // 잔액 부족 → Return Node
-        //}
+		// Turret만 있으니까 일단 1번거 강제로 가져와서 사용
+		if (!IsValid(GameState) || !GameState->HasCoins(CostOrRefund))
+            return;  // 잔액 부족 → Return Node
 
         // Switch on ETowerActions
-     
+        // JaeHoon
+		GameState->CoinChange(-CostOrRefund);
     }
 
     switch (TowerAction)
