@@ -25,6 +25,8 @@ ATDTowerBase::ATDTowerBase()
 void ATDTowerBase::BeginPlay()
 {
     Super::BeginPlay();
+    // Note(Jiho): Widget - 쪽에 연결되어 있는 부분이 있어서 기존 BP 와 다르게 처리 해둠.
+    // 
     // jiho : BP Class 맴버에 접근하기 위해서 BP-BeginPlay 에서 임시처리
     // C++ 코드로 모두 변경되면 해당 로직은 여기로 가져온다.
     // 
