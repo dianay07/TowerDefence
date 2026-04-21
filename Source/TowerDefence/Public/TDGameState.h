@@ -5,10 +5,13 @@
 #include "TDGameState.generated.h"
 
 class ATDTowerBase;
+class ATDEnemyActor;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBaseHealthChanged, int32, CurrentHealth, int32, MaxHealth);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCoinsChanged, int32, Change, int32, Coin);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameEnded, bool, bWin);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemyDiedEvent, ATDEnemyActor*, Enemy);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnEnemyAttackedEvent, ATDEnemyActor*, Enemy, float, Damage);
 
 UCLASS()
 class TOWERDEFENCE_API ATDGameState : public AGameStateBase
@@ -74,6 +77,29 @@ public:
 
 private:
 	UFUNCTION() void OnRep_PlacedTowers();
+
+// ── 적 이벤트 Multicast RPC ───────────────────────────────────────────────────
+public:
+	// BP/C++ 에서 구독 가능한 델리게이트 (클라이언트 측 UI/이펙트 연결용)
+	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
+	FOnEnemyDiedEvent OnEnemyDied;
+
+	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
+	FOnEnemyAttackedEvent OnEnemyAttacked;
+
+	// 서버에서 호출 → 모든 클라이언트에 브로드캐스트
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	void NotifyEnemyDied(ATDEnemyActor* Enemy);
+
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	void NotifyEnemyAttacked(ATDEnemyActor* Enemy, float Damage);
+
+private:
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_OnEnemyDied(ATDEnemyActor* Enemy);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_OnEnemyAttacked(ATDEnemyActor* Enemy, float Damage);
 
 // ── 게임 종료 ─────────────────────────────────────────────────────────────────
 public:

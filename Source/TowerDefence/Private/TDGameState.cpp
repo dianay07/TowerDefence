@@ -1,5 +1,6 @@
 #include "TDGameState.h"
 #include "TDTowerBase.h"
+#include "TDEnemyActor.h"
 #include "Net/UnrealNetwork.h"
 
 ATDGameState::ATDGameState()
@@ -75,6 +76,29 @@ void ATDGameState::UnregisterTower(ATDTowerBase* Tower)
 void ATDGameState::OnRep_PlacedTowers()
 {
 	// 클라이언트 측 타워 목록 갱신 시 필요한 UI 업데이트 등 처리
+}
+
+// ── 적 이벤트 Multicast RPC ───────────────────────────────────────────────────
+void ATDGameState::NotifyEnemyDied(ATDEnemyActor* Enemy)
+{
+	if (!HasAuthority()) return;
+	Multicast_OnEnemyDied(Enemy);
+}
+
+void ATDGameState::NotifyEnemyAttacked(ATDEnemyActor* Enemy, float Damage)
+{
+	if (!HasAuthority()) return;
+	Multicast_OnEnemyAttacked(Enemy, Damage);
+}
+
+void ATDGameState::Multicast_OnEnemyDied_Implementation(ATDEnemyActor* Enemy)
+{
+	OnEnemyDied.Broadcast(Enemy);
+}
+
+void ATDGameState::Multicast_OnEnemyAttacked_Implementation(ATDEnemyActor* Enemy, float Damage)
+{
+	OnEnemyAttacked.Broadcast(Enemy, Damage);
 }
 
 // ── 게임 종료 ─────────────────────────────────────────────────────────────────
