@@ -10,6 +10,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "Net/UnrealNetwork.h"
 
 ATDPlayerCharacter::ATDPlayerCharacter()
 {
@@ -36,11 +37,17 @@ ATDPlayerCharacter::ATDPlayerCharacter()
 	CameraComp->bUsePawnControlRotation = false;
 }
 
+void ATDPlayerCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ATDPlayerCharacter, PlayerPawn);
+}
+
 void ATDPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Enhanced Input 매핑 컨텍스트 등록
+	// Enhanced Input 매핑 컨텍스트 등록 (로컬 플레이어만)
 	if (APlayerController* PC = Cast<APlayerController>(GetController()))
 	{
 		PC->bShowMouseCursor = true;
@@ -52,16 +59,16 @@ void ATDPlayerCharacter::BeginPlay()
 		}
 	}
 
-	// 플레이어 폰 스폰 (카메라 앵커와 같은 위치에서 시작)
-	if (PlayerPawnClass)
+	// 플레이어 폰 스폰 — 서버에서만 생성 후 복제
+	if (HasAuthority() && PlayerPawnClass)
 	{
 		FActorSpawnParameters Params;
 		Params.Owner = this;
 		PlayerPawn = GetWorld()->SpawnActor<ATDPlayerPawn>(PlayerPawnClass, GetActorLocation(), FRotator::ZeroRotator, Params);
 	}
 
-	// HUD 위젯 생성 및 뷰포트 추가
-	if (HUDClass)
+	// HUD 위젯 생성 — 로컬 플레이어만
+	if (IsLocallyControlled() && HUDClass)
 	{
 		HUDWidget = CreateWidget(GetWorld(), HUDClass);
 		if (HUDWidget)
@@ -139,6 +146,7 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 
 void ATDPlayerCharacter::HandleClick()
 {
+	if (!IsLocallyControlled()) return;
 	APlayerController* PC = Cast<APlayerController>(GetController());
 	if (!PC || !PlayerPawn) return;
 

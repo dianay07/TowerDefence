@@ -33,6 +33,7 @@ void UTDWaveManagerComponent::TickComponent(float DeltaTime, ELevelTick TickType
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (!GetOwner() || !GetOwner()->HasAuthority()) return; // WaveManager는 서버 전용
 	UpdateWave(DeltaTime);
 }
 

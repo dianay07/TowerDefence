@@ -12,6 +12,8 @@
 
 ATDTowerBase::ATDTowerBase()
 {
+	bReplicates = true;
+
 	HighlightStaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HighlightStaticMeshComp"));
 	HighlightStaticMeshComp->SetupAttachment(RootComponent);
 

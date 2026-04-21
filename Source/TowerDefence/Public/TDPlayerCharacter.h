@@ -25,6 +25,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 // ── 카메라 & 엣지 스크롤 ──────────────────────────────────────────────────────
 private:
@@ -67,7 +68,8 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
 	TSubclassOf<ATDPlayerPawn> PlayerPawnClass;
 
-	UPROPERTY()
+	// 서버에서 스폰 후 복제 → 클라이언트에서 HandleClick 시 유효한 참조로 Server RPC 호출 가능
+	UPROPERTY(Replicated)
 	ATDPlayerPawn* PlayerPawn;
 
 public:

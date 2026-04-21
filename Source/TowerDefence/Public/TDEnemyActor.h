@@ -66,11 +66,14 @@ protected:
 	UPROPERTY()
 	ATDPath* CurrentPath;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Path")
+	UPROPERTY(ReplicatedUsing=OnRep_Distance, BlueprintReadOnly, Category = "Path")
 	float Distance = 0.f;
 
-	UPROPERTY(BlueprintReadOnly, Category = "State")
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "State")
 	bool IsDead = false;
+
+	UFUNCTION()
+	void OnRep_Distance();
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "TD|Enemy")

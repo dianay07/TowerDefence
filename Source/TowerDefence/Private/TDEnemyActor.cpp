@@ -6,10 +6,13 @@
 #include "TDGameMode.h"
 #include "TDGameState.h"
 #include "TDPathActor.h"
+#include "Net/UnrealNetwork.h"
 
 ATDEnemyActor::ATDEnemyActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
+	SetReplicateMovement(false);			// Distance 기반 이동이므로 기본 이동 복제 비활성화
 
 	// 컴포넌트 생성
 	SceneRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRootComp"));
@@ -36,6 +39,21 @@ void ATDEnemyActor::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
+
+void ATDEnemyActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ATDEnemyActor, Distance);
+	DOREPLIFETIME(ATDEnemyActor, IsDead);
+}
+
+void ATDEnemyActor::OnRep_Distance()
+{
+	if (CurrentPath)
+	{
+		SetActorLocation(CurrentPath->GetLocation(Distance));
+	}
 }
 
 void ATDEnemyActor::Tick(float DeltaTime)
@@ -127,6 +145,7 @@ void ATDEnemyActor::InitializePath(ATDPath* Path)
 
 float ATDEnemyActor::Advance(float DeltaTime)
 {
+	if (!HasAuthority()) return Distance;
 	if (!CurrentPath || IsDead) return Distance;
 
 	// 이동 속도에 따라 경로 진행
