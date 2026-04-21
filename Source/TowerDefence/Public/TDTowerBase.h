@@ -19,6 +19,9 @@ class TOWERDEFENCE_API ATDTowerBase : public ATDTowerPawn
 	GENERATED_BODY()
 	
 	ATDTowerBase();
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Mesh, meta = (AllowPrivateAccess = "true"))
 	UChildActorComponent* ChildActorWeaponComp;
@@ -42,8 +45,11 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
     FTowerData TowerData;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
-    int32 UpgradeLevel;
+    UPROPERTY(ReplicatedUsing=OnRep_UpgradeLevel, EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
+    int32 UpgradeLevel = 0;
+
+    UFUNCTION()
+    void OnRep_UpgradeLevel();
 
     UPROPERTY(BlueprintReadWrite, Category = "TowerBase")
     bool IsDataValid = false;

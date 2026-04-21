@@ -44,16 +44,21 @@ void ATDEnemyActor::PostInitializeComponents()
 void ATDEnemyActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ATDEnemyActor, CurrentPath);
 	DOREPLIFETIME(ATDEnemyActor, Distance);
 	DOREPLIFETIME(ATDEnemyActor, IsDead);
+}
+
+void ATDEnemyActor::OnRep_CurrentPath()
+{
+	if (CurrentPath)
+		SetActorLocation(CurrentPath->GetLocation(Distance));
 }
 
 void ATDEnemyActor::OnRep_Distance()
 {
 	if (CurrentPath)
-	{
 		SetActorLocation(CurrentPath->GetLocation(Distance));
-	}
 }
 
 void ATDEnemyActor::Tick(float DeltaTime)

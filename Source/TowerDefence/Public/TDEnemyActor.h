@@ -63,7 +63,7 @@ protected:
 
 // ── 경로 이동 ─────────────────────────────────────────────────────────────────
 protected:
-	UPROPERTY()
+	UPROPERTY(ReplicatedUsing=OnRep_CurrentPath)
 	ATDPath* CurrentPath;
 
 	UPROPERTY(ReplicatedUsing=OnRep_Distance, BlueprintReadOnly, Category = "Path")
@@ -71,6 +71,9 @@ protected:
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "State")
 	bool IsDead = false;
+
+	UFUNCTION()
+	void OnRep_CurrentPath();
 
 	UFUNCTION()
 	void OnRep_Distance();

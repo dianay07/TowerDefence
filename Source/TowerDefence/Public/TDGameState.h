@@ -16,20 +16,26 @@ class TOWERDEFENCE_API ATDGameState : public AGameStateBase
 public:
 	ATDGameState();
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 // ── 게임 데이터 ───────────────────────────────────────────────────────────────
 public:
-	// Phase 2에서 ReplicatedUsing=OnRep_* 으로 교체 예정
-	UPROPERTY(BlueprintReadOnly, Category = "Game")
+	UPROPERTY(ReplicatedUsing=OnRep_SharedCoin, BlueprintReadOnly, Category = "Game")
 	int32 SharedCoin = 2000;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Game")
+	UPROPERTY(ReplicatedUsing=OnRep_BaseHealth, BlueprintReadOnly, Category = "Game")
 	int32 BaseHealth = 20;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Game")
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game")
 	int32 MaxBaseHealth = 20;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Game")
+	UPROPERTY(ReplicatedUsing=OnRep_CurrentWave, BlueprintReadOnly, Category = "Game")
 	int32 CurrentWave = 0;
+
+private:
+	UFUNCTION() void OnRep_SharedCoin();
+	UFUNCTION() void OnRep_BaseHealth();
+	UFUNCTION() void OnRep_CurrentWave();
 
 // ── 기지 체력 ─────────────────────────────────────────────────────────────────
 public:

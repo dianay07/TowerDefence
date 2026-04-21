@@ -1,6 +1,7 @@
 #include "TDGameMode.h"
 #include "TDGameInstance.h"
 #include "TDGameState.h"
+#include "TowerManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "TDFL_Utility.h"
 

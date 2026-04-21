@@ -2,6 +2,7 @@
 
 
 #include "TDTowerBase.h"
+#include "Net/UnrealNetwork.h"
 #include "TDGameMode.h"
 #include "TDGameState.h"
 #include "TowerManager.h"
@@ -22,6 +23,17 @@ ATDTowerBase::ATDTowerBase()
 	
     ChildActorWeaponComp = CreateDefaultSubobject<UChildActorComponent>(TEXT("ChildActorWeapon"));
     ChildActorWeaponComp->SetupAttachment(RootComponent);
+}
+
+void ATDTowerBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ATDTowerBase, UpgradeLevel);
+}
+
+void ATDTowerBase::OnRep_UpgradeLevel()
+{
+	// 업그레이드 비주얼 갱신 — BP 이벤트로 추가 처리 가능
 }
 
 void ATDTowerBase::BeginPlay()
@@ -236,7 +248,8 @@ void ATDTowerBase::UpgradeTower()
 
 void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
 {
-    // JaeHoon : coin 관련 기능은 GameMode에서 GameState로 이양
+    if (!HasAuthority()) return;
+
     ATDGameState* GameState = Cast<ATDGameState>(UGameplayStatics::GetGameState(this));
 
     // [Sequence Then 0] 플레이어의 현재 선택 해제
