@@ -4,6 +4,8 @@
 #include "GameFramework/GameStateBase.h"
 #include "TDGameState.generated.h"
 
+class ATDTowerBase;
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBaseHealthChanged, int32, CurrentHealth, int32, MaxHealth);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCoinsChanged, int32, Change, int32, Coin);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameEnded, bool, bWin);
@@ -58,6 +60,20 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
 	void CoinChange(int32 change);
+
+// ── 배치된 타워 ───────────────────────────────────────────────────────────────
+public:
+	UPROPERTY(ReplicatedUsing=OnRep_PlacedTowers, BlueprintReadOnly, Category = "Game")
+	TArray<ATDTowerBase*> PlacedTowers;
+
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	void RegisterTower(ATDTowerBase* Tower);
+
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	void UnregisterTower(ATDTowerBase* Tower);
+
+private:
+	UFUNCTION() void OnRep_PlacedTowers();
 
 // ── 게임 종료 ─────────────────────────────────────────────────────────────────
 public:
