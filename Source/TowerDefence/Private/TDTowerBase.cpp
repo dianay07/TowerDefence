@@ -57,6 +57,28 @@ void ATDTowerBase::BeginPlay()
 
     // Get Tower Data
     //GetTowerData();
+
+    // PlacedTowers 등록
+    if (HasAuthority())
+    {
+        if (ATDGameState* GS = Cast<ATDGameState>(GetWorld()->GetGameState()))
+        {
+            GS->RegisterTower(this);
+        }
+    }
+}
+
+void ATDTowerBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+    if (HasAuthority())
+    {
+        if (ATDGameState* GS = Cast<ATDGameState>(GetWorld()->GetGameState()))
+        {
+            GS->UnregisterTower(this);
+        }
+    }
+
+    Super::EndPlay(EndPlayReason);
 }
 
 void ATDTowerBase::Tick(float DeltaTime)
