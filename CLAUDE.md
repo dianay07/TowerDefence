@@ -60,8 +60,8 @@
 ┌──────────────────────────────────────────────────────────────┐
 │ GameInstance Layer (세션 수명, 로컬)                          │
 │  ├ UTDGameInstance              세이브/로드 (유지)            │
-│  ├ UTDTowerDatabaseSubsystem    [NEW] TowerData 정적 조회     │
-│  └ UTDEnemyDatabaseSubsystem    [NEW] EnemyData 정적 조회     │
+│  ├ UTDTowerDataTableSubsystem    [NEW] TowerData 정적 조회     │
+│  └ UTDEnemyDataTableSubsystem    [NEW] EnemyData 정적 조회     │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -112,7 +112,7 @@
 
 | 기능 | 현재 위치 | 목표 위치 | 권한 |
 |---|---|---|---|
-| TowerData 테이블 로드/조회 | `ATowerManager::ImportData/GetTowerData` | `UTDTowerDatabaseSubsystem` (GameInstance) | 로컬 readonly |
+| TowerData 테이블 로드/조회 | `ATowerManager::ImportData/GetTowerData` | `UTDTowerDataTableSubsystem` (GameInstance) | 로컬 readonly |
 | 슬롯 탐색 (`tile-dirt`) | `ATowerManager::SpawnTowers` | `UTDTowerSpawnerComponent::CollectSlots` | 서버 |
 | 초기 타워 스폰 | 같음 | `UTDTowerSpawnerComponent::SpawnInitial` | 서버 |
 | 타워 설치/판매 요청 | `ATDTowerBase::DoTowerAction` 직접 | `ATDPlayerController::ServerPlaceTower/SellTower` | Client→Server RPC |
@@ -130,7 +130,7 @@
 
 | 기능 | 현재 위치 | 목표 위치 | 권한 |
 |---|---|---|---|
-| EnemyData / `EnemyTypeClass` TMap | `UTDWaveManagerComponent::EnemyTypeClass` | `UTDEnemyDatabaseSubsystem` (GameInstance) | 로컬 readonly |
+| EnemyData / `EnemyTypeClass` TMap | `UTDWaveManagerComponent::EnemyTypeClass` | `UTDEnemyDataTableSubsystem` (GameInstance) | 로컬 readonly |
 | 적 스폰 (`SpawnActor`) | `UTDWaveManagerComponent::SpawnEnemy` | `UTDEnemySpawnerComponent` 또는 Wave 유지 | 서버 |
 | 경로 진행 (`Advance`) | `ATDEnemyActor::Advance` | 유지 | 서버 |
 | 체력/이동속도/데미지 (GAS) | `ATDEnemyActor` + `UTDEnemySet` | 유지 | 서버 |
@@ -183,9 +183,9 @@
 ```
 Source/TowerDefence/
 ├── Public/
-│   ├── Data/
-│   │   ├── TDTowerDatabaseSubsystem.h     [NEW] GameInstanceSubsystem
-│   │   └── TDEnemyDatabaseSubsystem.h     [NEW] GameInstanceSubsystem
+│   ├── GameData/
+│   │   ├── TDTowerDataTableSubsystem.h     [NEW] GameInstanceSubsystem
+│   │   └── TDEnemyDataTableSubsystem.h     [NEW] GameInstanceSubsystem
 │   ├── Server/
 │   │   ├── TDTowerSpawnerComponent.h      [NEW]
 │   │   ├── TDEnemySpawnerComponent.h      [NEW/선택]
@@ -274,7 +274,7 @@ OnEnemyDied
 신규 Subsystem은 `UTDFL_Utility`에 접근자를 추가해 호출 지점을 단일화한다.
 
 ```cpp
-static UTDTowerDatabaseSubsystem* GetTowerDatabase(const UObject* WorldContextObject);
+static UTDTowerDataTableSubsystem* GetTowerDataTable(const UObject* WorldContextObject);
 static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContextObject);
 ```
 
@@ -303,7 +303,7 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 1. **GameState 복제화**
    - `SharedCoin`, `BaseHealth`, `CurrentWave`에 `Replicated` 지정
    - `OnRep_*`에서 기존 델리게이트 브로드캐스트
-2. **TowerDatabaseSubsystem 도입**
+2. **TowerDataTableSubsystem 도입**
    - `ATowerManager::GetTowerData` 사용처를 전부 Subsystem으로 교체
    - `ATowerManager` 아직 유지 (호환용)
 3. **TowerSpawnerComponent 도입**
@@ -319,7 +319,7 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 7. **ActiveEnemies 복제**
    - WaveManager의 Enemies를 GameState로 이동
    - `GetFurthestEnemy`는 GameState 조회로 전환
-8. **EnemyDatabaseSubsystem / EnemySpawnerComponent 분리 (선택)**
+8. **EnemyDataTableSubsystem / EnemySpawnerComponent 분리 (선택)**
 9. **PoolComponent 분리 (선택)**
 
 ---
@@ -350,3 +350,4 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 | 날짜 | 내용 | 담당 |
 |---|---|---|
 | 2026-04-21 | 초안 작성: 5레이어 아키텍처, 도메인별 배치, 마이그레이션 순서 정의 | - |
+| 2026-04-21 | `Database` → `DataTable` 네이밍 통일, 폴더 `Data/` → `GameData/` | - |
