@@ -6,6 +6,7 @@
 #include "TDTowerDataTableSubsystem.generated.h"
 
 class UDataTable;
+class ATDTowerBase;
 
 /**
  * 타워 정적 데이터(DataTable) 캐시 및 조회를 담당.
@@ -28,14 +29,14 @@ public:
 
 	/** 기본 타워 클래스(BP_BaseTower) 주입. 배치 요청 시 어디서 스폰할지 참조용. */
 	UFUNCTION(BlueprintCallable, Category = "TD|TowerDataTable")
-	void SetBaseTowerClass(TSubclassOf<AActor> InClass) { BaseTowerClass = InClass; }
+	void SetBaseTowerClass(TSubclassOf<ATDTowerBase> InClass) { BaseTowerClass = InClass; }
 
 	/** 타입별 타워 데이터 조회. 없으면 false. */
 	UFUNCTION(BlueprintCallable, Category = "TD|TowerDataTable")
 	bool GetTowerData(ETowerType TowerType, FTowerData& OutTowerData) const;
 
 	UFUNCTION(BlueprintPure, Category = "TD|TowerDataTable")
-	TSubclassOf<AActor> GetBaseTowerClass() const { return BaseTowerClass; }
+	TSubclassOf<ATDTowerBase> GetBaseTowerClass() const { return BaseTowerClass; }
 
 	UFUNCTION(BlueprintPure, Category = "TD|TowerDataTable")
 	bool IsLoaded() const { return bLoaded; }
@@ -49,7 +50,7 @@ private:
 	TMap<ETowerType, FTowerData> TowerDataMap;
 
 	UPROPERTY(Transient)
-	TSubclassOf<AActor> BaseTowerClass;
+	TSubclassOf<ATDTowerBase> BaseTowerClass;
 
 	bool bLoaded = false;
 };
