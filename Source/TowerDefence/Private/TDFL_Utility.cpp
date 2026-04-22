@@ -14,6 +14,7 @@
  #include "TDWaveManagerComponent.h"
 // #include "TDTowerManagerComponent.h"
  #include "TDEventManagerComponent.h"
+#include "GameData/TDEnemyDataTableSubsystem.h"
 
 int32 UTDFL_Utility::GetCVarDevMode()
 {
@@ -62,6 +63,14 @@ UTDEventManagerComponent* UTDFL_Utility::GetEventManager(const UObject* WorldCon
 		return GM->EventManager;
 	else
 		return nullptr;
+}
+
+UTDEnemyDataTableSubsystem* UTDFL_Utility::GetEnemyDataTable(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject) return nullptr;
+	UGameInstance* GI = UGameplayStatics::GetGameInstance(WorldContextObject);
+	if (!GI) return nullptr;
+	return GI->GetSubsystem<UTDEnemyDataTableSubsystem>();
 }
 
 

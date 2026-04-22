@@ -35,8 +35,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Wave")
 	TArray<ATDEnemyActor*> ExpiredEnemies;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wave")
-	TMap<EEnemyType, TSubclassOf<ATDEnemyActor>> EnemyTypeClass;
+	// EnemyTypeClass TMap은 UTDEnemyDataTableSubsystem 으로 이전됨.
+	// BP_WaveManager 에서 설정하던 값은 BP_GameMode 의 EnemyClasses 로 이관할 것.
 
 // ── 웨이브 데이터 ─────────────────────────────────────────────────────────────
 public:

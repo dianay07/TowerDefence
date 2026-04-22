@@ -4,17 +4,25 @@
 #include "TowerManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "TDFL_Utility.h"
+#include "GameData/TDEnemyDataTableSubsystem.h"
 
 ATDGameMode::ATDGameMode()
 {
 	// 게임 관리 컴포넌트 생성
-	EventManager = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
-	WaveManager  = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
+	EventManager  = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
+	WaveManager   = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
+	EnemySpawner  = CreateDefaultSubobject<UTDEnemySpawnerComponent>(TEXT("EnemySpawner"));
 }
 
 void ATDGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// EnemyClasses TMap을 GameInstanceSubsystem에 주입
+	if (UTDEnemyDataTableSubsystem* DT = UTDFL_Utility::GetEnemyDataTable(this))
+	{
+		DT->RegisterEnemyClasses(EnemyClasses);
+	}
 }
 
 // ── 게임 상태 ─────────────────────────────────────────────────────────────────

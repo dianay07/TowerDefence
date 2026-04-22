@@ -3,6 +3,7 @@
 #include "TDFL_Utility.h"
 #include "TDGameMode.h"
 #include "TDPathActor.h"
+#include "Server/TDEnemySpawnerComponent.h"
 #include "Kismet/DataTableFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -132,20 +133,17 @@ void UTDWaveManagerComponent::ImportData()
 // ── 적 스폰 ───────────────────────────────────────────────────────────────────
 void UTDWaveManagerComponent::SpawnEnemy(EEnemyType EnemyType)
 {
-	TSubclassOf<ATDEnemyActor>* EnemyActor = EnemyTypeClass.Find(EnemyType);
-
-	if (!EnemyActor || !*EnemyActor) return;
 	if (Paths.IsEmpty() || !IsValid(Paths[0])) return;
 
-	// 경로 시작 위치에 적 스폰
-	FTransform SpawnTransform(Paths[0]->GetLocation(0.f));
-	ATDEnemyActor* Enemy = GetWorld()->SpawnActor<ATDEnemyActor>(*EnemyActor, SpawnTransform);
+	// UTDEnemySpawnerComponent 경유로 스폰 (서버 전용, EnemyTypeClass TMap 은 Subsystem으로 이전됨)
+	ATDGameMode* GM = Cast<ATDGameMode>(GetOwner());
+	if (!IsValid(GM) || !IsValid(GM->EnemySpawner)) return;
 
+	ATDEnemyActor* Enemy = GM->EnemySpawner->SpawnEnemy(EnemyType, Paths[0]);
 	if (!IsValid(Enemy)) return;
 
 	Enemies.Add(Enemy);
-	Enemy->InitializePath(Paths[0]);
-	// 사망 이벤트 바인딩
+	// 사망 이벤트 바인딩 — Spawner가 아닌 WaveManager가 담당 (Spawner는 Wave를 모름)
 	Enemy->OnDied.AddDynamic(this, &UTDWaveManagerComponent::OnEnemyDied);
 }
 
