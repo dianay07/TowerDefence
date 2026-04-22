@@ -60,8 +60,9 @@
 ┌──────────────────────────────────────────────────────────────┐
 │ GameInstance Layer (세션 수명, 로컬)                          │
 │  ├ UTDGameInstance              세이브/로드 (유지)            │
-│  ├ UTDTowerDataTableSubsystem    [NEW] TowerData 정적 조회     │
-│  └ UTDEnemyDataTableSubsystem    [NEW] EnemyData 정적 조회     │
+│  ├ UTDTowerDataTableSubsystem   [NEW] TowerData 정적 조회     │
+│  ├ UTDEnemyDataTableSubsystem   [NEW] EnemyData 정적 조회     │
+│  └ UTDLevelSessionSubsystem     [NEW] 스테이지 전환 + DT 주입 │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -186,6 +187,8 @@ Source/TowerDefence/
 │   ├── GameData/
 │   │   ├── TDTowerDataTableSubsystem.h     [NEW] GameInstanceSubsystem
 │   │   └── TDEnemyDataTableSubsystem.h     [NEW] GameInstanceSubsystem
+│   ├── Session/
+│   │   └── TDLevelSessionSubsystem.h       [NEW] GameInstanceSubsystem, 스테이지 전환+DT 주입
 │   ├── Server/
 │   │   ├── TDTowerSpawnerComponent.h      [NEW]
 │   │   ├── TDEnemySpawnerComponent.h      [NEW/선택]
@@ -233,7 +236,28 @@ ATDPlayerController::ServerPlaceTower ─RPC─▶ GameMode->TowerSpawner->TryPl
 [All Clients] ◀─── OnRep_PlacedTowers / OnRep_SharedCoin 수신 → HUD 갱신
 ```
 
-### 5-2. 적 사망 (멀티플레이)
+### 5-2. 스테이지 전환 (레벨별 DT 주입)
+
+```
+[메뉴]
+UTDLevelSessionSubsystem::RequestLoadStage(StageId)
+  ├ DT_Stages 에서 Row 검색 → Map 경로 획득
+  └ UGameplayStatics::OpenLevel(MapPath)
+         ↓
+[월드 로드 완료]  (메뉴 경유 / PIE 직접 열기 둘 다 동일)
+FCoreUObjectDelegates::PostLoadMapWithWorld  ─► OnPostLoadMap(NewWorld)
+         ↓
+  DT_Stages 에서 NewWorld 경로로 Row 역조회
+         ↓
+  ApplyStageData(Row)
+    ├ TowerDT → UTDTowerDataTableSubsystem::LoadFromDataTable
+    ├ EnemyDT → UTDEnemyDataTableSubsystem::LoadFromDataTable
+    └ WaveDT  → (WaveManager 에 주입)
+
+※ 서버/클라 각자의 머신에서 독립적으로 실행 → 각자 로컬 Subsystem 캐시만 갱신 (복제 아님)
+```
+
+### 5-3. 적 사망 (멀티플레이)
 
 ```
 [Server]
@@ -333,6 +357,8 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 - **`TObjectPtr` 으로 잡힌 Actor가 `Destroy()` 되어도 소멸 안 됨** — 강참조 해제 누락. 불필요한 참조는 `TWeakObjectPtr`로.
 - **GameMode의 Owner로 스폰해도 자동 소멸 안 됨** — Owner는 논리적 표시일 뿐. `UChildActorComponent` 또는 `Destroyed()` 오버라이드 필요.
 - **`ProcessEvent`로 BP 함수 호출 시 파라미터 오정렬** — 직접 C++ 함수로 노출하거나 `UFUNCTION(BlueprintCallable)`로 바인딩 권장.
+- **GameMode에 붙인 컴포넌트는 클라에서 실행되지 않는다** — 레벨 관련 초기화(DT 주입 등)가 양쪽에 필요하면 `GameInstanceSubsystem` + `PostLoadMapWithWorld` 훅에 둘 것.
+- **`FCoreUObjectDelegates::PostLoadMapWithWorld`는 PIE 에서도 호출** — 직접 열기(Play-in-Editor)와 메뉴 경유 OpenLevel 둘 다 잡아준다. 메뉴 전용으로 가정하지 말 것.
 
 ---
 
@@ -351,3 +377,4 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 |---|---|---|
 | 2026-04-21 | 초안 작성: 5레이어 아키텍처, 도메인별 배치, 마이그레이션 순서 정의 | - |
 | 2026-04-21 | `Database` → `DataTable` 네이밍 통일, 폴더 `Data/` → `GameData/` | - |
+| 2026-04-22 | `UTDLevelSessionSubsystem` 추가 — 스테이지 전환 및 레벨별 DT 주입 (`DT_Stages` + `PostLoadMapWithWorld` 훅) | - |
