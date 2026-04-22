@@ -154,7 +154,7 @@ void UTDTowerPlacementSubsystem::SpawnGhostMesh()
 		{
 			UStaticMeshComponent* GhostMesh = NewObject<UStaticMeshComponent>(GhostMeshActor, TEXT("GhostMesh"));
 			GhostMesh->SetupAttachment(Root);
-			GhostMesh->SetStaticMesh(const_cast<UStaticMesh*>(SrcMesh->GetStaticMesh()));
+			GhostMesh->SetStaticMesh(SrcMesh->GetStaticMesh());
 			GhostMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 			GhostMesh->RegisterComponent();
 		}
