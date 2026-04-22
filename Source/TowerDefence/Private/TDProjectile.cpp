@@ -9,6 +9,9 @@ ATDProjectile::ATDProjectile()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	bReplicates = true;          // 클라이언트에 Actor 복제
+	SetReplicateMovement(true);  // 서버의 위치/회전을 클라이언트에 동기화
+
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
 	RootComponent = DefaultSceneRoot;
 
@@ -43,6 +46,8 @@ void ATDProjectile::Tick(float DeltaTime)
 
 void ATDProjectile::MoveTowardsTarget(float Delta)
 {
+    if (!HasAuthority()) return;  // 이동 및 풀 반납은 서버에서만 실행
+
     // [Image 1] Target 유효성 체크
     if (!IsValid(Target))
     {
@@ -91,6 +96,8 @@ void ATDProjectile::MoveTowardsTarget(float Delta)
 }
 void ATDProjectile::OnHitTarget()
 {
+    if (!HasAuthority()) return;  // 데미지 처리 및 풀 반납은 서버에서만 실행
+
     // 1. Damage Enemy
     UTDFL_Utility::EnemyDamage(Target, Damage, BP_GE_DamageClass);
     Target = nullptr;

@@ -16,6 +16,7 @@ void ATDGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(ATDGameState, MaxBaseHealth);
 	DOREPLIFETIME(ATDGameState, CurrentWave);
 	DOREPLIFETIME(ATDGameState, PlacedTowers);
+	DOREPLIFETIME(ATDGameState, ActiveEnemies);
 }
 
 // ── 복제 콜백 ─────────────────────────────────────────────────────────────────
@@ -76,6 +77,61 @@ void ATDGameState::UnregisterTower(ATDTowerBase* Tower)
 void ATDGameState::OnRep_PlacedTowers()
 {
 	// 클라이언트 측 타워 목록 갱신 시 필요한 UI 업데이트 등 처리
+}
+
+// ── 활성 적 목록 ──────────────────────────────────────────────────────────────
+void ATDGameState::RegisterEnemy(ATDEnemyActor* Enemy)
+{
+	if (!HasAuthority() || !IsValid(Enemy)) return;
+	ActiveEnemies.AddUnique(Enemy);
+}
+
+void ATDGameState::UnregisterEnemy(ATDEnemyActor* Enemy)
+{
+	if (!HasAuthority()) return;
+	ActiveEnemies.Remove(Enemy);
+}
+
+void ATDGameState::OnRep_ActiveEnemies()
+{
+	// 클라이언트 측 적 목록 갱신 — UI/미니맵 등 연결 시 여기서 broadcast
+}
+
+ATDEnemyActor* ATDGameState::GetFurthestEnemy(FVector Location, float Radius) const
+{
+	float HighDist  = 0.f;
+	ATDEnemyActor* HighEnemy = nullptr;
+
+	for (ATDEnemyActor* Enemy : ActiveEnemies)
+	{
+		if (!IsValid(Enemy)) continue;
+		if (FVector::Dist(Enemy->GetActorLocation(), Location) <= Radius)
+		{
+			if (Enemy->GetDistance() > HighDist)
+			{
+				HighDist  = Enemy->GetDistance();
+				HighEnemy = Enemy;
+			}
+		}
+	}
+
+	return HighEnemy;
+}
+
+TArray<ATDEnemyActor*> ATDGameState::GetEnemiesInRange(FVector Location, float Radius) const
+{
+	TArray<ATDEnemyActor*> Result;
+
+	for (ATDEnemyActor* Enemy : ActiveEnemies)
+	{
+		if (!IsValid(Enemy)) continue;
+		if (FVector::Dist(Enemy->GetActorLocation(), Location) <= Radius)
+		{
+			Result.Add(Enemy);
+		}
+	}
+
+	return Result;
 }
 
 // ── 적 이벤트 Multicast RPC ───────────────────────────────────────────────────

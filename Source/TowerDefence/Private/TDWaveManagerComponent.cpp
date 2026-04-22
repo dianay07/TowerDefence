@@ -1,5 +1,6 @@
 #include "TDWaveManagerComponent.h"
 #include "TDEnemyActor.h"
+#include "TDGameState.h"
 #include "TDFL_Utility.h"
 #include "TDGameMode.h"
 #include "TDPathActor.h"
@@ -83,7 +84,9 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 		}
 	}
 
-	// 만료 적 제거
+	// 만료 적 제거 (경로 끝 도달)
+	ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>();
+
 	for(int i = 0; i < ExpiredEnemies.Num(); i++)
 	{
 		ATDEnemyActor* Enemy = ExpiredEnemies[i];
@@ -94,6 +97,10 @@ void UTDWaveManagerComponent::AdvanceEnemies(float Delta)
 		}
 
 		Enemies.Remove(Enemy);
+
+		// GameState::ActiveEnemies에서도 제거
+		if (GS) GS->UnregisterEnemy(Enemy);
+
 		Enemy->Destroy();
 
 		if (DoEnemiesRemain())
@@ -143,46 +150,34 @@ void UTDWaveManagerComponent::SpawnEnemy(EEnemyType EnemyType)
 	if (!IsValid(Enemy)) return;
 
 	Enemies.Add(Enemy);
+
+	// GameState::ActiveEnemies에 등록 (클라이언트 복제용)
+	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
+	{
+		GS->RegisterEnemy(Enemy);
+	}
+
 	// 사망 이벤트 바인딩 — Spawner가 아닌 WaveManager가 담당 (Spawner는 Wave를 모름)
 	Enemy->OnDied.AddDynamic(this, &UTDWaveManagerComponent::OnEnemyDied);
 }
 
-// ── 적 조회 ───────────────────────────────────────────────────────────────────
+// ── 적 조회 (GameState::ActiveEnemies 경유 — 서버/클라 모두 호출 가능) ──────────
 ATDEnemyActor* UTDWaveManagerComponent::GetFurthestEnemy(FVector Location, float Radius)
 {
-	// 범위 내에서 가장 멀리 진행한 적 반환
-	float HighDist = 0.f;
-	ATDEnemyActor* HighEnemy = nullptr;
-
-	for(int i = 0; i < Enemies.Num(); i++)
+	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
 	{
-		if (FVector::Dist(Enemies[i]->GetActorLocation(), Location) <= Radius)
-		{
-			if (Enemies[i]->GetDistance() > HighDist)
-			{
-				HighDist = Enemies[i]->GetDistance();
-				HighEnemy = Enemies[i];
-			}
-		}
+		return GS->GetFurthestEnemy(Location, Radius);
 	}
-
-	return HighEnemy;
+	return nullptr;
 }
 
 TArray<ATDEnemyActor*> UTDWaveManagerComponent::GetEnemiesInRange(FVector Location, float Radius)
 {
-	// 범위 내 모든 적 반환
-	TArray<ATDEnemyActor*> TheEnemies;
-
-	for (int i = 0; i < Enemies.Num(); i++)
+	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
 	{
-		if (FVector::Dist(Enemies[i]->GetActorLocation(), Location) <= Radius)
-		{
-			TheEnemies.Add(Enemies[i]);
-		}
+		return GS->GetEnemiesInRange(Location, Radius);
 	}
-
-	return TheEnemies;
+	return TArray<ATDEnemyActor*>();
 }
 
 // ── 사망 이벤트 ───────────────────────────────────────────────────────────────
@@ -195,13 +190,18 @@ void UTDWaveManagerComponent::OnEnemyDied(ATDEnemyActor* Enemy)
 
 	UE_LOG(LogTemp, Warning, TEXT("[WaveManager] KillCount: %.0f | Enemies Remaining: %d"), KillCount, Enemies.Num());
 
+	// GameState::ActiveEnemies에서 제거
+	if (ATDGameState* GS = GetWorld()->GetGameState<ATDGameState>())
+	{
+		GS->UnregisterEnemy(Enemy);
+
+		// [Step 5] EventManager 대신 GameState Multicast RPC로 사망 이벤트 전파
+		GS->NotifyEnemyDied(Enemy);
+	}
+
 	ATDGameMode* GM = Cast<ATDGameMode>(GetOwner());
 	if (IsValid(GM))
 	{
-		// EventManager에 사망 이벤트 전파
-		if (IsValid(GM->EventManager))
-			GM->EventManager->BroadcastEnemyDied(Enemy);
-
 		GM->CheckIfWin();
 	}
 }

@@ -78,6 +78,29 @@ public:
 private:
 	UFUNCTION() void OnRep_PlacedTowers();
 
+// ── 활성 적 목록 ──────────────────────────────────────────────────────────────
+public:
+	/** 현재 살아있는 Enemy 목록. 서버에서 관리, 클라이언트에 복제됨. */
+	UPROPERTY(ReplicatedUsing=OnRep_ActiveEnemies, BlueprintReadOnly, Category = "Game")
+	TArray<ATDEnemyActor*> ActiveEnemies;
+
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	void RegisterEnemy(ATDEnemyActor* Enemy);
+
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	void UnregisterEnemy(ATDEnemyActor* Enemy);
+
+	/** 범위 내에서 경로를 가장 멀리 진행한 적 반환. 서버/클라 모두 호출 가능. */
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	ATDEnemyActor* GetFurthestEnemy(FVector Location, float Radius) const;
+
+	/** 범위 내 모든 적 반환. 서버/클라 모두 호출 가능. */
+	UFUNCTION(BlueprintCallable, Category = "TD|GameState")
+	TArray<ATDEnemyActor*> GetEnemiesInRange(FVector Location, float Radius) const;
+
+private:
+	UFUNCTION() void OnRep_ActiveEnemies();
+
 // ── 적 이벤트 Multicast RPC ───────────────────────────────────────────────────
 public:
 	// BP/C++ 에서 구독 가능한 델리게이트 (클라이언트 측 UI/이펙트 연결용)
