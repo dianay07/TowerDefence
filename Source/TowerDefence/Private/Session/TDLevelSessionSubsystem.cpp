@@ -78,6 +78,60 @@ bool UTDLevelSessionSubsystem::RequestLoadStage(FName StageId)
 	return true;
 }
 
+void UTDLevelSessionSubsystem::K2_ReloadCurrentStage(UObject* WorldContextObject)
+{
+	// WorldContext 로 받은 월드가 있으면 우선, 없으면 GameInstance 의 기본 월드.
+	UWorld* TargetWorld = WorldContextObject
+		? GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull)
+		: nullptr;
+	if (!TargetWorld)
+	{
+		TargetWorld = GetWorld();
+	}
+
+	if (!TargetWorld)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[LevelSession] K2_ReloadCurrentStage: no valid world."));
+		return;
+	}
+
+	OnPostLoadMap(TargetWorld);
+}
+
+void UTDLevelSessionSubsystem::DebugApplyStage(FName StageId,
+	UDataTable* TowerDT, UDataTable* EnemyDT, UDataTable* WaveDT)
+{
+	UGameInstance* GI = GetGameInstance();
+	if (!GI)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[LevelSession|Debug] No GameInstance."));
+		return;
+	}
+
+	if (TowerDT)
+	{
+		if (UTDTowerDataTableSubsystem* Sub = GI->GetSubsystem<UTDTowerDataTableSubsystem>())
+		{
+			Sub->LoadFromDataTable(TowerDT);
+		}
+	}
+
+	// Enemy / Wave 전용 Subsystem 이 생기면 동일 패턴으로 여기에 추가:
+	// if (EnemyDT) { if (auto* Sub = GI->GetSubsystem<UTDEnemyDataTableSubsystem>()) Sub->LoadFromDataTable(EnemyDT); }
+	// if (WaveDT)  { /* WaveManager 주입 */ }
+
+	CurrentStageId = StageId.IsNone() ? FName(TEXT("Debug")) : StageId;
+
+	UE_LOG(LogTemp, Log,
+		TEXT("[LevelSession|Debug] Stage '%s' applied (Tower=%s, Enemy=%s, Wave=%s)."),
+		*CurrentStageId.ToString(),
+		TowerDT ? *TowerDT->GetName() : TEXT("null"),
+		EnemyDT ? *EnemyDT->GetName() : TEXT("null"),
+		WaveDT  ? *WaveDT->GetName()  : TEXT("null"));
+
+	// TODO: OnStageReady 델리게이트 도입 시 여기서 Broadcast(CurrentStageId);
+}
+
 void UTDLevelSessionSubsystem::OnPostLoadMap(UWorld* LoadedWorld)
 {
 	if (!LoadedWorld) return;

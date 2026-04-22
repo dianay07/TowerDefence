@@ -65,6 +65,41 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession")
 	void SetStageRegistry(UDataTable* InRegistry) { StageRegistry = InRegistry; }
 
+	/**
+	 * BP 용 진입점 — 지정한 월드(또는 기본값으로 현재 월드)에 대해 스테이지 로드 로직을 수동 실행.
+	 * 엔진이 자동으로 발화하는 PostLoadMapWithWorld 훅과 동일한 경로를 타므로,
+	 * DT_Stages 조회 → DT 주입 → OnStageReady 브로드캐스트 까지 전체가 다시 돈다.
+	 *
+	 * 사용 예:
+	 *  - 테스트/디버그용 강제 재초기화
+	 *  - 레벨 스트리밍 완료 후 수동 트리거
+	 *  - SetStageRegistry 로 DT 를 바꾼 뒤 다시 적용하고 싶을 때
+	 *
+	 * @param WorldContextObject  월드 컨텍스트. 생략 시 GameInstance 의 기본 월드 사용.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession",
+		meta = (WorldContext = "WorldContextObject", DisplayName = "Reload Current Stage"))
+	void K2_ReloadCurrentStage(UObject* WorldContextObject);
+
+	/**
+	 * 디버그/테스트 전용 — DT_Stages 를 우회하고 지정한 DT 를 즉시 주입.
+	 * 프로덕션 경로는 RequestLoadStage 를 사용할 것.
+	 *
+	 * 사용 예: 테스트 레벨의 Level Blueprint BeginPlay 에서 호출하여
+	 * 레벨을 바로 PIE 로 실행해도 데이터가 준비되게 함.
+	 *
+	 * @param StageId  로그/식별용. NAME_None 이면 "Debug" 로 기록.
+	 * @param TowerDT  즉시 주입할 타워 DT. null 이면 스킵.
+	 * @param EnemyDT  (향후 추가될 Enemy Subsystem 용 자리. 현재는 로그만)
+	 * @param WaveDT   (향후 추가될 Wave 주입 자리. 현재는 로그만)
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession|Debug",
+		meta = (DisplayName = "Debug Apply Stage"))
+	void DebugApplyStage(FName StageId,
+	                     UDataTable* TowerDT,
+	                     UDataTable* EnemyDT = nullptr,
+	                     UDataTable* WaveDT  = nullptr);
+
 private:
 	/** 월드 로드 완료 콜백. 새 월드의 경로로 Row 를 역조회하여 DT 주입. */
 	void OnPostLoadMap(UWorld* LoadedWorld);
