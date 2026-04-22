@@ -15,6 +15,7 @@
 // #include "TDTowerManagerComponent.h"
  #include "TDEventManagerComponent.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
+#include "Server/TDPoolComponent.h"
 
 int32 UTDFL_Utility::GetCVarDevMode()
 {
@@ -71,6 +72,12 @@ UTDEnemyDataTableSubsystem* UTDFL_Utility::GetEnemyDataTable(const UObject* Worl
 	UGameInstance* GI = UGameplayStatics::GetGameInstance(WorldContextObject);
 	if (!GI) return nullptr;
 	return GI->GetSubsystem<UTDEnemyDataTableSubsystem>();
+}
+
+UTDPoolComponent* UTDFL_Utility::GetPool(const UObject* WorldContextObject)
+{
+	ATDGameMode* GM = GetTDGameMode(WorldContextObject);
+	return GM ? GM->Pool : nullptr;
 }
 
 

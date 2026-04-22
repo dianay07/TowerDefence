@@ -6,6 +6,7 @@
 #include "TDEventManagerComponent.h"
 #include "TDWaveManagerComponent.h"
 #include "Server/TDEnemySpawnerComponent.h"
+#include "Server/TDPoolComponent.h"
 #include "TowerDefence/TD.h"
 #include "TDGameMode.generated.h"
 
@@ -29,6 +30,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
 	UTDEnemySpawnerComponent* EnemySpawner;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
+	UTDPoolComponent* Pool;
 
 	// 레벨에 배치된 TowerManager — BeginPlay에서 자동 등록 (레벨 BP 수동 세팅 불필요)
 	// 이름을 TowerManagerActor로 구분 — BP_GameMode의 기존 'TowerManager' 변수와 충돌 방지
@@ -62,6 +66,4 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void PoolActor(AActor* PoolActor);
 
-private:
-	TMap<TSubclassOf<AActor>, TArray<AActor*>> ActorPool;
 };

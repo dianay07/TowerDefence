@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "TDFL_Utility.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
+#include "Server/TDPoolComponent.h"
 
 ATDGameMode::ATDGameMode()
 {
@@ -12,6 +13,7 @@ ATDGameMode::ATDGameMode()
 	EventManager  = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
 	WaveManager   = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
 	EnemySpawner  = CreateDefaultSubobject<UTDEnemySpawnerComponent>(TEXT("EnemySpawner"));
+	Pool          = CreateDefaultSubobject<UTDPoolComponent>(TEXT("Pool"));
 }
 
 void ATDGameMode::BeginPlay()
@@ -62,68 +64,14 @@ void ATDGameMode::CheckIfLoss()
 	}
 }
 
-// ── 액터 풀 ───────────────────────────────────────────────────────────────────
+// ── 액터 풀 (UTDPoolComponent 위임 래퍼 — BP 호환용) ─────────────────────────
 
 AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner)
 {
-	/*ITDPoolActorInterface* CastCheck = Cast<ITDPoolActorInterface>(ActorClass);
-	if (!ActorClass || !CastCheck)
-	{
-		return nullptr;
-	}*/
-
-	AActor* PoolActor = nullptr;
-
-	// 풀에 재사용 가능한 액터가 있으면 꺼내 사용
-	if (ActorPool.Contains(ActorClass))
-	{
-		TArray<AActor*>* PoolActorArray = ActorPool.Find(ActorClass);
-		if (PoolActorArray && !PoolActorArray->IsEmpty())
-		{
-			PoolActor = PoolActorArray->Pop();
-		}
-	}
-
-	if (!PoolActor)
-		PoolActor = Cast<AActor>(GetWorld()->SpawnActor<AActor>(ActorClass));
-
-	if (PoolActor)
-	{
-		PoolActor->SetActorTransform(Transform);
-		PoolActor->SetOwner(NewOwner);
-	/*	ITDPoolActorInterface* PoolActorInter = Cast<ITDPoolActorInterface>(PoolActor);
-		if (PoolActorInter)
-		{
-			PoolActorInter->OnRemovedFromPool();
-		}*/
-	}
-
-	return PoolActor;
+	return Pool ? Pool->GetPoolActorFromClass(ActorClass, Transform, NewOwner) : nullptr;
 }
 
-void ATDGameMode::PoolActor(AActor* PoolActor)
+void ATDGameMode::PoolActor(AActor* PoolActorArg)
 {
-	if (!PoolActor || !Cast<ITDPoolActorInterface>(PoolActor))
-	{
-		return;
-	}
-
-	// 풀에 액터 반환
-	TSubclassOf<AActor> ActorClass = PoolActor->GetClass();
-	if (ActorPool.Contains(ActorClass))
-	{
-		TArray<AActor*>* PoolActorArray = ActorPool.Find(ActorClass);
-		if (PoolActorArray)
-		{
-			PoolActorArray->Add(PoolActor);
-		}
-	}
-	else
-	{
-		TArray<AActor*> PoolActorArray;
-		PoolActorArray.Add(PoolActor);
-		ActorPool.Add(ActorClass, PoolActorArray);
-	}
-
-	Cast<ITDPoolActorInterface>(PoolActor)->OnAddedToPool();
+	if (Pool) Pool->ReturnToPool(PoolActorArg);
 }

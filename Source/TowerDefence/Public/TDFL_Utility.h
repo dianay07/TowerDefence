@@ -11,6 +11,7 @@ class UTDWaveManagerComponent;
 //class UTDTowerManagerComponent;
 class UTDEventManagerComponent;
 class UTDEnemyDataTableSubsystem;
+class UTDPoolComponent;
 class USoundClass;
 
 class ATDPlayerCharacter;
@@ -63,6 +64,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDEnemyDataTableSubsystem* GetEnemyDataTable(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
+	static UTDPoolComponent* GetPool(const UObject* WorldContextObject);
 	
 
 	// ── 유틸리티 ─────────────────────────────────────────────────
