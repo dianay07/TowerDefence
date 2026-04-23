@@ -5,7 +5,7 @@
 #include "Net/UnrealNetwork.h"
 #include "TDGameMode.h"
 #include "TDGameState.h"
-#include "TowerManager.h"
+#include "GameData/TDTowerDataTableSubsystem.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffectTypes.h"
 #include "TDTowerSet.h"
@@ -196,16 +196,9 @@ void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRe
     OutCostOrRefund = 0;
     OutDescription  = TEXT("");
 
-    // [Sequence Then 0] Get Tower Manager → Is Valid Branch
-    TArray<AActor*> FoundActors;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATowerManager::StaticClass(), FoundActors);
-    if (FoundActors.IsEmpty())
-    {
-        return;
-    }
-
-    ATowerManager* TowerManager = Cast<ATowerManager>(FoundActors[0]);
-    if (!IsValid(TowerManager))
+    UGameInstance* GI = UGameplayStatics::GetGameInstance(this);
+    UTDTowerDataTableSubsystem* TowerDT = GI ? GI->GetSubsystem<UTDTowerDataTableSubsystem>() : nullptr;
+    if (!TowerDT)
     {
         return;
     }
@@ -214,25 +207,28 @@ void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRe
     switch (TowerAction)
     {
     case ETowerActions::BuildTurret:
-    {
-        TowerManager->GetTowerData(ETowerType::Turret, TowerData);
+        TowerDT->GetTowerData(ETowerType::Turret, TowerData);
+        OutCostOrRefund = TowerData.BuildCost;
+        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
         break;
-    }
+
     case ETowerActions::BuildBallista:
-    {
-        TowerManager->GetTowerData(ETowerType::Ballista, TowerData);
+        TowerDT->GetTowerData(ETowerType::Ballista, TowerData);
+        OutCostOrRefund = TowerData.BuildCost;
+        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
         break;
-    }
+
     case ETowerActions::BuildCatapult:
-    {
-        TowerManager->GetTowerData(ETowerType::Catapult, TowerData);
+        TowerDT->GetTowerData(ETowerType::Catapult, TowerData);
+        OutCostOrRefund = TowerData.BuildCost;
+        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
         break;
-    }
+
     case ETowerActions::BuildCannon:
-    {
-        TowerManager->GetTowerData(ETowerType::Cannon, TowerData);
+        TowerDT->GetTowerData(ETowerType::Cannon, TowerData);
+        OutCostOrRefund = TowerData.BuildCost;
+        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
         break;
-    }
 
     case ETowerActions::Upgrade:
         OutCostOrRefund = GetUpgradeCost();
@@ -247,8 +243,6 @@ void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRe
     default:
         break;
     }
-
-    OutCostOrRefund = TowerData.BuildCost;
 }
 
 void ATDTowerBase::UpgradeTower()
@@ -276,7 +270,16 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
 
     // [Sequence Then 0] 플레이어의 현재 선택 해제
     // (BP Player에 UnSelectTower 함수가 존재한다고 가정 — BP 측에서 연결 필요)
-    APawn* Player = UGameplayStatics::GetPlayerPawn(this, 0);
+    APawn* Player = nullptr;
+    if (const UWorld* World = GetWorld())
+    {
+        // Player Controller 가져오는건 일단 임시 처리 해당함수 검증이 필요함
+        UGameInstance* GI = UGameplayStatics::GetGameInstance(this);
+        if (APlayerController* LocalPC = GI->GetFirstLocalPlayerController())
+        {
+            Player = LocalPC->GetPawn();
+        }
+    }
     if (IsValid(Player))
     {
         // jiho - 로직이 비었음 BP 함수를 호출해야 되서. 부가 사항은 아래 더 있음.
@@ -356,23 +359,16 @@ void ATDTowerBase::GetTowerData()
         return;
     }
 
-    // Get Tower Manager
-    TArray<AActor*> FoundActors;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATowerManager::StaticClass(), FoundActors);
-    if (FoundActors.IsEmpty())
-    {
-        return;
-    }
-
-    ATowerManager* TowerManager = Cast<ATowerManager>(FoundActors[0]);
-    if (!IsValid(TowerManager))
+    UGameInstance* GI = UGameplayStatics::GetGameInstance(this);
+    UTDTowerDataTableSubsystem* TowerDT = GI ? GI->GetSubsystem<UTDTowerDataTableSubsystem>() : nullptr;
+    if (!TowerDT)
     {
         return;
     }
 
     // Get Tower Data
     FTowerData OutTowerData;
-    if (TowerManager->GetTowerData(Type, OutTowerData))
+    if (TowerDT->GetTowerData(Type, OutTowerData))
     {
         TowerData    = OutTowerData;
         IsDataValid  = true;
