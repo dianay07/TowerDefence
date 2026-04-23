@@ -9,6 +9,9 @@
 
 ATDGameMode::ATDGameMode()
 {
+	// PlayerController 등록
+	PlayerControllerClass = ATDPlayerController::StaticClass();
+
 	// 게임 관리 컴포넌트 생성
 	EventManager  = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
 	WaveManager   = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));

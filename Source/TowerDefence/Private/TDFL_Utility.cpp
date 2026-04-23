@@ -16,6 +16,7 @@
  #include "TDEventManagerComponent.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
 #include "Server/TDPoolComponent.h"
+#include "Player/TDPlayerController.h"
 
 int32 UTDFL_Utility::GetCVarDevMode()
 {
@@ -78,6 +79,11 @@ UTDPoolComponent* UTDFL_Utility::GetPool(const UObject* WorldContextObject)
 {
 	ATDGameMode* GM = GetTDGameMode(WorldContextObject);
 	return GM ? GM->Pool : nullptr;
+}
+
+ATDPlayerController* UTDFL_Utility::GetTDPlayerController(const UObject* WorldContextObject)
+{
+	return Cast<ATDPlayerController>(UGameplayStatics::GetPlayerController(WorldContextObject, 0));
 }
 
 

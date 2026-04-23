@@ -7,6 +7,7 @@
 #include "TDWaveManagerComponent.h"
 #include "Server/TDEnemySpawnerComponent.h"
 #include "Server/TDPoolComponent.h"
+#include "Player/TDPlayerController.h"
 #include "TowerDefence/TD.h"
 #include "TDGameMode.generated.h"
 

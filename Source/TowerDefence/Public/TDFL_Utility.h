@@ -12,6 +12,7 @@ class UTDWaveManagerComponent;
 class UTDEventManagerComponent;
 class UTDEnemyDataTableSubsystem;
 class UTDPoolComponent;
+class ATDPlayerController;
 class USoundClass;
 
 class ATDPlayerCharacter;
@@ -20,6 +21,7 @@ class UTDGameUserSettings;
 class ATDEnemyActor;
 class ATDTowerPawn;
 class UStaticMeshComponent;
+class ATDPlayerController;
 
 static TAutoConsoleVariable<int32> CVarDevMode(
 	TEXT("TD.Dev.Mode"),
@@ -94,6 +96,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
 	static void SetVideoQuality(const UObject* WorldContextObject, EQualityOptionType QualityOptionType, int32 QualityLevel);
+
+	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
+	static ATDPlayerController* GetTDPlayerController(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static ATDTowerPawn* GetTowerUnderMouse(const UObject* WorldContextObject);
