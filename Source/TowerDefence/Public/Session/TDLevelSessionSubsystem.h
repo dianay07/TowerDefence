@@ -7,6 +7,7 @@
 
 class UWorld;
 class UDataTable;
+class ATDTowerBase;
 
 /**
  * 스테이지 레지스트리(DT_Stages) 한 행.
@@ -34,6 +35,15 @@ struct FStageRow : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stage|Data")
 	TSoftObjectPtr<UDataTable> WaveDT;
 
+	// ─── 초기 타워 스폰 설정 (UTDTowerSpawnerComponent 가 사용) ───
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stage|Spawn")
+	TSoftClassPtr<ATDTowerBase> BaseTowerClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stage|Spawn")
+	FName TileMeshName = TEXT("tile-dirt");
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stage|Spawn", meta = (ClampMin = "0.0"))
+	float TileSpawnZOffset = 10.0f;
 };
 
 /**

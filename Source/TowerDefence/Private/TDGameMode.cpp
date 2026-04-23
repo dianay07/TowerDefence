@@ -6,6 +6,8 @@
 #include "TDFL_Utility.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
 #include "Server/TDPoolComponent.h"
+#include "Server/TDTowerSpawnerComponent.h"
+#include "Session/TDLevelSessionSubsystem.h"  // FStageRow
 
 ATDGameMode::ATDGameMode()
 {
@@ -16,6 +18,7 @@ ATDGameMode::ATDGameMode()
 	EventManager  = CreateDefaultSubobject<UTDEventManagerComponent>(TEXT("EventManager"));
 	WaveManager   = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
 	EnemySpawner  = CreateDefaultSubobject<UTDEnemySpawnerComponent>(TEXT("EnemySpawner"));
+	TowerSpawner  = CreateDefaultSubobject<UTDTowerSpawnerComponent>(TEXT("TowerSpawner"));
 	Pool          = CreateDefaultSubobject<UTDPoolComponent>(TEXT("Pool"));
 }
 
@@ -77,4 +80,18 @@ AActor* ATDGameMode::GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTran
 void ATDGameMode::PoolActor(AActor* PoolActorArg)
 {
 	if (Pool) Pool->ReturnToPool(PoolActorArg);
+}
+
+// ── 스테이지 초기화 ────────────────────────────────────────────────────────────
+
+void ATDGameMode::InitializeStage(const FStageRow& Row)
+{
+	if (!HasAuthority()) return;
+
+	if (TowerSpawner)
+	{
+		TowerSpawner->SpawnInitialTowerBases(Row);
+	}
+
+	// 추후: WaveManager 초기화, 이코노미 초기화 등 여기에 집결
 }

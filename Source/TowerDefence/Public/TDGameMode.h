@@ -6,6 +6,7 @@
 #include "TDEventManagerComponent.h"
 #include "TDWaveManagerComponent.h"
 #include "Server/TDEnemySpawnerComponent.h"
+#include "Server/TDTowerSpawnerComponent.h"
 #include "Server/TDPoolComponent.h"
 #include "Player/TDPlayerController.h"
 #include "TowerDefence/TD.h"
@@ -16,6 +17,7 @@
 
 class ATowerManager;
 class ATDEnemyActor;
+struct FStageRow;
 
 UCLASS()
 class TOWERDEFENCE_API ATDGameMode : public AGameModeBase
@@ -31,6 +33,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
 	UTDEnemySpawnerComponent* EnemySpawner;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
+	UTDTowerSpawnerComponent* TowerSpawner;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
 	UTDPoolComponent* Pool;
@@ -66,5 +71,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void PoolActor(AActor* PoolActor);
+
+	// ── Stage ─────────────────────────────────────────────────────────
+	/** 레벨 로드 완료 후 LevelSessionSubsystem 이 호출. 각 매니저/컴포넌트에 초기화 위임. */
+	UFUNCTION(BlueprintCallable, Category = "TD|Stage")
+	void InitializeStage(const FStageRow& Row);
 
 };

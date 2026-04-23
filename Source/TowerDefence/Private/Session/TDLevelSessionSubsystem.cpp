@@ -1,5 +1,6 @@
 #include "Session/TDLevelSessionSubsystem.h"
 #include "GameData/TDTowerDataTableSubsystem.h"
+#include "TDGameMode.h"
 #include "Engine/World.h"
 #include "Engine/DataTable.h"
 #include "Engine/Engine.h"
@@ -188,6 +189,15 @@ void UTDLevelSessionSubsystem::ApplyStageData(const FStageRow& Row)
 	// {
 	//     if (UDataTable* DT = Row.EnemyDT.LoadSynchronous()) EnemyDT->LoadFromDataTable(DT);
 	// }
+
+	// GameMode 에 스테이지 초기화 위임 (서버 전용 — TowerSpawner 등 게임 규칙 컴포넌트가 반응)
+	if (UWorld* World = GetWorld())
+	{
+		if (ATDGameMode* GM = World->GetAuthGameMode<ATDGameMode>())
+		{
+			GM->InitializeStage(Row);
+		}
+	}
 }
 
 const FStageRow* UTDLevelSessionSubsystem::FindRowByStageId(FName StageId) const
