@@ -33,6 +33,7 @@ struct FStageRow : public FTableRowBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stage|Data")
 	TSoftObjectPtr<UDataTable> WaveDT;
+
 };
 
 /**

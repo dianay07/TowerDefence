@@ -210,8 +210,11 @@ const FStageRow* UTDLevelSessionSubsystem::FindRowByWorld(const UWorld* LoadedWo
 {
 	if (!StageRegistry || !LoadedWorld) return nullptr;
 
-	const FString LoadedPath = FSoftObjectPath(LoadedWorld).GetLongPackageName();
+	FString LoadedPath = FSoftObjectPath(LoadedWorld).GetLongPackageName();
 	if (LoadedPath.IsEmpty()) return nullptr;
+
+	// PIE 접두사 제거: /Game/Levels/UEDPIE_0_Levels-02 → /Game/Levels/Levels-02
+	LoadedPath = UWorld::RemovePIEPrefix(LoadedPath);
 
 	static const FString Context(TEXT("TDLevelSessionSubsystem::FindRowByWorld"));
 	for (const FName& RowName : StageRegistry->GetRowNames())
