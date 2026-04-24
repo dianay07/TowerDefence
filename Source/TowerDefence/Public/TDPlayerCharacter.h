@@ -57,12 +57,6 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* MoveAction;		// WASD → 카메라 패닝
 
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputAction* ClickAction;		// 좌클릭 → 플레이어 폰 이동
-
-public:
-	void HandleClick();
-
 // ── 플레이어 폰 ───────────────────────────────────────────────────────────────
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
@@ -73,14 +67,10 @@ private:
 	ATDPlayerPawn* PlayerPawn;
 
 public:
-	void SelectTower(ATDTowerPawn* Tower);
-	void UnSelectTower();
+	ATDPlayerPawn* GetPlayerPawn() const { return PlayerPawn; }
 
 	UFUNCTION(BlueprintCallable, Category = "TD|Player")
 	void NotifyBaseHealthDecreased();
-
-	void OnCoinsChanged(int32 Change, int32 Coins);
-	void OnHealthChanged(int32 HeartHealth, int32 MaxHeartHealth);
 
 // ── UI ────────────────────────────────────────────────────────────────────────
 private:

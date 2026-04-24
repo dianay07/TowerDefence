@@ -13,7 +13,6 @@
  #include "TDGameMode.h"
  #include "TDWaveManagerComponent.h"
 // #include "TDTowerManagerComponent.h"
- #include "TDEventManagerComponent.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
 #include "Server/TDPoolComponent.h"
 #include "Player/TDPlayerController.h"
@@ -56,16 +55,6 @@ UTDWaveManagerComponent* UTDFL_Utility::GetWaveManager(const UObject* WorldConte
 //	 return GM ? GM->TowerManager : nullptr;
 //	return nullptr;
 //}
-
-UTDEventManagerComponent* UTDFL_Utility::GetEventManager(const UObject* WorldContextObject)
-{
-	ATDGameMode* GM = GetTDGameMode(WorldContextObject);
-
-	if (GM)
-		return GM->EventManager;
-	else
-		return nullptr;
-}
 
 UTDEnemyDataTableSubsystem* UTDFL_Utility::GetEnemyDataTable(const UObject* WorldContextObject)
 {

@@ -9,7 +9,6 @@ class ATDGameMode;
 class ATDGameState;
 class UTDWaveManagerComponent;
 //class UTDTowerManagerComponent;
-class UTDEventManagerComponent;
 class UTDEnemyDataTableSubsystem;
 class UTDPoolComponent;
 class ATDPlayerController;
@@ -21,7 +20,6 @@ class UTDGameUserSettings;
 class ATDEnemyActor;
 class ATDTowerPawn;
 class UStaticMeshComponent;
-class ATDPlayerController;
 
 static TAutoConsoleVariable<int32> CVarDevMode(
 	TEXT("TD.Dev.Mode"),
@@ -60,9 +58,6 @@ public:
 
 	/*UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDTowerManagerComponent* GetTowerManager(const UObject* WorldContextObject);*/
-
-	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
-	static UTDEventManagerComponent* GetEventManager(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDEnemyDataTableSubsystem* GetEnemyDataTable(const UObject* WorldContextObject);

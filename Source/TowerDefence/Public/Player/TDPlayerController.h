@@ -6,6 +6,9 @@
 #include "TDPlayerController.generated.h"
 
 class ATDTowerBase;
+class ATDGameState;
+class UInputAction;
+class ATDTowerPawn;
 
 /**
  * TD 전용 PlayerController.
@@ -17,7 +20,17 @@ class TOWERDEFENCE_API ATDPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
+protected:
+	virtual void SetupInputComponent() override;
+
 public:
+	// ── 입력 ──────────────────────────────────────────────────────────────────
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* ClickAction;
+
+	void HandleClick();
+
 	// ── 타워 액션 ─────────────────────────────────────────────────────────────
 
 	/**

@@ -91,8 +91,7 @@ void ATDPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	// Enhanced Input 액션 바인딩
 	if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EIC->BindAction(MoveAction,  ETriggerEvent::Triggered, this, &ATDPlayerCharacter::HandleCameraMove);
-		EIC->BindAction(ClickAction, ETriggerEvent::Started,   this, &ATDPlayerCharacter::HandleClick);
+		EIC->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ATDPlayerCharacter::HandleCameraMove);
 	}
 }
 
@@ -140,25 +139,6 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 		GetCameraAxes(Forward, Right);
 		SetActorLocation(GetActorLocation() + (Forward * Dir.Y + Right * Dir.X) * EdgeScrollSpeed * DeltaTime);
 	}
-}
-
-// ── 클릭 처리 ─────────────────────────────────────────────────────────────────
-
-void ATDPlayerCharacter::HandleClick()
-{
-	if (!IsLocallyControlled()) return;
-	APlayerController* PC = Cast<APlayerController>(GetController());
-	if (!PC || !PlayerPawn) return;
-
-	FHitResult HitResult;
-	if (!PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult)) return;
-
-	// 타워 설치 가능 지역이면 이동 안 함
-	if (HitResult.GetActor() && HitResult.GetActor()->IsA<ATDTowerPawn>()) return;
-
-	PlayerPawn->SetMoveTarget(HitResult.Location);
-
-	// 클릭 위치에 타워 검출 기능은 BP로
 }
 
 // ── 기지 체력 ─────────────────────────────────────────────────────────────────
