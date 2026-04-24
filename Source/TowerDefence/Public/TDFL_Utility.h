@@ -8,7 +8,6 @@
 class ATDGameMode;
 class ATDGameState;
 class UTDWaveManagerComponent;
-//class UTDTowerManagerComponent;
 class UTDEnemyDataTableSubsystem;
 class UTDPoolComponent;
 class ATDPlayerController;
@@ -50,14 +49,10 @@ public:
 	static ATDGameState* GetTDGameState(const UObject* WorldContextObject);
 
 	
-	// ── Manager (현재 GameMode에 저장됨) ─────────────────────────
-	// TODO: Phase 2+ 에서 GameState로 이전
+	// ── Manager (GameMode 컴포넌트) ───────────────────────────────
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDWaveManagerComponent* GetWaveManager(const UObject* WorldContextObject);
-
-	/*UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
-	static UTDTowerManagerComponent* GetTowerManager(const UObject* WorldContextObject);*/
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
 	static UTDEnemyDataTableSubsystem* GetEnemyDataTable(const UObject* WorldContextObject);

@@ -14,7 +14,6 @@
 // 코인 관련 함수(HasCoins, SpendCoins, RefundCoins)는 ATDGameState에 있음
 // 타워에서 직접 GameState->CoinChange() / GameState->HasCoins() 호출할 것
 
-class ATowerManager;
 class ATDEnemyActor;
 struct FStageRow;
 
@@ -35,11 +34,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
 	UTDPoolComponent* Pool;
-
-	// 레벨에 배치된 TowerManager — BeginPlay에서 자동 등록 (레벨 BP 수동 세팅 불필요)
-	// 이름을 TowerManagerActor로 구분 — BP_GameMode의 기존 'TowerManager' 변수와 충돌 방지
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
-	ATowerManager* TowerManagerActor;
 
 	/** BP_GameMode 에서 EnemyType -> Class 매핑을 설정. BeginPlay에서 EnemyDataTableSubsystem에 주입. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enemy")

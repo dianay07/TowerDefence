@@ -9,10 +9,8 @@
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
 
-// ATDGameMode, Manager 컴포넌트 헤더는 Step 14 완료 후 추가
- #include "TDGameMode.h"
- #include "TDWaveManagerComponent.h"
-// #include "TDTowerManagerComponent.h"
+#include "TDGameMode.h"
+#include "TDWaveManagerComponent.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
 #include "Server/TDPoolComponent.h"
 #include "Player/TDPlayerController.h"
@@ -47,14 +45,6 @@ UTDWaveManagerComponent* UTDFL_Utility::GetWaveManager(const UObject* WorldConte
 	 else
 		 return nullptr;
 }
-
-//UTDTowerManagerComponent* UTDFL_Utility::GetTowerManager(const UObject* WorldContextObject)
-//{
-//	 TODO: Step 14 완료 후 구현
-//	 ATDGameMode* GM = GetTDGameMode(WorldContextObject);
-//	 return GM ? GM->TowerManager : nullptr;
-//	return nullptr;
-//}
 
 UTDEnemyDataTableSubsystem* UTDFL_Utility::GetEnemyDataTable(const UObject* WorldContextObject)
 {
