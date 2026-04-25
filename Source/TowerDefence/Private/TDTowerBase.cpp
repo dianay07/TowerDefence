@@ -203,32 +203,22 @@ void ATDTowerBase::GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRe
         return;
     }
 
+    // Build 케이스 공통 처리 — 로컬 TempData 사용으로 멤버 TowerData 오염 방지
+    auto FetchBuildInfo = [&](ETowerType Type)
+    {
+        FTowerData TempData;
+        TowerDT->GetTowerData(Type, TempData);
+        OutCostOrRefund = TempData.BuildCost;
+        OutDescription  = FString::Printf(TEXT("Build %s"), *TempData.TowerName);
+    };
+
     // [Sequence Then 1] Switch on ETowerActions
     switch (TowerAction)
     {
-    case ETowerActions::BuildTurret:
-        TowerDT->GetTowerData(ETowerType::Turret, TowerData);
-        OutCostOrRefund = TowerData.BuildCost;
-        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
-        break;
-
-    case ETowerActions::BuildBallista:
-        TowerDT->GetTowerData(ETowerType::Ballista, TowerData);
-        OutCostOrRefund = TowerData.BuildCost;
-        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
-        break;
-
-    case ETowerActions::BuildCatapult:
-        TowerDT->GetTowerData(ETowerType::Catapult, TowerData);
-        OutCostOrRefund = TowerData.BuildCost;
-        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
-        break;
-
-    case ETowerActions::BuildCannon:
-        TowerDT->GetTowerData(ETowerType::Cannon, TowerData);
-        OutCostOrRefund = TowerData.BuildCost;
-        OutDescription  = FString::Printf(TEXT("Build %s"), *TowerData.TowerName);
-        break;
+    case ETowerActions::BuildTurret:    FetchBuildInfo(ETowerType::Turret);   break;
+    case ETowerActions::BuildBallista:  FetchBuildInfo(ETowerType::Ballista); break;
+    case ETowerActions::BuildCatapult:  FetchBuildInfo(ETowerType::Catapult); break;
+    case ETowerActions::BuildCannon:    FetchBuildInfo(ETowerType::Cannon);   break;
 
     case ETowerActions::Upgrade:
         OutCostOrRefund = GetUpgradeCost();
@@ -271,13 +261,15 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
     // [Sequence Then 0] 플레이어의 현재 선택 해제
     // (BP Player에 UnSelectTower 함수가 존재한다고 가정 — BP 측에서 연결 필요)
     APawn* Player = nullptr;
-    if (const UWorld* World = GetWorld())
+    if (UWorld* World = GetWorld())
     {
-        // Player Controller 가져오는건 일단 임시 처리 해당함수 검증이 필요함
-        UGameInstance* GI = UGameplayStatics::GetGameInstance(this);
-        if (APlayerController* LocalPC = GI->GetFirstLocalPlayerController())
+        if (UGameInstance* GI = World->GetGameInstance())
         {
-            Player = LocalPC->GetPawn();
+            // World 인자를 넘겨 현재 World 의 LocalPC 만 필터링 (PIE 다중 창 안전)
+            if (APlayerController* LocalPC = GI->GetFirstLocalPlayerController(World))
+            {
+                Player = LocalPC->GetPawn();
+            }
         }
     }
     if (IsValid(Player))
@@ -324,6 +316,7 @@ void ATDTowerBase::DoTowerAction(ETowerActions TowerAction)
     case ETowerActions::BuildBallista:  NewTowerClass = BallistaClass; break;
     case ETowerActions::BuildCatapult:  NewTowerClass = CatapultClass; break;
     case ETowerActions::BuildCannon:    NewTowerClass = CannonClass;   break;
+    case ETowerActions::BreakDown:      /* NewTowerClass = BaseTowerClass 위에서 설정됨 */ break;
     case ETowerActions::Upgrade:
         UpgradeTower();
         return;  // 업그레이드는 자기 자신을 교체하지 않음

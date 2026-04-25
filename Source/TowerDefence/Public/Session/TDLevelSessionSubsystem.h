@@ -124,6 +124,9 @@ private:
 	/** LoadedWorld 의 패키지 경로로 Row 역조회. 없으면 nullptr. */
 	const FStageRow* FindRowByWorld(const UWorld* LoadedWorld) const;
 
+	/** 스테이지 데이터 어셋 오류 알림. UE_LOG(Error) + 에디터 대화상자. */
+	void ShowStageDataError(FName StageId, const FString& Reason) const;
+
 private:
 	/** 스테이지 레지스트리 DT. Initialize() 에서 고정 경로로 로드하거나 BP 에서 주입. */
 	UPROPERTY(Transient)

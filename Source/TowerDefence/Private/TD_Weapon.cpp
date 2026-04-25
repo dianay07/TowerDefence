@@ -109,37 +109,6 @@ void ATD_Weapon::FireAtEnemy()
 
 	Projectile = Cast<ATDProjectile>(PooledActor);
 
-	// BP 함수 SetProjectileData(Target, Damage, Radius) 호출
-	/*if (UFunction* Func = PooledActor->FindFunction(TEXT("SetProjectileData")))
-	{
-		struct FSetProjectileDataParams
-		{
-			AActor* Target;
-			float Damage;
-			float Radius;
-		};
-
-		FSetProjectileDataParams Params;
-		Params.Target = Target;
-		Params.Damage = Tower->GetDamage();
-		Params.Radius = Tower->GetRadius();
-
-		PooledActor->ProcessEvent(Func, &Params);
-	}*/
-
-	// 프로퍼티 직접 설정 (BP 변수명 기준)
-	/*if (FObjectProperty* TargetProp = FindFProperty<FObjectProperty>(PooledActor->GetClass(), TEXT("Target")))
-	{
-		TargetProp->SetObjectPropertyValue_InContainer(PooledActor, Target);
-	}
-	if (FFloatProperty* DamageProp = FindFProperty<FFloatProperty>(PooledActor->GetClass(), TEXT("Damage")))
-	{
-		DamageProp->SetPropertyValue_InContainer(PooledActor, Tower->GetDamage());
-	}
-	if (FFloatProperty* RadiusProp = FindFProperty<FFloatProperty>(PooledActor->GetClass(), TEXT("Radius")))
-	{
-		RadiusProp->SetPropertyValue_InContainer(PooledActor, Tower->GetRadius());
-	}*/
 	Projectile->SetProjectileData(Target, Tower->GetDamage(), Tower->GetRadius());
 	Target = nullptr;
 }

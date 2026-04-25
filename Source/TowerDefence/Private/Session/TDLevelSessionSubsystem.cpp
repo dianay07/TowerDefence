@@ -8,6 +8,10 @@
 #include "UObject/UObjectGlobals.h"
 #include "UObject/SoftObjectPath.h"
 
+#if WITH_EDITOR
+#include "Misc/MessageDialog.h"
+#endif
+
 namespace
 {
 	// 스테이지 레지스트리의 기본 경로. BP 에서 SetStageRegistry() 로 교체 가능.
@@ -173,14 +177,20 @@ void UTDLevelSessionSubsystem::ApplyStageData(const FStageRow& Row)
 	// Tower DT 주입
 	if (UTDTowerDataTableSubsystem* TowerDT = GI->GetSubsystem<UTDTowerDataTableSubsystem>())
 	{
-		if (UDataTable* DT = Row.TowerDT.LoadSynchronous())
+		if (Row.TowerDT.IsNull())
+		{
+			ShowStageDataError(Row.StageId,
+				TEXT("TowerDT is not set. Open DT_Stages and assign TowerDT for this stage."));
+		}
+		else if (UDataTable* DT = Row.TowerDT.LoadSynchronous())
 		{
 			TowerDT->LoadFromDataTable(DT);
 		}
-		else if (!Row.TowerDT.IsNull())
+		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("[LevelSession] TowerDT failed to load for stage '%s'."),
-				*Row.StageId.ToString());
+			ShowStageDataError(Row.StageId,
+				FString::Printf(TEXT("TowerDT asset failed to load. Path: %s"),
+					*Row.TowerDT.ToSoftObjectPath().ToString()));
 		}
 	}
 
@@ -238,4 +248,18 @@ const FStageRow* UTDLevelSessionSubsystem::FindRowByWorld(const UWorld* LoadedWo
 		}
 	}
 	return nullptr;
+}
+
+void UTDLevelSessionSubsystem::ShowStageDataError(FName StageId, const FString& Reason) const
+{
+	const FString FullMessage = FString::Printf(
+		TEXT("Stage '%s' data asset error:\n%s"),
+		*StageId.ToString(),
+		*Reason);
+
+	UE_LOG(LogTemp, Error, TEXT("[LevelSession] %s"), *FullMessage);
+
+#if WITH_EDITOR
+	FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(FullMessage));
+#endif
 }
