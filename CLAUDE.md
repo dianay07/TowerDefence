@@ -103,6 +103,13 @@
 │ World Subsystem (로컬 전용 초기화)                            │
 │  └ UTDEffectPoolSubsystem       [NEW] 파티클/사운드 풀       │
 └──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ UI Layer (위젯, 본인 클라만)                                  │
+│  └ UTDTowerActionWidgetBase   [NEW] BP WBP_TowerActions 베이스 │
+│       ├ 데이터/로직: C++ (Tower 참조, 비용 계산, RPC 위임)     │
+│       └ 시각/스타일: BP 자식 (UMG 디자이너, 텍스처)            │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -116,12 +123,13 @@
 | TowerData 테이블 로드/조회 | `ATowerManager::ImportData/GetTowerData` | `UTDTowerDataTableSubsystem` (GameInstance) | 로컬 readonly |
 | 슬롯 탐색 (`tile-dirt`) | `ATowerManager::SpawnTowers` | `UTDTowerSpawnerComponent::CollectSlots` | 서버 |
 | 초기 타워 스폰 | 같음 | `UTDTowerSpawnerComponent::SpawnInitial` | 서버 |
-| 타워 설치/판매 요청 | `ATDTowerBase::DoTowerAction` 직접 | `ATDPlayerController::ServerPlaceTower/SellTower` | Client→Server RPC |
+| 타워 설치/판매 요청 | `ATDTowerBase::DoTowerAction` 직접 | `ATDPlayerController::Server_DoTowerAction` ✅ 구현됨 | Client→Server RPC |
 | 타워 설치/판매 실행 | `ATDTowerBase` | `UTDTowerSpawnerComponent::TryPlace/TrySell` | 서버 |
 | 배치된 타워 목록 | (없음) | `ATDGameState::PlacedTowers` (Replicated) | 복제 |
 | 마우스 호버 하이라이트 | `ATowerManager::UpdateHightlight` | `UTDTowerHighlightSubsystem` | 로컬 |
 | 배치 프리뷰 유령 메시 | (BP 추정) | `UTDTowerPlacementSubsystem` | 로컬 |
 | 타워 선택 UI | `ATDPlayerCharacter::SelectTower` | `UTDTowerHighlightSubsystem` | 로컬 |
+| 타워 액션 UI (Build/Upgrade/BreakDown 버튼) | `WBP_TowerActions` (BP 단독, 로직 혼재) | `UTDTowerActionWidgetBase` (C++ 베이스) + `WBP_TowerActions` (BP 자식, 시각만) ✅ 구현됨 | 로컬 |
 | 업그레이드/철거 비용 계산 | `ATDTowerBase::GetTowerDetails` | 유지 (순수 조회) | 로컬 |
 | GAS 어트리뷰트 적용 | `ATDTowerBase::SetTowerAttributes` | 유지 (서버에서만 호출) | 서버 |
 
@@ -198,6 +206,8 @@ Source/TowerDefence/
 │   │   ├── TDTowerHighlightSubsystem.h    [NEW]     LocalPlayerSubsystem
 │   │   ├── TDTowerPlacementSubsystem.h    [NEW]     LocalPlayerSubsystem
 │   │   └── TDHUDSubsystem.h               [NEW]     LocalPlayerSubsystem
+│   ├── UI/
+│   │   └── TDTowerActionWidgetBase.h      [NEW]     UUserWidget 베이스 (BP WBP_TowerActions 부모)
 │   ├── TDGameMode.h                       [MODIFY]  Spawner 조립
 │   ├── TDGameState.h                      [MODIFY]  Replicated + Multicast
 │   ├── TDWaveManagerComponent.h           (유지)
@@ -343,8 +353,12 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 7. **ActiveEnemies 복제**
    - WaveManager의 Enemies를 GameState로 이동
    - `GetFurthestEnemy`는 GameState 조회로 전환
-8. **EnemyDataTableSubsystem / EnemySpawnerComponent 분리 (선택)**
-9. **PoolComponent 분리 (선택)**
+8. **TowerActionWidget BP→C++ 분리** ✅ C++ 베이스 완료
+   - `UTDTowerActionWidgetBase` 생성 (Tower 참조, 비용 계산, OnCoinsChanged 자동 바인딩, RPC 위임)
+   - 버튼 클릭 → `Server_DoTowerAction` 경유로 전환
+   - 남은 작업: `WBP_TowerActions` Reparent + BP 그래프 정리 (시각만 남김)
+9. **EnemyDataTableSubsystem / EnemySpawnerComponent 분리 (선택)**
+10. **PoolComponent 분리 (선택)**
 
 ---
 
@@ -378,3 +392,6 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 | 2026-04-21 | 초안 작성: 5레이어 아키텍처, 도메인별 배치, 마이그레이션 순서 정의 | - |
 | 2026-04-21 | `Database` → `DataTable` 네이밍 통일, 폴더 `Data/` → `GameData/` | - |
 | 2026-04-22 | `UTDLevelSessionSubsystem` 추가 — 스테이지 전환 및 레벨별 DT 주입 (`DT_Stages` + `PostLoadMapWithWorld` 훅) | - |
+| 2026-04-26 | `ATDTowerBase` 의 `ATowerManager` 직접 참조 제거 → `UTDTowerDataTableSubsystem` 직접 조회로 전환. `GetTowerDetails` 의 멤버 `TowerData` 오염 버그 + `DoTowerAction` 의 BreakDown 케이스 누락 버그 수정 | - |
+| 2026-04-26 | `UTDLevelSessionSubsystem::ShowStageDataError` 추가 — 스테이지 데이터 어셋 누락/로드 실패 시 에디터 모달 + 에러 로그 | - |
+| 2026-04-26 | `UTDTowerActionWidgetBase` 추가 — `WBP_TowerActions` 의 C++ 베이스. 데이터/로직(비용 계산, OnCoinsChanged 바인딩, Server RPC 위임) C++, 시각/스타일 BP 자식. UI Layer 정의 추가 | - |
