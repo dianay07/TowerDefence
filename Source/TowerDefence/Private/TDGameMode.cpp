@@ -8,12 +8,14 @@
 #include "Server/TDTowerSpawnerComponent.h"
 #include "Session/TDLevelSessionSubsystem.h"  // FStageRow
 
+// ── 생명주기 ──────────────────────────────────────────────────────────────────
+
 ATDGameMode::ATDGameMode()
 {
-	// PlayerController 등록
+	// 클라 → 서버 RPC 단일 진입점 등록 (CLAUDE.md §1-3)
 	PlayerControllerClass = ATDPlayerController::StaticClass();
 
-	// 게임 관리 컴포넌트 생성
+	// 서버 전용 게임 규칙 컴포넌트 생성
 	WaveManager   = CreateDefaultSubobject<UTDWaveManagerComponent>(TEXT("WaveManager"));
 	EnemySpawner  = CreateDefaultSubobject<UTDEnemySpawnerComponent>(TEXT("EnemySpawner"));
 	TowerSpawner  = CreateDefaultSubobject<UTDTowerSpawnerComponent>(TEXT("TowerSpawner"));
@@ -24,44 +26,36 @@ void ATDGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// EnemyClasses TMap을 GameInstanceSubsystem에 주입
+	// BP_GameMode 에서 설정한 EnemyClasses TMap 을 GameInstanceSubsystem 에 주입
 	if (UTDEnemyDataTableSubsystem* DT = UTDFL_Utility::GetEnemyDataTable(this))
 	{
 		DT->RegisterEnemyClasses(EnemyClasses);
 	}
 }
 
-// ── 게임 상태 ─────────────────────────────────────────────────────────────────
+// ── 게임 판정 ─────────────────────────────────────────────────────────────────
 
 void ATDGameMode::GameEnded(bool bWin)
 {
-	// 결과 이벤트 브로드캐스트 후 일시정지
-	// 0417 : 테스트 위해 게임 종료 로직 잠시 보류
-	/*if (ATDGameState* GS = GetGameState<ATDGameState>())
-	{
-		GS->BroadcastGameEnded(bWin);
-	}
-
-	UGameplayStatics::SetGamePaused(this, true);*/
+	// TODO: GS->BroadcastGameEnded(bWin) + UGameplayStatics::SetGamePaused(this, true)
+	// (0417: 테스트 편의를 위해 게임 종료 일시 보류)
 
 	if (bWin)
 	{
 		// TODO: UTDGameInstance::OnLevelComplete() 포팅 필요
-		UTDGameInstance* GI = Cast<UTDGameInstance>(GetGameInstance());
+		// UTDGameInstance* GI = Cast<UTDGameInstance>(GetGameInstance());
 		// if (GI) GI->OnLevelComplete();
 	}
 }
 
 void ATDGameMode::CheckIfWin()
 {
-	// 모든 적이 처리됐으면 승리
 	if (WaveManager->DoEnemiesRemain())
 		GameEnded(true);
 }
 
 void ATDGameMode::CheckIfLoss()
 {
-	// 기지 체력이 0이면 패배
 	if (UTDFL_Utility::GetTDGameState(this)->BaseHealth <= 0)
 	{
 		GameEnded(false);
@@ -80,16 +74,17 @@ void ATDGameMode::PoolActor(AActor* PoolActorArg)
 	if (Pool) Pool->ReturnToPool(PoolActorArg);
 }
 
-// ── 스테이지 초기화 ────────────────────────────────────────────────────────────
+// ── 스테이지 초기화 ───────────────────────────────────────────────────────────
 
 void ATDGameMode::InitializeStage(const FStageRow& Row)
 {
 	if (!HasAuthority()) return;
 
+	// 타워 슬롯(타일 메시) 탐색 후 BaseTowerClass 스폰
 	if (TowerSpawner)
 	{
 		TowerSpawner->SpawnInitialTowerBases(Row);
 	}
 
-	// 추후: WaveManager 초기화, 이코노미 초기화 등 여기에 집결
+	// 추후: WaveManager->InitStage(Row), 이코노미 초기화 등 여기에 집결
 }

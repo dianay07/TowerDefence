@@ -18,6 +18,7 @@ class TOWERDEFENCE_API ATDPlayerCharacter : public APawn
 {
 	GENERATED_BODY()
 
+// ── 생명주기 ──────────────────────────────────────────────────────────────────
 public:
 	ATDPlayerCharacter();
 
@@ -41,8 +42,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Camera|EdgeScroll")
 	float EdgeScrollSpeed = 1000.f;
 
-private:
-	// 카메라 기준 Forward/Right 벡터 계산 (Z 무시)
+	// 카메라 기준 Forward/Right 벡터 계산 (Z 무시, SpringArm Roll 케이스 대응)
 	void GetCameraAxes(FVector& OutForward, FVector& OutRight) const;
 
 public:
@@ -55,20 +55,21 @@ private:
 	UInputMappingContext* DefaultMappingContext;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputAction* MoveAction;		// WASD → 카메라 패닝
+	UInputAction* MoveAction;  // WASD → 카메라 패닝 (클릭 이동은 ATDPlayerController 담당)
 
 // ── 플레이어 폰 ───────────────────────────────────────────────────────────────
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
 	TSubclassOf<ATDPlayerPawn> PlayerPawnClass;
 
-	// 서버에서 스폰 후 복제 → 클라이언트에서 HandleClick 시 유효한 참조로 Server RPC 호출 가능
+	// 서버에서 스폰 후 복제 → 클라이언트 HandleClick 시 유효한 참조로 이동 명령 가능
 	UPROPERTY(Replicated)
 	ATDPlayerPawn* PlayerPawn;
 
 public:
 	ATDPlayerPawn* GetPlayerPawn() const { return PlayerPawn; }
 
+	/** 기지 피격 시 외부(BP/EventManager) 에서 호출 → GameState->DecreaseBaseHealth(). */
 	UFUNCTION(BlueprintCallable, Category = "TD|Player")
 	void NotifyBaseHealthDecreased();
 
@@ -80,6 +81,7 @@ private:
 	UPROPERTY()
 	UUserWidget* HUDWidget;
 
+public:
 	UFUNCTION(BlueprintCallable, Category = "UI")
 	FORCEINLINE UUserWidget* GetHUDWidget() const { return HUDWidget; }
 };

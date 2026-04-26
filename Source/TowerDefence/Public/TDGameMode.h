@@ -11,17 +11,24 @@
 #include "TowerDefence/TD.h"
 #include "TDGameMode.generated.h"
 
-// 코인 관련 함수(HasCoins, SpendCoins, RefundCoins)는 ATDGameState에 있음
-// 타워에서 직접 GameState->CoinChange() / GameState->HasCoins() 호출할 것
+// 코인 관련 함수(HasCoins, CoinChange)는 ATDGameState에 있음.
+// 타워/컴포넌트는 GameState->CoinChange() / GameState->HasCoins() 를 직접 호출할 것.
 
 class ATDEnemyActor;
 struct FStageRow;
 
+/**
+ * TD 전용 GameMode. 서버 전용 게임 규칙 컴포넌트를 조립하고 생명주기를 관리한다.
+ * - WaveManager / EnemySpawner / TowerSpawner / Pool 컴포넌트를 소유.
+ * - PlayerController: ATDPlayerController (Client → Server RPC 진입점).
+ * - 스테이지 초기화: LevelSessionSubsystem → InitializeStage(Row) → 각 컴포넌트 위임.
+ */
 UCLASS()
 class TOWERDEFENCE_API ATDGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
+// ── 컴포넌트 ──────────────────────────────────────────────────────────────────
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
 	UTDWaveManagerComponent* WaveManager;
@@ -35,17 +42,19 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Managers")
 	UTDPoolComponent* Pool;
 
-	/** BP_GameMode 에서 EnemyType -> Class 매핑을 설정. BeginPlay에서 EnemyDataTableSubsystem에 주입. */
+// ── 설정 ──────────────────────────────────────────────────────────────────────
+public:
+	/** BP_GameMode 에서 EnemyType → Class 매핑 설정. BeginPlay 에서 EnemyDataTableSubsystem 에 주입. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enemy")
 	TMap<EEnemyType, TSubclassOf<ATDEnemyActor>> EnemyClasses;
 
+// ── 생명주기 ──────────────────────────────────────────────────────────────────
 public:
 	ATDGameMode();
+	virtual void BeginPlay() override;
 
-	void BeginPlay() override;
-
+// ── 게임 판정 ─────────────────────────────────────────────────────────────────
 public:
-	// ── Game State ────────────────────────────────────────────────────
 	UFUNCTION(BlueprintCallable, Category = "Game")
 	void GameEnded(bool bWin);
 
@@ -55,15 +64,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Game")
 	void CheckIfLoss();
 
-	// ── Pool ──────────────────────────────────────────────────────────
+// ── 액터 풀 (UTDPoolComponent 위임 래퍼 — BP 호환용) ─────────────────────────
+public:
 	UFUNCTION(BlueprintCallable)
 	AActor* GetPoolActorFromClass(TSubclassOf<AActor> ActorClass, FTransform Transform, AActor* NewOwner);
 
 	UFUNCTION(BlueprintCallable)
 	void PoolActor(AActor* PoolActor);
 
-	// ── Stage ─────────────────────────────────────────────────────────
-	/** 레벨 로드 완료 후 LevelSessionSubsystem 이 호출. 각 매니저/컴포넌트에 초기화 위임. */
+// ── 스테이지 초기화 ───────────────────────────────────────────────────────────
+public:
+	/**
+	 * 레벨 로드 완료 후 UTDLevelSessionSubsystem 이 호출.
+	 * TowerSpawner::SpawnInitialTowerBases 등 각 컴포넌트에 초기화 위임.
+	 */
 	UFUNCTION(BlueprintCallable, Category = "TD|Stage")
 	void InitializeStage(const FStageRow& Row);
 

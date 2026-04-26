@@ -6,6 +6,8 @@
 #include "TDTowerPawn.h"
 #include "EnhancedInputComponent.h"
 
+// ── 생명주기 ──────────────────────────────────────────────────────────────────
+
 void ATDPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
@@ -15,6 +17,8 @@ void ATDPlayerController::SetupInputComponent()
 		EIC->BindAction(ClickAction, ETriggerEvent::Started, this, &ATDPlayerController::HandleClick);
 	}
 }
+
+// ── 입력 ──────────────────────────────────────────────────────────────────────
 
 void ATDPlayerController::HandleClick()
 {
@@ -27,10 +31,13 @@ void ATDPlayerController::HandleClick()
 	FHitResult HitResult;
 	if (!GetHitResultUnderCursor(ECC_Visibility, false, HitResult)) return;
 
+	// 타워 위 클릭은 이동 입력으로 처리하지 않음 (타워 UI 상호작용과 구분)
 	if (HitResult.GetActor() && HitResult.GetActor()->IsA<ATDTowerPawn>()) return;
 
 	PlayerPawn->SetMoveTarget(HitResult.Location);
 }
+
+// ── 타워 액션 (Client → Server RPC) ──────────────────────────────────────────
 
 void ATDPlayerController::Server_DoTowerAction_Implementation(ATDTowerBase* Tower, ETowerActions Action)
 {

@@ -12,15 +12,17 @@
 #include "Blueprint/UserWidget.h"
 #include "Net/UnrealNetwork.h"
 
+// ── 생명주기 ──────────────────────────────────────────────────────────────────
+
 ATDPlayerCharacter::ATDPlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	// 루트: 카메라 앵커 전용
+	// 루트: 카메라 앵커 전용 (물리 콜리전 없음)
 	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("CameraRoot"));
 	SetRootComponent(Root);
 
-	// SpringArm 설정
+	// SpringArm: 탑다운 고정 각도
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->TargetArmLength = 600.f;
@@ -31,16 +33,10 @@ ATDPlayerCharacter::ATDPlayerCharacter()
 	SpringArmComp->bInheritRoll   = false;
 	SpringArmComp->bDoCollisionTest = false;
 
-	// 카메라 설정
+	// 카메라: SpringArm 끝에 부착
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	CameraComp->bUsePawnControlRotation = false;
-}
-
-void ATDPlayerCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-	DOREPLIFETIME(ATDPlayerCharacter, PlayerPawn);
 }
 
 void ATDPlayerCharacter::BeginPlay()
@@ -59,12 +55,13 @@ void ATDPlayerCharacter::BeginPlay()
 		}
 	}
 
-	// 플레이어 폰 스폰 — 서버에서만 생성 후 복제
+	// 플레이어 폰 스폰 — 서버 권위, 복제로 클라에 전파
 	if (HasAuthority() && PlayerPawnClass)
 	{
 		FActorSpawnParameters Params;
 		Params.Owner = this;
-		PlayerPawn = GetWorld()->SpawnActor<ATDPlayerPawn>(PlayerPawnClass, GetActorLocation(), FRotator::ZeroRotator, Params);
+		PlayerPawn = GetWorld()->SpawnActor<ATDPlayerPawn>(
+			PlayerPawnClass, GetActorLocation(), FRotator::ZeroRotator, Params);
 	}
 
 	// HUD 위젯 생성 — 로컬 플레이어만
@@ -88,28 +85,33 @@ void ATDPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	// Enhanced Input 액션 바인딩
 	if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		EIC->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ATDPlayerCharacter::HandleCameraMove);
 	}
 }
 
-// ── 카메라 이동 ───────────────────────────────────────────────────────────────
+void ATDPlayerCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ATDPlayerCharacter, PlayerPawn);
+}
+
+// ── 카메라 & 엣지 스크롤 ──────────────────────────────────────────────────────
 
 void ATDPlayerCharacter::GetCameraAxes(FVector& OutForward, FVector& OutRight) const
 {
-	// GetForwardVector()는 Roll 영향 없이 카메라 수평 방향 반환 (Roll=90 등 케이스 대응)
+	// Roll 영향 없이 카메라 수평 방향 추출 (SpringArm Roll=90 등 케이스 대응)
 	FVector CamForward = CameraComp->GetForwardVector();
 	CamForward.Z = 0.f;
 	OutForward = CamForward.GetSafeNormal();
-	// UE 좌수계: Cross(Up, Forward) = Right
+	// UE 왼손계: Cross(Up, Forward) = Right
 	OutRight = FVector::CrossProduct(FVector::UpVector, OutForward).GetSafeNormal();
 }
 
 void ATDPlayerCharacter::HandleCameraMove(const FInputActionValue& Value)
 {
-	// WASD 입력으로 카메라 패닝
+	// WASD 2D 입력 → 카메라 수평 패닝
 	const FVector2D V = Value.Get<FVector2D>();
 	FVector Forward, Right;
 	GetCameraAxes(Forward, Right);
@@ -126,7 +128,7 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 	float MX, MY;
 	if (!PC->GetMousePosition(MX, MY)) return;
 
-	// 마우스가 화면 가장자리에 있으면 카메라 스크롤
+	// 마우스가 뷰포트 가장자리에 닿으면 해당 방향으로 카메라 스크롤
 	FVector2D Dir = FVector2D::ZeroVector;
 	if      (MX < EdgeScrollThreshold)          Dir.X = -1.f;
 	else if (MX > VX - EdgeScrollThreshold)     Dir.X =  1.f;
@@ -141,11 +143,11 @@ void ATDPlayerCharacter::TickEdgeScroll(float DeltaTime)
 	}
 }
 
-// ── 기지 체력 ─────────────────────────────────────────────────────────────────
+// ── 플레이어 폰 / 기지 체력 ───────────────────────────────────────────────────
 
 void ATDPlayerCharacter::NotifyBaseHealthDecreased()
 {
-	// 외부에서 호출 → GameState 체력 감소
+	// 외부(BP/GameMode) 에서 호출 → GameState 권위 체력 감소
 	if (ATDGameState* GS = UTDFL_Utility::GetTDGameState(this))
 	{
 		GS->DecreaseBaseHealth();
