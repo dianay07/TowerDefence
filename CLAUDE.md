@@ -129,7 +129,9 @@
 | 마우스 호버 하이라이트 | `ATowerManager::UpdateHightlight` | `UTDTowerHighlightSubsystem` | 로컬 |
 | 배치 프리뷰 유령 메시 | (BP 추정) | `UTDTowerPlacementSubsystem` | 로컬 |
 | 타워 선택 UI | `ATDPlayerCharacter::SelectTower` | `UTDTowerHighlightSubsystem` | 로컬 |
-| 타워 액션 UI (Build/Upgrade/BreakDown 버튼) | `WBP_TowerActions` (BP 단독, 로직 혼재) | `UTDTowerActionWidgetBase` (C++ 베이스) + `WBP_TowerActions` (BP 자식, 시각만) ✅ 구현됨 | 로컬 |
+| 타워 액션 UI (Build/Upgrade/BreakDown 버튼) | `WBP_TowerActions` (BP 단독, 로직 혼재) | `UTDTowerActionWidgetBase` (C++ 베이스, 단일 로직 허브) + `WBP_TowerActions` (BP 자식, 시각만) ✅ 구현됨 | 로컬 |
+| 타워 클릭 → 액션 메뉴 표시/숨김 | (BP 분산) | `ATDPlayerController::ShowTowerActionMenu/HideTowerActionMenu` (PC 가 위젯 소유) ✅ 구현됨 | 로컬 |
+| 타워 액션 메뉴 슬롯 클릭 | (BP 직접 호출) | `UTDTowerActionWidgetBase::RequestActionTop/Bottom/Left/Right` → `ATDPlayerController::HandleSlotClicked` → `Server_DoTowerAction` ✅ 구현됨 | Client→Server RPC |
 | 업그레이드/철거 비용 계산 | `ATDTowerBase::GetTowerDetails` | 유지 (순수 조회) | 로컬 |
 | GAS 어트리뷰트 적용 | `ATDTowerBase::SetTowerAttributes` | 유지 (서버에서만 호출) | 서버 |
 
@@ -168,11 +170,13 @@
 | 기능 | 현재 위치 | 목표 위치 | 권한 |
 |---|---|---|---|
 | 카메라 조작 (WASD, 엣지 스크롤) | `ATDPlayerCharacter` | 유지 | 로컬 |
-| 마우스 입력 | `ATDPlayerCharacter::HandleClick` | `ATDPlayerController`로 이전 | 로컬 |
-| 타워 선택 상태 관리 | `ATDPlayerCharacter::SelectTower` | `UTDTowerHighlightSubsystem` | 로컬 |
+| 마우스 입력 | `ATDPlayerCharacter::HandleClick` | `ATDPlayerController::HandleClick` ✅ 구현됨 | 로컬 |
+| Tower 클릭 감지 → 메뉴 표시 | `BP_Player::SelectTower` (Tower → 자기 위젯 spawn) | `ATDPlayerController::HandleClick` (raycast) → `ShowTowerActionMenu(Tower)` ✅ 구현됨 | 로컬 |
+| 타워 액션 위젯 인스턴스 소유 | (BP 측, Tower/Pawn 분산) | `ATDPlayerController::ActiveActionWidget` (생성/캐시/Show/Hide 전담) ✅ 구현됨 | 로컬 |
+| 타워 선택 상태 관리 | `ATDPlayerCharacter::SelectTower` | `UTDTowerHighlightSubsystem` (호버) + `ATDPlayerController::SelectedTower` (액션 메뉴 대상) | 로컬 |
 | HUD 위젯 생성/보유 | `ATDPlayerCharacter::HUDWidget` | `UTDHUDSubsystem` (LocalPlayer) | 로컬 |
 | 코인/체력 UI 갱신 바인딩 | `ATDPlayerCharacter::OnCoinsChanged` | `ATDGameState` OnRep 구독 | 로컬 |
-| 타워 설치/판매 요청 | (BP 추정) | `ATDPlayerController::ServerXxx` | Client→Server RPC |
+| 타워 설치/판매 요청 | (BP 추정) | `ATDPlayerController::Server_DoTowerAction` ✅ 구현됨 | Client→Server RPC |
 | 기지 체력 감소 알림 | `ATDPlayerCharacter::NotifyBaseHealthDecreased` | GameState OnRep_BaseHealth | 복제 |
 
 **결론**: `ATDPlayerCharacter`는 **카메라/입력만** 남기고 UI/상태 로직은 Subsystem으로.
@@ -353,10 +357,17 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 7. **ActiveEnemies 복제**
    - WaveManager의 Enemies를 GameState로 이동
    - `GetFurthestEnemy`는 GameState 조회로 전환
-8. **TowerActionWidget BP→C++ 분리** ✅ C++ 베이스 완료
-   - `UTDTowerActionWidgetBase` 생성 (Tower 참조, 비용 계산, OnCoinsChanged 자동 바인딩, RPC 위임)
-   - 버튼 클릭 → `Server_DoTowerAction` 경유로 전환
-   - 남은 작업: `WBP_TowerActions` Reparent + BP 그래프 정리 (시각만 남김)
+8. **TowerActionWidget BP→C++ 분리 + PC 가 위젯 라이프사이클 소유** ✅ C++ 완료
+   - `UTDTowerActionWidgetBase` = 단일 로직 허브 (데이터/비용/이벤트/RPC 위임 모두 집결)
+       - `InitForTower`, `Show/Hide`, `RefreshSlots`, `RequestActionTop/Bottom/Left/Right`, `GetActionForSlot`
+       - 4 슬롯 BindWidget (`ActionSlotTop/Bottom/Left/Right`)
+       - OnCoinsChanged 자동 바인딩/해제, OnSlotRefreshed BP 이벤트로 시각 위임
+   - `ATDPlayerController` 가 메뉴 라이프사이클 소유 (CLAUDE.md §1-2 의 "UI=LocalPlayer 권한" 부합)
+       - `HandleClick` 에서 Tower 히트 감지 → `ShowTowerActionMenu(Tower)`
+       - 첫 표시 시 `CreateWidget(this, ActionWidgetClass)` + `AddToPlayerScreen` (캐시 후 재사용)
+       - Tower `OnDestroyed` 구독 → 자동 메뉴 닫힘
+       - 슬롯 클릭 → `HandleSlotClicked(Action)` → `Server_DoTowerAction` (단일 RPC 진입점)
+   - 남은 작업: `WBP_TowerActions` Reparent → `UTDTowerActionWidgetBase` + `WBP_TowerActionSlot` 변수 정리 + 슬롯 OnSlotClicked 디스패처 + `BP_TDPlayerController` 의 `ActionWidgetClass` 지정
 9. **EnemyDataTableSubsystem / EnemySpawnerComponent 분리 (선택)**
 10. **PoolComponent 분리 (선택)**
 
@@ -395,3 +406,5 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 | 2026-04-26 | `ATDTowerBase` 의 `ATowerManager` 직접 참조 제거 → `UTDTowerDataTableSubsystem` 직접 조회로 전환. `GetTowerDetails` 의 멤버 `TowerData` 오염 버그 + `DoTowerAction` 의 BreakDown 케이스 누락 버그 수정 | - |
 | 2026-04-26 | `UTDLevelSessionSubsystem::ShowStageDataError` 추가 — 스테이지 데이터 어셋 누락/로드 실패 시 에디터 모달 + 에러 로그 | - |
 | 2026-04-26 | `UTDTowerActionWidgetBase` 추가 — `WBP_TowerActions` 의 C++ 베이스. 데이터/로직(비용 계산, OnCoinsChanged 바인딩, Server RPC 위임) C++, 시각/스타일 BP 자식. UI Layer 정의 추가 | - |
+| 2026-04-27 | `ATDPlayerController` 메뉴 라이프사이클 소유 — `ShowTowerActionMenu/HideTowerActionMenu/HandleSlotClicked` + `ActionWidgetClass`/`ActiveActionWidget`/`SelectedTower` 멤버. `HandleClick` 에서 Tower 히트 감지 → 메뉴 표시. Tower `OnDestroyed` 구독으로 자동 닫힘 | - |
+| 2026-04-27 | `UTDTowerActionWidgetBase` 단일 허브 강화 — `Show/Hide/RefreshSlots`/`RequestActionTop/Bottom/Left/Right`/`GetActionForSlot` 추가. WBP 측 BP 함수/변수 모두 C++ 로 흡수 (BP 는 시각 + 4 슬롯 클릭 wiring 만 남김) | - |

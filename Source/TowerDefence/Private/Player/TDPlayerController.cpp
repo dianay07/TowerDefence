@@ -4,7 +4,9 @@
 #include "TDPlayerCharacter.h"
 #include "TDPlayerPawn.h"
 #include "TDTowerPawn.h"
+#include "UI/TDTowerActionWidgetBase.h"
 #include "EnhancedInputComponent.h"
+#include "Blueprint/UserWidget.h"
 
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
 
@@ -22,19 +24,32 @@ void ATDPlayerController::SetupInputComponent()
 
 void ATDPlayerController::HandleClick()
 {
-	ATDPlayerCharacter* TDCharacter = Cast<ATDPlayerCharacter>(GetPawn());
-	if (!TDCharacter) return;
-
-	ATDPlayerPawn* PlayerPawn = TDCharacter->GetPlayerPawn();
-	if (!PlayerPawn) return;
-
 	FHitResult HitResult;
-	if (!GetHitResultUnderCursor(ECC_Visibility, false, HitResult)) return;
+	if (!GetHitResultUnderCursor(ECC_Visibility, false, HitResult))
+	{
+		HideTowerActionMenu();
+		return;
+	}
 
-	// 타워 위 클릭은 이동 입력으로 처리하지 않음 (타워 UI 상호작용과 구분)
-	if (HitResult.GetActor() && HitResult.GetActor()->IsA<ATDTowerPawn>()) return;
+	AActor* HitActor = HitResult.GetActor();
 
-	PlayerPawn->SetMoveTarget(HitResult.Location);
+	// Tower 히트 → 액션 메뉴 표시 (BP_Player::SelectTower 대체)
+	if (ATDTowerBase* Tower = Cast<ATDTowerBase>(HitActor))
+	{
+		ShowTowerActionMenu(Tower);
+		return;
+	}
+
+	// Tower 가 아닌 곳 → 메뉴 숨김 + 기존 이동 로직
+	HideTowerActionMenu();
+
+	if (ATDPlayerCharacter* TDCharacter = Cast<ATDPlayerCharacter>(GetPawn()))
+	{
+		if (ATDPlayerPawn* PlayerPawn = TDCharacter->GetPlayerPawn())
+		{
+			PlayerPawn->SetMoveTarget(HitResult.Location);
+		}
+	}
 }
 
 // ── 타워 액션 (Client → Server RPC) ──────────────────────────────────────────
@@ -53,4 +68,78 @@ void ATDPlayerController::Server_DoTowerAction_Implementation(ATDTowerBase* Towe
 	}
 
 	Tower->DoTowerAction(Action);
+}
+
+// ── 타워 액션 메뉴 (LocalPlayer UI) ────────────────────────────────────────────
+
+void ATDPlayerController::ShowTowerActionMenu(ATDTowerBase* Tower)
+{
+	if (!IsValid(Tower)) return;
+
+	const bool bIsMenuOpen = ActiveActionWidget &&
+		ActiveActionWidget->GetVisibility() == ESlateVisibility::Visible;
+
+	// 같은 Tower 재클릭 → 토글 닫힘
+	if (bIsMenuOpen && SelectedTower == Tower)
+	{
+		HideTowerActionMenu();
+		return;
+	}
+
+	// 이전 Tower 의 OnDestroyed 구독 해제
+	if (IsValid(SelectedTower) && SelectedTower != Tower)
+	{
+		SelectedTower->OnDestroyed.RemoveDynamic(this, &ATDPlayerController::HandleSelectedTowerDestroyed);
+	}
+
+	SelectedTower = Tower;
+	SelectedTower->OnDestroyed.AddUniqueDynamic(this, &ATDPlayerController::HandleSelectedTowerDestroyed);
+
+	// 위젯 첫 호출 시 생성 + 캐시
+	if (!ActiveActionWidget)
+	{
+		UClass* WidgetClass = ActionWidgetClass.LoadSynchronous();
+		if (!WidgetClass)
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("[PC] ActionWidgetClass not set — assign WBP_TowerActions in BP_TDPlayerController defaults."));
+			return;
+		}
+
+		// CreateWidget(this) → owning player = 현재 PC 의 LocalPlayer
+		ActiveActionWidget = CreateWidget<UTDTowerActionWidgetBase>(this, WidgetClass);
+		if (!ActiveActionWidget) return;
+
+		// AddToPlayerScreen — PIE 다중 플레이어에서 다른 창에 안 보임 (리슨 서버 안전)
+		ActiveActionWidget->AddToPlayerScreen(/*ZOrder=*/100);
+	}
+
+	ActiveActionWidget->InitForTower(Tower);
+	ActiveActionWidget->SetVisibility(ESlateVisibility::Visible);
+}
+
+void ATDPlayerController::HideTowerActionMenu()
+{
+	if (IsValid(SelectedTower))
+	{
+		SelectedTower->OnDestroyed.RemoveDynamic(this, &ATDPlayerController::HandleSelectedTowerDestroyed);
+	}
+	SelectedTower = nullptr;
+
+	if (ActiveActionWidget)
+	{
+		// 파괴하지 않고 숨김 — 다음 클릭 시 즉시 재사용
+		ActiveActionWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
+}
+
+void ATDPlayerController::HandleSlotClicked(ETowerActions Action)
+{
+	if (!IsValid(SelectedTower) || Action == ETowerActions::None) return;
+	Server_DoTowerAction(SelectedTower, Action);
+}
+
+void ATDPlayerController::HandleSelectedTowerDestroyed(AActor* /*DestroyedActor*/)
+{
+	HideTowerActionMenu();
 }

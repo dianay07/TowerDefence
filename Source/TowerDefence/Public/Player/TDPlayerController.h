@@ -9,6 +9,7 @@ class ATDTowerBase;
 class ATDGameState;
 class UInputAction;
 class ATDTowerPawn;
+class UTDTowerActionWidgetBase;
 
 /**
  * TD 전용 PlayerController.
@@ -44,4 +45,38 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Server, Reliable, Category = "TD|TowerAction")
 	void Server_DoTowerAction(ATDTowerBase* Tower, ETowerActions Action);
+
+	// ── 타워 액션 메뉴 (LocalPlayer UI) ────────────────────────────────────────
+	// 리슨 서버: 호스트/게스트 모두 각자의 PC 가 자기 LocalPlayer 측 메뉴를 관리.
+	// Server RPC 는 Server_DoTowerAction 만. 메뉴 자체는 비복제 (UI 는 항상 로컬).
+
+	/** Tower 클릭 시 호출 — 메뉴 표시. 같은 Tower 재클릭이면 토글 닫힘. */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void ShowTowerActionMenu(ATDTowerBase* Tower);
+
+	/** 메뉴 숨김 — 빈 곳 클릭, Tower 파괴, ESC 등. */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void HideTowerActionMenu();
+
+	/** 슬롯 위젯이 클릭 시 호출 — Server_DoTowerAction 위임. */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void HandleSlotClicked(ETowerActions Action);
+
+protected:
+	/** 위젯 클래스 — BP_TDPlayerController 에 WBP_TowerActions 지정. */
+	UPROPERTY(EditDefaultsOnly, Category = "TD|TowerAction")
+	TSoftClassPtr<UTDTowerActionWidgetBase> ActionWidgetClass;
+
+private:
+	/** 캐시된 위젯 인스턴스 — 첫 표시 시 생성, 이후 Visibility 만 토글. */
+	UPROPERTY(Transient)
+	TObjectPtr<UTDTowerActionWidgetBase> ActiveActionWidget;
+
+	/** 현재 메뉴 표시 중인 Tower. */
+	UPROPERTY(Transient)
+	TObjectPtr<ATDTowerBase> SelectedTower;
+
+	/** Tower 가 파괴되면 메뉴도 닫음. */
+	UFUNCTION()
+	void HandleSelectedTowerDestroyed(AActor* DestroyedActor);
 };

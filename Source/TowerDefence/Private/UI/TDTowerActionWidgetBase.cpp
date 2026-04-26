@@ -27,15 +27,39 @@ void UTDTowerActionWidgetBase::InitForTower(ATDTowerBase* Tower)
 	RefreshAllSlots();
 }
 
+void UTDTowerActionWidgetBase::Show()
+{
+	SetVisibility(ESlateVisibility::Visible);
+}
+
+void UTDTowerActionWidgetBase::Hide()
+{
+	SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void UTDTowerActionWidgetBase::RefreshSlots()
+{
+	RefreshAllSlots();
+}
+
 void UTDTowerActionWidgetBase::RequestTowerAction(ETowerActions Action)
 {
-	if (!IsValid(TargetTower) || Action == ETowerActions::None) return;
+	if (Action == ETowerActions::None) return;
 
-	// 리슨 서버 호스트 포함 모든 클라 → PlayerController Server RPC 경유
+	// PC 가 SelectedTower 보유 + Server RPC 위임 단일 진입점 (리슨 서버 호스트 포함 모든 클라)
 	if (ATDPlayerController* PC = Cast<ATDPlayerController>(GetOwningPlayer()))
 	{
-		PC->Server_DoTowerAction(TargetTower, Action);
+		PC->HandleSlotClicked(Action);
 	}
+}
+
+ETowerActions UTDTowerActionWidgetBase::GetActionForSlot(const UUserWidget* SlotWidget) const
+{
+	if (SlotWidget == ActionSlotTop)    return ActionTop;
+	if (SlotWidget == ActionSlotBottom) return ActionBottom;
+	if (SlotWidget == ActionSlotLeft)   return ActionLeft;
+	if (SlotWidget == ActionSlotRight)  return ActionRight;
+	return ETowerActions::None;
 }
 
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
@@ -55,18 +79,20 @@ void UTDTowerActionWidgetBase::NativeDestruct()
 
 void UTDTowerActionWidgetBase::RefreshAllSlots()
 {
-	RefreshSlot(ActionTop);
-	RefreshSlot(ActionBottom);
-	RefreshSlot(ActionLeft);
-	RefreshSlot(ActionRight);
+	RefreshSlot(ActionSlotTop,    ActionTop);
+	RefreshSlot(ActionSlotBottom, ActionBottom);
+	RefreshSlot(ActionSlotLeft,   ActionLeft);
+	RefreshSlot(ActionSlotRight,  ActionRight);
 }
 
-void UTDTowerActionWidgetBase::RefreshSlot(ETowerActions Action)
+void UTDTowerActionWidgetBase::RefreshSlot(UUserWidget* SlotWidget, ETowerActions Action)
 {
+	if (!SlotWidget) return;  // BP 가 BindWidget 누락 (보통 컴파일 단에서 잡힘)
+
 	// None 슬롯 또는 타워 무효 → 비표시
 	if (Action == ETowerActions::None || !IsValid(TargetTower))
 	{
-		OnSlotRefreshed(Action, 0, FString(), /*bVisible=*/false);
+		OnSlotRefreshed(SlotWidget, Action, 0, FString(), /*bVisible=*/false);
 		return;
 	}
 
@@ -77,7 +103,7 @@ void UTDTowerActionWidgetBase::RefreshSlot(ETowerActions Action)
 	// Upgrade 가 불가능한 타워는 슬롯 숨김 (최고 등급 등)
 	const bool bVisible = !(Action == ETowerActions::Upgrade && !TargetTower->CanUpgrade());
 
-	OnSlotRefreshed(Action, Cost, Description, bVisible);
+	OnSlotRefreshed(SlotWidget, Action, Cost, Description, bVisible);
 }
 
 void UTDTowerActionWidgetBase::HandleCoinsChanged(int32 /*Change*/, int32 /*Coin*/)

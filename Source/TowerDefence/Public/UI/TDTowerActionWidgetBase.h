@@ -33,12 +33,46 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
 	void InitForTower(ATDTowerBase* Tower);
 
+	/** 메뉴 표시 — Visibility = Visible. PC 또는 BP 에서 호출. */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void Show();
+
+	/** 메뉴 숨김 — Visibility = Collapsed. 위젯 인스턴스는 보존 (재사용). */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void Hide();
+
+	/** 4 슬롯 강제 재갱신 — 외부에서 트리거 필요 시 (예: 타워 업그레이드 직후). */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void RefreshSlots();
+
 	/**
 	 * 슬롯 버튼 BP OnClicked 에서 호출 → PlayerController Server RPC 위임.
 	 * 리슨 서버 호스트도 동일 경로(PC RPC) 사용.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
 	void RequestTowerAction(ETowerActions Action);
+
+	// ─── 편의 wrapper — BP 슬롯 OnSlotClicked 이벤트 디스패처에서 직접 호출 ───
+	// (BP 가 매번 ActionTop/Bottom/Left/Right 변수 읽고 RequestTowerAction 부르는 수고 제거)
+
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void RequestActionTop()    { RequestTowerAction(ActionTop); }
+
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void RequestActionBottom() { RequestTowerAction(ActionBottom); }
+
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void RequestActionLeft()   { RequestTowerAction(ActionLeft); }
+
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerAction")
+	void RequestActionRight()  { RequestTowerAction(ActionRight); }
+
+	/**
+	 * 슬롯 위젯 → 해당 슬롯의 액션 조회.
+	 * BP OnSlotRefreshed override 등에서 SlotWidget 인자로 액션 식별 시 사용.
+	 */
+	UFUNCTION(BlueprintPure, Category = "TD|TowerAction")
+	ETowerActions GetActionForSlot(const UUserWidget* SlotWidget) const;
 
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
 protected:
@@ -58,6 +92,22 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "TD|TowerAction|Slots")
 	ETowerActions ActionRight  = ETowerActions::None;
 
+	/**
+	 * 4 슬롯 위젯 인스턴스 (BindWidget).
+	 * BP 자식 (WBP_TowerActions) 은 동일 이름의 위젯을 반드시 가져야 함 — 없으면 컴파일 에러.
+	 */
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	TObjectPtr<UUserWidget> ActionSlotTop;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	TObjectPtr<UUserWidget> ActionSlotBottom;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	TObjectPtr<UUserWidget> ActionSlotLeft;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	TObjectPtr<UUserWidget> ActionSlotRight;
+
 	/** 현재 위젯이 표시 중인 타워. InitForTower 에서 설정. */
 	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction")
 	TObjectPtr<ATDTowerBase> TargetTower;
@@ -68,13 +118,14 @@ protected:
 	 * 슬롯 갱신 이벤트. BP 자식이 override 하여 텍스처/스타일/Visibility 적용.
 	 * RefreshAllSlots() 가 4방향 슬롯마다 1회씩 호출.
 	 *
-	 * @param Action       해당 슬롯의 액션 (None 이면 슬롯 미사용)
+	 * @param SlotWidget   갱신 대상 슬롯 위젯 (ActionSlotTop/Bottom/Left/Right 중 하나)
+	 * @param Action       해당 슬롯의 액션 (None 이면 슬롯 미사용 — bVisible=false 로 호출)
 	 * @param Cost         GetTowerDetails 결과 비용 / 환급액
 	 * @param Description  GetTowerDetails 결과 설명 텍스트
 	 * @param bVisible     슬롯 표시 여부 (Upgrade 불가 등 조건에서 false)
 	 */
 	UFUNCTION(BlueprintImplementableEvent, Category = "TD|TowerAction")
-	void OnSlotRefreshed(ETowerActions Action, int32 Cost, const FString& Description, bool bVisible);
+	void OnSlotRefreshed(UUserWidget* SlotWidget, ETowerActions Action, int32 Cost, const FString& Description, bool bVisible);
 
 // ── 내부 구현 ─────────────────────────────────────────────────────────────────
 private:
@@ -82,7 +133,7 @@ private:
 	void RefreshAllSlots();
 
 	/** 단일 슬롯 갱신 → OnSlotRefreshed 발화. None 또는 TargetTower 무효이면 bVisible=false. */
-	void RefreshSlot(ETowerActions Action);
+	void RefreshSlot(UUserWidget* SlotWidget, ETowerActions Action);
 
 	UFUNCTION()
 	void HandleCoinsChanged(int32 Change, int32 Coin);
