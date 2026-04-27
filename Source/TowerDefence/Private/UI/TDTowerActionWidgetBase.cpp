@@ -24,7 +24,8 @@ void UTDTowerActionWidgetBase::InitForTower(ATDTowerBase* Tower)
 		BoundGameState = GS;
 	}
 
-	RefreshAllSlots();
+	InitAllSlots();      // 텍스처/스타일 등 정적 데이터 1회 세팅
+	RefreshAllSlots();   // Cost/Visibility 등 동적 데이터 갱신
 }
 
 void UTDTowerActionWidgetBase::Show()
@@ -76,6 +77,20 @@ void UTDTowerActionWidgetBase::NativeDestruct()
 }
 
 // ── 내부 구현 ─────────────────────────────────────────────────────────────────
+
+void UTDTowerActionWidgetBase::InitAllSlots()
+{
+	InitSlot(ActionSlotTop,    ActionTop);
+	InitSlot(ActionSlotBottom, ActionBottom);
+	InitSlot(ActionSlotLeft,   ActionLeft);
+	InitSlot(ActionSlotRight,  ActionRight);
+}
+
+void UTDTowerActionWidgetBase::InitSlot(UUserWidget* SlotWidget, ETowerActions Action)
+{
+	if (!SlotWidget) return;
+	OnSlotInitialized(SlotWidget, Action);
+}
 
 void UTDTowerActionWidgetBase::RefreshAllSlots()
 {

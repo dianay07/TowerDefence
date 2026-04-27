@@ -81,31 +81,31 @@ protected:
 // ── BP 슬롯 설정 (BP CDO 에서 EditDefaults) ───────────────────────────────────
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "TD|TowerAction|Slots")
-	ETowerActions ActionTop    = ETowerActions::None;
+	ETowerActions ActionTop    = ETowerActions::BuildTurret;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "TD|TowerAction|Slots")
-	ETowerActions ActionBottom = ETowerActions::None;
+	ETowerActions ActionBottom = ETowerActions::BuildBallista;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "TD|TowerAction|Slots")
-	ETowerActions ActionLeft   = ETowerActions::None;
+	ETowerActions ActionLeft   = ETowerActions::BuildCatapult;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "TD|TowerAction|Slots")
-	ETowerActions ActionRight  = ETowerActions::None;
+	ETowerActions ActionRight  = ETowerActions::BuildCannon;
 
 	/**
 	 * 4 슬롯 위젯 인스턴스 (BindWidget).
 	 * BP 자식 (WBP_TowerActions) 은 동일 이름의 위젯을 반드시 가져야 함 — 없으면 컴파일 에러.
 	 */
-	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidgetOptional))
 	TObjectPtr<UUserWidget> ActionSlotTop;
 
-	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidgetOptional))
 	TObjectPtr<UUserWidget> ActionSlotBottom;
 
-	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidgetOptional))
 	TObjectPtr<UUserWidget> ActionSlotLeft;
 
-	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidget))
+	UPROPERTY(BlueprintReadOnly, Category = "TD|TowerAction|Slots", meta = (BindWidgetOptional))
 	TObjectPtr<UUserWidget> ActionSlotRight;
 
 	/** 현재 위젯이 표시 중인 타워. InitForTower 에서 설정. */
@@ -115,8 +115,18 @@ protected:
 // ── BP 인터페이스 (BP 자식이 구현) ────────────────────────────────────────────
 protected:
 	/**
-	 * 슬롯 갱신 이벤트. BP 자식이 override 하여 텍스처/스타일/Visibility 적용.
-	 * RefreshAllSlots() 가 4방향 슬롯마다 1회씩 호출.
+	 * 슬롯 초기화 이벤트 — InitForTower 시 슬롯마다 1회 발화.
+	 * 텍스처, 버튼 스타일, BPI 바인딩 등 액션별 정적 데이터 세팅.
+	 *
+	 * @param SlotWidget  대상 슬롯 (ActionSlotTop/Bottom/Left/Right 중 하나)
+	 * @param Action      해당 슬롯의 액션
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "TD|TowerAction")
+	void OnSlotInitialized(UUserWidget* SlotWidget, ETowerActions Action);
+
+	/**
+	 * 슬롯 갱신 이벤트. BP 자식이 override 하여 Cost / Visibility 적용.
+	 * RefreshAllSlots() 가 4방향 슬롯마다 1회씩 호출 — 코인 변경/업그레이드마다 재호출.
 	 *
 	 * @param SlotWidget   갱신 대상 슬롯 위젯 (ActionSlotTop/Bottom/Left/Right 중 하나)
 	 * @param Action       해당 슬롯의 액션 (None 이면 슬롯 미사용 — bVisible=false 로 호출)
@@ -129,6 +139,12 @@ protected:
 
 // ── 내부 구현 ─────────────────────────────────────────────────────────────────
 private:
+	/** 4 슬롯(Top/Bottom/Left/Right) 모두 초기화 — 텍스처/스타일 등 정적 데이터. */
+	void InitAllSlots();
+
+	/** 단일 슬롯 초기화 → OnSlotInitialized 발화. */
+	void InitSlot(UUserWidget* SlotWidget, ETowerActions Action);
+
 	/** 4 슬롯(Top/Bottom/Left/Right) 모두 갱신. */
 	void RefreshAllSlots();
 
