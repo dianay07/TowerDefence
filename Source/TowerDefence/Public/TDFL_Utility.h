@@ -19,6 +19,7 @@ class UTDGameUserSettings;
 class ATDEnemyActor;
 class ATDTowerPawn;
 class UStaticMeshComponent;
+class UTDLobbySessionSubsystem;
 
 static TAutoConsoleVariable<int32> CVarDevMode(
 	TEXT("TD.Dev.Mode"),
@@ -49,6 +50,12 @@ public:
 	static ATDGameState* GetTDGameState(const UObject* WorldContextObject);
 
 	
+	// ── 로비 세션 ────────────────────────────────────────────────
+
+	/** OnlineSubsystem 세션 단일 허브. 메뉴/위젯에서 호출 지점 단일화. */
+	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))
+	static UTDLobbySessionSubsystem* GetLobbySession(const UObject* WorldContextObject);
+
 	// ── Manager (GameMode 컴포넌트) ───────────────────────────────
 
 	UFUNCTION(BlueprintPure, Category = "TD|Utility", meta = (WorldContext = "WorldContextObject"))

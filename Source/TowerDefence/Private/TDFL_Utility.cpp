@@ -14,6 +14,7 @@
 #include "GameData/TDEnemyDataTableSubsystem.h"
 #include "Server/TDPoolComponent.h"
 #include "Player/TDPlayerController.h"
+#include "Session/TDLobbySessionSubsystem.h"
 
 int32 UTDFL_Utility::GetCVarDevMode()
 {
@@ -23,6 +24,13 @@ int32 UTDFL_Utility::GetCVarDevMode()
 void UTDFL_Utility::SetCVarDevMode(int32 DevMode)
 {
 	CVarDevMode->Set(DevMode);
+}
+
+UTDLobbySessionSubsystem* UTDFL_Utility::GetLobbySession(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject) return nullptr;
+	UGameInstance* GI = UGameplayStatics::GetGameInstance(WorldContextObject);
+	return GI ? GI->GetSubsystem<UTDLobbySessionSubsystem>() : nullptr;
 }
 
 ATDGameMode* UTDFL_Utility::GetTDGameMode(const UObject* WorldContextObject)

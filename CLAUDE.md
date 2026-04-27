@@ -408,3 +408,157 @@ static UTDTowerHighlightSubsystem* GetTowerHighlight(const UObject* WorldContext
 | 2026-04-26 | `UTDTowerActionWidgetBase` 추가 — `WBP_TowerActions` 의 C++ 베이스. 데이터/로직(비용 계산, OnCoinsChanged 바인딩, Server RPC 위임) C++, 시각/스타일 BP 자식. UI Layer 정의 추가 | - |
 | 2026-04-27 | `ATDPlayerController` 메뉴 라이프사이클 소유 — `ShowTowerActionMenu/HideTowerActionMenu/HandleSlotClicked` + `ActionWidgetClass`/`ActiveActionWidget`/`SelectedTower` 멤버. `HandleClick` 에서 Tower 히트 감지 → 메뉴 표시. Tower `OnDestroyed` 구독으로 자동 닫힘 | - |
 | 2026-04-27 | `UTDTowerActionWidgetBase` 단일 허브 강화 — `Show/Hide/RefreshSlots`/`RequestActionTop/Bottom/Left/Right`/`GetActionForSlot` 추가. WBP 측 BP 함수/변수 모두 C++ 로 흡수 (BP 는 시각 + 4 슬롯 클릭 wiring 만 남김) | - |
+| 2026-04-27 | § 11 멀티 세션 섹션 추가 — OnlineSubsystem(Null) 기반 로비/세션 흐름. `UTDLobbySessionSubsystem` + Lobby GM/GS/PC/PS + 메뉴/룸 위젯 도입 계획 | - |
+
+---
+
+## 11. 멀티 세션 (OnlineSubsystem)
+
+### 11-1. 목표
+
+OnlineSubsystem 위에 **세션 생성 / 검색 / 참가 / 퇴장**, **로비 룸(참가자 목록 표시)**, **호스트의 게임 시작(같은 레벨 트래블)** 흐름을 구축한다.
+
+- **백엔드**: `OnlineSubsystemNull` (LAN/개발) 우선. 코드는 `IOnlineSession` 추상화에 의존 → Steam/EOS 확장 가능.
+- **호스트 모델**: Listen Server 우선. `HasAuthority()` 분기로 Dedicated 호환.
+- **이름 충돌 주의**: 기존 `UTDLevelSessionSubsystem` (레벨 스테이지 전환 담당) 과 구분하기 위해 본 섹션의 신규 클래스는 **`UTDLobbySessionSubsystem`** 으로 명명한다.
+
+### 11-2. 레이어 매핑 (§ 1-2 와 정합)
+
+| 책임 | 컨테이너 | 권한 |
+|---|---|---|
+| 세션 라이프사이클 (Create / Find / Join / Destroy) + `IOnlineSessionPtr` 보유 | `UTDLobbySessionSubsystem` (GameInstanceSubsystem) | 로컬 |
+| 호스트 게임 시작 (`ServerTravel ?listen`) | `UTDLobbySessionSubsystem` (Authority 분기) → GameMode | 서버 |
+| 로비 룸 상태 (참가자 목록, Ready 플래그) | `ATDLobbyGameState` (Replicated `PlayerSlots`) | 복제 |
+| 로비 PlayerController (Ready 토글, Start 요청, Kick) | `ATDLobbyPlayerController` (Server RPC) | Client→Server RPC |
+| 로비 PlayerState (DisplayName, bIsReady) | `ATDLobbyPlayerState` (Replicated) | 복제 |
+| 메뉴/룸 UI (방 목록, 참가자 목록) | `UTDLobbyMenuWidget` / `UTDLobbyRoomWidget` (UMG) + BP 자식 | 로컬 |
+| 게임플레이 진입 후 공유 상태 | 기존 `ATDGameState` (그대로 사용) | 복제 |
+
+**규칙**:
+- 세션 API 호출은 **반드시 `UTDLobbySessionSubsystem` 한 곳에서**. 위젯/PlayerController 가 `IOnlineSession` 직접 호출 금지 (§ 1-3 의 "단일 진입점" 원칙 확장).
+- 로비 ↔ 게임플레이 레벨 전환은 `ServerTravel` 로. `UGameplayStatics::OpenLevel` 은 클라 단독 메뉴 이동에만 사용.
+
+### 11-3. 흐름
+
+```
+[메인 메뉴]
+HostGame()  → LobbySubsystem::CreateSession(Settings { NumPublicConnections=4, bIsLAN=true })
+                 ├ OnCreateSessionComplete
+                 └ Authority: ServerTravel("/Game/Levels/Lobby?listen", true)
+
+[메인 메뉴]
+SearchGames() → LobbySubsystem::FindSessions(MaxResults=20, IsLAN=true)
+                 └ OnFindSessionsComplete → 위젯에 결과 브로드캐스트
+
+[메인 메뉴]
+JoinSelected(SearchResult)
+              → LobbySubsystem::JoinSession(SearchResult)
+                 └ OnJoinSessionComplete → ClientTravel(ConnectInfo, ETravelType::TRAVEL_Absolute)
+
+[Lobby Level]
+ATDLobbyGameMode::PostLogin (서버) → LobbyGameState->PlayerSlots.Add(NewPS)  [Replicated]
+                                                ↓
+[All Clients] OnRep_PlayerSlots → 로비 룸 위젯 갱신 (이름/Ready 표시)
+
+[Host: Start 클릭]
+ATDLobbyPlayerController::Server_RequestStart  (호스트 PC 만 허용)
+   └ Authority: ServerTravel("/Game/Levels/Levels-01", true)
+         ↓
+[All Clients] 자동 클라이언트 트래블 → 게임플레이 시작
+              (기존 UTDLevelSessionSubsystem PostLoadMapWithWorld 훅 그대로 동작)
+
+[Player Quit / Disconnect]
+- 클라이언트 종료: LobbySubsystem::DestroySession 후 메인 메뉴 복귀.
+                     서버는 PostLogout → PlayerSlots 에서 제거.
+- 호스트 종료: HostMigration 미지원. 모든 클라에게 ClientReturnToMainMenuWithTextReason 송출 후 세션 종료.
+```
+
+### 11-4. 신규 파일 구조
+
+```
+Source/TowerDefence/
+├── Public/
+│   ├── Session/
+│   │   ├── TDLobbySessionSubsystem.h       [NEW] OnlineSession 단일 허브
+│   │   └── TDLevelSessionSubsystem.h       (기존 — 스테이지 전환 담당, 별개 책임)
+│   ├── Lobby/
+│   │   ├── TDLobbyGameMode.h               [NEW] PostLogin/Logout → GameState 슬롯 갱신
+│   │   ├── TDLobbyGameState.h              [NEW] PlayerSlots (Replicated)
+│   │   ├── TDLobbyPlayerController.h       [NEW] Server_RequestStart, Server_SetReady
+│   │   └── TDLobbyPlayerState.h            [NEW] DisplayName, bIsReady (Replicated)
+│   └── UI/
+│       ├── TDLobbyMenuWidget.h             [NEW] 메인 메뉴 (Host/Search/Quit)
+│       ├── TDLobbyRoomWidget.h             [NEW] 룸 (참가자 리스트 + Ready/Start)
+│       └── TDLobbyEntryWidget.h            [NEW] 검색 결과 / 참가자 한 줄
+└── Private/ (대응)
+
+Config/DefaultEngine.ini
+  [OnlineSubsystem]
+  DefaultPlatformService=Null
+  [/Script/Engine.GameEngine]
+  +NetDriverDefinitions=...
+
+TowerDefence.Build.cs
+  PrivateDependencyModuleNames += { "OnlineSubsystem", "OnlineSubsystemUtils" }
+
+TowerDefence.uproject
+  Plugins += { "Name": "OnlineSubsystemNull", "Enabled": true }
+
+Content/Levels/Lobby.umap                   [NEW]   BP_TDLobbyGameMode 사용
+Content/UI/Lobby/WBP_LobbyMenu.uasset       [NEW]   UTDLobbyMenuWidget 자식
+Content/UI/Lobby/WBP_LobbyRoom.uasset       [NEW]   UTDLobbyRoomWidget 자식
+Content/UI/Lobby/WBP_LobbyEntry.uasset      [NEW]   UTDLobbyEntryWidget 자식
+```
+
+### 11-5. 실행 단계 (작은 PR 단위)
+
+각 단계는 독립 빌드 가능.
+
+1. **모듈 / 플러그인 / Config 활성화**
+   - `TowerDefence.Build.cs`: `PrivateDependencyModuleNames` 에 `"OnlineSubsystem"`, `"OnlineSubsystemUtils"` 추가.
+   - `TowerDefence.uproject` Plugins 에 `OnlineSubsystemNull` 활성화.
+   - `DefaultEngine.ini` 에 `[OnlineSubsystem] DefaultPlatformService=Null` + `NetDriverDefinitions` 등록.
+2. **`UTDLobbySessionSubsystem` 도입**
+   - Create / Find / Join / Destroy + 4 개 OnComplete 핸들러.
+   - 위젯이 구독할 동적 멀티캐스트: `OnSessionCreated`, `OnSessionsFound`, `OnSessionJoined`, `OnSessionDestroyed`.
+   - `UTDFL_Utility::GetLobbySession(WCO)` 접근자 추가 (§ 6-3 패턴).
+3. **로비 레벨 + GM/GS/PC/PS**
+   - `Levels-Lobby.umap` 신규.
+   - `ATDLobbyGameMode::PostLogin/Logout` → `ATDLobbyGameState::PlayerSlots` (`TArray<TObjectPtr<ATDLobbyPlayerState>>` Replicated) 동기화.
+   - `ATDLobbyPlayerState::DisplayName / bIsReady` 복제.
+   - `ATDLobbyPlayerController::Server_SetReady`, `Server_RequestStart` (Authority 게이트).
+4. **메뉴 / 룸 위젯**
+   - `UTDLobbyMenuWidget` (C++) + `WBP_LobbyMenu` (BP, 시각만).
+   - `UTDLobbyRoomWidget` (C++) — `OnRep_PlayerSlots` 구독, 슬롯마다 `WBP_LobbyEntry` 인스턴스화.
+   - 패턴은 § 3-1 의 `UTDTowerActionWidgetBase` 와 동일: 데이터/로직 C++, 시각 BP.
+5. **게임 시작 트래블**
+   - `Server_RequestStart` 내부에서 `GetWorld()->ServerTravel("/Game/Levels/Levels-01?listen", true)`.
+   - 기존 `UTDLevelSessionSubsystem::OnPostLoadMap` 훅이 그대로 동작 → 스테이지 DT 주입 흐름 보존.
+6. **연결 종료/이탈 처리**
+   - 호스트 종료: `LobbySubsystem::DestroySession` → 모든 클라 `ClientReturnToMainMenuWithTextReason("Host left")`.
+   - 클라이언트 종료: 자체 세션만 정리. 호스트는 `PostLogout` 으로 슬롯 제거 + Replicated 자동 갱신.
+7. **(선택) Steam 확장**
+   - `OnlineSubsystemSteam` 플러그인 활성화 + `SteamAppId.txt` (480 = Spacewar) 배치.
+   - Subsystem 코드 무변경 (`IOnlineSession` 추상화 덕분). Config 의 `DefaultPlatformService` 만 `Steam` 으로 전환.
+
+### 11-6. 자주 틀리는 체크 포인트
+
+- **Null 서브시스템에서 LAN 검색은 `bIsLanQuery=true` 필수** — 안 그러면 EmptyResult. `FOnlineSessionSearch::QuerySettings.Set(SEARCH_PRESENCE, true)` 도 같이 설정.
+- **Listen Server 는 호스트 본인 PC + 자기 자신을 위한 Server PC 양쪽 PostLogin 트리거** — 슬롯 중복 추가 주의. `NewPlayer->PlayerState` 의 `bIsABot` / `bOnlySpectator` 필터링 필요.
+- **`ServerTravel` 직후 `PlayerController*` 객체가 새로 생성됨** — 트래블 전 캐시한 PC 포인터 무효. 트래블 후 위젯/델리게이트 재바인딩 필요.
+- **`DestroySession` 호출 안 하고 새 `CreateSession`** — 잔존 세션과 충돌해 실패. 항상 `IsValid` → `Destroy` 후 Create.
+- **로비 위젯을 Multicast/Replication 만으로 채우려 하지 말 것** — 본인 위젯은 `OnRep_PlayerSlots` + `LobbySubsystem` 델리게이트 둘 다 구독해야 호스트/클라 모두 표시.
+- **로비 GameState 와 게임플레이 GameState 분리** — `ATDLobbyGameState` ≠ `ATDGameState`. 각 GameModeBase 의 `GameStateClass` 지정으로 레벨별로 다른 GameState 사용.
+- **`OnlineSubsystemNull` 은 동일 머신/LAN 만** — 외부 IP 로 접속 시 실패. WAN 테스트는 Steam 으로 갈 것.
+
+### 11-7. 검증
+
+- **PIE 멀티 (Listen Server)**:
+  1. PIE 설정: `Number of Players` = 2, `Net Mode` = Play As Listen Server, `Run Under One Process` On.
+  2. 호스트가 `Host Game` → `Levels-Lobby` 진입 + `PlayerSlots[0]` 본인 표시.
+  3. 클라이언트가 `Search Games` → 1건 결과 → `Join` → 양쪽에서 `PlayerSlots[1]` 표시.
+  4. 호스트 `Start` → 두 인스턴스 모두 `Levels-01` 진입.
+  5. 코인 변동(타워 설치 등) → `OnRep_SharedCoin` 으로 양쪽 HUD 동기화.
+- **클라이언트 이탈**: 클라 종료 → 호스트 슬롯 자동 제거 (`OnRep_PlayerSlots` 발동).
+- **호스트 이탈**: 호스트 종료 → 클라 메뉴로 복귀 + 에러 메시지.
+- **Stand-alone 회귀**: 기존 싱글플레이 PIE (Play Standalone) 가 깨지지 않는지 확인 (메뉴에서 "Single Play" 분기 유지).
