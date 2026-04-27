@@ -39,7 +39,7 @@ public:
 	/**
 	 * 클라이언트에서 호출 → 서버에서 실행.
 	 * Tower->DoTowerAction(Action) 의 유일한 클라이언트 진입점.
-	 * Upgrade: CanUpgrade + HasCoins 사전 검증. Build*/BreakDown: DoTowerAction 내부 검증에 위임.
+	 * Upgrade: CanUpgrade + HasCoins 사전 검증. Build
 	 * @param Tower  대상 타워 (nullptr 이면 무시)
 	 * @param Action 수행할 액션 (Build / Upgrade / BreakDown)
 	 */
