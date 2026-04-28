@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Engine/NetSerialization.h"
 #include "TDProjectile.h"
 
 #include "TD_Weapon.generated.h"
@@ -66,4 +67,14 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void GetFirePoint(FVector& OutLocation, FRotator& OutRotation);
+
+	/**
+	 * 모든 머신(서버+클라)에 동시 통보 — 각자 자기 로컬 Projectile 스폰.
+	 * Projectile 자체는 비복제(코스메틱). 데미지는 서버 권위로 적용.
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastFireProjectile(ATDEnemyActor* InTarget,
+	                             float InDamage, float InRadius,
+	                             FVector_NetQuantize SpawnLocation,
+	                             FRotator SpawnRotation);
 };

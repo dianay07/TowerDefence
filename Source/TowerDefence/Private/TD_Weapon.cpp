@@ -12,6 +12,9 @@ ATD_Weapon::ATD_Weapon()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	bReplicates = true;             // 클라이언트에 Actor 복제
+	SetReplicateMovement(true);     // 서버 회전(조준)을 클라이언트에 동기화
+
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
 	RootComponent = DefaultSceneRoot;
 
@@ -30,6 +33,7 @@ void ATD_Weapon::BeginPlay()
 void ATD_Weapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (!HasAuthority()) return;   // 타겟 검색/조준은 서버 권한
 
 	FindEnemy();
 	FaceEnemy();
@@ -78,39 +82,62 @@ void ATD_Weapon::FaceEnemy()
 
 void ATD_Weapon::FireAtEnemy()
 {
-	// GET Target → Is Valid
+	if (!HasAuthority()) return;   // 발사 결정은 서버 권한
+
 	if (!IsValid(Target) || !IsValid(Tower) || !ProjectileClass)
 	{
 		Target = nullptr;
 		return;
 	}
 
-	// Get Fire Point → Location, Rotation
 	FVector  FireLocation;
 	FRotator FireRotation;
 	GetFirePoint(FireLocation, FireRotation);
 
-	FTransform SpawnTransform(FireRotation, FireLocation, FVector::OneVector);
-
-	// Get Pool Actor from Class via UTDFL_Utility
-	ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
-	if (!IsValid(GM))
-	{
-		return;
-	}
-
-	AActor* PooledActor = GM->GetPoolActorFromClass(ProjectileClass, SpawnTransform, this);
-	if (!IsValid(PooledActor))
-	{
-		return;
-	}
-
-	// SET Projectile
-
-	Projectile = Cast<ATDProjectile>(PooledActor);
-
-	Projectile->SetProjectileData(Target, Tower->GetDamage(), Tower->GetRadius());
+	// 모든 머신에 전파 — 각자 로컬 Projectile 스폰 (비복제 코스메틱)
+	MulticastFireProjectile(Target, Tower->GetDamage(), Tower->GetRadius(),
+	                        FireLocation, FireRotation);
 	Target = nullptr;
+}
+
+void ATD_Weapon::MulticastFireProjectile_Implementation(
+	ATDEnemyActor* InTarget, float InDamage, float InRadius,
+	FVector_NetQuantize SpawnLocation, FRotator SpawnRotation)
+{
+	if (!ProjectileClass || !IsValid(InTarget))
+	{
+		return;
+	}
+
+	const FTransform SpawnTransform(SpawnRotation, FVector(SpawnLocation), FVector::OneVector);
+	ATDProjectile* P = nullptr;
+
+	if (HasAuthority())
+	{
+		// 서버: 기존 풀 사용
+		ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
+		if (!IsValid(GM)) return;
+
+		P = Cast<ATDProjectile>(GM->GetPoolActorFromClass(ProjectileClass, SpawnTransform, this));
+	}
+	else
+	{
+		// 클라: 풀 없음 → 단순 SpawnActor (코스메틱)
+		FActorSpawnParameters Params;
+		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		Params.Owner = this;
+		P = GetWorld()->SpawnActor<ATDProjectile>(ProjectileClass, SpawnTransform, Params);
+	}
+
+	if (!IsValid(P)) return;
+
+	P->SetProjectileData(InTarget, InDamage, InRadius);
+
+	// 서버에서만 Weapon 의 Projectile 캐시 갱신 (BP 가 참조할 가능성 대비)
+	if (HasAuthority())
+	{
+		Projectile = P;
+	}
 }
 
 void ATD_Weapon::GetFirePoint(FVector& OutLocation, FRotator& OutRotation)

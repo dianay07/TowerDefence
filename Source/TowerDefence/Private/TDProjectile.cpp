@@ -9,8 +9,8 @@ ATDProjectile::ATDProjectile()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	bReplicates = true;          // 클라이언트에 Actor 복제
-	SetReplicateMovement(true);  // 서버의 위치/회전을 클라이언트에 동기화
+	// 비복제 — 각 머신이 Multicast 수신 후 자기 로컬 인스턴스를 독립 시뮬레이션.
+	// 데미지/HP 권위는 서버, 비주얼은 머신별 자체 진행.
 
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
 	RootComponent = DefaultSceneRoot;
@@ -46,20 +46,13 @@ void ATDProjectile::Tick(float DeltaTime)
 
 void ATDProjectile::MoveTowardsTarget(float Delta)
 {
-    if (!HasAuthority()) return;  // 이동 및 풀 반납은 서버에서만 실행
+    // 가드 제거 — 모든 머신이 자기 로컬 Projectile 을 독립적으로 이동시킨다.
 
     // [Image 1] Target 유효성 체크
     if (!IsValid(Target))
     {
         Target = nullptr;
-        // 타겟이 없는 경우 미사일을 PoolActor 에 다시 등록
-        ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
-        if (!IsValid(GM))
-        {
-            return;
-        }
-        GM->PoolActor(this);
-
+        DespawnSelf();   // 서버=풀 반납, 클라=Destroy
         return;
     }
 
@@ -96,19 +89,32 @@ void ATDProjectile::MoveTowardsTarget(float Delta)
 }
 void ATDProjectile::OnHitTarget()
 {
-    if (!HasAuthority()) return;  // 데미지 처리 및 풀 반납은 서버에서만 실행
-
-    // 1. Damage Enemy
-    UTDFL_Utility::EnemyDamage(Target, Damage, BP_GE_DamageClass);
+    // 1. 데미지 — 서버 권위
+    if (HasAuthority())
+    {
+        UTDFL_Utility::EnemyDamage(Target, Damage, BP_GE_DamageClass);
+    }
     Target = nullptr;
 
-    // 2. Get Game Mode → Pool Actor(Self)
-    ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this);
-    if (!IsValid(GM))
+    // 2. 정리 — 머신별로 (서버=풀, 클라=Destroy)
+    DespawnSelf();
+}
+
+void ATDProjectile::DespawnSelf()
+{
+    if (HasAuthority())
     {
-        return;
+        if (ATDGameMode* GM = UTDFL_Utility::GetTDGameMode(this))
+        {
+            GM->PoolActor(this);
+            return;
+        }
+        Destroy();   // 폴백 — 풀 미사용
     }
-    GM->PoolActor(this);
+    else
+    {
+        Destroy();   // 클라 코스메틱 — 즉시 제거
+    }
 }
 void ATDProjectile::SetProjectileData(ATDEnemyActor* InTarget, float InDamage, float InRadius)
 {

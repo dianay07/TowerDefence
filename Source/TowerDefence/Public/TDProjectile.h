@@ -62,4 +62,8 @@ public:
 
 	virtual void OnAddedToPool();
 	virtual void OnRemovedFromPool();
+
+private:
+	/** 비행 종료 시 정리 — 서버는 풀 반납, 클라이언트는 즉시 Destroy. */
+	void DespawnSelf();
 };

@@ -220,7 +220,8 @@ Source/TowerDefence/
 │   ├── TDPlayerCharacter.h                [SHRINK]  카메라/입력만
 │   ├── TDTowerBase.h / TDTowerPawn.h      (유지)    Replicated Actor
 │   ├── TDEnemyActor.h                     (유지)    Replicated Actor
-│   ├── TDProjectile.h                     (유지)    Replicated Actor
+│   ├── TD_Weapon.h                        [MODIFY]  Replicated Actor + Multicast 발사
+│   ├── TDProjectile.h                     [MODIFY]  비복제 코스메틱 (머신별 로컬 시뮬레이션)
 │   └── TDFL_Utility.h                     [MODIFY]  Subsystem 접근자 추가
 └── Private/
     └── (대응)
@@ -271,7 +272,41 @@ FCoreUObjectDelegates::PostLoadMapWithWorld  ─► OnPostLoadMap(NewWorld)
 ※ 서버/클라 각자의 머신에서 독립적으로 실행 → 각자 로컬 Subsystem 캐시만 갱신 (복제 아님)
 ```
 
-### 5-3. 적 사망 (멀티플레이)
+### 5-3. 타워 발사 (Multicast 코스메틱 패턴)
+
+```
+[Server: Tower Tick → BP Anim/Timer]
+ATD_Weapon::FireAtEnemy   (HasAuthority 가드)
+  ├ Target/Tower/ProjectileClass 검증
+  ├ FirePoint 위치/회전 계산
+  └ MulticastFireProjectile(Target, Damage, Radius, Loc, Rot) ─ NetMulticast Reliable
+                                                              │
+                  ┌───────────────────────────────────────────┴─────────┐
+                  ▼                                                     ▼
+         [Server _Implementation]                          [Client _Implementation]
+         GameMode->Pool->GetActor (재사용)                  SpawnActor<ATDProjectile> (코스메틱)
+                  │                                                     │
+                  └─────────── 양쪽 다 SetProjectileData ────────────────┘
+                                       │
+[양쪽 Tick 독립 시뮬레이션 — 복제 없음, bReplicates=false]
+ATDProjectile::MoveTowardsTarget   (가드 없음)
+  ├ Target 향해 이동
+  └ 도착 → OnHitTarget
+            ├ [Server] EnemyDamage(GAS GE 적용) → 적 HP 변화 → Replicated
+            ├ [Client] 데미지 스킵 (HasAuthority false)
+            └ DespawnSelf
+                ├ [Server] Pool 반납
+                └ [Client] Destroy
+                    ↓
+[All Clients] 적 HP/사망은 Replicated UPROPERTY 로 자동 동기화
+```
+
+**핵심 원칙**:
+- Projectile 자체는 비복제 (네트워크 비용 0). 발사 이벤트 1회만 Multicast.
+- 클라 Projectile 은 시각 전용 — 데미지/HP 권위는 서버 단일.
+- 적이 RPC 도착 직전에 죽으면 클라에서 `IsValid(InTarget)` 실패 → 그 클라만 시각 누락(빈도 0.1% 미만, 게임 상태 영향 없음).
+
+### 5-4. 적 사망 (멀티플레이)
 
 ```
 [Server]
