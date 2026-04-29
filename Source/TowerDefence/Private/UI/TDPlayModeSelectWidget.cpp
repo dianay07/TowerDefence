@@ -1,5 +1,6 @@
 #include "UI/TDPlayModeSelectWidget.h"
 #include "Session/TDLevelSessionSubsystem.h"
+#include "Session/TDLobbySessionSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
 // ── 공개 API ──────────────────────────────────────────────────────────────────
@@ -46,7 +47,26 @@ void UTDPlayModeSelectWidget::RequestSoloMode()
 
 void UTDPlayModeSelectWidget::RequestMultiMode()
 {
-	// TODO: CLAUDE.md §11 LobbySessionSubsystem 완료 후 구현
-	// 흐름: LobbySessionSubsystem::CreateSession → 로비 레벨 ServerTravel
-	UE_LOG(LogTemp, Log, TEXT("[PlayModeSelect] RequestMultiMode: 멀티 모드 (미구현)."));
+	if (SelectedStageId.IsNone())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlayModeSelect] RequestMultiMode: 스테이지가 선택되지 않았습니다."));
+		return;
+	}
+
+	UGameInstance* GI = GetGameInstance();
+	UTDLobbySessionSubsystem* Lobby = GI ? GI->GetSubsystem<UTDLobbySessionSubsystem>() : nullptr;
+	if (!Lobby)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[PlayModeSelect] RequestMultiMode: LobbySessionSubsystem 없음."));
+		return;
+	}
+
+	// 선택된 스테이지를 저장 → 로비에서 Server_RequestStart 시 맵 경로 조회에 사용
+	Lobby->SetMultiStageId(SelectedStageId);
+
+	// BP 자식에서 Host / Join 선택 UI 를 표시하도록 이벤트 발화
+	OnMultiModeRequested(SelectedStageId);
+
+	UE_LOG(LogTemp, Log, TEXT("[PlayModeSelect] RequestMultiMode: 스테이지 '%s' 멀티 모드 요청."),
+		*SelectedStageId.ToString());
 }

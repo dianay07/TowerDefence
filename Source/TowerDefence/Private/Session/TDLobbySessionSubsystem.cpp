@@ -136,8 +136,9 @@ void UTDLobbySessionSubsystem::OnFindSessionsComplete(bool bWasSuccessful)
 {
 	SessionInterface->ClearOnFindSessionsCompleteDelegate_Handle(FindSessionsCompleteDelegateHandle);
 
-	// FOnlineSessionSearchResult → FTDSessionInfo 변환
-	TArray<FTDSessionInfo> Infos;
+	// FOnlineSessionSearchResult → FTDSessionInfo 변환 후 내부 캐시에 보관
+	// BP 는 OnSessionsFound 콜백 후 GetLastFoundSessions() 로 결과를 조회한다.
+	LastFoundSessions.Empty();
 	if (bWasSuccessful && LastSessionSearch.IsValid())
 	{
 		for (int32 i = 0; i < LastSessionSearch->SearchResults.Num(); ++i)
@@ -145,17 +146,17 @@ void UTDLobbySessionSubsystem::OnFindSessionsComplete(bool bWasSuccessful)
 			const FOnlineSessionSearchResult& R = LastSessionSearch->SearchResults[i];
 
 			FTDSessionInfo Info;
-			Info.OwnerName                 = R.Session.OwningUserName;
-			Info.NumOpenPublicConnections  = R.Session.NumOpenPublicConnections;
-			Info.MaxPublicConnections      = R.Session.SessionSettings.NumPublicConnections;
-			Info.PingInMs                  = R.PingInMs;
-			Info.SearchResultIndex         = i;
-			Infos.Add(Info);
+			Info.OwnerName                = R.Session.OwningUserName;
+			Info.NumOpenPublicConnections = R.Session.NumOpenPublicConnections;
+			Info.MaxPublicConnections     = R.Session.SessionSettings.NumPublicConnections;
+			Info.PingInMs                 = R.PingInMs;
+			Info.SearchResultIndex        = i;
+			LastFoundSessions.Add(Info);
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("[LobbySession] FindSessions 완료: %d 건"), Infos.Num());
-	OnSessionsFound.Broadcast(Infos, bWasSuccessful);
+	UE_LOG(LogTemp, Log, TEXT("[LobbySession] FindSessions 완료: %d 건"), LastFoundSessions.Num());
+	OnSessionsFound.Broadcast(bWasSuccessful);
 }
 
 void UTDLobbySessionSubsystem::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result)

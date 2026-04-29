@@ -40,8 +40,8 @@ public:
 
 	/**
 	 * Multi 버튼 OnClicked 에서 호출.
-	 * LobbySessionSubsystem::CreateSession 으로 로비 세션 생성 후 로비 레벨 진입.
-	 * TODO: LobbySessionSubsystem 연동 (CLAUDE.md §11 완료 후)
+	 * SelectedStageId 를 LobbySessionSubsystem 에 저장 후 OnMultiModeRequested 발화.
+	 * BP 자식에서 OnMultiModeRequested 를 구현해 Host/Join 선택 UI 를 표시한다.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "TD|PlayMode")
 	void RequestMultiMode();
@@ -59,6 +59,16 @@ protected:
 	 */
 	UFUNCTION(BlueprintImplementableEvent, Category = "TD|PlayMode")
 	void OnStageSet(FName StageId);
+
+	/**
+	 * RequestMultiMode() 완료 시 발화.
+	 * BP 자식에서 Host/Join 선택 UI(예: WBP_MultiLobby 메뉴)를 표시한다.
+	 * - Host 선택: GetLobbySession → CreateSession → OnSessionCreated → OpenLevel(LobbyLevel?listen)
+	 * - Join 선택: GetLobbySession → FindSessions → 결과 표시 → JoinSession (ClientTravel 자동)
+	 * @param StageId  호스트가 플레이할 스테이지 ID (LobbySessionSubsystem 에 이미 저장됨)
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "TD|PlayMode")
+	void OnMultiModeRequested(FName StageId);
 
 // ── 내부 상태 ─────────────────────────────────────────────────────────────────
 private:

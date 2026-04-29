@@ -37,7 +37,7 @@ struct FTDSessionInfo
 
 // ── 델리게이트 선언 ────────────────────────────────────────────────────────────
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (FTDOnSessionCreated,   bool,                    bWasSuccessful);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FTDOnSessionsFound,    TArray<FTDSessionInfo>,  SessionInfos, bool, bWasSuccessful);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (FTDOnSessionsFound,    bool,                    bWasSuccessful);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (FTDOnSessionJoined,    bool,                    bWasSuccessful);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (FTDOnSessionDestroyed, bool,                    bWasSuccessful);
 
@@ -105,6 +105,26 @@ public:
 	UFUNCTION(BlueprintPure, Category = "TD|LobbySession")
 	bool HasActiveSession() const;
 
+	/**
+	 * FindSessions 완료 후 결과 목록을 반환.
+	 * OnSessionsFound 콜백(bWasSuccessful=true) 내에서 호출해 방 목록을 가져온다.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|LobbySession")
+	TArray<FTDSessionInfo> GetLastFoundSessions() const { return LastFoundSessions; }
+
+	// ── 멀티 스테이지 선택 ────────────────────────────────────────────────────────
+
+	/**
+	 * 호스트가 플레이할 스테이지 ID 를 저장한다.
+	 * RequestMultiMode() 에서 세션 생성 전에 호출 → Server_RequestStart 에서 맵 경로 조회에 사용.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|LobbySession")
+	void SetMultiStageId(FName StageId) { MultiStageId = StageId; }
+
+	/** 현재 설정된 멀티 스테이지 ID. */
+	UFUNCTION(BlueprintPure, Category = "TD|LobbySession")
+	FName GetMultiStageId() const { return MultiStageId; }
+
 // ── 델리게이트 (위젯이 구독) ──────────────────────────────────────────────────
 public:
 	UPROPERTY(BlueprintAssignable, Category = "TD|LobbySession")
@@ -129,6 +149,12 @@ private:
 	void OnFindSessionsComplete(bool bWasSuccessful);
 	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+
+	/** 호스트가 선택한 스테이지 ID. Server_RequestStart 가 맵 경로 조회에 사용. */
+	FName MultiStageId;
+
+	/** FindSessions 결과 캐시. GetLastFoundSessions() 로 BP 에 노출. */
+	TArray<FTDSessionInfo> LastFoundSessions;
 
 	// 델리게이트 핸들 (Unbind 용)
 	FDelegateHandle CreateSessionCompleteDelegateHandle;

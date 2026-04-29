@@ -99,6 +99,20 @@ TArray<FStageRow> UTDLevelSessionSubsystem::GetAllStages() const
 	return Result;
 }
 
+FString UTDLevelSessionSubsystem::GetMapPathByStageId(FName StageId) const
+{
+	if (const FStageRow* Row = FindRowByStageId(StageId))
+	{
+		if (!Row->Map.IsNull())
+		{
+			return Row->Map.ToSoftObjectPath().GetLongPackageName();
+		}
+	}
+	UE_LOG(LogTemp, Warning, TEXT("[LevelSession] GetMapPathByStageId: StageId '%s' 를 찾지 못했습니다."),
+		*StageId.ToString());
+	return FString();
+}
+
 bool UTDLevelSessionSubsystem::GetStageAtIndex(int32 Index, FStageRow& OutRow) const
 {
 	if (!StageRegistry) return false;

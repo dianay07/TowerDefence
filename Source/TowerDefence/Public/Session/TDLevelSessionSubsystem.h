@@ -81,6 +81,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession")
 	TArray<FStageRow> GetAllStages() const;
 
+	/**
+	 * StageId 에 해당하는 맵 패키지 경로 반환.
+	 * ServerTravel URL 조립에 사용. 없으면 빈 문자열.
+	 * 예: "Levels-01" → "/Game/Levels/Levels-01"
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession")
+	FString GetMapPathByStageId(FName StageId) const;
+
 	/** Index 로 스테이지 Row 조회. 성공 시 true + OutRow 채움. 범위 밖이면 false.
 	 *  @param Index     DT 행 순서 (0-based)
 	 *  @param OutRow    조회 결과를 받을 구조체

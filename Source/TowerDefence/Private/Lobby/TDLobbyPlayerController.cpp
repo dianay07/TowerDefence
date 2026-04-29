@@ -2,6 +2,7 @@
 #include "Lobby/TDLobbyPlayerState.h"
 #include "Lobby/TDLobbyGameState.h"
 #include "Session/TDLobbySessionSubsystem.h"
+#include "Session/TDLevelSessionSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
@@ -42,10 +43,32 @@ void ATDLobbyPlayerController::Server_RequestStart_Implementation()
 		return;
 	}
 
-	// (선택) 전원 준비 완료 체크 — 필요 없으면 주석 해제
+	// (선택) 전원 준비 완료 체크 — 필요하면 주석 해제
 	// if (!GS->AreAllPlayersReady()) { return; }
 
-	const FString TravelURL = GameLevelPath + TEXT("?listen");
+	// LobbySubsystem 에 저장된 MultiStageId 로 맵 경로 조회
+	// 없으면 BP 에서 지정한 GameLevelPath 를 폴백으로 사용
+	FString TravelURL = GameLevelPath + TEXT("?listen");
+
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		UTDLobbySessionSubsystem* Lobby = GI->GetSubsystem<UTDLobbySessionSubsystem>();
+		UTDLevelSessionSubsystem* LevelSession = GI->GetSubsystem<UTDLevelSessionSubsystem>();
+
+		if (Lobby && LevelSession)
+		{
+			const FName StageId = Lobby->GetMultiStageId();
+			if (!StageId.IsNone())
+			{
+				const FString MapPath = LevelSession->GetMapPathByStageId(StageId);
+				if (!MapPath.IsEmpty())
+				{
+					TravelURL = MapPath + TEXT("?listen");
+				}
+			}
+		}
+	}
+
 	GetWorld()->ServerTravel(TravelURL, true);
 
 	UE_LOG(LogTemp, Log, TEXT("[LobbyPC] 게임 시작 → ServerTravel: %s"), *TravelURL);
