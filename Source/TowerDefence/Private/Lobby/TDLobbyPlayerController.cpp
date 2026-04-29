@@ -1,4 +1,5 @@
 #include "Lobby/TDLobbyPlayerController.h"
+#include "Blueprint/UserWidget.h"
 #include "Lobby/TDLobbyPlayerState.h"
 #include "Lobby/TDLobbyGameState.h"
 #include "Session/TDLobbySessionSubsystem.h"
@@ -14,6 +15,26 @@ void ATDLobbyPlayerController::BeginPlay()
 	// 마우스 커서 항상 표시 (로비 UI 조작용)
 	bShowMouseCursor = true;
 	SetInputMode(FInputModeUIOnly());
+
+	// ListenServer / Client 로 진입한 경우에만 대기실 위젯 생성
+	// Standalone(메인 메뉴 일반 진입)은 기존 메뉴 UI 그대로 유지
+	const ENetMode NM = GetNetMode();
+	if ((NM == NM_ListenServer || NM == NM_Client) && IsLocalController())
+	{
+		if (WaitingRoomWidgetClass)
+		{
+			WaitingRoomWidget = CreateWidget<UUserWidget>(this, WaitingRoomWidgetClass);
+			if (WaitingRoomWidget)
+			{
+				WaitingRoomWidget->AddToViewport();
+				UE_LOG(LogTemp, Log, TEXT("[LobbyPC] WaitingRoom 위젯 생성 완료."));
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[LobbyPC] WaitingRoomWidgetClass 가 설정되지 않았습니다. BP_LobbyPlayerController Details 에서 지정하세요."));
+		}
+	}
 }
 
 // ── 로비 액션 (Client → Server RPC) ──────────────────────────────────────────

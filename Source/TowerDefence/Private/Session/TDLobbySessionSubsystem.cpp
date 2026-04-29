@@ -47,11 +47,11 @@ void UTDLobbySessionSubsystem::CreateSession(int32 NumPublicConnections, bool bI
 		FOnCreateSessionCompleteDelegate::CreateUObject(this, &UTDLobbySessionSubsystem::OnCreateSessionComplete));
 
 	FOnlineSessionSettings Settings;
-	Settings.NumPublicConnections  = NumPublicConnections;
-	Settings.bIsLANMatch           = bIsLAN;
-	Settings.bAllowJoinInProgress  = false;
-	Settings.bShouldAdvertise      = true;
-	Settings.bUsesPresence         = true;		// Null 서브시스템 검색에 필요
+	Settings.NumPublicConnections   = NumPublicConnections;
+	Settings.bIsLANMatch            = bIsLAN;
+	Settings.bAllowJoinInProgress   = false;
+	Settings.bShouldAdvertise       = true;
+	Settings.bUsesPresence          = false;	// Null OSS 는 presence 미지원. true 이면 LAN 검색과 충돌.
 	Settings.bUseLobbiesIfAvailable = false;	// Null 은 미지원
 
 	const ULocalPlayer* LP = GetGameInstance()->GetFirstGamePlayer();
@@ -74,8 +74,8 @@ void UTDLobbySessionSubsystem::FindSessions(int32 MaxResults, bool bIsLAN)
 	LastSessionSearch = MakeShared<FOnlineSessionSearch>();
 	LastSessionSearch->MaxSearchResults = MaxResults;
 	LastSessionSearch->bIsLanQuery      = bIsLAN;
-	// SEARCH_PRESENCE = TEXT("presence") — 헤더 의존 없이 리터럴로 직접 지정
-	LastSessionSearch->QuerySettings.Set(FName(TEXT("presence")), true, EOnlineComparisonOp::Equals);
+	// OnlineSubsystemNull 은 presence 필터를 지원하지 않으므로 제거.
+	// LAN 검색은 bIsLanQuery = true 만으로 충분.
 
 	const ULocalPlayer* LP = GetGameInstance()->GetFirstGamePlayer();
 	if (!LP) return;
@@ -155,7 +155,10 @@ void UTDLobbySessionSubsystem::OnFindSessionsComplete(bool bWasSuccessful)
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("[LobbySession] FindSessions 완료: %d 건"), LastFoundSessions.Num());
+	UE_LOG(LogTemp, Log, TEXT("[LobbySession] FindSessions 완료 — bSuccess=%s, RawResults=%d, Converted=%d"),
+		bWasSuccessful ? TEXT("true") : TEXT("false"),
+		(LastSessionSearch.IsValid() ? LastSessionSearch->SearchResults.Num() : -1),
+		LastFoundSessions.Num());
 	OnSessionsFound.Broadcast(bWasSuccessful);
 }
 

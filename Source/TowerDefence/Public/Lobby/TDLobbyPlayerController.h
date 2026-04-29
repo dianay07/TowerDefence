@@ -51,4 +51,15 @@ public:
 	/** 호스트가 StartGame 시 이동할 레벨 경로. BP_LobbyGameMode 에서 설정. */
 	UPROPERTY(EditDefaultsOnly, Category = "TD|Lobby")
 	FString GameLevelPath = TEXT("/Game/Levels/Levels-01");
+
+	/**
+	 * 대기실 위젯 클래스. BP_LobbyPlayerController 의 Details 패널에서 WBP_WaitingRoom 지정.
+	 * ListenServer / Client 진입 시 자동 생성됨.
+	 */
+	UPROPERTY(EditDefaultsOnly, Category = "TD|Lobby|UI")
+	TSubclassOf<UUserWidget> WaitingRoomWidgetClass;
+
+private:
+	UPROPERTY(Transient)
+	TObjectPtr<UUserWidget> WaitingRoomWidget;
 };
