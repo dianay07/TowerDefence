@@ -83,6 +83,37 @@ bool UTDLevelSessionSubsystem::RequestLoadStage(FName StageId)
 	return true;
 }
 
+TArray<FStageRow> UTDLevelSessionSubsystem::GetAllStages() const
+{
+	TArray<FStageRow> Result;
+	if (!StageRegistry) return Result;
+
+	static const FString Context(TEXT("UTDLevelSessionSubsystem::GetAllStages"));
+	for (const FName& RowName : StageRegistry->GetRowNames())
+	{
+		if (const FStageRow* Row = StageRegistry->FindRow<FStageRow>(RowName, Context))
+		{
+			Result.Add(*Row);
+		}
+	}
+	return Result;
+}
+
+bool UTDLevelSessionSubsystem::GetStageAtIndex(int32 Index, FStageRow& OutRow) const
+{
+	if (!StageRegistry) return false;
+
+	const TArray<FName> RowNames = StageRegistry->GetRowNames();
+	if (!RowNames.IsValidIndex(Index)) return false;
+
+	static const FString Context(TEXT("UTDLevelSessionSubsystem::GetStageAtIndex"));
+	const FStageRow* Row = StageRegistry->FindRow<FStageRow>(RowNames[Index], Context);
+	if (!Row) return false;
+
+	OutRow = *Row;
+	return true;
+}
+
 void UTDLevelSessionSubsystem::K2_ReloadCurrentStage(UObject* WorldContextObject)
 {
 	// WorldContext 로 받은 월드가 있으면 우선, 없으면 GameInstance 의 기본 월드.

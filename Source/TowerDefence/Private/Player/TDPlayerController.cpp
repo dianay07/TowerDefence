@@ -10,6 +10,17 @@
 
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
 
+void ATDPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// 이전 레벨(로비 등)에서 UIOnly 로 설정된 Viewport InputMode 를 게임 입력으로 초기화.
+	// SetInputMode 는 PC 가 아닌 GameViewportClient 에 저장되므로
+	// 레벨 전환 후 새 PC 가 생성돼도 명시적으로 리셋해야 함.
+	bShowMouseCursor = true;
+	SetInputMode(FInputModeGameAndUI());
+}
+
 void ATDPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();

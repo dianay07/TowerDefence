@@ -76,6 +76,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession")
 	void SetStageRegistry(UDataTable* InRegistry) { StageRegistry = InRegistry; }
 
+	/** 레지스트리에 등록된 모든 스테이지 목록 반환. 레벨 선택 위젯 초기화에 사용.
+	 *  StageRegistry 가 없으면 빈 배열 반환. */
+	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession")
+	TArray<FStageRow> GetAllStages() const;
+
+	/** Index 로 스테이지 Row 조회. 성공 시 true + OutRow 채움. 범위 밖이면 false.
+	 *  @param Index     DT 행 순서 (0-based)
+	 *  @param OutRow    조회 결과를 받을 구조체
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|LevelSession")
+	bool GetStageAtIndex(int32 Index, FStageRow& OutRow) const;
+
 	/**
 	 * BP 용 진입점 — 지정한 월드(또는 기본값으로 현재 월드)에 대해 스테이지 로드 로직을 수동 실행.
 	 * 엔진이 자동으로 발화하는 PostLoadMapWithWorld 훅과 동일한 경로를 타므로,

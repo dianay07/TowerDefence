@@ -23,6 +23,7 @@ class TOWERDEFENCE_API ATDPlayerController : public APlayerController
 
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
 protected:
+	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
 
 // ── 입력 ──────────────────────────────────────────────────────────────────────
