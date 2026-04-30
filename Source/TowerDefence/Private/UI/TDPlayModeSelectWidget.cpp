@@ -1,7 +1,24 @@
 #include "UI/TDPlayModeSelectWidget.h"
 #include "Session/TDLevelSessionSubsystem.h"
 #include "Session/TDLobbySessionSubsystem.h"
+#include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
+
+// ── 생명주기 ──────────────────────────────────────────────────────────────────
+
+void UTDPlayModeSelectWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	if (SoloModeButton)
+		SoloModeButton->OnClicked.AddDynamic(this, &UTDPlayModeSelectWidget::OnSoloModeClicked);
+
+	if (MultiModeButton)
+		MultiModeButton->OnClicked.AddDynamic(this, &UTDPlayModeSelectWidget::OnMultiModeClicked);
+
+	if (BackButton)
+		BackButton->OnClicked.AddDynamic(this, &UTDPlayModeSelectWidget::OnBackClicked);
+}
 
 // ── 공개 API ──────────────────────────────────────────────────────────────────
 
@@ -47,12 +64,6 @@ void UTDPlayModeSelectWidget::RequestSoloMode()
 
 void UTDPlayModeSelectWidget::RequestMultiMode()
 {
-	if (SelectedStageId.IsNone())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[PlayModeSelect] RequestMultiMode: 스테이지가 선택되지 않았습니다."));
-		return;
-	}
-
 	UGameInstance* GI = GetGameInstance();
 	UTDLobbySessionSubsystem* Lobby = GI ? GI->GetSubsystem<UTDLobbySessionSubsystem>() : nullptr;
 	if (!Lobby)
@@ -61,12 +72,30 @@ void UTDPlayModeSelectWidget::RequestMultiMode()
 		return;
 	}
 
-	// 선택된 스테이지를 저장 → 로비에서 Server_RequestStart 시 맵 경로 조회에 사용
-	Lobby->SetMultiStageId(SelectedStageId);
+	// StageId 가 있으면 저장, 없어도 세션 브라우저는 열림
+	// (게임 시작 시 StageId 검증은 Server_RequestStart 단계에서 처리)
+	if (!SelectedStageId.IsNone())
+		Lobby->SetMultiStageId(SelectedStageId);
 
-	// BP 자식에서 Host / Join 선택 UI 를 표시하도록 이벤트 발화
 	OnMultiModeRequested(SelectedStageId);
 
-	UE_LOG(LogTemp, Log, TEXT("[PlayModeSelect] RequestMultiMode: 스테이지 '%s' 멀티 모드 요청."),
+	UE_LOG(LogTemp, Log, TEXT("[PlayModeSelect] RequestMultiMode: StageId=%s"),
 		*SelectedStageId.ToString());
+}
+
+// ── 버튼 핸들러 ───────────────────────────────────────────────────────────────
+
+void UTDPlayModeSelectWidget::OnSoloModeClicked()
+{
+	RequestSoloMode();
+}
+
+void UTDPlayModeSelectWidget::OnMultiModeClicked()
+{
+	RequestMultiMode();
+}
+
+void UTDPlayModeSelectWidget::OnBackClicked()
+{
+	OnBackRequested();
 }
