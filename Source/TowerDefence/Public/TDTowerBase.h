@@ -58,7 +58,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TowerBase")
     TSubclassOf<AActor> BP_TowerActionsClass;
 
-    // DoTowerAction 에서 스폰할 타워 클래스 (BP 디폴트에서 설정)
+public:
+    // UTDTowerSpawnerComponent::DoTowerAction 에서 스폰할 타워 클래스 (BP 디폴트에서 설정)
     UPROPERTY(EditDefaultsOnly, Category = "TowerBase|Classes")
     TSubclassOf<AActor> TurretClass;
 
@@ -128,13 +129,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "TowerBase")
 	void GetTowerDetails(ETowerActions TowerAction, int32& OutCostOrRefund, FString& OutDescription);
 
-	// 타워 업그레이드 (UpgradeLevel 증가)
+	// 타워 업그레이드 (UpgradeLevel 증가) — UTDTowerSpawnerComponent::DoTowerAction 에서 호출
 	UFUNCTION(BlueprintCallable, Category = "TowerBase")
 	void UpgradeTower();
-
-	// 메인 액션 처리: 건설 / 업그레이드 / 철거
-	UFUNCTION(BlueprintCallable, Category = "TowerBase")
-	void DoTowerAction(ETowerActions TowerAction);
 
 	// TowerManager에서 TowerData를 조회하고 GAS 어트리뷰트에 적용
 	UFUNCTION(BlueprintCallable, Category = "TowerBase")

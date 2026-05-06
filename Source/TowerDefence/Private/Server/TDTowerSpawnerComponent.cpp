@@ -1,5 +1,6 @@
 #include "Server/TDTowerSpawnerComponent.h"
 #include "TDTowerBase.h"
+#include "TDGameState.h"
 #include "Session/TDLevelSessionSubsystem.h"  // FStageRow
 #include "Kismet/GameplayStatics.h"
 #include "Engine/StaticMeshActor.h"
@@ -76,4 +77,65 @@ ATDTowerBase* UTDTowerSpawnerComponent::SpawnTower(ATDTowerBase* BaseTower, TSub
 	//   3) BaseTower->Destroy();  // EndPlay → GameState::UnregisterTower 자동
 	//   4) return GetWorld()->SpawnActor<ATDTowerBase>(NewClass, T, Params);
 	return nullptr;
+}
+
+void UTDTowerSpawnerComponent::DoTowerAction(ATDTowerBase* Tower, ETowerActions Action)
+{
+	AActor* Owner = GetOwner();
+	if (!Owner || !Owner->HasAuthority()) return;
+	if (!IsValid(Tower)) return;
+
+	UWorld* World = GetWorld();
+	if (!World) return;
+
+	ATDGameState* GameState = Cast<ATDGameState>(UGameplayStatics::GetGameState(this));
+
+	// 비용 / 환급 계산
+	int32 CostOrRefund = 0;
+	FString Description;
+	Tower->GetTowerDetails(Action, CostOrRefund, Description);
+
+	TSubclassOf<AActor> NewTowerClass = nullptr;
+
+	if (Action == ETowerActions::BreakDown)
+	{
+		// 철거: 코인 환급 후 빈 타워로 교체
+		if (IsValid(GameState))
+		{
+			GameState->CoinChange(CostOrRefund);
+		}
+		NewTowerClass = Tower->BaseTowerClass;
+	}
+	else
+	{
+		// 건설 / 업그레이드: 코인 잔액 검증 후 차감
+		if (!IsValid(GameState) || !GameState->HasCoins(CostOrRefund)) return;
+		GameState->CoinChange(-CostOrRefund);
+	}
+
+	switch (Action)
+	{
+	case ETowerActions::BuildTurret:    NewTowerClass = Tower->TurretClass;   break;
+	case ETowerActions::BuildBallista:  NewTowerClass = Tower->BallistaClass; break;
+	case ETowerActions::BuildCatapult:  NewTowerClass = Tower->CatapultClass; break;
+	case ETowerActions::BuildCannon:    NewTowerClass = Tower->CannonClass;   break;
+	case ETowerActions::BreakDown:      /* NewTowerClass = BaseTowerClass 위에서 설정됨 */ break;
+	case ETowerActions::Upgrade:
+		Tower->UpgradeTower();
+		return;  // 업그레이드는 자기 자신을 교체하지 않음
+	default:
+		return;
+	}
+
+	if (!NewTowerClass) return;
+
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	AActor* NewTower = World->SpawnActor<AActor>(NewTowerClass, Tower->GetActorTransform(), SpawnParams);
+	if (IsValid(NewTower))
+	{
+		Tower->UnSelect();
+		Tower->Destroy();
+	}
 }

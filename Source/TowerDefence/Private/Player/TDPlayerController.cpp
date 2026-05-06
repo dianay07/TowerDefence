@@ -1,9 +1,11 @@
 #include "Player/TDPlayerController.h"
 #include "TDTowerBase.h"
 #include "TDGameState.h"
+#include "TDGameMode.h"
 #include "TDPlayerCharacter.h"
 #include "TDPlayerPawn.h"
 #include "TDTowerPawn.h"
+#include "Server/TDTowerSpawnerComponent.h"
 #include "UI/TDTowerActionWidgetBase.h"
 #include "EnhancedInputComponent.h"
 #include "Blueprint/UserWidget.h"
@@ -69,7 +71,7 @@ void ATDPlayerController::Server_DoTowerAction_Implementation(ATDTowerBase* Towe
 {
 	if (!IsValid(Tower)) return;
 
-	// Upgrade는 PC에서 사전 검증 — Build*/BreakDown은 DoTowerAction 내부 검증에 위임
+	// Upgrade는 PC에서 사전 검증 — Build*/BreakDown은 TowerSpawner.DoTowerAction 내부 검증에 위임
 	if (Action == ETowerActions::Upgrade)
 	{
 		if (!Tower->CanUpgrade()) return;
@@ -78,7 +80,14 @@ void ATDPlayerController::Server_DoTowerAction_Implementation(ATDTowerBase* Towe
 		if (!GS || !GS->HasCoins(Tower->GetUpgradeCost())) return;
 	}
 
-	Tower->DoTowerAction(Action);
+	// 액션 실행은 서버 권위 컴포넌트(UTDTowerSpawnerComponent)로 위임
+	if (ATDGameMode* GM = GetWorld()->GetAuthGameMode<ATDGameMode>())
+	{
+		if (GM->TowerSpawner)
+		{
+			GM->TowerSpawner->DoTowerAction(Tower, Action);
+		}
+	}
 }
 
 // ── 타워 액션 메뉴 (LocalPlayer UI) ────────────────────────────────────────────

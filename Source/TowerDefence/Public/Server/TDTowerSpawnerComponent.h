@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "TowerDefence/TD.h"
 #include "TDTowerSpawnerComponent.generated.h"
 
 class ATDTowerBase;
@@ -39,4 +40,16 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "TD|TowerSpawner")
 	ATDTowerBase* SpawnTower(ATDTowerBase* BaseTower, TSubclassOf<ATDTowerBase> NewClass);
+
+	/**
+	 * 서버 전용: 타워 액션 실행 (Build / Upgrade / BreakDown).
+	 * - PC.Server_DoTowerAction RPC 의 단일 위임 지점.
+	 * - Build / BreakDown: 코인 처리 후 Tower 를 NewClass 로 교체.
+	 * - Upgrade: Tower 자체 업그레이드 (스폰 없음).
+	 *
+	 * @param Tower   대상 타워 (서버 인스턴스)
+	 * @param Action  수행할 액션
+	 */
+	UFUNCTION(BlueprintCallable, Category = "TD|TowerSpawner")
+	void DoTowerAction(ATDTowerBase* Tower, ETowerActions Action);
 };
