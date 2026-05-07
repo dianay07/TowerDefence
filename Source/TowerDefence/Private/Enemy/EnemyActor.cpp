@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "EnemyActor.h"
+#include "Enemy/EnemyActor.h"
 #include "AbilitySystemComponent.h"
-#include "TDEnemySet.h"
+#include "Enemy/TDEnemySet.h"
 
 // Sets default values
 AEnemyActor::AEnemyActor()

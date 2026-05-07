@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "TD_Weapon.h"
-#include "TDEnemyActor.h"
-#include "TDTowerBase.h"
+#include "Tower/TD_Weapon.h"
+#include "Enemy/TDEnemyActor.h"
+#include "Tower/TDTowerBase.h"
 #include "TDFL_Utility.h"
-#include "TDWaveManagerComponent.h"
+#include "Wave/TDWaveManagerComponent.h"
 #include "TDGameMode.h"
 #include "Kismet/KismetMathLibrary.h"
 

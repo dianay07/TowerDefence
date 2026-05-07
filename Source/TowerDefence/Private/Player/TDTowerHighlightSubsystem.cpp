@@ -1,6 +1,6 @@
 #include "Player/TDTowerHighlightSubsystem.h"
-#include "TDTowerPawn.h"
-#include "TDTowerBase.h"
+#include "Tower/TDTowerPawn.h"
+#include "Tower/TDTowerBase.h"
 #include "TDFL_Utility.h"
 #include "Engine/LocalPlayer.h"
 

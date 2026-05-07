@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TDTowerPawn.h"
+#include "Tower/TDTowerPawn.h"
 #include "Components/BoxComponent.h"
 #include "Components/ChildActorComponent.h"
 #include "TowerDefence/TD.h"

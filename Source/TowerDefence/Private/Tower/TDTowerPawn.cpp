@@ -1,6 +1,6 @@
-#include "TDTowerPawn.h"
+#include "Tower/TDTowerPawn.h"
 #include "AbilitySystemComponent.h"
-#include "TDTowerSet.h"
+#include "Tower/TDTowerSet.h"
 
 ATDTowerPawn::ATDTowerPawn()
 {
@@ -36,7 +36,7 @@ void ATDTowerPawn::InitializeASC()
 	FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
 	EffectContext.AddSourceObject(this);
 
-	//Note(Jiho): °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº »óÅÂ¿¡¼­ È£ÃâµÇ¾î ¹®Á¦ µÇ´Â ÄÚµå¶ó ÁÖ¼® Ã³¸®.
+	//Note(Jiho): ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Úµï¿½ï¿½ ï¿½Ö¼ï¿½ Ã³ï¿½ï¿½.
 	//FGameplayEffectSpecHandle SpecHandle = AbilitySystemComponent->MakeOutgoingSpec(DefaultEffect, 1, EffectContext);
 	//if (SpecHandle.IsValid())
 	//{

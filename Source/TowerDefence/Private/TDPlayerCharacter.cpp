@@ -1,6 +1,6 @@
 #include "TDPlayerCharacter.h"
 #include "TDPlayerPawn.h"
-#include "TDTowerPawn.h"
+#include "Tower/TDTowerPawn.h"
 #include "TDGameState.h"
 #include "TDFL_Utility.h"
 #include "EnhancedInputComponent.h"

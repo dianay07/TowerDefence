@@ -1,0 +1,628 @@
+<mxfile host="app.diagrams.net">
+
+  <diagram name="1. 메인 메뉴 → Solo/Multi 분기" id="Flow1MainMenuBranch">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F1-1" value="MainMenu&#xa;진입" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="80" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-2" value="SelectStage(StageId)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-3" value="UTDPlayModeSelectWidget&#xa;::InitWithStage(StageId)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="300" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-4" value="모드?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="410" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-5" value="RequestSoloMode()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-6" value="UTDLevelSessionSubsystem&#xa;::RequestLoadStage(StageId)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="370" y="640" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-7" value="OpenLevel(&quot;Stage_x&quot;)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="760" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-8" value="RequestMultiMode()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-9" value="UTDLobbySessionSubsystem&#xa;::SetMultiStageId(StageId)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="640" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-10" value="OnMultiModeRequested" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="740" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-11" value="WBP_MultiLobby 표시" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="820" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-12" value="WaitingRoom 진입" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="900" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-NOTE" value="솔로/멀티 모두 동일한 LevelSession 의&#xa;PostLoadMapWithWorld 훅으로 DT 주입.&#xa;솔로는 멀티 세션 미경유로 곧장 OpenLevel." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="900" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F1-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-1" target="F1-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-2" target="F1-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E3" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-3" target="F1-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E4" value="Solo" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-4" target="F1-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E5" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-5" target="F1-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E6" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-6" target="F1-7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E7" value="Multi" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-4" target="F1-8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E8" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-8" target="F1-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E9" value="델리게이트" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-9" target="F1-10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E10" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-10" target="F1-11"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F1-E11" value="Host/Join" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F1-11" target="F1-12"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="2. 멀티 세션 (Create/Find/Join/Start)" id="Flow2SessionLifecycle">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F2-H1" value="Host" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-H2" value="HostGame()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-H3" value="UTDLobbySessionSubsystem&#xa;::CreateSession({4, bIsLAN=true})" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-H4" value="OnCreateSessionComplete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-H5" value="ServerTravel(&quot;/Game/Levels/Lobby?listen&quot;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F2-S1" value="Search" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-S2" value="SearchGames()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="170" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-S3" value="LobbySubsystem::FindSessions&#xa;(MaxResults=20, IsLAN=true)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="250" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-S4" value="OnFindSessionsComplete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="350" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-S5" value="WBP_MultiLobby 결과 갱신" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="430" width="240" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F2-J1" value="Join" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-J2" value="JoinSelected(SearchResult)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="170" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-J3" value="LobbySubsystem::JoinSession(SR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="250" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-J4" value="OnJoinSessionComplete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="340" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-J5" value="ClientTravel(ConnectInfo,&#xa;TRAVEL_Absolute)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="420" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F2-T1" value="Host: Start 클릭" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="80" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-T2" value="ATDLobbyPlayerController&#xa;::Server_RequestStart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="170" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-T3" value="LobbySubsystem::GetMultiStageId()&#xa;→ DT_Stages 조회" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="260" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-T4" value="ServerTravel(&quot;&lt;MapPath&gt;?listen&quot;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="350" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="F2-T5" value="All Clients&#xa;자동 ClientTravel" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="440" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F2-NOTE" value="세션 API 호출은 반드시 UTDLobbySessionSubsystem 한 곳.&#xa;위젯/PC 가 IOnlineSession 직접 호출 금지 (CLAUDE.md § 11-2).&#xa;Authority 분기는 ServerTravel/ClientTravel 진입점 통일." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="700" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F2-EH1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-H1" target="F2-H2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-EH2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-H2" target="F2-H3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-EH3" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-H3" target="F2-H4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-EH4" value="Authority" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-H4" target="F2-H5"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="F2-ES1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-S1" target="F2-S2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-ES2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-S2" target="F2-S3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-ES3" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-S3" target="F2-S4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-ES4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-S4" target="F2-S5"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="F2-EJ1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-J1" target="F2-J2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-EJ2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-J2" target="F2-J3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-EJ3" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-J3" target="F2-J4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-EJ4" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-J4" target="F2-J5"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="F2-ET1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-T1" target="F2-T2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-ET2" value="Server RPC" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-T2" target="F2-T3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-ET3" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-T3" target="F2-T4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F2-ET4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F2-T4" target="F2-T5"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="3. 로비 입장 / 슬롯 동기화 / 이탈" id="Flow3LobbyJoinLeave">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F3-1" value="Client 접속" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-2" value="ATDLobbyGameMode::PostLogin(NewPlayer)&#xa;[Server]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-3" value="LobbyGameState-&gt;PlayerSlots.Add(PS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-4" value="OnRep_PlayerSlots&#xa;[All Clients]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-5" value="UTDWaitingRoomWidget&#xa;슬롯 갱신" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-6" value="이탈 종류?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="290" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-7C" value="Client 종료" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-8C" value="ATDLobbyGameMode::PostLogout&#xa;→ PlayerSlots 슬롯 제거" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="280" width="280" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-9C" value="OnRep_PlayerSlots&#xa;자동 갱신" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="380" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-7H" value="Host 종료" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="490" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-8H" value="LobbySubsystem::DestroySession" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="580" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-9H" value="ClientReturnToMainMenu&#xa;WithTextReason(&quot;Host left&quot;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="670" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-NOTE" value="Listen Server 호스트는 본인 + 서버 PC 양쪽 PostLogin 트리거.&#xa;bIsABot / bOnlySpectator 필터링 필수.&#xa;HostMigration 미지원 — 호스트 종료 시 모든 클라 메인 메뉴 복귀." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="800" width="700" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F3-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-1" target="F3-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-2" target="F3-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E3" value="복제" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-3" target="F3-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-4" target="F3-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E5" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-2" target="F3-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E6" value="Client" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-6" target="F3-7C"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E7" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-7C" target="F3-8C"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E8" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-8C" target="F3-9C"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E9" value="Host" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-6" target="F3-7H"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E10" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-7H" target="F3-8H"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F3-E11" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F3-8H" target="F3-9H"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="4. 적 생성 (DT → Wave → Path → Spawn → Move → Damage)" id="Flow4EnemySpawn">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F4-1" value="OpenLevel" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-2" value="PostLoadMapWithWorld&#xa;(엔진 콜백)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="100" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-3" value="UTDLevelSessionSubsystem&#xa;::OnPostLoadMap" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="100" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-4" value="ApplyStageData(Row)&#xa;→ EnemyDataTableSubsystem&#xa;::LoadFromDataTable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="90" width="240" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-5" value="UTDWaveManagerComponent&#xa;::BeginPlay&#xa;(ATDPathActor 수집 + PathLengths 캐싱)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="80" width="280" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-6" value="UpdateWave (Tick)&#xa;[Server]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="240" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-7" value="UTDEnemySpawnerComponent&#xa;::SpawnEnemy(Type, Path)&#xa;→ SpawnActor&lt;ATDEnemyActor&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="340" width="280" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-8" value="GameState-&gt;ActiveEnemies.Add" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="470" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-9" value="ATDEnemyActor::Advance (Tick)&#xa;경로 따라 이동" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="470" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-10" value="끝 도달?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="470" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-11" value="GameState-&gt;BaseHealth -= damage&#xa;→ OnRep_BaseHealth&#xa;→ HUD 갱신" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="450" width="280" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-12" value="Enemy Destroy&#xa;ActiveEnemies.Remove" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="620" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-NOTE" value="WaveManager 의 Enemies 배열은 GameState::ActiveEnemies 로 이전됨 (CLAUDE.md § 7-7).&#xa;클라는 GameState 만 읽음. 서버만 SpawnActor / Destroy.&#xa;서버/클라 각자의 머신에서 PostLoadMapWithWorld 가 독립적으로 실행 → 로컬 Subsystem 캐시만 갱신 (복제 아님)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="780" width="900" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F4-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-1" target="F4-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E2" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-2" target="F4-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E3" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-3" target="F4-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-4" target="F4-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E5" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-5" target="F4-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E6" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-6" target="F4-7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E7" value="복제" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-7" target="F4-8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E8" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-8" target="F4-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E9" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-9" target="F4-10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E10" value="Yes" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-10" target="F4-11"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F4-E11" value="No (계속 이동)" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-10" target="F4-9"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="580" y="600" /><mxPoint x="900" y="600" /></Array></mxGeometry></mxCell>
+        <mxCell id="F4-E12" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F4-11" target="F4-12"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="5. 타워 배치 (Click → RPC → Spawn)" id="Flow5TowerPlace">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F5-1" value="User Mouse Hover" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-2" value="UTDTowerPlacementSubsystem&#xa;::BeginPlacement&#xa;(유령 메시 — 본인만)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd9b3;strokeColor=#d6a000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="170" width="240" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-3" value="User Click" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="290" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-4" value="ATDPlayerController&#xa;::HandleClick" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-5" value="ATDPlayerController&#xa;::Server_DoTowerAction(Tower, Action)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-6" value="ATDTowerBase::DoTowerAction(Action)&#xa;→ UTDTowerSpawnerComponent&#xa;::SpawnTower(BaseTower, NewClass)&#xa;[Server]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="480" width="280" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-7" value="GameState-&gt;HasCoins(cost)?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="500" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-8" value="GameState-&gt;CoinChange(-cost)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="380" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-9" value="SpawnActor&lt;ATDTowerBase&gt;&#xa;(자동 복제)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="470" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-10" value="GameState-&gt;PlacedTowers.Add" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="560" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-11" value="OnRep_PlacedTowers&#xa;OnRep_SharedCoin&#xa;[All Clients HUD]" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="660" width="240" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-12" value="(취소)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=11;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="650" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-NOTE" value="모든 클라→서버 요청은 PlayerController Server RPC 단일 경유 (CLAUDE.md § 1-3).&#xa;검증 / 치팅 방지 포인트 일원화. 서버에서 SpawnActor(ATDTowerBase) — bReplicates 자동.&#xa;PlacedTowers / SharedCoin 은 GameState Replicated UPROPERTY → OnRep 으로 모든 클라 HUD 동기." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="800" width="980" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F5-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-1" target="F5-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-2" target="F5-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E3" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-3" target="F5-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E4" value="Server RPC" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-4" target="F5-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E5" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-5" target="F5-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E6" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-6" target="F5-7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E7" value="Yes" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-7" target="F5-8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E8" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-8" target="F5-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E9" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-9" target="F5-10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E10" value="복제" style="endArrow=block;strokeWidth=2;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-10" target="F5-11"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F5-E11" value="No" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F5-7" target="F5-12"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="6. 타워 발사 (Multicast 코스메틱)" id="Flow6TowerFire">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F6-1" value="Server Tick" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-2" value="ATD_Weapon::FindEnemy&#xa;[Server]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-3" value="ATD_Weapon::FaceEnemy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="260" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-4" value="ATD_Weapon::FireAtEnemy&#xa;(HasAuthority 가드)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-5" value="Target / Tower /&#xa;ProjectileClass 유효?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="450" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-6" value="MulticastFireProjectile&#xa;(Target, Damage, Loc, Rot)&#xa;NetMulticast Reliable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="450" width="280" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-7" value="HasAuthority?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="460" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-8S" value="GameMode-&gt;Pool-&gt;GetActor&#xa;[Server, 재사용]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="340" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-8C" value="SpawnActor&lt;ATDProjectile&gt;&#xa;[Client, 코스메틱, 비복제]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="560" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-9" value="SetProjectileData&#xa;→ MoveTowardsTarget (독립 Tick)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="450" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-10" value="OnHitTarget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="570" width="240" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-11S" value="EnemyDamage&#xa;→ GE 적용 → HP 변화 (복제)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="660" width="280" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-11C" value="데미지 스킵&#xa;DespawnSelf" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="660" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-12" value="Pool 반납 (Server)&#xa;Destroy (Client)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="780" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-NOTE" value="Projectile 자체는 비복제 (네트워크 비용 0). 발사 이벤트 1 회 Multicast.&#xa;클라 Projectile 은 시각 전용 — 데미지 / HP 권위는 서버 단일.&#xa;적이 RPC 도착 직전 사망 시 클라 IsValid(InTarget) 실패 → 시각만 누락 (게임 상태 영향 없음). CLAUDE.md § 5-3." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="900" width="1000" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F6-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-1" target="F6-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-2" target="F6-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E3" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-3" target="F6-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-4" target="F6-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E5" value="Yes" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-5" target="F6-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E6" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-6" target="F6-7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E7" value="Server" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-7" target="F6-8S"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E8" value="Client" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-7" target="F6-8C"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E9" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-8S" target="F6-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E10" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-8C" target="F6-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E11" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-9" target="F6-10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E12" value="Server" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-10" target="F6-11S"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E13" value="Client" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-10" target="F6-11C"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E14" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-11S" target="F6-12"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F6-E15" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F6-11C" target="F6-12"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1160" y="780" /></Array></mxGeometry></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="7. 적 사망 / GAS 데미지" id="Flow7EnemyDeathGAS">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F7-1" value="ApplyDamage [Server]" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-2" value="ASC-&gt;ApplyGameplayEffectToTarget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-3" value="UTDEnemySet::PreAttributeChange&#xa;PostGameplayEffectExecute" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="280" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-4" value="OnHealthAttributeChanged" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="370" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-5" value="HP &lt;= 0?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="460" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-6" value="ATDEnemyActor::OnEnemyDied" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="470" width="260" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-7" value="GameState-&gt;CoinChange(+reward)&#xa;GameState-&gt;ActiveEnemies.Remove" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="560" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-8" value="GameState-&gt;MulticastOnEnemyDied(Enemy)&#xa;[NetMulticast]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="560" width="320" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-9" value="PlayDeathAnimation (BP)&#xa;UI 갱신 / 사운드 재생&#xa;[All Clients]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="680" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-10" value="Timer(DeathDelay) → Destroy()&#xa;[Server]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="680" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-11" value="All Clients" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="680" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-NOTE" value="EventManager 폐기. 사망 이벤트는 GameState Multicast 로 일원화 (CLAUDE.md § 7-5).&#xa;Destroy 전에 ActiveEnemies.Remove 가 먼저 복제되도록 순서 주의.&#xa;SetActorEnableCollision(false) 로 후속 데미지 차단." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="820" width="900" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F7-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-1" target="F7-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-2" target="F7-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E3" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-3" target="F7-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-4" target="F7-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E5" value="Yes" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-5" target="F7-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E6" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-6" target="F7-7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E7" value="복제" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-7" target="F7-8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E8" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-8" target="F7-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E9" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-7" target="F7-10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F7-E10" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F7-9" target="F7-11"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="8. 타워 액션 메뉴 (PC 라이프사이클 소유)" id="Flow8TowerActionMenu">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="F8-1" value="User Click" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-2" value="ATDPlayerController&#xa;::HandleClick" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-3" value="히트 대상이&#xa;Tower?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="260" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-4" value="ATDPlayerController&#xa;::ShowTowerActionMenu(Tower)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="380" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-5" value="첫 표시?&#xa;(ActiveActionWidget == null)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-6" value="CreateWidget(this, ActionWidgetClass)&#xa;+ AddToPlayerScreen&#xa;+ ActiveActionWidget 캐시" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="490" width="300" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-7" value="UTDTowerActionWidgetBase&#xa;::InitForTower(Tower) → Show() → RefreshSlots()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="610" width="380" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-8" value="Tower::OnDestroyed 구독&#xa;→ HideTowerActionMenu (자동 닫힘)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="610" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-9" value="User Click 슬롯&#xa;→ WBP_TowerActions::OnSlotClicked&#xa;(BP 디스패처)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="610" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-10" value="UTDTowerActionWidgetBase&#xa;::RequestActionTop/Bottom/Left/Right&#xa;→ GetActionForSlot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="730" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-11" value="ATDPlayerController&#xa;::HandleSlotClicked(Action)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="850" width="320" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-12" value="Server_DoTowerAction (Server RPC)&#xa;→ Page 5 흐름과 합류" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a1a1a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="950" width="320" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-NOTE" value="BP→C++ 마이그레이션: BP_Player 의 클릭 이벤트 끊고 BP_TDPlayerController 가 WBP_TowerActions 를 소유. CLAUDE.md § 3-1, § 7-8.&#xa;WBP 측은 시각 + 4 슬롯 클릭 wiring 만. 데이터/로직/RPC 위임은 UTDTowerActionWidgetBase C++ 베이스 단일 허브.&#xa;ActiveActionWidget 1 회 생성 후 캐시 → 재표시 시 Show / RefreshSlots 만 호출 (위젯 재생성 없음)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5d4;strokeColor=#82b366;fontSize=11;fontStyle=2;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="700" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="F8-E1" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-1" target="F8-2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E2" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-2" target="F8-3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E3" value="Yes" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-3" target="F8-4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E4" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-4" target="F8-5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E5" value="Yes" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-5" target="F8-6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E6" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-6" target="F8-7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E7" value="No (재사용)" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-5" target="F8-7"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="180" y="700" /><mxPoint x="380" y="700" /></Array></mxGeometry></mxCell>
+        <mxCell id="F8-E8" style="endArrow=block;dashed=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-7" target="F8-8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E9" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-7" target="F8-9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E10" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-9" target="F8-10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E11" style="endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-10" target="F8-11"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="F8-E12" value="Server RPC" style="endArrow=block;strokeWidth=2;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="F8-11" target="F8-12"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+</mxfile>

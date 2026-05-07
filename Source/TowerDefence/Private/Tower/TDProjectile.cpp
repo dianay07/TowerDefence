@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "TDProjectile.h"
-#include "TDEnemyActor.h"
+#include "Tower/TDProjectile.h"
+#include "Enemy/TDEnemyActor.h"
 #include "TDFL_Utility.h"
 #include "TDGameMode.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TDBaseSet.h"
+#include "GAS/TDBaseSet.h"
 #include "AbilitySystemComponent.h"
 #include "TDTowerSet.generated.h"
 

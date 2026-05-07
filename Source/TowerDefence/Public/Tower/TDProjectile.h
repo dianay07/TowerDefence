@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TDPoolActor.h"
+#include "Server/TDPoolActor.h"
 #include "GameplayEffect.h"
 
 #include "TDProjectile.generated.h"

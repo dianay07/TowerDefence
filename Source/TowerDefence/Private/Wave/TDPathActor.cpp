@@ -1,4 +1,4 @@
-#include "TDPathActor.h"
+#include "Wave/TDPathActor.h"
 #include "Components/SplineComponent.h"
 
 ATDPath::ATDPath()

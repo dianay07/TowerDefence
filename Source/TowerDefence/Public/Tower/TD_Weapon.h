@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Engine/NetSerialization.h"
-#include "TDProjectile.h"
+#include "Tower/TDProjectile.h"
 
 #include "TD_Weapon.generated.h"
 

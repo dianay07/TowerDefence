@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "TDPoolActorInterface.h"
+#include "Server/TDPoolActorInterface.h"
 #include "TDPoolActor.generated.h"
 
 UCLASS()

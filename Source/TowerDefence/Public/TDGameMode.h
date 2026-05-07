@@ -2,8 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "TDPoolActor.h"
-#include "TDWaveManagerComponent.h"
+#include "Server/TDPoolActor.h"
+#include "Wave/TDWaveManagerComponent.h"
 #include "Server/TDEnemySpawnerComponent.h"
 #include "Server/TDTowerSpawnerComponent.h"
 #include "Server/TDPoolComponent.h"

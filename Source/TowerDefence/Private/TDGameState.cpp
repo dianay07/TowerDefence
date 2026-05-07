@@ -1,6 +1,6 @@
 #include "TDGameState.h"
-#include "TDTowerBase.h"
-#include "TDEnemyActor.h"
+#include "Tower/TDTowerBase.h"
+#include "Enemy/TDEnemyActor.h"
 #include "Net/UnrealNetwork.h"
 
 ATDGameState::ATDGameState()

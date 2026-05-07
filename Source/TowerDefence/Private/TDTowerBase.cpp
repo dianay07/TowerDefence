@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "TDTowerBase.h"
+#include "Tower/TDTowerBase.h"
 #include "Net/UnrealNetwork.h"
 #include "TDGameMode.h"
 #include "TDGameState.h"
 #include "GameData/TDTowerDataTableSubsystem.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffectTypes.h"
-#include "TDTowerSet.h"
+#include "Tower/TDTowerSet.h"
 #include "Kismet/GameplayStatics.h"
 
 ATDTowerBase::ATDTowerBase()

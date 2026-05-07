@@ -1,5 +1,5 @@
 #include "Server/TDTowerSpawnerComponent.h"
-#include "TDTowerBase.h"
+#include "Tower/TDTowerBase.h"
 #include "TDGameState.h"
 #include "Session/TDLevelSessionSubsystem.h"  // FStageRow
 #include "Kismet/GameplayStatics.h"

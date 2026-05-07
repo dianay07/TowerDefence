@@ -1,11 +1,11 @@
-#include "TDEnemyActor.h"
+#include "Enemy/TDEnemyActor.h"
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffect.h"
-#include "TDEnemySet.h"
+#include "Enemy/TDEnemySet.h"
 #include "TDGameMode.h"
 #include "TDGameState.h"
-#include "TDPathActor.h"
+#include "Wave/TDPathActor.h"
 #include "Net/UnrealNetwork.h"
 
 ATDEnemyActor::ATDEnemyActor()

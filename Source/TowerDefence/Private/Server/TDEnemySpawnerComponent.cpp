@@ -1,6 +1,6 @@
 #include "Server/TDEnemySpawnerComponent.h"
-#include "TDEnemyActor.h"
-#include "TDPathActor.h"
+#include "Enemy/TDEnemyActor.h"
+#include "Wave/TDPathActor.h"
 #include "TDFL_Utility.h"
 #include "GameData/TDEnemyDataTableSubsystem.h"
 
