@@ -1,5 +1,5 @@
 #include "UI/TDTowerActionWidgetBase.h"
-#include "TDTowerBase.h"
+#include "Tower/TDTowerBase.h"
 #include "TDGameState.h"
 #include "Player/TDPlayerController.h"
 #include "Kismet/GameplayStatics.h"

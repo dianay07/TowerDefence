@@ -1,4 +1,4 @@
-#include "TDBaseSet.h"
+#include "GAS/TDBaseSet.h"
 
 
 void UTDBaseSet::ClampAttributeOnChange(const FGameplayAttribute& Attribute, float& NewValue) const
