@@ -62,7 +62,8 @@ void UTDSessionEntryWidget::OnJoinClicked()
 	if (UTDLobbySessionSubsystem* Lobby = GetLobbySession())
 	{
 		UE_LOG(LogTemp, Log, TEXT("[SessionEntry] JoinSession 요청 — Index: %d"), CachedSessionIndex);
-		Lobby->JoinSession(CachedSessionIndex);
+		// GetOwningPlayer() 를 넘겨 PIE 다창(Run Under One Process) 에서 올바른 PC 에 ClientTravel
+		Lobby->JoinSession(CachedSessionIndex, GetOwningPlayer());
 	}
 }
 

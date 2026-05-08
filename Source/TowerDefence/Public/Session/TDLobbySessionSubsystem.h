@@ -87,11 +87,13 @@ public:
 
 	/**
 	 * 세션에 참가한다.
-	 * 완료 시 OnSessionJoined 브로드캐스트.
+	 * 완료 시 OnSessionJoined 브로드캐스트. 성공 시 RequestingPlayer 의 PC 로 ClientTravel.
 	 * @param SearchResultIndex FindSessions 결과의 인덱스 (FTDSessionInfo::SearchResultIndex)
+	 * @param RequestingPlayer Join 을 요청한 로컬 플레이어. nullptr 이면 첫 번째 플레이어 사용.
+	 *        PIE 다창(Run Under One Process) 환경에서 Window 2 가 Join 할 때 반드시 지정해야 함.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "TD|LobbySession")
-	void JoinSession(int32 SearchResultIndex);
+	void JoinSession(int32 SearchResultIndex, APlayerController* RequestingPlayer = nullptr);
 
 	/**
 	 * 현재 세션을 종료한다.
@@ -141,7 +143,17 @@ public:
 
 // ── 내부 구현 ─────────────────────────────────────────────────────────────────
 private:
-	IOnlineSessionPtr SessionInterface;
+	/**
+	 * 현재 World 컨텍스트에 맞는 SessionInterface 반환 (지연 초기화).
+	 *
+	 * 이유: Initialize() 시점에는 World 가 없어 IOnlineSubsystem::Get() 이
+	 *       PIE 의 올바른 컨텍스트(:Context_N) 대신 기본 "Null" 인스턴스를 반환,
+	 *       결과적으로 GetPortFromNetDriver 가 NetDriver 를 못 찾고 포트 0 을 등록.
+	 *       Online::GetSubsystem(World) 를 쓰면 올바른 Context 인스턴스를 획득.
+	 */
+	IOnlineSessionPtr GetSessionInterface();
+
+	IOnlineSessionPtr SessionInterface;          // 캐시 (World 확보 후 1회 세팅)
 	TSharedPtr<FOnlineSessionSearch> LastSessionSearch;
 
 	// OnlineSubsystem 콜백 핸들러
@@ -149,6 +161,18 @@ private:
 	void OnFindSessionsComplete(bool bWasSuccessful);
 	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+
+	// CreateSession 재시도: Destroy 완료 후 원래 파라미터로 재생성
+	bool bPendingCreateAfterDestroy = false;
+	int32 PendingNumPublicConnections = 4;
+	bool  bPendingIsLAN = true;
+
+	// JoinSession 재시도: 잔존 세션 Destroy 후 Join 재시도
+	bool bPendingJoinAfterDestroy = false;
+	int32 PendingJoinIndex = INDEX_NONE;
+
+	// JoinSession: 어느 플레이어가 Join 을 요청했는지 기억 (ClientTravel 대상)
+	TWeakObjectPtr<APlayerController> PendingJoinPC;
 
 	/** 호스트가 선택한 스테이지 ID. Server_RequestStart 가 맵 경로 조회에 사용. */
 	FName MultiStageId;

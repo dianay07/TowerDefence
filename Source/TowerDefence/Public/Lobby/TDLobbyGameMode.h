@@ -20,10 +20,17 @@ class TOWERDEFENCE_API ATDLobbyGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
+// ── 설정 ──────────────────────────────────────────────────────────────────────
+public:
+	/** 세션 최대 인원 (Listen Server 로 시작될 때 CreateSession 에 사용) */
+	UPROPERTY(EditDefaultsOnly, Category = "Lobby")
+	int32 MaxPlayers = 4;
+
 // ── 생명주기 ──────────────────────────────────────────────────────────────────
 public:
 	ATDLobbyGameMode();
 
+	virtual void BeginPlay() override;
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 	virtual void Logout(AController* Exiting) override;
 
