@@ -37,15 +37,12 @@ void ATDGameMode::BeginPlay()
 
 void ATDGameMode::GameEnded(bool bWin)
 {
-	// TODO: GS->BroadcastGameEnded(bWin) + UGameplayStatics::SetGamePaused(this, true)
-	// (0417: 테스트 편의를 위해 게임 종료 일시 보류)
-
-	if (bWin)
+	if (ATDGameState* GS = UTDFL_Utility::GetTDGameState(this))
 	{
-		// TODO: UTDGameInstance::OnLevelComplete() 포팅 필요
-		// UTDGameInstance* GI = Cast<UTDGameInstance>(GetGameInstance());
-		// if (GI) GI->OnLevelComplete();
+		GS->BroadcastGameEnded(bWin);
 	}
+
+	UGameplayStatics::SetGamePaused(this, true);
 }
 
 void ATDGameMode::CheckIfWin()

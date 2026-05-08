@@ -161,5 +161,11 @@ void ATDGameState::Multicast_OnEnemyAttacked_Implementation(ATDEnemyActor* Enemy
 
 void ATDGameState::BroadcastGameEnded(bool bWin)
 {
+	if (!HasAuthority()) return;
+	Multicast_OnGameEnded(bWin);
+}
+
+void ATDGameState::Multicast_OnGameEnded_Implementation(bool bWin)
+{
 	OnGameEnded.Broadcast(bWin);
 }

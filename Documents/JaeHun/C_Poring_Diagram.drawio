@@ -1,301 +1,157 @@
 <mxfile host="app.diagrams.net">
   <diagram name="아키텍처 v2 (2026-05)" id="ENKCq6744jTmUNig_wK9">
-    <mxGraphModel dx="2020" dy="1061" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3400" dy="1815" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- =========================================================== -->
-        <!-- 레이어 컨테이너 9 개                                          -->
-        <!-- =========================================================== -->
-
-        <!-- 🔧 Utility Layer (기존 X-8) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-8" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#003d82;fontSize=30;fontStyle=1;" value="🔧 Utility Layer" vertex="1">
           <mxGeometry height="260" width="700" x="541" y="60" as="geometry" />
         </mxCell>
-
-        <!-- 🎮 Game Framework Layer (기존 X-13) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-13" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#7d5e00;fontSize=30;fontStyle=1;" value="🎮 Game Framework Layer" vertex="1">
           <mxGeometry height="420" width="935" x="1820.5" y="210" as="geometry" />
         </mxCell>
-
-        <!-- 🔀 Lobby & Session Layer (신규 X-60) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-60" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1a5e1a;fontSize=30;fontStyle=1;" value="🔀 Lobby &amp; Session Layer" vertex="1">
           <mxGeometry height="420" width="900" x="2880" y="210" as="geometry" />
         </mxCell>
-
-        <!-- ⚙️ Manager Layer (기존 X-11) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-11" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#4d1a66;fontSize=30;fontStyle=1;" value="⚙️ Manager Layer (GameMode Components)" vertex="1">
           <mxGeometry height="401" width="748" x="1030" y="440" as="geometry" />
         </mxCell>
-
-        <!-- 🧍 Player Layer (기존 X-12, width 확장) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-12" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#003d82;fontSize=30;fontStyle=1;" value="🧍 Player Layer" vertex="1">
           <mxGeometry height="426" width="600" x="2253" y="670" as="geometry" />
         </mxCell>
-
-        <!-- 🎭 Actor Layer (기존 X-10) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-10" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#ffe6cc;strokeColor=#d6a000;fontColor=#7d4e00;fontSize=30;fontStyle=1;" value="🎭 Actor Layer" vertex="1">
           <mxGeometry height="438" width="1803" x="204" y="945" as="geometry" />
         </mxCell>
-
-        <!-- ⚡ GAS / Attribute Layer (기존 X-9) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-9" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1a5e1a;fontSize=30;fontStyle=1;" value="⚡ GAS / Attribute Layer" vertex="1">
           <mxGeometry height="220" width="1074" x="120" y="1457" as="geometry" />
         </mxCell>
-
-        <!-- 📊 Data &amp; Subsystem Layer (신규 X-61) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-61" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#7a1c1c;fontSize=30;fontStyle=1;" value="📊 Data &amp; Subsystem Layer" vertex="1">
-          <mxGeometry height="220" width="640" x="1240" y="1457" as="geometry" />
+          <mxGeometry height="220" width="640" x="1240" y="1451" as="geometry" />
         </mxCell>
-
-        <!-- 🖼️ UI Layer (신규 X-62) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-62" parent="1" style="whiteSpace=wrap;strokeWidth=3;verticalAlign=top;fillColor=#fff0b3;strokeColor=#d6b656;fontColor=#7d5e00;fontSize=30;fontStyle=1;" value="🖼️ UI Layer (UMG Widgets)" vertex="1">
-          <mxGeometry height="380" width="1700" x="1900" y="1457" as="geometry" />
+          <mxGeometry height="380" width="1110" x="1900" y="1457" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 🔧 Utility Layer 박스 (2)                                    -->
-        <!-- =========================================================== -->
-
-        <!-- TowerDefence.h (기존 X-34) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-34" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=20;" value="TowerDefence.h (TD.h)&#xa;✅ 이재훈&#xa;&#xa;EEnemyType · ETowerType&#xa;FWaveData · FTowerData" vertex="1">
           <mxGeometry height="150" width="260" x="573" y="140" as="geometry" />
         </mxCell>
-
-        <!-- UTDFL_Utility (기존 X-33) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-33" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=20;" value="UTDFL_Utility&#xa;✅ 이재훈 (부분)&#xa;&#xa;BlueprintFunctionLibrary&#xa;전역 조회점 (GameMode/State/Wave/Lobby)" vertex="1">
           <mxGeometry height="126" width="304" x="910" y="152" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 🎮 Game Framework Layer 박스 (4)                              -->
-        <!-- =========================================================== -->
-
-        <!-- ATDGameMode (기존 X-14) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-14" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=18;" value="ATDGameMode&#xa;✅ 이재훈&#xa;&#xa;서버 라이프사이클 조립&#xa;Wave/Tower/Enemy Spawner + Pool 컴포넌트 소유" vertex="1">
           <mxGeometry height="120" width="389" x="1850" y="260" as="geometry" />
         </mxCell>
-
-        <!-- ATDGameState (기존 X-15) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-15" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=15;" value="ATDGameState&#xa;✅ 이재훈&#xa;&#xa;Replicated: SharedCoin · BaseHealth · Wave&#xa;PlacedTowers · ActiveEnemies&#xa;Multicast: OnEnemyDied · OnEnemyAttacked" vertex="1">
           <mxGeometry height="120" width="260" x="2280" y="260" as="geometry" />
         </mxCell>
-
-        <!-- UTDGameInstance (기존 X-16) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-16" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=20;" value="UTDGameInstance&#xa;✅ 이재훈&#xa;세이브 슬롯 관리" vertex="1">
           <mxGeometry height="78" width="260" x="2450" y="400" as="geometry" />
         </mxCell>
-
-        <!-- UTDGameUserSettings (기존 X-17) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-17" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=20;" value="UTDGameUserSettings&#xa;✅ 이재훈&#xa;오디오·비디오 품질 설정" vertex="1">
           <mxGeometry height="102" width="261" x="2449" y="510" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 🔀 Lobby &amp; Session Layer 박스 (6, 신규)                    -->
-        <!-- =========================================================== -->
-
-        <!-- UTDLobbySessionSubsystem (X-63) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-63" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=15;" value="UTDLobbySessionSubsystem&#xa;✅ 이재훈&#xa;&#xa;OnlineSubsystem 단일 허브&#xa;Create/Find/Join/Destroy + 4 델리게이트" vertex="1">
-          <mxGeometry height="100" width="400" x="2900" y="260" as="geometry" />
+        <mxCell id="LyJgppo3SYnMOuB29f-X-63" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=15;" value="UTDLobbySessionSubsystem&#xa;✅ 이재훈&#xa;&#xa;OnlineSubsystem(NULL) 단일 허브&#xa;Create/Find/Join/Destroy + 4 델리게이트" vertex="1">
+          <mxGeometry height="100" width="400" x="2895" y="260" as="geometry" />
         </mxCell>
-
-        <!-- UTDLevelSessionSubsystem (X-64) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-64" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=15;" value="UTDLevelSessionSubsystem&#xa;🟦 박지호&#xa;&#xa;스테이지 전환 + DT 주입&#xa;PostLoadMapWithWorld 훅" vertex="1">
           <mxGeometry height="100" width="360" x="3320" y="260" as="geometry" />
         </mxCell>
-
-        <!-- ATDLobbyGameMode (X-65) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-65" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=16;" value="ATDLobbyGameMode&#xa;✅ 이재훈&#xa;PostLogin/Logout · 호스트 종료" vertex="1">
           <mxGeometry height="80" width="380" x="2900" y="380" as="geometry" />
         </mxCell>
-
-        <!-- ATDLobbyGameState (X-66) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-66" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=16;" value="ATDLobbyGameState&#xa;✅ 이재훈&#xa;PlayerSlots 복제" vertex="1">
           <mxGeometry height="80" width="360" x="3320" y="380" as="geometry" />
         </mxCell>
-
-        <!-- ATDLobbyPlayerController (X-67) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-67" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=15;" value="ATDLobbyPlayerController&#xa;✅ 이재훈&#xa;Server_SetReady · Server_RequestStart" vertex="1">
           <mxGeometry height="80" width="380" x="2900" y="490" as="geometry" />
         </mxCell>
-
-        <!-- ATDLobbyPlayerState (X-68) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-68" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=16;" value="ATDLobbyPlayerState&#xa;✅ 이재훈&#xa;DisplayName · bIsReady (복제)" vertex="1">
           <mxGeometry height="80" width="360" x="3320" y="490" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- ⚙️ Manager Layer 박스 (4, TowerManager 폐기 + Spawner 신규)   -->
-        <!-- =========================================================== -->
-
-        <!-- UTDWaveManagerComponent (기존 X-20) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-20" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#9673a6;fontColor=#1a1a1a;fontSize=18;" value="UTDWaveManagerComponent&#xa;✅ 이재훈&#xa;적 스폰·이동·DataTable 로드" vertex="1">
           <mxGeometry height="102" width="310" x="1065" y="714" as="geometry" />
         </mxCell>
-
-        <!-- UTDEnemySpawnerComponent (X-69, EventManager 자리 활용) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-69" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#9673a6;fontColor=#1a1a1a;fontSize=16;" value="UTDEnemySpawnerComponent&#xa;✅ 이재훈&#xa;Type + Path → Enemy 스폰 전담" vertex="1">
           <mxGeometry height="100" width="312" x="1090" y="500" as="geometry" />
         </mxCell>
-
-        <!-- UTDTowerSpawnerComponent (X-70, ATowerManager 자리 활용) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-70" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#9673a6;fontColor=#1a1a1a;fontSize=15;" value="UTDTowerSpawnerComponent&#xa;🟦 박지호&#xa;스테이지 초기 TowerBase 일괄 스폰&#xa;(ATowerManager 분리)" vertex="1">
           <mxGeometry height="110" width="270" x="1480" y="500" as="geometry" />
         </mxCell>
-
-        <!-- UTDPoolComponent (X-71) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-71" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#9673a6;fontColor=#1a1a1a;fontSize=16;" value="UTDPoolComponent&#xa;✅ 이재훈&#xa;ActorPool 전담" vertex="1">
           <mxGeometry height="80" width="270" x="1480" y="630" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 🧍 Player Layer 박스 (5)                                    -->
-        <!-- =========================================================== -->
-
-        <!-- ATDPlayerCharacter (기존 X-18) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-18" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=14;" value="ATDPlayerCharacter&#xa;✅ 이재훈&#xa;&#xa;카메라 앵커 (축소됨)&#xa;SpringArm · EnhancedInput · EdgeScroll" vertex="1">
           <mxGeometry height="120" width="260" x="2288" y="740" as="geometry" />
         </mxCell>
-
-        <!-- ATDPlayerPawn (기존 X-19) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-19" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=15;" value="ATDPlayerPawn&#xa;✅ 이재훈&#xa;&#xa;Click-to-Move · SnapToGround" vertex="1">
           <mxGeometry height="100" width="260" x="2288" y="970" as="geometry" />
         </mxCell>
-
-        <!-- ATDPlayerController (X-72, 신규) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-72" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=14;" value="ATDPlayerController&#xa;✅ 이재훈&#xa;&#xa;Server_DoTowerAction RPC 진입점&#xa;타워 액션 메뉴 라이프사이클 소유" vertex="1">
           <mxGeometry height="120" width="260" x="2570" y="740" as="geometry" />
         </mxCell>
-
-        <!-- UTDTowerHighlightSubsystem (X-73, 신규) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-73" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=14;" value="UTDTowerHighlightSubsystem&#xa;🤝 공동&#xa;LocalPlayerSubsystem&#xa;마우스 호버/선택 상태" vertex="1">
           <mxGeometry height="100" width="260" x="2570" y="880" as="geometry" />
         </mxCell>
-
-        <!-- UTDTowerPlacementSubsystem (X-74, 신규) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-74" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=14;" value="UTDTowerPlacementSubsystem&#xa;🤝 공동&#xa;LocalPlayerSubsystem&#xa;타워 배치 프리뷰 (유령 메시)" vertex="1">
           <mxGeometry height="100" width="260" x="2570" y="990" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 🎭 Actor Layer 박스 (8)                                      -->
-        <!-- =========================================================== -->
-
-        <!-- ATDEnemyActor (기존 X-23) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-23" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=18;" value="ATDEnemyActor&#xa;✅ 이재훈&#xa;GAS ASC · 경로 이동" vertex="1">
           <mxGeometry height="120" width="260" x="397" y="1200" as="geometry" />
         </mxCell>
-
-        <!-- AEnemyActor (legacy, 신규 회색 박스 X-75) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-75" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#666666;fontSize=14;fontStyle=2;" value="AEnemyActor (legacy)&#xa;🟨 미사용&#xa;삭제 대기 (BP 부모 확인 필요)" vertex="1">
           <mxGeometry height="70" width="260" x="397" y="1100" as="geometry" />
         </mxCell>
-
-        <!-- ATDTowerPawn (기존 X-24) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-24" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=18;" value="ATDTowerPawn&#xa;🟦 박지호&#xa;GAS ASC · TowerSet" vertex="1">
           <mxGeometry height="102" width="260" x="782" y="1244" as="geometry" />
         </mxCell>
-
-        <!-- ATDTowerBase (기존 X-25) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-25" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=16;" value="ATDTowerBase&#xa;🟦 박지호&#xa;배치·업그레이드·데이터 로드&#xa;(DT Subsystem 직접 조회)" vertex="1">
           <mxGeometry height="110" width="260" x="962" y="1006" as="geometry" />
         </mxCell>
-
-        <!-- ATD_Weapon (기존 X-26) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-26" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=15;" value="ATD_Weapon&#xa;🟦 박지호&#xa;FindEnemy · FaceEnemy · FireAtEnemy&#xa;Multicast 발사 (서버 권위)" vertex="1">
           <mxGeometry height="110" width="260" x="1092" y="1244" as="geometry" />
         </mxCell>
-
-        <!-- ATDPathActor (기존 X-27) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-27" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=18;" value="ATDPathActor&#xa;✅ 이재훈&#xa;Spline · GetBakedWaypoints" vertex="1">
           <mxGeometry height="100" width="260" x="1402" y="1244" as="geometry" />
         </mxCell>
-
-        <!-- ATDProjectile (기존 X-28, 미착수 → ✅ 갱신) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-28" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=15;" value="ATDProjectile&#xa;✅ 이재훈&#xa;풀 기반 발사체&#xa;비복제 코스메틱 (머신별 시뮬레이션)" vertex="1">
           <mxGeometry height="110" width="260" x="1712" y="1244" as="geometry" />
         </mxCell>
-
-        <!-- ATDPoolActor (기존 X-29) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-29" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6a000;fontColor=#1a1a1a;fontSize=18;" value="ATDPoolActor&#xa;✅ 이재훈&#xa;오브젝트 풀 기반 클래스" vertex="1">
           <mxGeometry height="78" width="260" x="579" y="1018" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- ⚡ GAS Layer 박스 (3)                                         -->
-        <!-- =========================================================== -->
-
-        <!-- UTDEnemySet (기존 X-30) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-30" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=19;" value="UTDEnemySet&#xa;✅ 이재훈&#xa;Health · MoveSpeed · Damage" vertex="1">
           <mxGeometry height="102" width="260" x="166" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- UTDTowerSet (기존 X-31) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-31" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=20;" value="UTDTowerSet&#xa;✅ 이재훈&#xa;Range · FireRate · Damage" vertex="1">
           <mxGeometry height="102" width="260" x="556" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- UTDBaseSet (기존 X-32) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-32" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#82b366;fontColor=#1a1a1a;fontSize=20;" value="UTDBaseSet&#xa;✅ 이재훈&#xa;Clamp · PreAttributeChange" vertex="1">
           <mxGeometry height="102" width="260" x="856" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 📊 Data &amp; Subsystem Layer 박스 (2, 신규)                   -->
-        <!-- =========================================================== -->
-
-        <!-- UTDTowerDataTableSubsystem (X-76) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-76" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#b85450;fontColor=#1a1a1a;fontSize=14;" value="UTDTowerDataTableSubsystem&#xa;🟦 박지호&#xa;TowerData 정적 캐시&#xa;ETowerType → FTowerData" vertex="1">
           <mxGeometry height="120" width="280" x="1265" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- UTDEnemyDataTableSubsystem (X-77) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-77" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#b85450;fontColor=#1a1a1a;fontSize=14;" value="UTDEnemyDataTableSubsystem&#xa;✅ 이재훈&#xa;EnemyData 정적 캐시&#xa;EEnemyType → Class" vertex="1">
           <mxGeometry height="120" width="280" x="1565" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 🖼️ UI Layer 박스 (6, 신규)                                    -->
-        <!-- =========================================================== -->
-
-        <!-- UTDTowerActionWidgetBase (X-78) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-78" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=14;" value="UTDTowerActionWidgetBase&#xa;🟦 박지호&#xa;타워 액션 메뉴 C++ 베이스&#xa;4 슬롯 · 비용 · OnSlotRefreshed" vertex="1">
           <mxGeometry height="120" width="320" x="1925" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- UTDPlayModeSelectWidget (X-79) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-79" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=14;" value="UTDPlayModeSelectWidget&#xa;✅ 이재훈&#xa;Solo / Multi 분기&#xa;스테이지 ID 보관" vertex="1">
           <mxGeometry height="120" width="320" x="2275" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- UTDMultiLobbyWidget (X-80) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-80" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=14;" value="UTDMultiLobbyWidget&#xa;✅ 이재훈&#xa;방 목록 브라우저&#xa;Create / Refresh / Back" vertex="1">
           <mxGeometry height="120" width="320" x="2625" y="1510" as="geometry" />
         </mxCell>
-
-        <!-- UTDWaitingRoomWidget (X-81) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-81" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=14;" value="UTDWaitingRoomWidget&#xa;✅ 이재훈&#xa;참가자 슬롯&#xa;Ready / Start" vertex="1">
           <mxGeometry height="120" width="320" x="1925" y="1660" as="geometry" />
         </mxCell>
-
-        <!-- UTDSessionEntryWidget (X-82) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-82" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=14;" value="UTDSessionEntryWidget&#xa;✅ 이재훈&#xa;방 목록 한 줄" vertex="1">
           <mxGeometry height="120" width="320" x="2275" y="1660" as="geometry" />
         </mxCell>
-
-        <!-- UTDPlayerEntryWidget (X-83) -->
         <mxCell id="LyJgppo3SYnMOuB29f-X-83" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=#ffffff;strokeColor=#d6b656;fontColor=#1a1a1a;fontSize=14;" value="UTDPlayerEntryWidget&#xa;✅ 이재훈&#xa;참가자 한 줄" vertex="1">
           <mxGeometry height="120" width="320" x="2625" y="1660" as="geometry" />
         </mxCell>
-
-        <!-- =========================================================== -->
-        <!-- 관계선 (기존 유지 + 신규)                                      -->
-        <!-- =========================================================== -->
-
-        <!-- 기존 X-35: GameMode → WaveManager (소유) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-35" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-14" target="LyJgppo3SYnMOuB29f-X-20" value="소유">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-35" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-14" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-20" value="소유">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1920" y="380" />
@@ -304,9 +160,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 기존 X-38: GameMode → PoolActor (풀 관리) → PoolComponent 로 변경 -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-38" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-14" target="LyJgppo3SYnMOuB29f-X-71" value="소유">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-38" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-14" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-71" value="소유">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1850" y="320" />
@@ -314,19 +168,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 기존 X-39: GameState → PlayerCharacter (Delegate 구독) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-39" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-15" target="LyJgppo3SYnMOuB29f-X-18" value="OnRep 구독">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-39" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-15" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-18" value="OnRep 구독">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-42: PlayerCharacter → PlayerPawn (이동 명령) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-42" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-18" target="LyJgppo3SYnMOuB29f-X-19" value="이동 명령">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-42" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-18" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-19" value="이동 명령">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-44: WaveManager → EnemyActor (스폰) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-44" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-20" target="LyJgppo3SYnMOuB29f-X-23" value="스폰">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-44" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-20" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-23" value="스폰">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="800" y="765" />
@@ -334,19 +182,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 기존 X-45: WaveManager → PathActor (경로 참조) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-45" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-20" target="LyJgppo3SYnMOuB29f-X-27" value="경로 참조">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-45" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-20" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-27" value="경로 참조">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-46: EnemyActor → EnemySet (GAS) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-46" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-23" target="LyJgppo3SYnMOuB29f-X-30" value="GAS">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-46" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-23" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-30" value="GAS">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-47: EnemyActor → BaseSet (GAS) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-47" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-23" target="LyJgppo3SYnMOuB29f-X-32" value="GAS">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-47" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-23" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-32" value="GAS">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="527" y="1430" />
@@ -354,38 +196,26 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 기존 X-48: TowerPawn → TowerSet (GAS) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-48" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-24" target="LyJgppo3SYnMOuB29f-X-31" value="GAS">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-48" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-24" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-31" value="GAS">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="695" y="1380" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 기존 X-49: TowerPawn → BaseSet (GAS) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-49" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-24" target="LyJgppo3SYnMOuB29f-X-32" value="GAS">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-49" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-24" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-32" value="GAS">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-50: TowerBase → TowerPawn (상속) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-50" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-25" target="LyJgppo3SYnMOuB29f-X-24" value="상속">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-50" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-25" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-24" value="상속">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-51: TowerBase → ATD_Weapon (무기 소유) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-51" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-25" target="LyJgppo3SYnMOuB29f-X-26" value="무기 소유">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-51" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-25" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-26" value="무기 소유">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-55: GameInstance → GameUserSettings (설정 저장) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-55" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-16" target="LyJgppo3SYnMOuB29f-X-17" value="설정 저장">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-55" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-16" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-17" value="설정 저장">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 기존 X-57: UTDFL_Utility → GameMode -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-57" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-33" target="LyJgppo3SYnMOuB29f-X-14" value="조회">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-57" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-33" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-14" value="조회">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1214" y="200" />
@@ -393,18 +223,14 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 기존 X-58: UTDFL_Utility → GameState -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-58" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-33" target="LyJgppo3SYnMOuB29f-X-15" value="조회">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-58" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-33" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-15" value="조회">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2421" y="190" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N1: GameMode → EnemySpawnerComponent (소유) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-90" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-14" target="LyJgppo3SYnMOuB29f-X-69" value="소유">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-90" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-14" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-69" value="소유">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1850" y="395" />
@@ -412,9 +238,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N2: GameMode → TowerSpawnerComponent (소유) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-91" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-14" target="LyJgppo3SYnMOuB29f-X-70" value="소유">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-91" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-14" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-70" value="소유">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1850" y="410" />
@@ -422,9 +246,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N4: PlayerController → GameMode (Server_DoTowerAction RPC) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-93" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-72" target="LyJgppo3SYnMOuB29f-X-14" value="Server RPC&#xa;(DoTowerAction)">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-93" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-72" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-14" value="Server RPC&#xa;(DoTowerAction)">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2700" y="660" />
@@ -432,9 +254,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N5: PlayerController → TowerActionWidgetBase (위젯 소유) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-94" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-72" target="LyJgppo3SYnMOuB29f-X-78" value="위젯 소유">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-94" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-72" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-78" value="위젯 소유">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2700" y="1450" />
@@ -442,9 +262,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N6: TowerActionWidgetBase → GameState (OnCoinsChanged) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-95" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-78" target="LyJgppo3SYnMOuB29f-X-15" value="OnCoinsChanged 구독">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-95" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-78" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-15" value="OnCoinsChanged 구독">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2085" y="1430" />
@@ -453,34 +271,22 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N7: HighlightSubsystem ↔ PlayerController -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-96" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-73" target="LyJgppo3SYnMOuB29f-X-72" value="호버 상태">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-96" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-73" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-72" value="호버 상태">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 신규 N8: PlacementSubsystem ↔ PlayerController -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-97" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-74" target="LyJgppo3SYnMOuB29f-X-72" value="프리뷰">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-97" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-74" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-72" value="프리뷰">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 신규 N9: LobbySessionSubsystem → LobbyGameMode (ServerTravel) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-98" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-63" target="LyJgppo3SYnMOuB29f-X-65" value="ServerTravel">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-98" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-63" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-65" value="ServerTravel">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 신규 N10: LobbyGameState ↔ LobbyPlayerState (PlayerSlots 복제) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-99" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-66" target="LyJgppo3SYnMOuB29f-X-68" value="PlayerSlots&#xa;복제">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-99" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-66" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-68" value="PlayerSlots&#xa;복제">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 신규 N11: LobbyPlayerController → LobbyGameMode (Server_RequestStart) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-100" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-67" target="LyJgppo3SYnMOuB29f-X-65" value="RequestStart">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-100" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-67" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-65" value="RequestStart">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 신규 N12: LobbySessionSubsystem → MultiLobbyWidget (델리게이트) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-101" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-63" target="LyJgppo3SYnMOuB29f-X-80" value="OnSessionsFound&#xa;OnSessionJoined">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-101" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-63" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-80" value="OnSessionsFound&#xa;OnSessionJoined">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="3100" y="1430" />
@@ -488,9 +294,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N13a: PlayModeSelectWidget → LevelSessionSubsystem (Solo) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-102" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-79" target="LyJgppo3SYnMOuB29f-X-64" value="Solo&#xa;RequestLoadStage">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-102" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-79" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-64" value="Solo&#xa;RequestLoadStage">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2435" y="1440" />
@@ -499,20 +303,15 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N13b: PlayModeSelectWidget → LobbySessionSubsystem (Multi) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-103" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-79" target="LyJgppo3SYnMOuB29f-X-63" value="Multi&#xa;SetMultiStageId">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-103" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-79" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-63" value="Multi&#xa;SetMultiStageId">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2435" y="1430" />
-              <mxPoint x="3100" y="1430" />
-              <mxPoint x="3100" y="370" />
+              <mxPoint x="2990" y="1430" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N14a: LevelSessionSubsystem → TowerDataTableSubsystem (DT 주입) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-104" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-64" target="LyJgppo3SYnMOuB29f-X-76" value="DT 주입">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-104" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-64" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-76" value="DT 주입">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="3500" y="1410" />
@@ -520,9 +319,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N14b: LevelSessionSubsystem → EnemyDataTableSubsystem (DT 주입) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-105" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-64" target="LyJgppo3SYnMOuB29f-X-77" value="DT 주입">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-105" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-64" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-77" value="DT 주입">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="3500" y="1395" />
@@ -530,9 +327,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N15: TowerSpawnerComponent → TowerDataTableSubsystem (조회) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-106" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-70" target="LyJgppo3SYnMOuB29f-X-76" value="조회">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-106" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-70" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-76" value="조회">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1615" y="900" />
@@ -540,9 +335,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N16: EnemySpawnerComponent → EnemyDataTableSubsystem (조회) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-107" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-69" target="LyJgppo3SYnMOuB29f-X-77" value="조회">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-107" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-69" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-77" value="조회">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1246" y="880" />
@@ -550,9 +343,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N17: TowerBase → TowerDataTableSubsystem (직접 조회) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-108" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" source="LyJgppo3SYnMOuB29f-X-25" target="LyJgppo3SYnMOuB29f-X-76" value="조회">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-108" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-25" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="LyJgppo3SYnMOuB29f-X-76" value="조회">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1092" y="1435" />
@@ -560,9 +351,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- 신규 N18: GameState → ATDEnemyActor (Multicast OnEnemyDied) -->
-        <mxCell id="LyJgppo3SYnMOuB29f-X-109" edge="1" parent="1" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" source="LyJgppo3SYnMOuB29f-X-15" target="LyJgppo3SYnMOuB29f-X-23" value="Multicast&#xa;OnEnemyDied/Attacked">
+        <mxCell id="LyJgppo3SYnMOuB29f-X-109" edge="1" parent="1" source="LyJgppo3SYnMOuB29f-X-15" style="startArrow=none;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="LyJgppo3SYnMOuB29f-X-23" value="Multicast&#xa;OnEnemyDied/Attacked">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2280" y="380" />
@@ -571,7 +360,6 @@
             </Array>
           </mxGeometry>
         </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>

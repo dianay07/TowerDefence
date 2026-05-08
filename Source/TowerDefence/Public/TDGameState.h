@@ -129,5 +129,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "TD|Events")
 	FOnGameEnded OnGameEnded;
 
+	/** 서버에서 호출 → 모든 클라이언트에 게임 종료 이벤트 브로드캐스트 */
 	void BroadcastGameEnded(bool bWin);
+
+private:
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_OnGameEnded(bool bWin);
 };
