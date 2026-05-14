@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="950" viewBox="0 0 1400 950" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#37474F"/>
+    </marker>
+    <marker id="arrowDashed" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#90A4AE"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="40" text-anchor="middle" font-size="26" font-weight="700" fill="#212121">
+    BP 시절 (Origin_Backup) — 7 Layer 구조
+  </text>
+  <text x="700" y="62" text-anchor="middle" font-size="13" fill="#757575">
+    싱글플레이 타워디펜스 · 멀티 미고려 베이스라인
+  </text>
+
+  <!-- ===== GameMode Layer ===== -->
+  <rect x="500" y="90" width="400" height="100" rx="12" fill="#E3F2FD" stroke="#1976D2" stroke-width="2.5"/>
+  <text x="700" y="115" text-anchor="middle" font-size="15" font-weight="700" fill="#0D47A1">⚙️ GameMode Layer</text>
+  <rect x="525" y="130" width="160" height="40" rx="6" fill="white" stroke="#1976D2"/>
+  <text x="605" y="156" text-anchor="middle" font-size="13" fill="#0D47A1">BP_GameMode</text>
+  <rect x="715" y="130" width="160" height="40" rx="6" fill="white" stroke="#1976D2"/>
+  <text x="795" y="156" text-anchor="middle" font-size="13" fill="#0D47A1">BP_GameInstance</text>
+
+  <!-- ===== Level Layer ===== -->
+  <rect x="350" y="240" width="700" height="110" rx="12" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2.5"/>
+  <text x="700" y="265" text-anchor="middle" font-size="15" font-weight="700" fill="#1B5E20">🌍 Level Layer</text>
+  <rect x="370" y="285" width="130" height="40" rx="6" fill="white" stroke="#2E7D32"/>
+  <text x="435" y="310" text-anchor="middle" font-size="12" fill="#1B5E20">BP_Player</text>
+  <rect x="510" y="285" width="150" height="40" rx="6" fill="white" stroke="#2E7D32"/>
+  <text x="585" y="310" text-anchor="middle" font-size="12" fill="#1B5E20">BP_WaveManager</text>
+  <rect x="670" y="285" width="150" height="40" rx="6" fill="white" stroke="#2E7D32"/>
+  <text x="745" y="310" text-anchor="middle" font-size="12" fill="#1B5E20">BP_EventManager</text>
+  <rect x="830" y="285" width="100" height="40" rx="6" fill="white" stroke="#2E7D32"/>
+  <text x="880" y="310" text-anchor="middle" font-size="12" fill="#1B5E20">BP_Path</text>
+  <rect x="940" y="285" width="90" height="40" rx="6" fill="white" stroke="#2E7D32"/>
+  <text x="985" y="310" text-anchor="middle" font-size="11" fill="#1B5E20">SaveGame</text>
+
+  <!-- ===== Tower Domain ===== -->
+  <rect x="60" y="400" width="380" height="220" rx="12" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
+  <text x="250" y="425" text-anchor="middle" font-size="15" font-weight="700" fill="#BF360C">🗡️ Tower Layer</text>
+  <rect x="85" y="445" width="150" height="38" rx="6" fill="white" stroke="#E65100"/>
+  <text x="160" y="469" text-anchor="middle" font-size="12" fill="#BF360C">BP_TowerManager</text>
+  <rect x="265" y="445" width="155" height="38" rx="6" fill="white" stroke="#E65100"/>
+  <text x="342" y="469" text-anchor="middle" font-size="12" fill="#BF360C">BP_TowerBase + 4종</text>
+  <rect x="85" y="495" width="150" height="38" rx="6" fill="white" stroke="#E65100"/>
+  <text x="160" y="519" text-anchor="middle" font-size="12" fill="#BF360C">BP_Weapon</text>
+  <rect x="265" y="495" width="155" height="38" rx="6" fill="white" stroke="#E65100"/>
+  <text x="342" y="519" text-anchor="middle" font-size="12" fill="#BF360C">BP_Projectile</text>
+  <rect x="85" y="545" width="150" height="38" rx="6" fill="white" stroke="#E65100"/>
+  <text x="160" y="569" text-anchor="middle" font-size="12" fill="#BF360C">DT_TowerData</text>
+  <rect x="265" y="545" width="155" height="38" rx="6" fill="white" stroke="#E65100"/>
+  <text x="342" y="569" text-anchor="middle" font-size="12" fill="#BF360C">BP_StickyMud</text>
+
+  <!-- ===== Enemy Domain ===== -->
+  <rect x="480" y="400" width="220" height="170" rx="12" fill="#FCE4EC" stroke="#AD1457" stroke-width="2.5"/>
+  <text x="590" y="425" text-anchor="middle" font-size="15" font-weight="700" fill="#880E4F">👹 Enemy Layer</text>
+  <rect x="505" y="445" width="170" height="38" rx="6" fill="white" stroke="#AD1457"/>
+  <text x="590" y="469" text-anchor="middle" font-size="12" fill="#880E4F">BP_EnemyBase</text>
+  <rect x="505" y="495" width="170" height="38" rx="6" fill="white" stroke="#AD1457"/>
+  <text x="590" y="519" text-anchor="middle" font-size="12" fill="#880E4F">Green / Purple</text>
+
+  <!-- ===== UI Layer ===== -->
+  <rect x="740" y="400" width="320" height="220" rx="12" fill="#FFFDE7" stroke="#F57F17" stroke-width="2.5"/>
+  <text x="900" y="425" text-anchor="middle" font-size="15" font-weight="700" fill="#E65100">🖼️ UI Layer</text>
+  <rect x="765" y="445" width="130" height="38" rx="6" fill="white" stroke="#F57F17"/>
+  <text x="830" y="469" text-anchor="middle" font-size="12" fill="#E65100">WBP_HUD</text>
+  <rect x="905" y="445" width="140" height="38" rx="6" fill="white" stroke="#F57F17"/>
+  <text x="975" y="469" text-anchor="middle" font-size="12" fill="#E65100">WBP_Summary</text>
+  <rect x="765" y="495" width="280" height="38" rx="6" fill="white" stroke="#F57F17"/>
+  <text x="905" y="519" text-anchor="middle" font-size="12" fill="#E65100">WBP_TowerActions (+Slot/Tooltip)</text>
+  <rect x="765" y="545" width="280" height="38" rx="6" fill="white" stroke="#F57F17"/>
+  <text x="905" y="569" text-anchor="middle" font-size="12" fill="#E65100">BP_TowerAction (Actor wrapper)</text>
+
+  <!-- ===== GAS Layer ===== -->
+  <rect x="200" y="670" width="700" height="110" rx="12" fill="#F3E5F5" stroke="#6A1B9A" stroke-width="2.5"/>
+  <text x="550" y="695" text-anchor="middle" font-size="15" font-weight="700" fill="#4A148C">⚔️ GAS Layer</text>
+  <rect x="220" y="715" width="150" height="40" rx="6" fill="white" stroke="#6A1B9A"/>
+  <text x="295" y="740" text-anchor="middle" font-size="12" fill="#4A148C">GA_FireWeapon</text>
+  <rect x="380" y="715" width="240" height="40" rx="6" fill="white" stroke="#6A1B9A"/>
+  <text x="500" y="740" text-anchor="middle" font-size="11" fill="#4A148C">GE_TowerAttributes (+4 종) / Enemy</text>
+  <rect x="630" y="715" width="250" height="40" rx="6" fill="white" stroke="#6A1B9A"/>
+  <text x="755" y="740" text-anchor="middle" font-size="11" fill="#4A148C">GE_Damage / DoT / StickyMud / Cooldown</text>
+
+  <!-- ===== Utility Layer (right floating) ===== -->
+  <rect x="1100" y="400" width="270" height="380" rx="12" fill="#F5F5F5" stroke="#546E7A" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="1235" y="425" text-anchor="middle" font-size="15" font-weight="700" fill="#263238">🛠️ Utility Layer</text>
+  <text x="1235" y="445" text-anchor="middle" font-size="11" font-style="italic" fill="#546E7A">(공통)</text>
+  <rect x="1120" y="465" width="230" height="40" rx="6" fill="white" stroke="#546E7A"/>
+  <text x="1235" y="490" text-anchor="middle" font-size="12" fill="#263238">BPFL_Utility</text>
+  <rect x="1120" y="520" width="230" height="40" rx="6" fill="white" stroke="#546E7A"/>
+  <text x="1235" y="545" text-anchor="middle" font-size="12" fill="#263238">BPI_TowerAction</text>
+  <text x="1235" y="600" text-anchor="middle" font-size="11" fill="#546E7A">모든 레이어에서 호출</text>
+  <text x="1235" y="618" text-anchor="middle" font-size="11" fill="#546E7A">(BPFL_Utility, 공통 함수)</text>
+
+  <!-- ===== Inter-Layer Arrows ===== -->
+
+  <!-- 1. GameMode → Level (owns) -->
+  <line x1="700" y1="195" x2="700" y2="235" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="715" y="205" width="60" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="745" y="220" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">owns</text>
+
+  <!-- 2. Level → Tower (spawn) -->
+  <line x1="500" y1="355" x2="250" y2="395" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="340" y="362" width="65" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="373" y="377" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">spawn</text>
+
+  <!-- 3. Level → Enemy (spawn) -->
+  <line x1="650" y1="355" x2="590" y2="395" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="612" y="365" width="65" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="645" y="380" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">spawn</text>
+
+  <!-- 4. Level → UI (bind) -->
+  <line x1="850" y1="355" x2="900" y2="395" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="860" y="365" width="55" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="887" y="380" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">bind</text>
+
+  <!-- 5. Tower → GAS (apply) -->
+  <line x1="290" y1="625" x2="350" y2="665" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="280" y="635" width="55" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="307" y="650" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">apply</text>
+
+  <!-- 6. Enemy → GAS (apply) -->
+  <line x1="600" y1="575" x2="600" y2="665" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="610" y="610" width="55" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="638" y="625" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">apply</text>
+
+  <!-- 7. Tower → UI (click) -->
+  <line x1="440" y1="465" x2="735" y2="465" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="555" y="445" width="80" height="22" rx="4" fill="white" stroke="#37474F"/>
+  <text x="595" y="460" text-anchor="middle" font-size="12" font-weight="600" fill="#37474F">click action</text>
+
+  <!-- Utility cross-cutting: dashed lines to representative layer centers -->
+  <line x1="1100" y1="500" x2="900" y2="500" stroke="#90A4AE" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowDashed)"/>
+  <line x1="1100" y1="550" x2="700" y2="320" stroke="#90A4AE" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowDashed)"/>
+  <line x1="1100" y1="600" x2="440" y2="555" stroke="#90A4AE" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowDashed)"/>
+
+  <!-- ===== Legend ===== -->
+  <rect x="60" y="830" width="1280" height="80" rx="8" fill="#FAFAFA" stroke="#BDBDBD"/>
+  <text x="80" y="855" font-size="13" font-weight="700" fill="#424242">범례</text>
+
+  <line x1="80" y1="877" x2="140" y2="877" stroke="#37474F" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="150" y="881" font-size="12" fill="#424242">소유 / Spawn / 직접 호출</text>
+
+  <line x1="350" y1="877" x2="410" y2="877" stroke="#90A4AE" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowDashed)"/>
+  <text x="420" y="881" font-size="12" fill="#424242">공통 (Utility)</text>
+
+  <text x="640" y="881" font-size="12" fill="#424242">📌 Layer 흐름:</text>
+  <text x="745" y="881" font-size="12" font-weight="600" fill="#0D47A1">GameMode</text>
+  <text x="820" y="881" font-size="12" fill="#424242">→</text>
+  <text x="838" y="881" font-size="12" font-weight="600" fill="#1B5E20">Level</text>
+  <text x="880" y="881" font-size="12" fill="#424242">→</text>
+  <text x="898" y="881" font-size="12" font-weight="600" fill="#BF360C">Tower</text>
+  <text x="945" y="881" font-size="12" fill="#424242">/</text>
+  <text x="955" y="881" font-size="12" font-weight="600" fill="#880E4F">Enemy</text>
+  <text x="1005" y="881" font-size="12" fill="#424242">/</text>
+  <text x="1015" y="881" font-size="12" font-weight="600" fill="#E65100">UI</text>
+  <text x="1040" y="881" font-size="12" fill="#424242">→</text>
+  <text x="1058" y="881" font-size="12" font-weight="600" fill="#4A148C">GAS</text>
+
+  <text x="80" y="900" font-size="11" font-style="italic" fill="#757575">
+    7-Layer 분류는 master 의 Source/ 폴더 구조와 1:1 매핑됨 — Cpp_Era 와 좌우 비교 가능.
+  </text>
+</svg>
