@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="SDnKvEwGEQ2BF1tVjAzU">
-    <mxGraphModel dx="1126" dy="988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1351" dy="1186" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -271,20 +271,179 @@
         <mxCell id="L1fCc_l_7rWn_Ha5jMug-2" value="게임 Instance 는 엔진 시작 및 게임 시작시 하나씩 들고 있다.&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="900" y="5800" width="450" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="gM9n4cS-OR8J_cxma3nC-1" value="&lt;div&gt;&amp;nbsp;* 서버가 맵을 로드할 때(UEngine::LoadMap),&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UWorld::Listen이 호출된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이 코드는 메인 Game NetDriver를 생성하고 설정을 파싱하며,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetDriver::InitListen을 호출하는 역할을 한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 최종적으로 실제로 어떻게 클라이언트 연결을 수신할지를 결정한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 예를 들어 IpNetDriver에서는&lt;/div&gt;&lt;div&gt;&amp;nbsp;* SocketSubsystem을 통해 바인딩할 IP/Port를 결정한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* (ISocketSubsystem::GetLocalBindAddresses,&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&amp;nbsp; ISocketSubsystem::BindNextPort 참고)&lt;/div&gt;&lt;div&gt;&amp;nbsp;* FSocketSubsystemWindows&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 서버가 Listening 상태가 되면 클라이언트 연결을 받을 준비가 완료된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 클라이언트가 서버에 접속하려고 하면,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 먼저 UEngine::Browse에서 서버 IP를 사용하여 새로운 UPendingNetGame을 생성한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UPendingNetGame::Initialize와&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UPendingNetGame::InitNetDriver는&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 설정 초기화 및 NetDriver 설정을 담당한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 클라이언트는 초기화 과정 중 서버용 UNetConnection을 즉시 생성하고,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 해당 연결을 통해 서버에 데이터를 보내기 시작하며,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이로써 Handshaking 과정이 시작된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 서버와 클라이언트 모두에서&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetDriver::TickDispatch가 네트워크 데이터 수신을 담당한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 일반적으로 패킷을 수신하면,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 해당 주소가 이미 알고 있는 연결인지 확인한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이를 위해 FInternetAddr → UNetConnection 매핑을 유지한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이미 존재하는 연결의 패킷이라면&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetConnection::ReceivedRawPacket으로 전달한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 존재하지 않는 연결의 패킷이라면&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이를 &quot;connectionless&quot;로 간주하고 Handshaking을 시작한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* Handshaking 세부 내용은&lt;/div&gt;&lt;div&gt;&amp;nbsp;* StatelessConnectionHandlerComponent.cpp 참고.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gM9n4cS-OR8J_cxma3nC-1" value="&lt;div&gt;&amp;nbsp;* 서버가 맵을 로드할 때(UEngine::LoadMap),&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UWorld::Listen이 호출된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이 코드는 메인 Game NetDriver를 생성하고 설정을 파싱하며,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetDriver::InitListen을 호출하는 역할을 한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 최종적으로 실제로 어떻게 클라이언트 연결을 수신할지를 결정한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 예를 들어 IpNetDriver에서는&lt;/div&gt;&lt;div&gt;&amp;nbsp;* SocketSubsystem을 통해 바인딩할 IP/Port를 결정한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* (ISocketSubsystem::GetLocalBindAddresses,&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&amp;nbsp; ISocketSubsystem::BindNextPort 참고)&lt;/div&gt;&lt;div&gt;&amp;nbsp;* FSocketSubsystemWindows&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 서버가 Listening 상태가 되면 클라이언트 연결을 받을 준비가 완료된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 클라이언트가 서버에 접속하려고 하면,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 먼저 UEngine::Browse에서 서버 IP를 사용하여 새로운 UPendingNetGame을 생성한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UPendingNetGame::Initialize와&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UPendingNetGame::InitNetDriver는&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 설정 초기화 및 NetDriver 설정을 담당한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 클라이언트는 초기화 과정 중 서버용 UNetConnection을 즉시 생성하고,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 해당 연결을 통해 서버에 데이터를 보내기 시작하며,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이로써 Handshaking 과정이 시작된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 서버와 클라이언트 모두에서&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetDriver::TickDispatch가 네트워크 데이터 수신을 담당한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 일반적으로 패킷을 수신하면,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 해당 주소가 이미 알고 있는 연결인지 확인한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이를 위해 FInternetAddr → UNetConnection 매핑을 유지한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이미 존재하는 연결의 패킷이라면&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetConnection::ReceivedRawPacket으로 전달한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 존재하지 않는 연결의 패킷이라면&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이를 &quot;connectionless&quot;로 간주하고 Handshaking을 시작한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* Handshaking 세부 내용은&lt;/div&gt;&lt;div&gt;&amp;nbsp;* StatelessConnectionHandlerComponent.cpp 참고.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1590" y="5120" width="530" height="670" as="geometry" />
         </mxCell>
-        <mxCell id="gM9n4cS-OR8J_cxma3nC-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gM9n4cS-OR8J_cxma3nC-2" target="gM9n4cS-OR8J_cxma3nC-3">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gM9n4cS-OR8J_cxma3nC-2" target="gM9n4cS-OR8J_cxma3nC-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gM9n4cS-OR8J_cxma3nC-2" value="UWorld::Listen( FURL&amp;amp; InURL )" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gM9n4cS-OR8J_cxma3nC-2" value="UWorld::Listen( FURL&amp;amp; InURL )" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="5125" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gM9n4cS-OR8J_cxma3nC-3" value="CreateNetDriver_Local" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2360" y="5240" width="180" height="60" as="geometry" />
+        <mxCell id="gM9n4cS-OR8J_cxma3nC-3" value="CreateNetDriver_Local" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="2600" y="5125" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gM9n4cS-OR8J_cxma3nC-5" value="NetDriver 가 생성되고 IpNetDriver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2630" y="5240" width="300" height="60" as="geometry" />
+        <mxCell id="gM9n4cS-OR8J_cxma3nC-5" value="NetDriver 가 생성되고 IpNetDriver" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="2710" y="6570" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-2" value="UNetDriver::InitListen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="5230" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-5" target="x0v6XyKmGi4vqomgCOGP-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-5" value="ISocketSubsystem::GetLocalBindAddresses" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="6150" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-6" target="x0v6XyKmGi4vqomgCOGP-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-6" value="FSocketSubsystemBSD::GetAddressInfo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="6240" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-7" target="x0v6XyKmGi4vqomgCOGP-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-7" target="x0v6XyKmGi4vqomgCOGP-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-7" value="getaddrinfo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2740" y="6240" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-8" value="UEngine::LoadMap" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="5020" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-9" value="기존에 있던 NetDriver 삭제 , 월드 (변환전에 월드 구성요소를 삭제함)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2590" y="5020" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-12" value="IP정보를 가져옴" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2970" y="6240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-14" target="x0v6XyKmGi4vqomgCOGP-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-14" value="FInternetAddrBSD" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2740" y="6330" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-16" value="IP 정보를 UE 객체로 만듬" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2970" y="6330" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-18" value="&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px; color: rgb(191, 191, 191); font-size: 13px; text-align: start; background-color: rgb(25, 26, 27);&quot;&gt;&lt;code style=&quot;color: rgb(140, 140, 140); background-color: rgb(38, 38, 38); padding: 0px; border-radius: 3px; word-break: break-word; font-size: 0.9em;&quot;&gt;표준 getaddrinfo를 UE 객체/에러 시스템으로 wrapping &lt;/code&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3150" y="6270" width="400" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-19" value="&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px; color: rgb(191, 191, 191); font-size: 13px; text-align: start; background-color: rgb(25, 26, 27);&quot;&gt;&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px;&quot;&gt;&lt;code style=&quot;color: rgb(140, 140, 140); background-color: rgb(38, 38, 38); padding: 0px; border-radius: 3px; word-break: break-word; font-size: 0.9em;&quot;&gt;&quot;내 서버를 0.0.0.0:7777 에 바인딩&quot;&lt;br/&gt;              ↓&lt;br/&gt;&quot;이 PC의 모든 NIC로 들어오는 7777 포트 패킷을 받음&quot;&lt;br/&gt;&lt;br/&gt;  Wi-Fi  (192.168.0.10:7777)  → 받음 ✅&lt;br/&gt;  Ether  (192.168.1.20:7777)  → 받음 ✅&lt;br/&gt;  VPN    (10.0.0.5:7777)       → 받음 ✅&lt;br/&gt;  loopback (127.0.0.1:7777)   → 받음 ✅&lt;/code&gt;&lt;/pre&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3160" y="6350" width="420" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-20" target="x0v6XyKmGi4vqomgCOGP-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-20" value="초기 ip 값이 0 0 0 0" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2980" y="6425" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-22" target="x0v6XyKmGi4vqomgCOGP-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-22" value="FOnlineSessionNull::CreateSession" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="6700" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-23" target="x0v6XyKmGi4vqomgCOGP-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-23" value="FLANSession::Host" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="6820" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-24" value="LAN 으로 설정했음" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2650" y="6700" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-26" value="&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;LanBeacon = new FLanBeacon();&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="6930" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-28" value="LAN 에 대한 설정 getaddrinfo, FInternetAddrBSD 함수 사용 되고&lt;br&gt;결국 ip 와 소켓에 대한 설정 진행" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2655" y="6940" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-29" value="NetDriver 생성 및 월드 설정" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2850" y="5125" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-30" value="UNetConnection 초기화" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2929" y="5489.28" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-31" target="x0v6XyKmGi4vqomgCOGP-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-31" value="UNetDriver::InitConnectionClass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2679" y="5489.28" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-33" value="MetricsListeners&amp;nbsp; - 네트워크 동작의 상태를 확인 하기 위한 값들&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2929" y="5559.28" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-35" value="UNetDriver::InitBase" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2620" y="5410" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-36" target="x0v6XyKmGi4vqomgCOGP-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-36" value="UIpNetDriver::InitBase" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2481" y="5330" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-37" target="x0v6XyKmGi4vqomgCOGP-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-37" value="GetSocketSubsystem&lt;br&gt;type is FSocketSubsystemWindows" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2481" y="5610" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-39" target="x0v6XyKmGi4vqomgCOGP-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-39" value="Resolver-&amp;gt;InitBindSockets" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2481" y="5750" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-41" value="함수 이름 처럼 소켓 Bind" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2920" y="5750" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-43" target="x0v6XyKmGi4vqomgCOGP-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-43" value="SocketSubsystem-&amp;gt;GetLocalBindAddresses()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2530" y="5830" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-44" value="인자로 받는 SocketSubsystem 을 이용해서 Adress 를 가져옴" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2910" y="5830" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-46" value="CreateAndBindSocketFunc(BindAddr, Error)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2590" y="5910" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-47" value="UIpNetDriver::CreateAndBindSocket" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2909" y="5910" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-48" value="==" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2860" y="5925" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-49" target="x0v6XyKmGi4vqomgCOGP-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-49" value="CreateSocketForProtocol" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3070" y="5980" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-51" value="여기서 소켓을 생성" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3340" y="5980" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-53" target="x0v6XyKmGi4vqomgCOGP-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-53" value="SocketSubsystem-&amp;gt;BindNextPort" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3070" y="6050" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-54" value="소켓과 IP 를 Bind 함" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3340" y="6050" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-56" target="x0v6XyKmGi4vqomgCOGP-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-56" value="SetSocketAndLocalAddress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3070" y="6120" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-57" value="소켓(Socket)을 설정하고&lt;br&gt;이를 모든 NetConnection 및 Receive Thread 등에 전파하는 내부 함수" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3340" y="6120" width="240" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
