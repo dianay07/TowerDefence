@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="SDnKvEwGEQ2BF1tVjAzU">
-    <mxGraphModel dx="1351" dy="1186" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="1248" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -274,7 +274,7 @@
         <mxCell id="gM9n4cS-OR8J_cxma3nC-1" value="&lt;div&gt;&amp;nbsp;* 서버가 맵을 로드할 때(UEngine::LoadMap),&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UWorld::Listen이 호출된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이 코드는 메인 Game NetDriver를 생성하고 설정을 파싱하며,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetDriver::InitListen을 호출하는 역할을 한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 최종적으로 실제로 어떻게 클라이언트 연결을 수신할지를 결정한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 예를 들어 IpNetDriver에서는&lt;/div&gt;&lt;div&gt;&amp;nbsp;* SocketSubsystem을 통해 바인딩할 IP/Port를 결정한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* (ISocketSubsystem::GetLocalBindAddresses,&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&amp;nbsp; ISocketSubsystem::BindNextPort 참고)&lt;/div&gt;&lt;div&gt;&amp;nbsp;* FSocketSubsystemWindows&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 서버가 Listening 상태가 되면 클라이언트 연결을 받을 준비가 완료된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 클라이언트가 서버에 접속하려고 하면,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 먼저 UEngine::Browse에서 서버 IP를 사용하여 새로운 UPendingNetGame을 생성한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UPendingNetGame::Initialize와&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UPendingNetGame::InitNetDriver는&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 설정 초기화 및 NetDriver 설정을 담당한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 클라이언트는 초기화 과정 중 서버용 UNetConnection을 즉시 생성하고,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 해당 연결을 통해 서버에 데이터를 보내기 시작하며,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이로써 Handshaking 과정이 시작된다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 서버와 클라이언트 모두에서&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetDriver::TickDispatch가 네트워크 데이터 수신을 담당한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 일반적으로 패킷을 수신하면,&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 해당 주소가 이미 알고 있는 연결인지 확인한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이를 위해 FInternetAddr → UNetConnection 매핑을 유지한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이미 존재하는 연결의 패킷이라면&lt;/div&gt;&lt;div&gt;&amp;nbsp;* UNetConnection::ReceivedRawPacket으로 전달한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 존재하지 않는 연결의 패킷이라면&lt;/div&gt;&lt;div&gt;&amp;nbsp;* 이를 &quot;connectionless&quot;로 간주하고 Handshaking을 시작한다.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;&lt;div&gt;&amp;nbsp;* Handshaking 세부 내용은&lt;/div&gt;&lt;div&gt;&amp;nbsp;* StatelessConnectionHandlerComponent.cpp 참고.&lt;/div&gt;&lt;div&gt;&amp;nbsp;*&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1590" y="5120" width="530" height="670" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gM9n4cS-OR8J_cxma3nC-2" target="gM9n4cS-OR8J_cxma3nC-3">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gM9n4cS-OR8J_cxma3nC-2" target="gM9n4cS-OR8J_cxma3nC-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="gM9n4cS-OR8J_cxma3nC-2" value="UWorld::Listen( FURL&amp;amp; InURL )" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -286,164 +286,215 @@
         <mxCell id="gM9n4cS-OR8J_cxma3nC-5" value="NetDriver 가 생성되고 IpNetDriver" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2710" y="6570" width="300" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-2" value="UNetDriver::InitListen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2360" y="5230" width="180" height="60" as="geometry" />
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-2" value="UNetDriver::InitListen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="2360" y="5220" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-5" target="x0v6XyKmGi4vqomgCOGP-6">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-5" target="x0v6XyKmGi4vqomgCOGP-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-5" value="ISocketSubsystem::GetLocalBindAddresses" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-5" value="ISocketSubsystem::GetLocalBindAddresses" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="6150" width="320" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-6" target="x0v6XyKmGi4vqomgCOGP-7">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="x0v6XyKmGi4vqomgCOGP-6" target="x0v6XyKmGi4vqomgCOGP-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-6" value="FSocketSubsystemBSD::GetAddressInfo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-6" value="FSocketSubsystemBSD::GetAddressInfo" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="6240" width="320" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-7" target="x0v6XyKmGi4vqomgCOGP-12">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="x0v6XyKmGi4vqomgCOGP-7" target="x0v6XyKmGi4vqomgCOGP-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-7" target="x0v6XyKmGi4vqomgCOGP-14">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="x0v6XyKmGi4vqomgCOGP-7" target="x0v6XyKmGi4vqomgCOGP-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-7" value="getaddrinfo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-7" value="getaddrinfo" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2740" y="6240" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-8" value="UEngine::LoadMap" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-8" value="UEngine::LoadMap" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="5020" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-9" value="기존에 있던 NetDriver 삭제 , 월드 (변환전에 월드 구성요소를 삭제함)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-9" value="기존에 있던 NetDriver 삭제 , 월드 (변환전에 월드 구성요소를 삭제함)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2590" y="5020" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-12" value="IP정보를 가져옴" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-12" value="IP정보를 가져옴" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2970" y="6240" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-14" target="x0v6XyKmGi4vqomgCOGP-16">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="x0v6XyKmGi4vqomgCOGP-14" target="x0v6XyKmGi4vqomgCOGP-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-14" value="FInternetAddrBSD" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-14" value="FInternetAddrBSD" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2740" y="6330" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-16" value="IP 정보를 UE 객체로 만듬" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-16" value="IP 정보를 UE 객체로 만듬" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2970" y="6330" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-18" value="&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px; color: rgb(191, 191, 191); font-size: 13px; text-align: start; background-color: rgb(25, 26, 27);&quot;&gt;&lt;code style=&quot;color: rgb(140, 140, 140); background-color: rgb(38, 38, 38); padding: 0px; border-radius: 3px; word-break: break-word; font-size: 0.9em;&quot;&gt;표준 getaddrinfo를 UE 객체/에러 시스템으로 wrapping &lt;/code&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-18" value="&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px; color: rgb(191, 191, 191); font-size: 13px; text-align: start; background-color: rgb(25, 26, 27);&quot;&gt;&lt;code style=&quot;color: rgb(140, 140, 140); background-color: rgb(38, 38, 38); padding: 0px; border-radius: 3px; word-break: break-word; font-size: 0.9em;&quot;&gt;표준 getaddrinfo를 UE 객체/에러 시스템으로 wrapping &lt;/code&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="3150" y="6270" width="400" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-19" value="&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px; color: rgb(191, 191, 191); font-size: 13px; text-align: start; background-color: rgb(25, 26, 27);&quot;&gt;&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px;&quot;&gt;&lt;code style=&quot;color: rgb(140, 140, 140); background-color: rgb(38, 38, 38); padding: 0px; border-radius: 3px; word-break: break-word; font-size: 0.9em;&quot;&gt;&quot;내 서버를 0.0.0.0:7777 에 바인딩&quot;&lt;br/&gt;              ↓&lt;br/&gt;&quot;이 PC의 모든 NIC로 들어오는 7777 포트 패킷을 받음&quot;&lt;br/&gt;&lt;br/&gt;  Wi-Fi  (192.168.0.10:7777)  → 받음 ✅&lt;br/&gt;  Ether  (192.168.1.20:7777)  → 받음 ✅&lt;br/&gt;  VPN    (10.0.0.5:7777)       → 받음 ✅&lt;br/&gt;  loopback (127.0.0.1:7777)   → 받음 ✅&lt;/code&gt;&lt;/pre&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-19" value="&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px; color: rgb(191, 191, 191); font-size: 13px; text-align: start; background-color: rgb(25, 26, 27);&quot;&gt;&lt;pre style=&quot;overflow-x: auto; box-sizing: border-box; border-radius: 4px; max-width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 8px;&quot;&gt;&lt;code style=&quot;color: rgb(140, 140, 140); background-color: rgb(38, 38, 38); padding: 0px; border-radius: 3px; word-break: break-word; font-size: 0.9em;&quot;&gt;&quot;내 서버를 0.0.0.0:7777 에 바인딩&quot;&lt;br/&gt;              ↓&lt;br/&gt;&quot;이 PC의 모든 NIC로 들어오는 7777 포트 패킷을 받음&quot;&lt;br/&gt;&lt;br/&gt;  Wi-Fi  (192.168.0.10:7777)  → 받음 ✅&lt;br/&gt;  Ether  (192.168.1.20:7777)  → 받음 ✅&lt;br/&gt;  VPN    (10.0.0.5:7777)       → 받음 ✅&lt;br/&gt;  loopback (127.0.0.1:7777)   → 받음 ✅&lt;/code&gt;&lt;/pre&gt;&lt;/pre&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="3160" y="6350" width="420" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-20" target="x0v6XyKmGi4vqomgCOGP-19">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-20" target="x0v6XyKmGi4vqomgCOGP-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-20" value="초기 ip 값이 0 0 0 0" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-20" value="초기 ip 값이 0 0 0 0" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2980" y="6425" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-22" target="x0v6XyKmGi4vqomgCOGP-23">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-22" target="x0v6XyKmGi4vqomgCOGP-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-22" value="FOnlineSessionNull::CreateSession" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-22" value="FOnlineSessionNull::CreateSession" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="6700" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-23" target="x0v6XyKmGi4vqomgCOGP-26">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-23" target="x0v6XyKmGi4vqomgCOGP-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-23" value="FLANSession::Host" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-23" value="FLANSession::Host" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="6820" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-24" value="LAN 으로 설정했음" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-24" value="LAN 으로 설정했음" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2650" y="6700" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-26" value="&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;LanBeacon = new FLanBeacon();&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-26" value="&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;LanBeacon = new FLanBeacon();&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2360" y="6930" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-28" value="LAN 에 대한 설정 getaddrinfo, FInternetAddrBSD 함수 사용 되고&lt;br&gt;결국 ip 와 소켓에 대한 설정 진행" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-28" value="LAN 에 대한 설정 getaddrinfo, FInternetAddrBSD 함수 사용 되고&lt;br&gt;결국 ip 와 소켓에 대한 설정 진행" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2655" y="6940" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-29" value="NetDriver 생성 및 월드 설정" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-29" value="NetDriver 생성 및 월드 설정" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2850" y="5125" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-30" value="UNetConnection 초기화" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-30" value="UNetConnection 초기화" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2929" y="5489.28" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-31" target="x0v6XyKmGi4vqomgCOGP-30">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-31" target="x0v6XyKmGi4vqomgCOGP-30" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-31" value="UNetDriver::InitConnectionClass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-31" value="UNetDriver::InitConnectionClass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2679" y="5489.28" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-33" value="MetricsListeners&amp;nbsp; - 네트워크 동작의 상태를 확인 하기 위한 값들&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-33" value="MetricsListeners&amp;nbsp; - 네트워크 동작의 상태를 확인 하기 위한 값들&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2929" y="5559.28" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-35" value="UNetDriver::InitBase" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-35" value="UNetDriver::InitBase" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2620" y="5410" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-36" target="x0v6XyKmGi4vqomgCOGP-37">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-36" target="x0v6XyKmGi4vqomgCOGP-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-36" value="UIpNetDriver::InitBase" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2481" y="5330" width="180" height="60" as="geometry" />
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-36" value="UIpNetDriver::InitBase" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="2481" y="5350" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-37" target="x0v6XyKmGi4vqomgCOGP-39">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="x0v6XyKmGi4vqomgCOGP-37" target="x0v6XyKmGi4vqomgCOGP-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-37" value="GetSocketSubsystem&lt;br&gt;type is FSocketSubsystemWindows" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-37" value="GetSocketSubsystem&lt;br&gt;type is FSocketSubsystemWindows" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2481" y="5610" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-39" target="x0v6XyKmGi4vqomgCOGP-41">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-39" target="x0v6XyKmGi4vqomgCOGP-41" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-39" value="Resolver-&amp;gt;InitBindSockets" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-39" value="Resolver-&amp;gt;InitBindSockets" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2481" y="5750" width="180" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-41" value="함수 이름 처럼 소켓 Bind" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-41" value="함수 이름 처럼 소켓 Bind" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2920" y="5750" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-43" target="x0v6XyKmGi4vqomgCOGP-44">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-43" target="x0v6XyKmGi4vqomgCOGP-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-43" value="SocketSubsystem-&amp;gt;GetLocalBindAddresses()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-43" value="SocketSubsystem-&amp;gt;GetLocalBindAddresses()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2530" y="5830" width="280" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-44" value="인자로 받는 SocketSubsystem 을 이용해서 Adress 를 가져옴" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-44" value="인자로 받는 SocketSubsystem 을 이용해서 Adress 를 가져옴" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2910" y="5830" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-46" value="CreateAndBindSocketFunc(BindAddr, Error)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-46" value="CreateAndBindSocketFunc(BindAddr, Error)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2590" y="5910" width="280" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-47" value="UIpNetDriver::CreateAndBindSocket" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-47" value="UIpNetDriver::CreateAndBindSocket" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2909" y="5910" width="280" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-48" value="==" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-48" value="==" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="2860" y="5925" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-49" target="x0v6XyKmGi4vqomgCOGP-51">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-49" target="x0v6XyKmGi4vqomgCOGP-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-49" value="CreateSocketForProtocol" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-49" value="CreateSocketForProtocol" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3070" y="5980" width="190" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-51" value="여기서 소켓을 생성" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-51" value="여기서 소켓을 생성" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="3340" y="5980" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-53" target="x0v6XyKmGi4vqomgCOGP-54">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-53" target="x0v6XyKmGi4vqomgCOGP-54" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-53" value="SocketSubsystem-&amp;gt;BindNextPort" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-53" value="SocketSubsystem-&amp;gt;BindNextPort" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3070" y="6050" width="190" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-54" value="소켓과 IP 를 Bind 함" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-54" value="소켓과 IP 를 Bind 함" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="3340" y="6050" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0v6XyKmGi4vqomgCOGP-56" target="x0v6XyKmGi4vqomgCOGP-57">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="x0v6XyKmGi4vqomgCOGP-56" target="x0v6XyKmGi4vqomgCOGP-57" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-56" value="SetSocketAndLocalAddress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-56" value="SetSocketAndLocalAddress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3070" y="6120" width="190" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x0v6XyKmGi4vqomgCOGP-57" value="소켓(Socket)을 설정하고&lt;br&gt;이를 모든 NetConnection 및 Receive Thread 등에 전파하는 내부 함수" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="x0v6XyKmGi4vqomgCOGP-57" value="소켓(Socket)을 설정하고&lt;br&gt;이를 모든 NetConnection 및 Receive Thread 등에 전파하는 내부 함수" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="3340" y="6120" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-2" value="서버에 대한 리슨서버 경로&lt;br&gt;&lt;div&gt;UWorld::Listen&lt;/div&gt;&lt;div&gt;→ CreateNamedNetDriver&lt;/div&gt;&lt;div&gt;→ CreateNetDriver_Local&lt;/div&gt;&lt;div&gt;→ UIpNetDriver 생성&lt;/div&gt;&lt;div&gt;→ UIpNetDriver::InitListen&lt;/div&gt;&lt;div&gt;→ UIpNetDriver::InitBase(false)&lt;/div&gt;&lt;div&gt;→ UNetDriver::InitBase(false)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; - InitConnectionClass: Connection 클래스 준비&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; - ReplicationDriver/Iris/Metric 준비&lt;/div&gt;&lt;div&gt;→ FNetDriverAddressResolution::InitBindSockets&lt;/div&gt;&lt;div&gt;→ ISocketSubsystem::GetLocalBindAddresses&lt;/div&gt;&lt;div&gt;→ UIpNetDriver::CreateAndBindSocket&lt;/div&gt;&lt;div&gt;→ CreateSocketForProtocol&lt;/div&gt;&lt;div&gt;→ ISocketSubsystem::BindNextPort&lt;/div&gt;&lt;div&gt;→ SetSocketAndLocalAddress&lt;/div&gt;&lt;div&gt;→ UIpNetDriver::InitConnectionlessHandler&lt;/div&gt;&lt;div&gt;→ 서버 Listen 준비 완료&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2390" y="4580" width="280" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-3" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2280" y="7080" as="sourcePoint" />
+            <mxPoint x="3500" y="7080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-4" value="&lt;div&gt;Client Browse&lt;/div&gt;&lt;div&gt;→ UPendingNetGame 생성&lt;/div&gt;&lt;div&gt;→ PendingNetDriver 생성&lt;/div&gt;&lt;div&gt;→ InitConnect로 ServerConnection 생성&lt;/div&gt;&lt;div&gt;→ PacketHandler handshake&lt;/div&gt;&lt;div&gt;→ SendInitialJoin: NMT_Hello&lt;/div&gt;&lt;div&gt;→ 서버 Challenge&lt;/div&gt;&lt;div&gt;→ 클라 Login&lt;/div&gt;&lt;div&gt;→ 서버 Welcome&lt;/div&gt;&lt;div&gt;→ 클라 맵 로드&lt;/div&gt;&lt;div&gt;→ PendingNetGame의 NetDriver가 World의 GameNetDriver로 넘어감&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2330" y="7110" width="280" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-5" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,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;" vertex="1" parent="1">
+          <mxGeometry x="2670" y="7290" width="662" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-6" value="UPendingNetGame::InitNetDriver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2350" y="7830" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QxYacESADxAW4hf06Nw1-7" target="QxYacESADxAW4hf06Nw1-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-7" value="UPendingNetGame::Initialize" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="7660" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-10" value="접속 URL , 상태값 초기화" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2710" y="7660" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-11" value="NetDriver-&amp;gt;InitConnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2700" y="7910" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-13" value="InitBase" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2860" y="7980" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-16" value="서버 코드와 같으나 클라이언트 변수를 기준으로 작동함. 필요하면 확인하면 될 듯" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3189" y="7980" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-17" value="&lt;div&gt;UPendingNetGame::BeginHandshake()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2686" y="8370" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-18" value="Handshking 과정 시작&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3006" y="8380" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-20" value="&lt;div&gt;Client: SendInitialJoin()&lt;/div&gt;&lt;div&gt;→ NMT_Hello 전송&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Server: UWorld::NotifyControlMessage&lt;/div&gt;&lt;div&gt;→ NMT_Hello 수신&lt;/div&gt;&lt;div&gt;→ 버전/프로토콜 확인&lt;/div&gt;&lt;div&gt;→ NMT_Challenge 전송&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Client: UPendingNetGame::NotifyControlMessage&lt;/div&gt;&lt;div&gt;→ NMT_Challenge 수신&lt;/div&gt;&lt;div&gt;→ NMT_Login 전송&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Server:&lt;/div&gt;&lt;div&gt;→ NMT_Login 수신&lt;/div&gt;&lt;div&gt;→ PreLogin&lt;/div&gt;&lt;div&gt;→ WelcomePlayer&lt;/div&gt;&lt;div&gt;→ NMT_Welcome 전송&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Client:&lt;/div&gt;&lt;div&gt;→ NMT_Welcome 수신&lt;/div&gt;&lt;div&gt;→ 맵 정보 저장&lt;/div&gt;&lt;div&gt;→ 맵 로드 단계로 진행&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3016" y="8460" width="300" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-21" value="CreateInitialClientChannels" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2860" y="8140" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QxYacESADxAW4hf06Nw1-22" value="ServerConnection-&amp;gt;InitLocalConnection" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2860" y="8060" width="240" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
