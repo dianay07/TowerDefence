@@ -128,6 +128,104 @@ FObjectReplicator::ReceivedBunch
 ATDPlayerPawn::Server_SetMoveTarget_Implementation
 ```
 
+
+### 서버 수신 RPC 디버깅 포인트
+
+`TickDispatch`는 모든 수신 패킷에서 걸리기 때문에, 특정 RPC만 보고 싶을 때는 아래 단계 중 목적에 맞는 지점에 브레이크포인트를 잡는 것이 좋다.
+
+```text
+[참고] UIpNetDriver::TickDispatch
+    → 소켓에서 패킷을 받는 입구. 모든 패킷에서 자주 걸리므로 특정 RPC 디버깅용으로는 비추천
+↓
+[참고] UIpConnection::ReceivedRawPacket
+    → IP 연결 수신 성공 처리 후 UNetConnection으로 넘김
+↓
+[참고] UNetConnection::ReceivedRawPacket
+    → PacketHandler 처리, LastByte 기반 BitSize 계산, FBitReader 생성
+↓
+[참고] UNetConnection::ReceivedPacket
+    → PacketId / ACK / NACK / 순서 처리
+↓
+[중요] UNetConnection::DispatchPacket
+    → Packet 안의 Bunch를 분리하고 Bunch.ChIndex로 Channel을 찾거나 생성
+↓
+[참고] UChannel::ReceivedRawBunch
+    → Reliable Bunch 순서 검사, 순서가 빠진 Bunch는 InRec에 대기 저장
+↓
+[참고] UChannel::ReceivedNextBunch
+    → Reliable 처리 번호 갱신, Partial Bunch 조립, Channel open 상태 확인
+↓
+[참고] UChannel::ReceivedSequencedBunch
+    → 완성된 Bunch를 Channel별 ReceivedBunch로 넘김
+↓
+[중요] UActorChannel::ReceivedBunch
+    → Actor Channel이 받은 Bunch 처리 시작
+↓
+[중요] UActorChannel::ProcessBunch
+    → ActorChannel에서 Replicator로 넘어가는 구조를 보고 싶을 때
+↓
+[중요] UActorChannel::ReadContentBlockPayload
+    → Actor/SubObject 대상과 payload를 읽는 부분을 보고 싶을 때
+↓
+[중요] FObjectReplicator::ReceivedBunch
+    → Replicator가 Bunch 내용을 해석하기 시작
+↓
+[핵심] FObjectReplicator::ReceivedRPC
+    → 이동 RPC만 필터링해서 보고 싶을 때
+    → FunctionName == Server_SetMoveTarget 조건부 브레이크
+↓
+[핵심] FRepLayout::ReceivePropertiesForRPC
+    → WorldLocation 값이 어떻게 복원되는지 보고 싶을 때
+↓
+[핵심] FObjectReplicator::CallProcessEventForReceivedRPC
+    → 복원된 RPC를 UObject::ProcessEvent로 넘기는 지점
+↓
+[중요] UObject::ProcessEvent
+↓
+[중요] UHT 생성 execServer_SetMoveTarget
+↓
+[핵심] ATDPlayerPawn::Server_SetMoveTarget_Implementation
+    → 최종적으로 RPC가 서버에 도착했는지만 확인할 때
+```
+
+표시 기준:
+
+```text
+[핵심]
+→ Server_SetMoveTarget RPC를 직접 확인할 때 우선 볼 지점
+
+[중요]
+→ RPC가 ActorChannel / Replicator / ProcessEvent로 넘어가는 구조를 이해할 때 볼 지점
+
+[참고]
+→ Packet, ACK/NACK, Reliable 순서, Partial Bunch까지 공부할 때 볼 지점
+→ 특정 RPC만 볼 때는 자주 걸리므로 후순위
+```
+
+목적별로 정리하면 다음과 같다.
+
+```text
+1순위: 최종적으로 RPC가 서버에 도착했는지만 확인
+→ ATDPlayerPawn::Server_SetMoveTarget_Implementation
+
+2순위: 이동 RPC만 필터링해서 보고 싶음
+→ FObjectReplicator::ReceivedRPC
+→ FunctionName == Server_SetMoveTarget 조건부 브레이크
+
+3순위: WorldLocation 값이 어떻게 복원되는지 보고 싶음
+→ FRepLayout::ReceivePropertiesForRPC
+
+4순위: ActorChannel에서 Replicator로 넘어가는 구조를 보고 싶음
+→ UActorChannel::ProcessBunch / ReadContentBlockPayload
+
+5순위: Packet에서 Bunch를 꺼내 Channel로 분배하는 과정을 보고 싶음
+→ UNetConnection::DispatchPacket
+→ Bunch.ChIndex, Channels[Bunch.ChIndex], BunchDataBits 확인
+
+6순위: Reliable 순서 / Partial Bunch 조립까지 보고 싶음
+→ UChannel::ReceivedRawBunch / ReceivedNextBunch
+→ Connection->InReliable[ChIndex], InRec, InPartialBunch 확인
+```
 ### 디버거에서 보면 좋은 값
 
 ```text
@@ -249,3 +347,4 @@ Server RPC Implementation 실행
 
 처음부터 Partial Bunch까지 보려고 하면 복잡해질 수 있다.
 먼저 일반 Server RPC 흐름을 확인한 뒤, 큰 데이터 전송이 필요할 때 Partial Bunch를 따로 보는 것이 좋다.
+
