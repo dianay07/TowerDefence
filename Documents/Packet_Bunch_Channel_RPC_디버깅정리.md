@@ -2,7 +2,7 @@
 
 ## 1. 코드 보는 흐름 + 현재 프로젝트에서 확인하기 좋은 곳
 
-### 추천 시작점
+### [면접] 추천 시작점
 
 현재 프로젝트에서는 `ATDPlayerPawn::Server_SetMoveTarget` RPC를 기준으로 보는 것이 가장 단순하다.
 
@@ -13,7 +13,7 @@
 - `PlayerPawn`은 클라이언트 소유 Actor 흐름을 보기 좋다.
 - Packet -> Bunch -> Channel -> RPC 실행 흐름을 확인하기 적합하다.
 
-### 프로젝트 코드 흐름
+### [면접] 프로젝트 코드 흐름
 
 ```text
 Client 전용 창에서 땅 클릭
@@ -54,7 +54,7 @@ NetConnection을 통해 Packet으로 전송
 ATDPlayerPawn::Server_SetMoveTarget_Implementation()
 ```
 
-즉 프로젝트 코드에서 보이는 RPC 함수는 다음 두 부분으로 나뉜다.
+[면접] 즉 프로젝트 코드에서 보이는 RPC 함수는 다음 두 부분으로 나뉜다.
 
 ```text
 Server_SetMoveTarget(...)
@@ -82,7 +82,7 @@ Source/TowerDefence/Public/TDPlayerPawn.h
 - ATDPlayerPawn::Server_SetMoveTarget(...)
 ```
 
-### 엔진 코드 추적 흐름
+### [면접] 엔진 코드 추적 흐름
 
 Client 송신 쪽:
 
@@ -129,7 +129,7 @@ ATDPlayerPawn::Server_SetMoveTarget_Implementation
 ```
 
 
-### 서버 수신 RPC 디버깅 포인트
+### [면접] 서버 수신 RPC 디버깅 포인트
 
 `TickDispatch`는 모든 수신 패킷에서 걸리기 때문에, 특정 RPC만 보고 싶을 때는 아래 단계 중 목적에 맞는 지점에 브레이크포인트를 잡는 것이 좋다.
 
@@ -202,7 +202,7 @@ ATDPlayerPawn::Server_SetMoveTarget_Implementation
 → 특정 RPC만 볼 때는 자주 걸리므로 후순위
 ```
 
-목적별로 정리하면 다음과 같다.
+[면접] 목적별로 정리하면 다음과 같다.
 
 ```text
 1순위: 최종적으로 RPC가 서버에 도착했는지만 확인
@@ -226,7 +226,7 @@ ATDPlayerPawn::Server_SetMoveTarget_Implementation
 → UChannel::ReceivedRawBunch / ReceivedNextBunch
 → Connection->InReliable[ChIndex], InRec, InPartialBunch 확인
 ```
-### 디버거에서 보면 좋은 값
+### [면접] 디버거에서 보면 좋은 값
 
 ```text
 Connection
@@ -244,7 +244,7 @@ Function->GetName()
 이 값으로 어떤 Channel이 해당 Bunch를 처리할지 결정된다.
 Actor RPC라면 보통 해당 Actor의 `UActorChannel`로 전달된다.
 
-### 그 다음에 보면 좋은 RPC
+### [면접] 그 다음에 보면 좋은 RPC
 
 `Server_SetMoveTarget` 흐름이 이해되면 다음으로 볼 수 있는 RPC:
 
@@ -255,9 +255,9 @@ ATDPlayerController::Server_DoTowerAction
 이 RPC는 타워 선택, UI 슬롯 클릭, Tower 유효성 검사 등이 포함되어 있어서 처음보다는 두 번째 단계로 보는 것이 좋다.
 
 
-## 2. 테스트 방법
+## 2. [면접] 테스트 방법
 
-### PIE 설정
+### [면접] PIE 설정
 
 Unreal Editor의 Play 설정에서 다음처럼 설정한다.
 
@@ -276,7 +276,7 @@ Run Under One Process = Off
 이 옵션을 꺼야 Listen Server와 Client가 별도 프로세스로 실행된다.
 그래야 Client 송신 흐름과 Server 수신 흐름을 구분해서 보기 쉽다.
 
-### 실행 구성
+### [면접] 실행 구성
 
 ```text
 프로세스 A: Listen Server
@@ -296,7 +296,7 @@ Listen Server 창
 Listen Server 창에서 직접 클릭하면 서버 권한에서 바로 처리될 수 있으므로,
 Packet / Bunch 흐름을 보려면 반드시 Client 전용 창에서 클릭하는 것이 좋다.
 
-### 추천 브레이크포인트
+### [면접] 추천 브레이크포인트
 
 처음에는 아래 정도만 잡는 것을 추천한다.
 
@@ -323,9 +323,9 @@ FObjectReplicator::ReceivedBunch
 ATDPlayerPawn::Server_SetMoveTarget_Implementation
 ```
 
-### 확인 목표
+### [면접] 확인 목표
 
-이번 디버깅의 목표는 아래 흐름을 직접 확인하는 것이다.
+[면접] 이번 디버깅의 목표는 아래 흐름을 직접 확인하는 것이다.
 
 ```text
 Client RPC 호출
