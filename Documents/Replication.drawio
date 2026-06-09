@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="SDnKvEwGEQ2BF1tVjAzU">
-    <mxGraphModel dx="9507" dy="6153" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4132" dy="2470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1118,7 +1118,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CNrmBwoxl9Gnr_lOSToc-82" target="fw3aHcV3YnYw64P1rIhG-1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-82" target="fw3aHcV3YnYw64P1rIhG-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-82" value="&lt;span style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 11.96px; text-align: start; background-color: color(srgb 0.833766 0.833766 0.833766 / 0.0905882);&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;UActorChannel::ReceivedBunch(FInBunch&amp;amp; Bunch)&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
@@ -1187,168 +1187,168 @@
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-107" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;QueuedBunchObjectReferences 역할&lt;br&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;큐에 쌓인 Bunch가 참조하는 객체를 안전하게 붙잡아두기 위한 참조 목록이야.&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="6714" y="7869" width="320" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-1" target="fw3aHcV3YnYw64P1rIhG-7">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-1" target="fw3aHcV3YnYw64P1rIhG-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-10" value="내부 핵심 코드" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="fw3aHcV3YnYw64P1rIhG-9">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-10" value="내부 핵심 코드" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="fw3aHcV3YnYw64P1rIhG-9" vertex="1" connectable="0">
           <mxGeometry x="0.1534" y="-6" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-1" target="fw3aHcV3YnYw64P1rIhG-4">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-1" target="fw3aHcV3YnYw64P1rIhG-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-1" target="fw3aHcV3YnYw64P1rIhG-18">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-1" target="fw3aHcV3YnYw64P1rIhG-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-1" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 11.96px;&quot;&gt;&lt;font face=&quot;Consolas, Courier New, monospace&quot;&gt;UActorChannel::ProcessBunchInternal&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-1" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-size: 11.96px;&quot;&gt;&lt;font face=&quot;Consolas, Courier New, monospace&quot;&gt;UActorChannel::ProcessBunchInternal&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="5004" y="8345" width="446" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-4" value="&lt;div&gt;UActorChannel::ProcessBunchInternal()&lt;/div&gt;&lt;div&gt;= ActorChannel Bunch를 실제로 해석하는 함수&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Actor가 없으면 NetGUID 기반으로 Actor 찾기/생성&lt;/div&gt;&lt;div&gt;2. ReplicationFlags 준비&lt;/div&gt;&lt;div&gt;3. Bunch 안의 ContentBlock payload를 하나씩 읽음&lt;/div&gt;&lt;div&gt;4. 대상 객체 RepObj의 FObjectReplicator로 payload 전달&lt;/div&gt;&lt;div&gt;5. Replicator 후처리 및 새 Actor PostNetInit 처리&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-4" value="&lt;div&gt;UActorChannel::ProcessBunchInternal()&lt;/div&gt;&lt;div&gt;= ActorChannel Bunch를 실제로 해석하는 함수&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Actor가 없으면 NetGUID 기반으로 Actor 찾기/생성&lt;/div&gt;&lt;div&gt;2. ReplicationFlags 준비&lt;/div&gt;&lt;div&gt;3. Bunch 안의 ContentBlock payload를 하나씩 읽음&lt;/div&gt;&lt;div&gt;4. 대상 객체 RepObj의 FObjectReplicator로 payload 전달&lt;/div&gt;&lt;div&gt;5. Replicator 후처리 및 새 Actor PostNetInit 처리&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="5549.25" y="8294.5" width="375.5" height="161" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-5" target="fw3aHcV3YnYw64P1rIhG-6">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-5" target="fw3aHcV3YnYw64P1rIhG-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-5" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;PackageMap 역할&lt;br&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; --tw-font-weight: 600;&quot; class=&quot;font-semibold&quot;&gt;네트워크에서 UObject/Actor 참조를 NetGUID 기반으로 쓰고 읽는 객체&lt;/span&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;야.&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-5" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;PackageMap 역할&lt;br&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; --tw-font-weight: 600;&quot; class=&quot;font-semibold&quot;&gt;네트워크에서 UObject/Actor 참조를 NetGUID 기반으로 쓰고 읽는 객체&lt;/span&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;야.&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5862" y="8512" width="500" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-6" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;UPackageMapClient 역할&lt;br&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;주석상 서버에서는&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; --tw-font-weight: 600;&quot; class=&quot;font-semibold&quot;&gt;각 클라이언트 Connection마다 PackageMap 인스턴스가 따로 있음&lt;/span&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;. 그래서 “이 클라이언트가 어떤 NetGUID를 알고 있는지 / ACK 했는지”를 Connection별로 추적할 수 있어.&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-6" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;UPackageMapClient 역할&lt;br&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;주석상 서버에서는&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; --tw-font-weight: 600;&quot; class=&quot;font-semibold&quot;&gt;각 클라이언트 Connection마다 PackageMap 인스턴스가 따로 있음&lt;/span&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;. 그래서 “이 클라이언트가 어떤 NetGUID를 알고 있는지 / ACK 했는지”를 Connection별로 추적할 수 있어.&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5861" y="8619.5" width="500" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-7" target="fw3aHcV3YnYw64P1rIhG-5">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-7" target="fw3aHcV3YnYw64P1rIhG-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-7" target="fw3aHcV3YnYw64P1rIhG-14">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-7" target="fw3aHcV3YnYw64P1rIhG-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-7" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;AActor* NewChannelActor = NULL;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;bSpawnedNewActor = Connection-&amp;gt;PackageMap-&amp;gt;SerializeNewActor(Bunch, this, NewChannelActor);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-7" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;AActor* NewChannelActor = NULL;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;bSpawnedNewActor = Connection-&amp;gt;PackageMap-&amp;gt;SerializeNewActor(Bunch, this, NewChannelActor);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="5274" y="8534.5" width="498" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-12" value="&lt;span style=&quot;text-align: start;&quot;&gt;SerializeNewActor 파생 클래스에 따라 다르지만 서버는 별다른 역활을 하는것 같지는 않고&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-align: start;&quot;&gt;Client 에서 주로 사용되는 함수로 보인다. Bunch 안의 Actor 정보와 NetGuid 값을 가지고 Actor를 스폰한다.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-12" value="&lt;span style=&quot;text-align: start;&quot;&gt;SerializeNewActor 파생 클래스에 따라 다르지만 서버는 별다른 역활을 하는것 같지는 않고&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-align: start;&quot;&gt;Client 에서 주로 사용되는 함수로 보인다. Bunch 안의 Actor 정보와 NetGuid 값을 가지고 Actor를 스폰한다.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5861" y="8732" width="500" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-14" target="fw3aHcV3YnYw64P1rIhG-16">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-14" target="fw3aHcV3YnYw64P1rIhG-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-14" value="&lt;div style=&quot;text-align: start;&quot;&gt;UObject* RepObj = ReadContentBlockPayload( Bunch, Reader, bHasRepLayout );&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-14" value="&lt;div style=&quot;text-align: start;&quot;&gt;UObject* RepObj = ReadContentBlockPayload( Bunch, Reader, bHasRepLayout );&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="5274" y="8861" width="498" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-16" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;Bunch 안의 ContentBlock payload를 하나씩 읽음&lt;br&gt;헤더만 해석 하는 것으로 보이고, 나머지부분은 ReciveBunch 에서 수행&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-16" value="&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;Bunch 안의 ContentBlock payload를 하나씩 읽음&lt;br&gt;헤더만 해석 하는 것으로 보이고, 나머지부분은 ReciveBunch 에서 수행&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5854" y="8861" width="500" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-26">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-23">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-23" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="5230" y="9167" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-37">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-42">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-18" target="fw3aHcV3YnYw64P1rIhG-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-18" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Consolas, Courier New, monospace&quot;&gt;&lt;span style=&quot;font-size: 11.96px;&quot;&gt;FObjectReplicator::ReceivedBunch&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-18" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Consolas, Courier New, monospace&quot;&gt;&lt;span style=&quot;font-size: 11.96px;&quot;&gt;FObjectReplicator::ReceivedBunch&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="5005" y="9064" width="446" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-20" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;1. ContentBlock Header를 해석해서 대상 객체 RepObj를 찾음&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;2. payload 크기 NumPayloadBits를 읽음&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;3. 그 크기만큼 payload 비트를 잘라서 OutPayload Reader에 담음&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;4. RepObj를 반환함&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-20" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;1. ContentBlock Header를 해석해서 대상 객체 RepObj를 찾음&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;2. payload 크기 NumPayloadBits를 읽음&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;3. 그 크기만큼 payload 비트를 잘라서 OutPayload Reader에 담음&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;4. RepObj를 반환함&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5853" y="8927" width="500" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-21" value="if (bHasRepLayout) 처리 구문이 있음.&lt;br&gt;서버에서보다 클라이언트에서 쓰는 구문으로 보임" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-21" value="if (bHasRepLayout) 처리 구문이 있음.&lt;br&gt;서버에서보다 클라이언트에서 쓰는 구문으로 보임" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="5768" y="9197" width="395" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-22" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;서버 → 클라이언트 property replication: 정상&lt;/div&gt;&lt;div&gt;클라이언트 → 서버 property replication: 비정상&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-22" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;서버 → 클라이언트 property replication: 정상&lt;/div&gt;&lt;div&gt;클라이언트 → 서버 property replication: 비정상&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5768" y="9137" width="392.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-22">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-22" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-21">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-32">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-32" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-31">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-23" target="fw3aHcV3YnYw64P1rIhG-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-23" value="&lt;div style=&quot;text-align: start;&quot;&gt;LocalRepLayout.ReceiveProperties&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-23" value="&lt;div style=&quot;text-align: start;&quot;&gt;LocalRepLayout.ReceiveProperties&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="5385.25" y="9140.5" width="307" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-26" target="fw3aHcV3YnYw64P1rIhG-28">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-26" target="fw3aHcV3YnYw64P1rIhG-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-26" value="&lt;div style=&quot;text-align: start;&quot;&gt;ContentBlock payload를 실제 의미 단위로 해석하는 함수&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-26" value="&lt;div style=&quot;text-align: start;&quot;&gt;ContentBlock payload를 실제 의미 단위로 해석하는 함수&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5494" y="9069" width="392.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-28" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;FObjectReplicator::ReceivedBunch&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;LocalRepLayout.ReceiveProperties(...)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → 일반 replicated property 수신/적용&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;ReadFieldHeaderAndPayload(...)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → CustomDelta property 또는 RPC field payload를 하나씩 잘라냄&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;Field가 UFunction이면&lt;/div&gt;&lt;div&gt;FObjectReplicator::ReceivedRPC&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;FRepLayout::ReceivePropertiesForRPC&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → RPC 파라미터 복원&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-28" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;FObjectReplicator::ReceivedBunch&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;LocalRepLayout.ReceiveProperties(...)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → 일반 replicated property 수신/적용&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;ReadFieldHeaderAndPayload(...)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → CustomDelta property 또는 RPC field payload를 하나씩 잘라냄&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;Field가 UFunction이면&lt;/div&gt;&lt;div&gt;FObjectReplicator::ReceivedRPC&lt;/div&gt;&lt;div&gt;↓&lt;/div&gt;&lt;div&gt;FRepLayout::ReceivePropertiesForRPC&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → RPC 파라미터 복원&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="6240" y="9087" width="448.5" height="248" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-31" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;역할은&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;일반 replicated property를 Bunch에서 읽어서 Object에 반영하는 함수&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;입니다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-31" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;역할은&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;일반 replicated property를 Bunch에서 읽어서 Object에 반영하는 함수&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;입니다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5768" y="9274" width="392.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-32" target="fw3aHcV3YnYw64P1rIhG-35">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-32" target="fw3aHcV3YnYw64P1rIhG-35" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-32" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;ReadPropertyHandle(Params);&lt;/div&gt;&lt;div&gt;ReceiveProperties_r(Params, StackParams);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-32" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;ReadPropertyHandle(Params);&lt;/div&gt;&lt;div&gt;ReceiveProperties_r(Params, StackParams);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="5383" y="9335" width="307" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-35" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;ReadPropertyHandle은 “어떤 property가 왔는지”를 읽고, ReceiveProperties_r가 실제 property 값을 읽어서 Object에 적용합니다.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;중요한 점은, RPC 파라미터 복원은 보통 이 함수가 아니라 ReceivePropertiesForRPC에서 봐야 한다는 것입니다.&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-35" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;ReadPropertyHandle은 “어떤 property가 왔는지”를 읽고, ReceiveProperties_r가 실제 property 값을 읽어서 Object에 적용합니다.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;중요한 점은, RPC 파라미터 복원은 보통 이 함수가 아니라 ReceivePropertiesForRPC에서 봐야 한다는 것입니다.&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5782.5" y="9344" width="397.5" height="133" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-37" target="fw3aHcV3YnYw64P1rIhG-40">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-37" target="fw3aHcV3YnYw64P1rIhG-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-37" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;ReadFieldHeaderAndPayload&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-37" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;ReadFieldHeaderAndPayload&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="5376" y="9547" width="307" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-40" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;ContentBlock payload 안에서 field 하나를 꺼내는 것&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; --tw-font-weight: 600;&quot; class=&quot;font-semibold&quot;&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;1. Bunch에 남은 비트가 없으면 종료&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;2. field header 읽기&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;3. RepIndex 또는 NetFieldExportHandle로 어떤 field인지 찾기&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;4. payload bit 수 읽기&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;5. 해당 payload만 OutPayload로 분리&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;6. 호출자에게 OutField + OutPayload 반환&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;중요한 점은, ReadFieldHeaderAndPayload는 payload 내용을 직접 해석하지 않습니다.&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-40" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;ContentBlock payload 안에서 field 하나를 꺼내는 것&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; --tw-font-weight: 600;&quot; class=&quot;font-semibold&quot;&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;1. Bunch에 남은 비트가 없으면 종료&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;2. field header 읽기&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;3. RepIndex 또는 NetFieldExportHandle로 어떤 field인지 찾기&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;4. payload bit 수 읽기&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;5. 해당 payload만 OutPayload로 분리&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;6. 호출자에게 OutField + OutPayload 반환&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; font-weight: 600;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;중요한 점은, ReadFieldHeaderAndPayload는 payload 내용을 직접 해석하지 않습니다.&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5781" y="9516" width="389.5" height="197" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-42" target="fw3aHcV3YnYw64P1rIhG-44">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-42" target="fw3aHcV3YnYw64P1rIhG-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-42" target="fw3aHcV3YnYw64P1rIhG-52">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-42" target="fw3aHcV3YnYw64P1rIhG-52" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-42" target="fw3aHcV3YnYw64P1rIhG-61">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-42" target="fw3aHcV3YnYw64P1rIhG-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-42" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;FObjectReplicator::ReceivedRPC&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-42" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;FObjectReplicator::ReceivedRPC&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="5004" y="9786" width="446" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-44" target="fw3aHcV3YnYw64P1rIhG-47">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-44" target="fw3aHcV3YnYw64P1rIhG-47" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-57" value="Param" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="fw3aHcV3YnYw64P1rIhG-48">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-57" value="Param" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="fw3aHcV3YnYw64P1rIhG-48" vertex="1" connectable="0">
           <mxGeometry x="-0.3558" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-44" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 1px 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: none 0% 0% / auto repeat scroll padding-box border-box color(srgb 0.833766 0.833766 0.833766 / 0.0905882); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; overflow-wrap: anywhere; word-break: break-word; border-radius: 6px; font-size: 0.92em; display: inline;&quot; class=&quot;inline-markdown _inlineMarkdown_1ni73_357&quot;&gt;FObjectReplicator::ReceivedRPC&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;는&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;Bunch에서 꺼낸 RPC payload를 실제 UObject 함수 호출로 바꾸는 함수&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;입니다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-44" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 1px 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: none 0% 0% / auto repeat scroll padding-box border-box color(srgb 0.833766 0.833766 0.833766 / 0.0905882); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; overflow-wrap: anywhere; word-break: break-word; border-radius: 6px; font-size: 0.92em; display: inline;&quot; class=&quot;inline-markdown _inlineMarkdown_1ni73_357&quot;&gt;FObjectReplicator::ReceivedRPC&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;는&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;Bunch에서 꺼낸 RPC payload를 실제 UObject 함수 호출로 바꾸는 함수&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot;&gt;입니다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="5595.5" y="9786" width="334.5" height="61" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-46" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Checksum&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ field를 식별하기 위한 지문값&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;ClassCache&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 클래스의 네트워크 field lookup table&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;PackageMap export 데이터&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 패킷 안에 같이 실리는 해석용 메타데이터&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 패킷 그 자체라기보다는 패킷을 해석하기 위한 부가 정보&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-46" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Checksum&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ field를 식별하기 위한 지문값&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;ClassCache&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 클래스의 네트워크 field lookup table&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;PackageMap export 데이터&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 패킷 안에 같이 실리는 해석용 메타데이터&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 패킷 그 자체라기보다는 패킷을 해석하기 위한 부가 정보&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="6266" y="9516" width="362" height="206" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-47" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 파라미터 payload를 읽는 Reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 예: WorldLocation 값이 들어 있음&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;UnmappedGuids&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 파라미터 안에 아직 로컬 객체로 해석 못한 NetGUID가 있으면 여기에 기록&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;bOutSkippedRpcExec&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 실행을 지금 하지 않고 나중으로 미뤘는지 반환&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;RepFlags&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 이 RPC를 실행해도 되는지 판단할 때 쓰는 복제/권한 관련 플래그&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;FieldCache&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 이 RPC가 어떤 UFunction인지 알려주는 캐시&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ FieldCache-&amp;gt;Field가 Server_SetMoveTarget 같은 UFunction&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;SkipRpcBehavior&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ unmapped GUID 등이 있을 때 RPC 실행을 미룰지 여부&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-47" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 파라미터 payload를 읽는 Reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 예: WorldLocation 값이 들어 있음&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;UnmappedGuids&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 파라미터 안에 아직 로컬 객체로 해석 못한 NetGUID가 있으면 여기에 기록&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;bOutSkippedRpcExec&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 실행을 지금 하지 않고 나중으로 미뤘는지 반환&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;RepFlags&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 이 RPC를 실행해도 되는지 판단할 때 쓰는 복제/권한 관련 플래그&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;FieldCache&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 이 RPC가 어떤 UFunction인지 알려주는 캐시&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ FieldCache-&amp;gt;Field가 Server_SetMoveTarget 같은 UFunction&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;SkipRpcBehavior&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ unmapped GUID 등이 있을 때 RPC 실행을 미룰지 여부&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="6210" y="9737" width="540" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-49" target="fw3aHcV3YnYw64P1rIhG-50">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-49" target="fw3aHcV3YnYw64P1rIhG-50" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-49" value="Object 와 실행 시킬 함수 이름.&lt;br&gt;해당 함수를 실행 시켜도 되는지?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-49" value="Object 와 실행 시킬 함수 이름.&lt;br&gt;해당 함수를 실행 시켜도 되는지?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="5576.25" y="9900" width="297.75" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-50" value="&lt;div&gt;함수 실행 조건.&lt;/div&gt;// 해당 함수를 여기서 호출할 수 있는지 검증한다.&lt;br&gt;// 현재 우리는 클라이언트이거나 Net Owner이며, RPC를 무시하는 상태가 아니어야 한다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-50" value="&lt;div&gt;함수 실행 조건.&lt;/div&gt;// 해당 함수를 여기서 호출할 수 있는지 검증한다.&lt;br&gt;// 현재 우리는 클라이언트이거나 Net Owner이며, RPC를 무시하는 상태가 아니어야 한다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="5886.5" y="9962.88" width="300" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-52" target="fw3aHcV3YnYw64P1rIhG-54">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-52" target="fw3aHcV3YnYw64P1rIhG-54" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="5514" y="10130" />
@@ -1356,25 +1356,329 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-56" value="Param" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="fw3aHcV3YnYw64P1rIhG-55">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-56" value="Param" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="fw3aHcV3YnYw64P1rIhG-55" vertex="1" connectable="0">
           <mxGeometry x="0.3241" y="-5" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fw3aHcV3YnYw64P1rIhG-52" target="fw3aHcV3YnYw64P1rIhG-58">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fw3aHcV3YnYw64P1rIhG-52" target="fw3aHcV3YnYw64P1rIhG-58" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-52" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;FuncRepLayout-&amp;gt;ReceivePropertiesForRPC&lt;br&gt;(&amp;nbsp;FRepLayout::ReceivePropertiesForRPC )&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-52" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px;&quot; class=&quot;font-semibold&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;FuncRepLayout-&amp;gt;ReceivePropertiesForRPC&lt;br&gt;(&amp;nbsp;FRepLayout::ReceivePropertiesForRPC )&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="5357.5" y="10050" width="312.5" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-54" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Object&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC를 실행할 객체&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 예: ATDPlayerPawn 인스턴스&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Function&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 실행할 RPC 함수&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 예: Server_SetMoveTarget&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Channel&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 이 RPC가 들어온 ActorChannel&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 파라미터 payload를 읽는 bit reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Data&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 복원된 파라미터를 저장할 메모리&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ ReceivedRPC에서 만든 Parms 버퍼&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;UnmappedGuids&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 파라미터 안의 UObject 참조가 아직 NetGUID에서 실제 객체로 해석되지 못하면 여기에 기록&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-54" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Object&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC를 실행할 객체&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 예: ATDPlayerPawn 인스턴스&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Function&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 실행할 RPC 함수&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 예: Server_SetMoveTarget&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Channel&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 이 RPC가 들어온 ActorChannel&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ RPC 파라미터 payload를 읽는 bit reader&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Data&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 복원된 파라미터를 저장할 메모리&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ ReceivedRPC에서 만든 Parms 버퍼&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;UnmappedGuids&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;→ 파라미터 안의 UObject 참조가 아직 NetGUID에서 실제 객체로 해석되지 못하면 여기에 기록&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="6240" y="10155" width="540" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-58" value="&lt;div&gt;RPC payload Reader&lt;/div&gt;&lt;div&gt;→ RPC 파라미터 메모리 Parms&lt;br&gt;WorldLocation 값이 네트워크 비트에서 실제 FVector 파라미터로 살아나는 핵심 구간이라고 보면 됩니다.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-58" value="&lt;div&gt;RPC payload Reader&lt;/div&gt;&lt;div&gt;→ RPC 파라미터 메모리 Parms&lt;br&gt;WorldLocation 값이 네트워크 비트에서 실제 FVector 파라미터로 살아나는 핵심 구간이라고 보면 됩니다.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="5595.5" y="10170" width="344.5" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="fw3aHcV3YnYw64P1rIhG-61" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;복원된 UFunction + Params를 UObject::ProcessEvent에 넘긴다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="fw3aHcV3YnYw64P1rIhG-61" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;복원된 UFunction + Params를 UObject::ProcessEvent에 넘긴다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="5005" y="10285.88" width="446" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-1" value="Level" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="2360" width="122.62295081967213" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-2" value="TowerBase" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1489.0086338797817" y="2785.0000000000005" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-2" target="3AaYz5XlkyYO-umNGGfW-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1770.75737704918" y="2919.8900000000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-4" value="Click" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-3">
+          <mxGeometry x="0.1167" y="-4" relative="1" as="geometry">
+            <mxPoint x="-17" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-5" value="Spawn Widget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1669.2900000000002" y="2805" width="184.96" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-6" value="UTDTowerDataTableSubsystem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1669.2900000000002" y="2430" width="252.84" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-11" target="3AaYz5XlkyYO-umNGGfW-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-8" value="Load" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-7">
+          <mxGeometry x="0.0488" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-11" target="3AaYz5XlkyYO-umNGGfW-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1540.0000000000005" y="2415" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-10" value="OpenLevel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-9">
+          <mxGeometry x="-0.0841" relative="1" as="geometry">
+            <mxPoint y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-11" value="UTDLevelSession&lt;div&gt;Subsystem&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="2200" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-12" value="Level 전환과 그에 필요한 DataTable 주입 담당" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1602.62" y="2200" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-13" value="Level Data Table" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1663.5800000000002" y="2280" width="132.8415300546448" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-14" value="Ingame 에서 Tower 정보가 필요한 곳에서 사용" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1939.8399999999997" y="2430" width="270.59" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1541.97" y="2450" as="sourcePoint" />
+            <mxPoint x="1671.97" y="2451" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-16" value="ApplyStageData" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-15">
+          <mxGeometry x="0.0488" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-18" target="3AaYz5XlkyYO-umNGGfW-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-18" value="UTDTower&lt;br&gt;SpawnerComponent" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1861.5" y="2490" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-19" value="Tower 생성 동기화에 사용되는 객체" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1990.4299999999998" y="2500" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-20" value="GameMode" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1724.8799999999999" y="2480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-21" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-20" target="3AaYz5XlkyYO-umNGGfW-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1838.5700000000002" y="2620" as="sourcePoint" />
+            <mxPoint x="1888.5700000000002" y="2570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-22" value="Member" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-21">
+          <mxGeometry x="-0.12" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-23" value="Client Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1490.98" y="2658" width="98.03" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-1" target="3AaYz5XlkyYO-umNGGfW-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1540" y="2420" as="sourcePoint" />
+            <mxPoint x="1566" y="3040" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-25" value="PostLoadMap" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-24">
+          <mxGeometry x="-0.8505" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-30" target="3AaYz5XlkyYO-umNGGfW-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-27" value="Spawn Towerbase" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-26">
+          <mxGeometry x="-0.0034" relative="1" as="geometry">
+            <mxPoint x="2" y="-35" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-30" target="3AaYz5XlkyYO-umNGGfW-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-29" value="Replicates 객체를 스폰해서 동기화 완료" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-28">
+          <mxGeometry x="0.0475" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-30" value="Server Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1492.3" y="2550" width="98.03" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-31" value="SpawnInitialTowerBases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1796.42" y="2645.5" width="224.80874316939892" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-23" target="3AaYz5XlkyYO-umNGGfW-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1800" y="2880" as="sourcePoint" />
+            <mxPoint x="1850" y="2830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-33" value="Tower 생성 동기화" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-32">
+          <mxGeometry x="-0.2449" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-36" target="3AaYz5XlkyYO-umNGGfW-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-35" value="서버는 FunctionCallspace::Local&lt;br&gt;클라&amp;nbsp; FunctionCallspace::Remote" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-34">
+          <mxGeometry x="-0.0979" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-36" value="PlayerController" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1711.7700000000007" y="2900" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-37" value="CreateWidget" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-36" target="3AaYz5XlkyYO-umNGGfW-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1814.4099999999999" y="2857.5" as="sourcePoint" />
+            <mxPoint x="1574.41" y="2837.5" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-38" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-5" target="3AaYz5XlkyYO-umNGGfW-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1950" y="2805" as="sourcePoint" />
+            <mxPoint x="2010" y="2833" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-39" value="Click UI - Create Tower" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-38">
+          <mxGeometry x="-0.1184" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-40" value="TowerBase&lt;br&gt;파생 타워 생성" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2270" y="2780" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-42" target="3AaYz5XlkyYO-umNGGfW-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-42" value="Call RPC Function" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2025.4699999999998" y="2802.5" width="184.96" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-43" value="Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2430.0044262295078" y="2790" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-44" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-40" target="3AaYz5XlkyYO-umNGGfW-43">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2160" y="2695" as="sourcePoint" />
+            <mxPoint x="2210" y="2645" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-45" value="Member" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-44">
+          <mxGeometry x="-0.1556" y="5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-46" value="Tower 동격 동기화" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1541" y="2960" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-47" value="Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1499.01" y="3080" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-48" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="3AaYz5XlkyYO-umNGGfW-47">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1540" y="2970" as="sourcePoint" />
+            <mxPoint x="1750" y="3030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1690" y="3080" as="sourcePoint" />
+            <mxPoint x="1540" y="2950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-50" value="Wave Manager" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1774.87" y="3010" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-51" value="EnemyActor" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2559.9999999999995" y="3080" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-52" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-47" target="3AaYz5XlkyYO-umNGGfW-50">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1840" y="3090" as="sourcePoint" />
+            <mxPoint x="1890" y="3040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-53" value="Find Enemy" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-52">
+          <mxGeometry x="-0.1028" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-47" target="3AaYz5XlkyYO-umNGGfW-55">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1579" y="3120" as="sourcePoint" />
+            <mxPoint x="1890" y="3120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-55" value="UFUNCTION(NetMulticast, Reliable)&lt;br&gt;Weapon::FireAtEnemy()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1677.6399999999999" y="3095" width="200.72" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-56" value="Multicast 를 이용 각자의 Client 에서 Projectile 생성" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1668" y="3150" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-55" target="3AaYz5XlkyYO-umNGGfW-58">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1878" y="3120" as="sourcePoint" />
+            <mxPoint x="2120" y="3120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-58" value="Create Projectile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1922.13" y="3097.5" width="157.87" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-70" target="3AaYz5XlkyYO-umNGGfW-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-60" value="Client Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2160" y="3190" width="98.03" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-58" target="3AaYz5XlkyYO-umNGGfW-64">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2080" y="3120" as="sourcePoint" />
+            <mxPoint x="2400" y="3120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-62" value="&amp;nbsp;Hit&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-61">
+          <mxGeometry x="-0.3975" y="-5" relative="1" as="geometry">
+            <mxPoint x="3" y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-64" target="3AaYz5XlkyYO-umNGGfW-66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-64" value="Server Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2160" y="3110" width="98.03" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-68" target="3AaYz5XlkyYO-umNGGfW-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-66" value="AbilitySystem&lt;br&gt;Component" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="3080" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-66" target="3AaYz5XlkyYO-umNGGfW-68">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2380" y="3120" as="sourcePoint" />
+            <mxPoint x="2580" y="3120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-68" value="Damage 및 동기화" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="3110" width="129.02" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-69" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="3AaYz5XlkyYO-umNGGfW-60">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2110" y="3140" as="sourcePoint" />
+            <mxPoint x="2450" y="3080" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2110" y="3200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-70" value="Damage 처리 하지 않음" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="3190" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-71" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-60" target="3AaYz5XlkyYO-umNGGfW-70">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2330" y="3150" as="sourcePoint" />
+            <mxPoint x="2380" y="3100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-72" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1.011;exitY=0.564;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-18" target="3AaYz5XlkyYO-umNGGfW-40">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2130" y="2740" as="sourcePoint" />
+            <mxPoint x="2180" y="2690" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
