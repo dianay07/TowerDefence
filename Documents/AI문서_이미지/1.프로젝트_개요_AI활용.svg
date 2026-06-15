@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07172b"/>
+      <stop offset="55%" stop-color="#0b2440"/>
+      <stop offset="100%" stop-color="#061120"/>
+    </linearGradient>
+    <style>
+      .title { font: 900 58px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .subtitle { font: 700 26px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #c7d1df; }
+      .blue { fill: #57a6ff; }
+      .header { fill: #122f53; stroke: #284d78; stroke-width: 1.5; }
+      .table { fill: #fbfcff; stroke: #315a86; stroke-width: 2; }
+      .cellLine { stroke: #d7dee8; stroke-width: 1.5; }
+      .headText { font: 900 30px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .sectionText { font: 900 25px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #061326; }
+      .body { font: 600 24px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #162033; }
+      .bodySmall { font: 600 22px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #263348; }
+      .note { font: 800 22px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #25334a; }
+      .noteKey { font: 900 26px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #d92d20; }
+      .arrow { font: 700 48px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #1e63c7; }
+      .icon { fill: none; stroke: #061326; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .iconFill { fill: #061326; }
+    </style>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <text class="title" x="800" y="82" text-anchor="middle">프로젝트 개요</text>
+  <text class="subtitle" x="800" y="126" text-anchor="middle">
+    Tower Defence 프로젝트를 <tspan class="blue">온라인 멀티플레이 구조</tspan>로 확장하고 AI 기반 개발 도구를 활용
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect class="table" x="70" y="168" width="1460" height="650" rx="10"/>
+    <path class="header" d="M80 168 H1520 Q1530 168 1530 178 V238 H70 V178 Q70 168 80 168 Z"/>
+
+    <!-- columns -->
+    <line class="cellLine" x1="335" y1="168" x2="335" y2="818"/>
+    <line class="cellLine" x1="895" y1="168" x2="895" y2="818"/>
+    <line class="cellLine" x1="1010" y1="238" x2="1010" y2="818"/>
+
+    <!-- rows -->
+    <line class="cellLine" x1="70" y1="238" x2="1530" y2="238"/>
+    <line class="cellLine" x1="70" y1="354" x2="1530" y2="354"/>
+    <line class="cellLine" x1="70" y1="470" x2="1530" y2="470"/>
+    <line class="cellLine" x1="70" y1="586" x2="1530" y2="586"/>
+    <line class="cellLine" x1="70" y1="702" x2="1530" y2="702"/>
+
+    <text class="headText" x="202" y="214" text-anchor="middle">구분</text>
+    <text class="headText" x="615" y="214" text-anchor="middle">프로젝트 내용</text>
+    <text class="headText" x="1245" y="214" text-anchor="middle">포트폴리오 어필</text>
+
+    <!-- Row 1: team -->
+    <g transform="translate(175 252) scale(0.55)">
+      <circle class="icon" cx="30" cy="26" r="14"/>
+      <circle class="icon" cx="70" cy="26" r="14"/>
+      <path class="icon" d="M8 72c4-20 18-30 36-30"/>
+      <path class="icon" d="M56 42c18 0 32 10 36 30"/>
+    </g>
+    <text class="sectionText" x="202" y="333" text-anchor="middle">진행 방식</text>
+    <text class="body" x="375" y="293">2인 팀 프로젝트로 진행</text>
+    <text class="bodySmall" x="375" y="326">온라인 게임 개발경험</text>
+    <text class="arrow" x="943" y="317" text-anchor="middle">→</text>
+    <text class="body" x="1045" y="293">C++ 포팅, 온라인 개발경험</text>
+    <text class="bodySmall" x="1045" y="326">Git-AI를 활용하여 프로젝트 유지보수 </text>
+
+    <!-- Row 2: goal -->
+    <g transform="translate(175 369) scale(0.55)">
+      <rect class="icon" x="6" y="10" width="82" height="58" rx="7"/>
+      <path class="icon" d="M24 68v16M70 68v16M30 84h34"/>
+      <path class="icon" d="M38 30l18 12-18 12z"/>
+    </g>
+    <text class="sectionText" x="202" y="449" text-anchor="middle">프로젝트 목표</text>
+    <text class="body" x="375" y="409">Tower Defence를 Listen Server 기반</text>
+    <text class="bodySmall" x="375" y="442">멀티플레이 구조로 확장</text>
+    <text class="arrow" x="943" y="433" text-anchor="middle">→</text>
+    <text class="body" x="1045" y="409">온라인 플레이가 가능한</text>
+    <text class="bodySmall" x="1045" y="442">게임 구조 개선</text>
+
+    <!-- Row 3: reference -->
+    <g transform="translate(175 485) scale(0.55)">
+      <path class="icon" d="M18 20h62v60H18z"/>
+      <path class="icon" d="M30 36h38M30 50h38M30 64h22"/>
+      <path class="icon" d="M10 10h62"/>
+    </g>
+    <text class="sectionText" x="202" y="565" text-anchor="middle">시작 배경</text>
+    <text class="body" x="375" y="525">유튜브 공개 예제를 참고</text>
+    <text class="bodySmall" x="375" y="558">Unreal Engine 활용 방식 분석</text>
+    <text class="arrow" x="943" y="549" text-anchor="middle">→</text>
+    <text class="body" x="1045" y="525">다른 개발자의 로직 구성을</text>
+    <text class="bodySmall" x="1045" y="558">읽고 재구성하는 역량</text>
+
+    <!-- Row 4: networking -->
+    <g transform="translate(176 601) scale(0.55)">
+      <circle class="icon" cx="18" cy="48" r="14"/>
+      <circle class="icon" cx="78" cy="20" r="14"/>
+      <circle class="icon" cx="78" cy="76" r="14"/>
+      <path class="icon" d="M32 42l32-16M32 54l32 16"/>
+    </g>
+    <text class="sectionText" x="202" y="681" text-anchor="middle">개선 범위</text>
+    <text class="body" x="375" y="641">클라이언트와 서버에서 코드 분리처리</text>
+    <text class="bodySmall" x="375" y="674">인게임에 필요한 구성요소 동기화 처리</text>
+    <text class="arrow" x="943" y="665" text-anchor="middle">→</text>
+    <text class="body" x="1045" y="657">RPC / Replication / GAS를 활용</text>
+
+    <!-- Row 5: AI -->
+    <g transform="translate(176 717) scale(0.55)">
+      <rect class="icon" x="10" y="16" width="76" height="58" rx="10"/>
+      <path class="icon" d="M28 16V6M48 16V6M68 16V6"/>
+      <path class="icon" d="M28 74v10M48 74v10M68 74v10"/>
+      <circle class="iconFill" cx="36" cy="45" r="5"/>
+      <circle class="iconFill" cx="60" cy="45" r="5"/>
+      <path class="icon" d="M36 60h24"/>
+    </g>
+    <text class="sectionText" x="202" y="797" text-anchor="middle">AI 활용</text>
+    <text class="body" x="375" y="757">Claude와 Codex로 코드 분석,</text>
+    <text class="bodySmall" x="375" y="790">구조 정리, 문서화 작업 보조</text>
+    <text class="arrow" x="943" y="781" text-anchor="middle">→</text>
+    <text class="body" x="1045" y="757">AI 시대 개발 방식에 적응</text>
+    <text class="bodySmall" x="1045" y="790">생산성 향상 도구로 활용</text>
+  </g>
+
+  <rect x="132" y="838" width="1336" height="44" rx="22" fill="#fff6f4" stroke="#d92d20" stroke-width="2.5"/>
+  <text class="note" x="800" y="867" text-anchor="middle">
+    <tspan class="noteKey">핵심</tspan><tspan>: 기존 프로젝트 구성 → AI 기반 개발 보조 → C++ 포팅 → Listen Server 멀티플레이 확장</tspan>
+  </text>
+</svg>

@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07172b"/>
+      <stop offset="55%" stop-color="#0b2440"/>
+      <stop offset="100%" stop-color="#061120"/>
+    </linearGradient>
+    <linearGradient id="blueCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9f3ff"/>
+      <stop offset="100%" stop-color="#d7e9ff"/>
+    </linearGradient>
+    <linearGradient id="orangeCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff1da"/>
+      <stop offset="100%" stop-color="#ffe0b0"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#edf9ee"/>
+      <stop offset="100%" stop-color="#d4f0d7"/>
+    </linearGradient>
+    <style>
+      .title { font: 900 56px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .subtitle { font: 700 25px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #c7d1df; }
+      .blue { fill: #57a6ff; }
+      .table { fill: #fbfcff; stroke: #315a86; stroke-width: 2; }
+      .header { fill: #122f53; stroke: #284d78; stroke-width: 1.5; }
+      .headText { font: 900 27px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .cardTitle { font: 900 25px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #061326; }
+      .cardBody { font: 700 21px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #1b2a40; }
+      .small { font: 700 18px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #25334a; }
+      .label { font: 900 20px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #061326; }
+      .pillText { font: 900 22px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .redText { font: 900 22px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #d92d20; }
+      .note { font: 800 21px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #25334a; }
+      .noteKey { font: 900 25px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #d92d20; }
+      .boxLine { stroke: #d7dee8; stroke-width: 1.4; }
+      .arrowLine { stroke: #1e63c7; stroke-width: 4; fill: none; marker-end: url(#arrowBlue); }
+      .downLine { stroke: #1e63c7; stroke-width: 4; fill: none; marker-end: url(#arrowBlue); }
+      .warnLine { stroke: #d92d20; stroke-width: 3.5; fill: none; marker-end: url(#arrowRed); stroke-dasharray: 9 7; }
+      .cardBlue { fill: url(#blueCard); stroke: #3f7fc5; stroke-width: 2; }
+      .cardOrange { fill: url(#orangeCard); stroke: #ef9f1a; stroke-width: 2; }
+      .cardGreen { fill: url(#greenCard); stroke: #75ad67; stroke-width: 2; }
+      .cardRed { fill: #fff0f0; stroke: #d92d20; stroke-width: 2; }
+      .icon { fill: none; stroke: #061326; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+      .iconFill { fill: #061326; }
+    </style>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#1e63c7"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#d92d20"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <text class="title" x="800" y="76" text-anchor="middle">C++ 포팅 고려사항</text>
+  <text class="subtitle" x="800" y="119" text-anchor="middle">
+    Blueprint 기반 타워 구조를 <tspan class="blue">C++ 중심 구조</tspan>로 전환하기 위한 의존성 정리
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect class="table" x="70" y="155" width="1460" height="650" rx="10"/>
+
+    <!-- Top summary cards -->
+    <rect class="header" x="70" y="155" width="1460" height="58" rx="10"/>
+    <text class="headText" x="800" y="193" text-anchor="middle">포팅 이유와 C++ 전환 시 확인한 구조</text>
+
+    <rect x="105" y="242" width="660" height="180" rx="10" fill="#ffffff" stroke="#d7dee8" stroke-width="1.5"/>
+    <rect x="105" y="242" width="660" height="48" rx="10" fill="#122f53"/>
+    <text class="headText" x="435" y="275" text-anchor="middle">포팅하는 이유</text>
+    <text class="cardBody" x="138" y="322">1. 성능과 유지보수 측면에서 C++ 전환 이점</text>
+    <text class="cardBody" x="138" y="355">2. BP 그래프에 여러 단계가 있어 흐름 파악이 어려움</text>
+    <text class="cardBody" x="138" y="388">3. GAS / 시스템 분석 시 BP 혼합 구조가 디버깅을 방해</text>
+
+    <rect x="835" y="242" width="660" height="180" rx="10" fill="#ffffff" stroke="#d7dee8" stroke-width="1.5"/>
+    <rect x="835" y="242" width="660" height="48" rx="10" fill="#122f53"/>
+    <text class="headText" x="1165" y="275" text-anchor="middle">C++ 포팅 고려사항</text>
+    <text class="cardBody" x="868" y="322">1. 기존 BP Class를 C++에서 바로 참조해야 하는 구간 존재</text>
+    <text class="cardBody" x="868" y="355">2. Editor 편의 기능 때문에 일부 BP 자산은 유지 필요</text>
+    <text class="cardBody" x="868" y="388">3. 최종 부모를 C++ Actor로 두고 BP는 최소 역할만 담당</text>
+
+    <!-- Section label -->
+    <rect x="105" y="455" width="260" height="44" rx="22" fill="#1e63c7"/>
+    <text class="pillText" x="235" y="484" text-anchor="middle">타워 구조 전환 흐름</text>
+
+    <!-- Main flow cards -->
+    <rect class="cardBlue" x="105" y="545" width="210" height="110" rx="10"/>
+    <g transform="translate(128 568) scale(0.55)">
+      <rect class="icon" x="8" y="12" width="72" height="58" rx="7"/>
+      <path class="icon" d="M24 34h40M24 50h30M24 66h22"/>
+    </g>
+    <text class="cardTitle" x="210" y="590" text-anchor="middle">BP</text>
+    <text class="cardTitle" x="210" y="622" text-anchor="middle">TowerManager</text>
+
+    <rect class="cardOrange" x="405" y="545" width="210" height="110" rx="10"/>
+    <g transform="translate(428 568) scale(0.55)">
+      <circle class="icon" cx="44" cy="44" r="32"/>
+      <path class="icon" d="M44 20v48M20 44h48"/>
+    </g>
+    <text class="cardTitle" x="510" y="590" text-anchor="middle">C++</text>
+    <text class="cardTitle" x="510" y="622" text-anchor="middle">TowerManager</text>
+
+    <rect class="cardOrange" x="705" y="545" width="210" height="110" rx="10"/>
+    <g transform="translate(728 568) scale(0.55)">
+      <path class="icon" d="M44 10l34 20v40L44 90 10 70V30z"/>
+      <path class="icon" d="M44 10v80M10 30l34 20 34-20"/>
+    </g>
+    <text class="cardTitle" x="810" y="590" text-anchor="middle">TD</text>
+    <text class="cardTitle" x="810" y="622" text-anchor="middle">TowerBase</text>
+
+    <rect class="cardBlue" x="1005" y="545" width="210" height="110" rx="10"/>
+    <g transform="translate(1028 568) scale(0.55)">
+      <ellipse class="icon" cx="44" cy="22" rx="34" ry="12"/>
+      <path class="icon" d="M10 22v44c0 7 15 12 34 12s34-5 34-12V22"/>
+      <path class="icon" d="M10 44c0 7 15 12 34 12s34-5 34-12"/>
+    </g>
+    <text class="cardTitle" x="1110" y="590" text-anchor="middle">BP_TowerData</text>
+    <text class="small" x="1110" y="622" text-anchor="middle">Data Table</text>
+
+    <path class="arrowLine" d="M315 600 H395"/>
+    <path class="arrowLine" d="M615 600 H695"/>
+    <path class="arrowLine" d="M915 600 H995"/>
+
+    <text class="small" x="360" y="580" text-anchor="middle">BP Class 참조</text>
+    <text class="small" x="660" y="580" text-anchor="middle">부모 C++화</text>
+    <text class="small" x="960" y="580" text-anchor="middle">데이터 참조</text>
+
+    <!-- Explanation cards -->
+    <rect class="cardGreen" x="380" y="690" width="330" height="70" rx="8"/>
+    <text class="label" x="545" y="719" text-anchor="middle">BP Class 지정 필요</text>
+    <text class="small" x="545" y="746" text-anchor="middle">TowerManager에서 TowerBase 클래스 연결</text>
+
+    <rect class="cardGreen" x="835" y="690" width="330" height="70" rx="8"/>
+    <text class="label" x="1000" y="719" text-anchor="middle">DataTable 참조 유지</text>
+    <text class="small" x="1000" y="746" text-anchor="middle">타워 스탯/설정 데이터는 자산으로 관리</text>
+
+    <path class="downLine" d="M510 656 V682"/>
+    <path class="downLine" d="M1110 656 V682"/>
+
+    <!-- Required setup warnings -->
+    <rect class="cardRed" x="1265" y="510" width="210" height="58" rx="8"/>
+    <text class="redText" x="1370" y="546" text-anchor="middle">TD TowerBase 설정</text>
+
+    <rect class="cardRed" x="1265" y="590" width="210" height="58" rx="8"/>
+    <text class="redText" x="1370" y="626" text-anchor="middle">Data Asset 설정</text>
+
+    <path class="warnLine" d="M918 555 C1060 490 1155 510 1255 536"/>
+    <path class="warnLine" d="M1218 610 C1238 610 1248 610 1255 614"/>
+
+    <text class="small" x="1308" y="483">포팅 후 에디터에서</text>
+    <text class="small" x="1308" y="506">다시 연결해야 하는 자산</text>
+  </g>
+
+  <rect x="120" y="830" width="1360" height="48" rx="24" fill="#fff6f4" stroke="#d92d20" stroke-width="2.5"/>
+  <text class="note" x="800" y="861" text-anchor="middle">
+    <tspan class="noteKey">핵심</tspan><tspan>: BP 구조 분석 → C++ 부모 구조 정리 → BP Class / DataTable 의존성 유지 → 타워 포팅 안정화</tspan>
+  </text>
+</svg>

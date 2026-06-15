@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07172b"/>
+      <stop offset="55%" stop-color="#0b2440"/>
+      <stop offset="100%" stop-color="#061120"/>
+    </linearGradient>
+    <style>
+      .title { font: 900 56px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .subtitle { font: 700 25px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #c7d1df; }
+      .blue { fill: #57a6ff; }
+      .table { fill: #fbfcff; stroke: #315a86; stroke-width: 2; }
+      .header { fill: #122f53; stroke: #284d78; stroke-width: 1.5; }
+      .cellLine { stroke: #d7dee8; stroke-width: 1.5; }
+      .headText { font: 900 29px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .sectionText { font: 900 24px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #061326; }
+      .body { font: 700 24px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #162033; }
+      .bodySmall { font: 650 22px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #263348; }
+      .arrow { font: 800 45px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #1e63c7; }
+      .note { font: 800 21px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #25334a; }
+      .noteKey { font: 900 26px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #d92d20; }
+      .icon { fill: none; stroke: #061326; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .iconFill { fill: #061326; }
+    </style>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <text class="title" x="800" y="82" text-anchor="middle">초기 프로젝트 구조와 한계</text>
+  <text class="subtitle" x="800" y="126" text-anchor="middle">
+    Blueprint 중심 싱글플레이 구조를 <tspan class="blue">온라인 멀티플레이 구조</tspan>로 전환하기 위한 문제 인식
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect class="table" x="70" y="168" width="1460" height="650" rx="10"/>
+    <path class="header" d="M80 168 H1520 Q1530 168 1530 178 V238 H70 V178 Q70 168 80 168 Z"/>
+
+    <!-- columns -->
+    <line class="cellLine" x1="335" y1="168" x2="335" y2="818"/>
+    <line class="cellLine" x1="895" y1="168" x2="895" y2="818"/>
+    <line class="cellLine" x1="1010" y1="238" x2="1010" y2="818"/>
+
+    <!-- rows -->
+    <line class="cellLine" x1="70" y1="238" x2="1530" y2="238"/>
+    <line class="cellLine" x1="70" y1="335" x2="1530" y2="335"/>
+    <line class="cellLine" x1="70" y1="432" x2="1530" y2="432"/>
+    <line class="cellLine" x1="70" y1="529" x2="1530" y2="529"/>
+    <line class="cellLine" x1="70" y1="626" x2="1530" y2="626"/>
+    <line class="cellLine" x1="70" y1="723" x2="1530" y2="723"/>
+
+    <text class="headText" x="202" y="214" text-anchor="middle">구분</text>
+    <text class="headText" x="615" y="214" text-anchor="middle">초기 상태</text>
+    <text class="headText" x="1245" y="214" text-anchor="middle">개선 필요점</text>
+
+    <!-- Row 1 -->
+    <g transform="translate(175 252) scale(0.50)">
+      <rect class="icon" x="6" y="12" width="88" height="62" rx="8"/>
+      <path class="icon" d="M32 56 L18 43 L32 30"/>
+      <path class="icon" d="M68 30 L82 43 L68 56"/>
+      <path class="icon" d="M58 24 L40 64"/>
+    </g>
+    <text class="sectionText" x="202" y="319" text-anchor="middle">구현 방식</text>
+    <text class="body" x="615" y="295" text-anchor="middle">Blueprint 중심</text>
+    <text class="arrow" x="952" y="305" text-anchor="middle">→</text>
+    <text class="body" x="1245" y="295" text-anchor="middle">핵심 로직 C++화</text>
+
+    <!-- Row 2 -->
+    <g transform="translate(177 349) scale(0.50)">
+      <rect class="icon" x="10" y="12" width="80" height="56" rx="7"/>
+      <circle class="iconFill" cx="50" cy="40" r="10"/>
+      <path class="icon" d="M28 68 V84 M72 68 V84 M34 84 H66"/>
+    </g>
+    <text class="sectionText" x="202" y="416" text-anchor="middle">플레이 구조</text>
+    <text class="body" x="615" y="392" text-anchor="middle">싱글플레이 전제</text>
+    <text class="arrow" x="952" y="402" text-anchor="middle">→</text>
+    <text class="body" x="1245" y="392" text-anchor="middle">Listen Server 멀티플레이 추가</text>
+
+    <!-- Row 3 -->
+    <g transform="translate(179 446) scale(0.50)">
+      <path class="iconFill" d="M22 12 L78 62 L52 68 L40 96 L22 12 Z"/>
+      <path class="icon" d="M16 10 L6 0 M50 4 V-14 M82 15 L98 2"/>
+    </g>
+    <text class="sectionText" x="202" y="513" text-anchor="middle">입력/요청</text>
+    <text class="body" x="615" y="489" text-anchor="middle">로컬에서 직접 처리</text>
+    <text class="arrow" x="952" y="499" text-anchor="middle">→</text>
+    <text class="body" x="1245" y="489" text-anchor="middle">PlayerController Server RPC로 집약</text>
+
+    <!-- Row 4 -->
+    <g transform="translate(176 543) scale(0.50)">
+      <ellipse class="icon" cx="50" cy="24" rx="42" ry="15"/>
+      <path class="icon" d="M8 24 V76 C8 86 27 96 50 96 C73 96 92 86 92 76 V24"/>
+      <path class="icon" d="M8 50 C8 60 27 70 50 70 C73 70 92 60 92 50"/>
+    </g>
+    <text class="sectionText" x="202" y="610" text-anchor="middle">게임 상태</text>
+    <text class="body" x="615" y="586" text-anchor="middle">로컬/BP 중심 관리</text>
+    <text class="arrow" x="952" y="596" text-anchor="middle">→</text>
+    <text class="body" x="1245" y="586" text-anchor="middle">GameState Replication으로 동기화</text>
+
+    <!-- Row 5 -->
+    <g transform="translate(176 640) scale(0.50)">
+      <rect class="icon" x="8" y="12" width="84" height="64" rx="7"/>
+      <path class="icon" d="M8 30 H92"/>
+      <rect class="icon" x="20" y="42" width="24" height="22"/>
+      <path class="icon" d="M56 46 H80 M56 60 H80"/>
+    </g>
+    <text class="sectionText" x="202" y="707" text-anchor="middle">UI</text>
+    <text class="body" x="615" y="683" text-anchor="middle">BP Widget에 로직 혼재</text>
+    <text class="arrow" x="952" y="693" text-anchor="middle">→</text>
+    <text class="body" x="1245" y="673" text-anchor="middle">C++ Widget Base</text>
+    <text class="bodySmall" x="1245" y="705" text-anchor="middle">+ BP 시각 표현 분리</text>
+
+    <!-- Row 6 -->
+    <g transform="translate(176 737) scale(0.50)">
+      <rect class="icon" x="8" y="12" width="54" height="18" rx="4"/>
+      <rect class="icon" x="8" y="40" width="54" height="18" rx="4"/>
+      <rect class="icon" x="8" y="68" width="54" height="18" rx="4"/>
+      <path class="icon" d="M70 30 L96 40 V65 C96 82 82 92 70 98 C58 92 44 82 44 65 V40 Z"/>
+      <path class="icon" d="M70 48 V76 M56 62 H84"/>
+    </g>
+    <text class="sectionText" x="202" y="804" text-anchor="middle">서버 권한</text>
+    <text class="body" x="615" y="780" text-anchor="middle">명확한 분리 부족</text>
+    <text class="arrow" x="952" y="790" text-anchor="middle">→</text>
+    <text class="body" x="1245" y="770" text-anchor="middle">GameMode / Server Component에서</text>
+    <text class="bodySmall" x="1245" y="802" text-anchor="middle">검증 및 실행</text>
+  </g>
+
+  <rect x="132" y="838" width="1336" height="44" rx="22" fill="#fff6f4" stroke="#d92d20" stroke-width="2.5"/>
+  <text class="note" x="800" y="867" text-anchor="middle">
+    <tspan class="noteKey">핵심</tspan><tspan>: 싱글플레이/BP 중심 구조의 한계를 파악하고, 온라인화를 위한 C++ / RPC / Replication 경계를 재정리</tspan>
+  </text>
+</svg>

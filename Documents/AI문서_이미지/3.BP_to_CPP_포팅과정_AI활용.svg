@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .title { font: 900 56px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #202124; }
+      .subtitle { font: 700 25px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #5f6368; }
+      .blue { fill: #6c8ebf; }
+      .panel { fill: #ffffff; stroke: #c8c8c8; stroke-width: 2; }
+      .card { fill: #fff2cc; stroke: #d79b00; stroke-width: 2.5; }
+      .cardBlue { fill: #dae8fc; stroke: #6c8ebf; stroke-width: 2.5; }
+      .cardWarn { fill: #ffe6cc; stroke: #d79b00; stroke-width: 2.5; }
+      .cardDone { fill: #d5e8d4; stroke: #82b366; stroke-width: 2.5; }
+      .iconCell { fill: #f8f9fa; stroke: #c8c8c8; stroke-width: 1.5; }
+      .label { font: 900 22px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #111827; }
+      .body { font: 700 21px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #1f2937; }
+      .small { font: 650 18px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #4b5563; }
+      .tiny { font: 800 16px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #ffffff; }
+      .tagBlue { fill: #6c8ebf; }
+      .tagRed { fill: #b85450; }
+      .tagGreen { fill: #82b366; }
+      .arrow { stroke: #333333; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrowHead); }
+      .arrowDash { stroke: #b85450; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 9 8; marker-end: url(#arrowHeadRed); }
+      .icon { fill: none; stroke: #111827; stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round; }
+      .iconFill { fill: #111827; }
+      .note { font: 800 21px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #1f2937; }
+      .noteKey { font: 900 26px 'Malgun Gothic', 'Noto Sans KR', Arial, sans-serif; fill: #b85450; }
+    </style>
+    <marker id="arrowHead" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#333333"/>
+    </marker>
+    <marker id="arrowHeadRed" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#b85450"/>
+    </marker>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="#ffffff"/>
+
+  <text class="title" x="800" y="82" text-anchor="middle">BP → C++ 포팅 과정</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel" x="70" y="168" width="1460" height="650" rx="8"/>
+
+    <!-- Step 1 -->
+    <rect class="cardBlue" x="105" y="235" width="285" height="150" rx="8"/>
+    <rect class="iconCell" x="125" y="257" width="76" height="106" rx="8"/>
+    <rect class="tagBlue" x="220" y="257" width="76" height="29" rx="14.5"/>
+    <text class="tiny" x="258" y="277" text-anchor="middle">STEP 1</text>
+    <g transform="translate(142 292) scale(0.44)">
+      <rect class="icon" x="6" y="12" width="88" height="62" rx="8"/>
+      <path class="icon" d="M32 56 L18 43 L32 30"/>
+      <path class="icon" d="M68 30 L82 43 L68 56"/>
+      <path class="icon" d="M58 24 L40 64"/>
+    </g>
+    <text class="label" x="220" y="320">BP 로직 분석</text>
+    <text class="small" x="220" y="350">기존 함수 흐름 파악</text>
+
+    <path class="arrow" d="M405 310 H465"/>
+
+    <!-- Step 2 -->
+    <rect class="card" x="480" y="235" width="285" height="150" rx="8"/>
+    <rect class="iconCell" x="500" y="257" width="76" height="106" rx="8"/>
+    <rect class="tagBlue" x="595" y="257" width="76" height="29" rx="14.5"/>
+    <text class="tiny" x="633" y="277" text-anchor="middle">STEP 2</text>
+    <g transform="translate(518 292) scale(0.44)">
+      <path class="icon" d="M16 14 H86 V82 H16 Z"/>
+      <path class="icon" d="M28 34 H74 M28 50 H74 M28 66 H54"/>
+    </g>
+    <text class="label" x="595" y="320">기능 단위 분리</text>
+    <text class="small" x="595" y="350">구동 안정성 유지</text>
+
+    <path class="arrow" d="M780 310 H840"/>
+
+    <!-- Step 3 -->
+    <rect class="card" x="855" y="235" width="295" height="150" rx="8"/>
+    <rect class="iconCell" x="875" y="257" width="76" height="106" rx="8"/>
+    <rect class="tagBlue" x="970" y="257" width="76" height="29" rx="14.5"/>
+    <text class="tiny" x="1008" y="277" text-anchor="middle">STEP 3</text>
+    <g transform="translate(893 292) scale(0.44)">
+      <rect class="icon" x="10" y="16" width="76" height="58" rx="10"/>
+      <path class="icon" d="M28 16V6M48 16V6M68 16V6"/>
+      <path class="icon" d="M28 74v10M48 74v10M68 74v10"/>
+      <circle class="iconFill" cx="36" cy="45" r="5"/>
+      <circle class="iconFill" cx="60" cy="45" r="5"/>
+      <path class="icon" d="M36 60h24"/>
+    </g>
+    <text class="label" x="970" y="320">Claude AI 활용</text>
+    <text class="small" x="970" y="350">BP에서 C++포팅 보조</text>
+
+    <!-- MCP branch -->
+    <path class="arrowDash" d="M997 400 V455"/>
+    <rect class="cardWarn" x="805" y="470" width="360" height="132" rx="8"/>
+    <rect class="iconCell" x="825" y="492" width="76" height="88" rx="8"/>
+    <rect class="tagRed" x="920" y="492" width="76" height="29" rx="14.5"/>
+    <text class="tiny" x="958" y="512" text-anchor="middle">시도</text>
+    <g transform="translate(843 518) scale(0.42)">
+      <circle class="icon" cx="18" cy="48" r="14"/>
+      <circle class="icon" cx="78" cy="20" r="14"/>
+      <circle class="icon" cx="78" cy="76" r="14"/>
+      <path class="icon" d="M32 42l32-16M32 54l32 16"/>
+    </g>
+    <text class="label" x="920" y="546">UnrealMCP 연결</text>
+    <text class="small" x="920" y="572">BP 심볼 확인 수준</text>
+    <text class="small" x="920" y="596">BP함수 분석 제한</text>
+
+    <path class="arrow" d="M1165 536 H1198 V310 H1215"/>
+
+    <!-- Alternative path -->
+    <rect class="cardDone" x="1230" y="235" width="285" height="150" rx="8"/>
+    <rect class="iconCell" x="1250" y="257" width="76" height="106" rx="8"/>
+    <rect class="tagGreen" x="1345" y="257" width="126" height="29" rx="14.5"/>
+    <text class="tiny" x="1408" y="277" text-anchor="middle">대체 방안 적용</text>
+    <g transform="translate(1267 292) scale(0.44)">
+      <rect class="icon" x="8" y="12" width="84" height="64" rx="7"/>
+      <path class="icon" d="M8 30 H92"/>
+      <rect class="icon" x="20" y="42" width="24" height="22"/>
+      <path class="icon" d="M56 46 H80 M56 60 H80"/>
+    </g>
+    <text class="label" x="1345" y="315">BP 그래프</text>
+    <text class="label" x="1345" y="342">이미지화</text>
+
+    <!-- Apply -->
+    <path class="arrow" d="M1372 400 V455"/>
+    <rect class="cardDone" x="1230" y="470" width="285" height="132" rx="8"/>
+    <rect class="iconCell" x="1250" y="492" width="76" height="88" rx="8"/>
+    <rect class="tagGreen" x="1345" y="492" width="76" height="29" rx="14.5"/>
+    <text class="tiny" x="1383" y="512" text-anchor="middle">적용</text>
+    <g transform="translate(1269 518) scale(0.40)">
+      <path class="icon" d="M18 20 H84 V84 H18 Z"/>
+      <path class="icon" d="M34 40 H70 M34 56 H70 M34 72 H54"/>
+    </g>
+    <text class="label" x="1345" y="544">C++ 함수 구조로</text>
+    <text class="label" x="1345" y="570">포팅</text>
+    <text class="small" x="1345" y="596">기존 기능 유지</text>
+
+    <!-- Bottom summary flow -->
+    <rect x="160" y="640" width="1280" height="112" rx="8" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2"/>
+    <text class="body" x="800" y="676" text-anchor="middle">BP 로직 분석 → 기능 단위 분리 → AI 분석 보조</text>
+    <text class="body" x="800" y="707" text-anchor="middle">BP 그래프 이미지화 → C++ 포팅</text>
+    <text class="small" x="800" y="738" text-anchor="middle">UnrealMCP는 한계 확인 후, 실제 포팅에는 이미지 기반 분석 방식을 사용</text>
+  </g>
+
+  <rect x="132" y="838" width="1336" height="44" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="2.5"/>
+  <text class="note" x="800" y="867" text-anchor="middle">
+    <tspan class="noteKey">핵심</tspan><tspan>: AI 도구의 한계를 확인한 뒤, BP 그래프 이미지 기반 분석 방식으로 전환하여 안정적으로 C++ 포팅</tspan>
+  </text>
+</svg>
