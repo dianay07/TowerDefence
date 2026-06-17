@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="SDnKvEwGEQ2BF1tVjAzU">
-    <mxGraphModel dx="2431" dy="1453" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1968" dy="1176" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -794,9 +794,9 @@
           <mxGeometry x="5161" y="11120" width="700" height="60" as="geometry" />
         </mxCell>
         <mxCell id="J-B9BGBhoyWyexuGGkcS-21" value="ServerConnect 가 있는지 기준으로 서버와 연결되어 있는지 찾고, Paramater를 복사 하는데, 언리얼 프로퍼티 시스템을 이용하는 것으로 보인다.&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="5591" y="11010" width="350" height="60" as="geometry" />
+          <mxGeometry x="5624" y="11010" width="350" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="J-B9BGBhoyWyexuGGkcS-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.018;entryY=0.493;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="J-B9BGBhoyWyexuGGkcS-14" target="J-B9BGBhoyWyexuGGkcS-21" edge="1">
+        <mxCell id="J-B9BGBhoyWyexuGGkcS-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="J-B9BGBhoyWyexuGGkcS-14" target="J-B9BGBhoyWyexuGGkcS-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="J-B9BGBhoyWyexuGGkcS-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="J-B9BGBhoyWyexuGGkcS-23" target="J-B9BGBhoyWyexuGGkcS-32" edge="1">
@@ -1022,13 +1022,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-52" value="&lt;div&gt;소켓에 대한 정보들이 Bunch 에 들어감.&lt;/div&gt;ChIndex -&amp;gt; Bunch 가 어느 Channel 로 가야 하는지 알려주는 값&lt;br&gt;Partial / Reliable 처리&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="5494" y="5797" width="380" height="100" as="geometry" />
+          <mxGeometry x="5499.5" y="5811" width="380" height="100" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-53" target="CNrmBwoxl9Gnr_lOSToc-56" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-53" value="&lt;div&gt;UNetConnection::DispatchPacket&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → Packet 안에서 FInBunch를 꺼냄&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → Bunch.ChIndex로 Channel 찾음&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; → Bunch payload를 FInBunch에 복사&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="5483" y="5916" width="380" height="100" as="geometry" />
+          <mxGeometry x="5488.5" y="5930" width="380" height="100" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-54" target="CNrmBwoxl9Gnr_lOSToc-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -1969,7 +1969,7 @@
         <mxCell id="rDn9xJna2rlMll7MN2rU-103" value="&lt;pre&gt;클라이언트에서 Actor 를 생성 하면 동기화가 안된다.&lt;br/&gt;Server RPC는 보통 서버도 알고 있고, 클라이언트가 소유한 Actor에서 호출해야 합니다. &lt;br/&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="3684" y="15850" width="546" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="yTMjMVW8oUTsrAHUqKRr-1" value="&lt;pre&gt;&lt;code&gt;onnection-&amp;gt;PackageMap&lt;/code&gt;은 &lt;strong&gt;UObject 포인터를 네트워크용 NetGUID로 바꾸고, &lt;/strong&gt;&lt;/pre&gt;&lt;pre&gt;&lt;strong&gt;NetGUID를 다시 로컬 UObject로 복원하는 변환기&lt;/strong&gt;입니다.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-1" value="&lt;pre&gt;&lt;code&gt;Connection-&amp;gt;PackageMap&lt;/code&gt;은 &lt;strong&gt;UObject 포인터를 네트워크용 NetGUID로 바꾸고, &lt;/strong&gt;&lt;/pre&gt;&lt;pre&gt;&lt;strong&gt;NetGUID를 다시 로컬 UObject로 복원하는 변환기&lt;/strong&gt;입니다.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="3460" y="16070" width="546" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yTMjMVW8oUTsrAHUqKRr-2" value="Connection-&gt;PackageMap-&gt;SerializeNewActor(Bunch, this, Actor);&#xa;Actor-&gt;OnSerializeNewActor(Bunch);" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
@@ -1986,6 +1986,9 @@
         </mxCell>
         <mxCell id="yTMjMVW8oUTsrAHUqKRr-6" value="ActorChannelPool&#xa;  = 닫힌 ActorChannel 재사용 풀&#xa;&#xa;&#xa;SendBunch&#xa;  = Channel bunch를 Connection SendBuffer에 싣는 단계&#xa;&#xa;&#xa;실제 패킷 송신&#xa;  = UNetConnection::FlushNet -&gt; UIpConnection::LowLevelSend -&gt; Socket::SendTo&#xa;&#xa;&#xa;PackageMap&#xa;  = UObject 포인터와 NetGUID 사이의 번역기&#xa;&#xa;&#xa;SerializeNewActor&#xa;  = 새 ActorChannel의 Actor 정체성과 생성 정보를 쓰거나 읽는 함수&#xa;&#xa;&#xa;OnSerializeNewActor&#xa;  = Actor별 추가 생성 데이터를 bunch에 얹는 훅" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="3475.5" y="16450" width="480" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-7" value="&lt;pre&gt;Game Mode 는 서버에 하나 있다.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3684" y="15940" width="215" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
