@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="SDnKvEwGEQ2BF1tVjAzU">
-    <mxGraphModel dx="4132" dy="2470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2431" dy="1453" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1058,7 +1058,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-63" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; font-weight: 600; --tw-font-weight: 600; font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot; class=&quot;font-semibold&quot;&gt;Channel 안에서 순서가 맞다고 판단된 Bunch를 받아서, Partial Bunch를 조립하고, Channel open 상태를 확인한 뒤, 실제 처리 단계로 넘기는 함수&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Segoe WPC&amp;quot;, &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: 13px; text-align: start;&quot;&gt;야.&lt;/span&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="5504" y="6447" width="380" height="100" as="geometry" />
+          <mxGeometry x="5535.12" y="6429" width="380" height="100" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-64" target="CNrmBwoxl9Gnr_lOSToc-69" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -1087,7 +1087,7 @@
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-69" value="&lt;div&gt;UChannel::ReceivedNextBunch()&lt;/div&gt;&lt;div&gt;= 순서가 맞는 Bunch를 받아서&lt;/div&gt;&lt;div&gt;&amp;nbsp; Reliable 처리 완료 번호를 갱신하고,&lt;/div&gt;&lt;div&gt;&amp;nbsp; Partial Bunch면 조립하고,&lt;/div&gt;&lt;div&gt;&amp;nbsp; Channel이 열린 상태인지 확인한 뒤,&lt;/div&gt;&lt;div&gt;&amp;nbsp; 완성된 Bunch만 ReceivedSequencedBunch()로 넘기는 함수&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="5483" y="6737" width="391" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="CNrmBwoxl9Gnr_lOSToc-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.026;entryY=0.497;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-61" target="CNrmBwoxl9Gnr_lOSToc-63" edge="1">
+        <mxCell id="CNrmBwoxl9Gnr_lOSToc-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-61" target="CNrmBwoxl9Gnr_lOSToc-63" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CNrmBwoxl9Gnr_lOSToc-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CNrmBwoxl9Gnr_lOSToc-78" target="CNrmBwoxl9Gnr_lOSToc-80" edge="1">
@@ -1376,287 +1376,287 @@
         <mxCell id="fw3aHcV3YnYw64P1rIhG-61" value="&lt;div style=&quot;text-align: start;&quot;&gt;&lt;font face=&quot;Segoe WPC, Segoe UI, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;복원된 UFunction + Params를 UObject::ProcessEvent에 넘긴다.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="5005" y="10285.88" width="446" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-1" value="Level" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-1" value="Level" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="1480" y="2360" width="122.62295081967213" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-2" value="TowerBase" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-2" value="TowerBase" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1489.0086338797817" y="2785.0000000000005" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-2" target="3AaYz5XlkyYO-umNGGfW-5">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-2" target="3AaYz5XlkyYO-umNGGfW-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1770.75737704918" y="2919.8900000000003" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-4" value="Click" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-3">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-4" value="Click" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-3" vertex="1" connectable="0">
           <mxGeometry x="0.1167" y="-4" relative="1" as="geometry">
             <mxPoint x="-17" y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-5" value="Spawn Widget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-5" value="Spawn Widget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="1669.2900000000002" y="2805" width="184.96" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-6" value="UTDTowerDataTableSubsystem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-6" value="UTDTowerDataTableSubsystem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1669.2900000000002" y="2430" width="252.84" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-11" target="3AaYz5XlkyYO-umNGGfW-13">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-11" target="3AaYz5XlkyYO-umNGGfW-13" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-8" value="Load" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-7">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-8" value="Load" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-7" vertex="1" connectable="0">
           <mxGeometry x="0.0488" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-11" target="3AaYz5XlkyYO-umNGGfW-1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-11" target="3AaYz5XlkyYO-umNGGfW-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1540.0000000000005" y="2415" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-10" value="OpenLevel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-9">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-10" value="OpenLevel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-9" vertex="1" connectable="0">
           <mxGeometry x="-0.0841" relative="1" as="geometry">
             <mxPoint y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-11" value="UTDLevelSession&lt;div&gt;Subsystem&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-11" value="UTDLevelSession&lt;div&gt;Subsystem&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1480" y="2200" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-12" value="Level 전환과 그에 필요한 DataTable 주입 담당" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-12" value="Level 전환과 그에 필요한 DataTable 주입 담당" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1602.62" y="2200" width="300" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-13" value="Level Data Table" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-13" value="Level Data Table" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1663.5800000000002" y="2280" width="132.8415300546448" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-14" value="Ingame 에서 Tower 정보가 필요한 곳에서 사용" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-14" value="Ingame 에서 Tower 정보가 필요한 곳에서 사용" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1939.8399999999997" y="2430" width="270.59" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1541.97" y="2450" as="sourcePoint" />
             <mxPoint x="1671.97" y="2451" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-16" value="ApplyStageData" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-15">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-16" value="ApplyStageData" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-15" vertex="1" connectable="0">
           <mxGeometry x="0.0488" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-18" target="3AaYz5XlkyYO-umNGGfW-31">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-18" target="3AaYz5XlkyYO-umNGGfW-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-18" value="UTDTower&lt;br&gt;SpawnerComponent" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-18" value="UTDTower&lt;br&gt;SpawnerComponent" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1861.5" y="2490" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-19" value="Tower 생성 동기화에 사용되는 객체" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-19" value="Tower 생성 동기화에 사용되는 객체" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1990.4299999999998" y="2500" width="220" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-20" value="GameMode" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-20" value="GameMode" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1724.8799999999999" y="2480" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-21" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-20" target="3AaYz5XlkyYO-umNGGfW-18">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-21" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-20" target="3AaYz5XlkyYO-umNGGfW-18" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1838.5700000000002" y="2620" as="sourcePoint" />
             <mxPoint x="1888.5700000000002" y="2570" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-22" value="Member" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-21">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-22" value="Member" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-21" vertex="1" connectable="0">
           <mxGeometry x="-0.12" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-23" value="Client Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-23" value="Client Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1490.98" y="2658" width="98.03" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-1" target="3AaYz5XlkyYO-umNGGfW-30">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-1" target="3AaYz5XlkyYO-umNGGfW-30" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1540" y="2420" as="sourcePoint" />
             <mxPoint x="1566" y="3040" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-25" value="PostLoadMap" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-24">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-25" value="PostLoadMap" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-24" vertex="1" connectable="0">
           <mxGeometry x="-0.8505" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-30" target="3AaYz5XlkyYO-umNGGfW-31">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-30" target="3AaYz5XlkyYO-umNGGfW-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-27" value="Spawn Towerbase" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-26">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-27" value="Spawn Towerbase" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-26" vertex="1" connectable="0">
           <mxGeometry x="-0.0034" relative="1" as="geometry">
             <mxPoint x="2" y="-35" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-30" target="3AaYz5XlkyYO-umNGGfW-23">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-30" target="3AaYz5XlkyYO-umNGGfW-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-29" value="Replicates 객체를 스폰해서 동기화 완료" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-28">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-29" value="Replicates 객체를 스폰해서 동기화 완료" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-28" vertex="1" connectable="0">
           <mxGeometry x="0.0475" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-30" value="Server Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-30" value="Server Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1492.3" y="2550" width="98.03" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-31" value="SpawnInitialTowerBases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-31" value="SpawnInitialTowerBases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="1796.42" y="2645.5" width="224.80874316939892" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-23" target="3AaYz5XlkyYO-umNGGfW-2">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-23" target="3AaYz5XlkyYO-umNGGfW-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1800" y="2880" as="sourcePoint" />
             <mxPoint x="1850" y="2830" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-33" value="Tower 생성 동기화" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-32">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-33" value="Tower 생성 동기화" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-32" vertex="1" connectable="0">
           <mxGeometry x="-0.2449" y="1" relative="1" as="geometry">
             <mxPoint x="-1" y="17" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-36" target="3AaYz5XlkyYO-umNGGfW-42">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-36" target="3AaYz5XlkyYO-umNGGfW-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-35" value="서버는 FunctionCallspace::Local&lt;br&gt;클라&amp;nbsp; FunctionCallspace::Remote" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-34">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-35" value="서버는 FunctionCallspace::Local&lt;br&gt;클라&amp;nbsp; FunctionCallspace::Remote" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-34" vertex="1" connectable="0">
           <mxGeometry x="-0.0979" y="4" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-36" value="PlayerController" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-36" value="PlayerController" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1711.7700000000007" y="2900" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-37" value="CreateWidget" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-36" target="3AaYz5XlkyYO-umNGGfW-5">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-37" value="CreateWidget" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-36" target="3AaYz5XlkyYO-umNGGfW-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1814.4099999999999" y="2857.5" as="sourcePoint" />
             <mxPoint x="1574.41" y="2837.5" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-38" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-5" target="3AaYz5XlkyYO-umNGGfW-42">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-38" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-5" target="3AaYz5XlkyYO-umNGGfW-42" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1950" y="2805" as="sourcePoint" />
             <mxPoint x="2010" y="2833" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-39" value="Click UI - Create Tower" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-38">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-39" value="Click UI - Create Tower" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-38" vertex="1" connectable="0">
           <mxGeometry x="-0.1184" y="2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-40" value="TowerBase&lt;br&gt;파생 타워 생성" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-40" value="TowerBase&lt;br&gt;파생 타워 생성" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="2270" y="2780" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-42" target="3AaYz5XlkyYO-umNGGfW-40">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-42" target="3AaYz5XlkyYO-umNGGfW-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-42" value="Call RPC Function" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-42" value="Call RPC Function" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2025.4699999999998" y="2802.5" width="184.96" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-43" value="Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-43" value="Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="2430.0044262295078" y="2790" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-44" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-40" target="3AaYz5XlkyYO-umNGGfW-43">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-44" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-40" target="3AaYz5XlkyYO-umNGGfW-43" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="2160" y="2695" as="sourcePoint" />
             <mxPoint x="2210" y="2645" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-45" value="Member" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-44">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-45" value="Member" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-44" vertex="1" connectable="0">
           <mxGeometry x="-0.1556" y="5" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-46" value="Tower 동격 동기화" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-46" value="Tower 동격 동기화" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1" vertex="1" connectable="0">
           <mxGeometry x="1541" y="2960" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-47" value="Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-47" value="Weapon" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1499.01" y="3080" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-48" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="3AaYz5XlkyYO-umNGGfW-47">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-48" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="3AaYz5XlkyYO-umNGGfW-47" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1540" y="2970" as="sourcePoint" />
             <mxPoint x="1750" y="3030" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-2">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1690" y="3080" as="sourcePoint" />
             <mxPoint x="1540" y="2950" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-50" value="Wave Manager" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-50" value="Wave Manager" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1774.87" y="3010" width="60" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-51" value="EnemyActor" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-51" value="EnemyActor" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="2559.9999999999995" y="3080" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-52" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-47" target="3AaYz5XlkyYO-umNGGfW-50">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-52" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-47" target="3AaYz5XlkyYO-umNGGfW-50" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1840" y="3090" as="sourcePoint" />
             <mxPoint x="1890" y="3040" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-53" value="Find Enemy" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-52">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-53" value="Find Enemy" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-52" vertex="1" connectable="0">
           <mxGeometry x="-0.1028" y="4" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-47" target="3AaYz5XlkyYO-umNGGfW-55">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="3AaYz5XlkyYO-umNGGfW-47" target="3AaYz5XlkyYO-umNGGfW-55" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1579" y="3120" as="sourcePoint" />
             <mxPoint x="1890" y="3120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-55" value="UFUNCTION(NetMulticast, Reliable)&lt;br&gt;Weapon::FireAtEnemy()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-55" value="UFUNCTION(NetMulticast, Reliable)&lt;br&gt;Weapon::FireAtEnemy()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1677.6399999999999" y="3095" width="200.72" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-56" value="Multicast 를 이용 각자의 Client 에서 Projectile 생성" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-56" value="Multicast 를 이용 각자의 Client 에서 Projectile 생성" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1668" y="3150" width="220" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-55" target="3AaYz5XlkyYO-umNGGfW-58">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="3AaYz5XlkyYO-umNGGfW-55" target="3AaYz5XlkyYO-umNGGfW-58" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1878" y="3120" as="sourcePoint" />
             <mxPoint x="2120" y="3120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-58" value="Create Projectile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-58" value="Create Projectile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="1922.13" y="3097.5" width="157.87" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-70" target="3AaYz5XlkyYO-umNGGfW-51">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-70" target="3AaYz5XlkyYO-umNGGfW-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-60" value="Client Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-60" value="Client Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2160" y="3190" width="98.03" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-58" target="3AaYz5XlkyYO-umNGGfW-64">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="3AaYz5XlkyYO-umNGGfW-58" target="3AaYz5XlkyYO-umNGGfW-64" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="2080" y="3120" as="sourcePoint" />
             <mxPoint x="2400" y="3120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-62" value="&amp;nbsp;Hit&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3AaYz5XlkyYO-umNGGfW-61">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-62" value="&amp;nbsp;Hit&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3AaYz5XlkyYO-umNGGfW-61" vertex="1" connectable="0">
           <mxGeometry x="-0.3975" y="-5" relative="1" as="geometry">
             <mxPoint x="3" y="-5" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-64" target="3AaYz5XlkyYO-umNGGfW-66">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-64" target="3AaYz5XlkyYO-umNGGfW-66" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-64" value="Server Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-64" value="Server Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2160" y="3110" width="98.03" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-68" target="3AaYz5XlkyYO-umNGGfW-51">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-68" target="3AaYz5XlkyYO-umNGGfW-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-66" value="AbilitySystem&lt;br&gt;Component" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-66" value="AbilitySystem&lt;br&gt;Component" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2300" y="3080" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-66" target="3AaYz5XlkyYO-umNGGfW-68">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-66" target="3AaYz5XlkyYO-umNGGfW-68" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="2380" y="3120" as="sourcePoint" />
             <mxPoint x="2580" y="3120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-68" value="Damage 및 동기화" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-68" value="Damage 및 동기화" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2410" y="3110" width="129.02" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-69" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="3AaYz5XlkyYO-umNGGfW-60">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-69" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="3AaYz5XlkyYO-umNGGfW-60" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="2110" y="3140" as="sourcePoint" />
             <mxPoint x="2450" y="3080" as="targetPoint" />
@@ -1665,20 +1665,327 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-70" value="Damage 처리 하지 않음" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-70" value="Damage 처리 하지 않음" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2360" y="3190" width="150" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-71" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-60" target="3AaYz5XlkyYO-umNGGfW-70">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-71" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-60" target="3AaYz5XlkyYO-umNGGfW-70" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="2330" y="3150" as="sourcePoint" />
             <mxPoint x="2380" y="3100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3AaYz5XlkyYO-umNGGfW-72" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1.011;exitY=0.564;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3AaYz5XlkyYO-umNGGfW-18" target="3AaYz5XlkyYO-umNGGfW-40">
+        <mxCell id="3AaYz5XlkyYO-umNGGfW-72" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=1.011;exitY=0.564;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3AaYz5XlkyYO-umNGGfW-18" target="3AaYz5XlkyYO-umNGGfW-40" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="2130" y="2740" as="sourcePoint" />
             <mxPoint x="2180" y="2690" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="6WyePJ_DNAzN9GAKQxWj-1" value="이 코드는 ATDTowerBase의 UpgradeLevel이 서버에서 바뀌면 클라이언트에도 복제되도록 등록하는 역할을 합니다." style="text;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="3334.5" y="4072" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6WyePJ_DNAzN9GAKQxWj-2" value="&lt;span style=&quot;text-align: left;&quot;&gt;DOREPLIFETIME(ATDTowerBase, UpgradeLevel);&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3340" y="4120" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-1" value="초기 부분 정리. 서버" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="2370" y="4920" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-2" value="초기 부분 정리. 클라이언트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="2670" y="7780" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-3" value="RPC 서버" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="4964" y="3410" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-4" value="RPC 클라이언트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="5250" y="10500" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-6" target="rDn9xJna2rlMll7MN2rU-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-6" value="NetDriver 정리" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2685" y="12799" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-7" value="Listen Server Process&#xa;  UWorld&#xa;    NetDriver = GameNetDriver&#xa;      ServerConnection = nullptr&#xa;      ClientConnections[0] = Client1과의 연결&#xa;      ClientConnections[1] = Client2와의 연결&#xa;      ClientConnections[2] = Client3과의 연결&#xa;&#xa;&#xa;Client1 Process&#xa;  UWorld&#xa;    NetDriver = GameNetDriver&#xa;      ServerConnection = ListenServer와의 연결&#xa;      ClientConnections = empty&#xa;&#xa;&#xa;Client2 Process&#xa;  UWorld&#xa;    NetDriver = GameNetDriver&#xa;      ServerConnection = ListenServer와의 연결&#xa;&#xa;&#xa;Client3 Process&#xa;  UWorld&#xa;    NetDriver = GameNetDriver&#xa;      ServerConnection = ListenServer와의 연결" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="2670" y="12910" width="350" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-8" value="중요한 점: &lt;strong&gt;Listen Server의 로컬 플레이어는 자기 자신에게 네트워크 연결을 만들지 않습니다.&lt;/strong&gt;&lt;br&gt;즉 호스트 플레이어는 서버 월드 안에서 직접 플레이하고, 원격 클라이언트들만 &lt;code&gt;ClientConnections&lt;/code&gt;에 들어갑니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2670" y="13384" width="490" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="rDn9xJna2rlMll7MN2rU-9" target="rDn9xJna2rlMll7MN2rU-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-9" target="rDn9xJna2rlMll7MN2rU-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-9" value="서버&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3333" y="12799" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-10" value="클라이언트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="3683" y="12799" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-11" value="&lt;pre&gt;&lt;code&gt; UWorld::Listen(FURL&amp;amp; InURL)&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3308" y="12899" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-15" value="&lt;div&gt;WorldContext.PendingNetGame = NewObject&amp;lt;UPendingNetGame&amp;gt;();&lt;/div&gt;&lt;div&gt;WorldContext.PendingNetGame-&amp;gt;Initialize(URL);&lt;/div&gt;&lt;div&gt;WorldContext.PendingNetGame-&amp;gt;InitNetDriver();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3670" y="12880" width="350" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-16" value="&lt;pre&gt;월드 로드 할 때&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3310" y="12970" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-17" value="&lt;pre&gt;&lt;code&gt;PendingNetGame 쪽 코드&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3670" y="13010" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-18" value="Channel 생성 및 연결" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2670" y="13560" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-19" target="rDn9xJna2rlMll7MN2rU-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-19" value="서버&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3333" y="13550" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-20" target="rDn9xJna2rlMll7MN2rU-72" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-20" value="클라이언트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="4440" y="14950" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-21" target="rDn9xJna2rlMll7MN2rU-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-21" value="Actor Spawn()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3333" y="13650" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-24" target="rDn9xJna2rlMll7MN2rU-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-24" target="rDn9xJna2rlMll7MN2rU-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-30" value="Func Lamda" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="rDn9xJna2rlMll7MN2rU-29" vertex="1" connectable="0">
+          <mxGeometry x="-0.1045" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-24" value="UWorld::AddNetworkActor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3333" y="13760" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-26" value="Engine 에서 활성화 되어 있는 Driver 를 유무로 동기화 판단" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="3575" y="13760" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-28" target="rDn9xJna2rlMll7MN2rU-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-33" value="내부 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="rDn9xJna2rlMll7MN2rU-32" vertex="1" connectable="0">
+          <mxGeometry x="-0.3622" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-28" value="UNetDriver::AddNetworkActor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3333" y="13910" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-31" target="rDn9xJna2rlMll7MN2rU-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="rDn9xJna2rlMll7MN2rU-31" target="rDn9xJna2rlMll7MN2rU-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-31" value="GetNetworkObjectList().FindOrAdd(Actor, this)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3440" y="14020" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-34" value="UNetDriver 에&amp;nbsp;GetNetworkObjectList 목록에&amp;nbsp;&lt;br&gt;연결되어 있는 Actor 들이 모두 있음" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="3755" y="13940" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-36" value="즉 서버에서는 Actor가 생성되자마자 바로 클라이언트에 만들어지는 게 아니라, 먼저 &lt;strong&gt;서버의 복제 후보 목록&lt;/strong&gt;에 들어갑니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="3755" y="14020" width="325" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-38" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-28" target="rDn9xJna2rlMll7MN2rU-39" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3700" y="14100" as="sourcePoint" />
+            <mxPoint x="3420" y="14250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-39" value="UNetDriver::TickFlush" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3334.5" y="14260" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-40" target="rDn9xJna2rlMll7MN2rU-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-40" value="UNetDriver::ServerReplicateActors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3450" y="14330" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-41" value="ServerReplicateActors_BuildConsiderList()&#xa;  = 복제 후보 Actor 목록 만들기&#xa;&#xa;&#xa;ServerReplicateActors_PrioritizeActors()&#xa;  = 특정 Connection 기준 우선순위 계산&#xa;&#xa;&#xa;ServerReplicateActors_ProcessPrioritizedActorsRange()&#xa;  = 실제 Channel 생성/복제 수행" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="3600" y="14410" width="340" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-43" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-39" target="rDn9xJna2rlMll7MN2rU-44" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3520" y="14680" as="sourcePoint" />
+            <mxPoint x="3430" y="14640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="rDn9xJna2rlMll7MN2rU-44" target="rDn9xJna2rlMll7MN2rU-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-44" target="rDn9xJna2rlMll7MN2rU-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-44" value="UNetConnection::CreateChannelByName" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3281.75" y="14660" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="rDn9xJna2rlMll7MN2rU-45" target="rDn9xJna2rlMll7MN2rU-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-45" target="rDn9xJna2rlMll7MN2rU-51" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-45" value="UChannel* Channel = Driver-&amp;gt;GetOrCreateChannelByName(ChName)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3650" y="14690" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-47" target="rDn9xJna2rlMll7MN2rU-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-47" value="NetDirver 에 연결된 채널을 가져오는데&lt;br&gt;ActorChannelPool 에서 가져오고&lt;br&gt;ChannelDefinitionMap 에서 비교해서 검증한다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="4015.5" y="14690" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-49" value="ChannelDefinitionMap&lt;div&gt;&lt;br&gt;Control&lt;div&gt;Voice&lt;br&gt;DataStream&lt;br&gt;Actor&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="4368" y="14670" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-51" value="Channel-&amp;gt;Init( this, ChIndex, CreateFlags )&lt;div&gt;OpenChannels.Add(Channel)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3650" y="14770" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-53" value="즉 여까지 왔으면&amp;nbsp;&lt;br&gt;하나의 Connection 에&amp;nbsp;&lt;br&gt;여러개의 Actor 채널이 존재 하고 있음" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="4020" y="14860" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-54" target="rDn9xJna2rlMll7MN2rU-59" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-54" value="hannel-&amp;gt;SetChannelActor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3281.75" y="14870" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-56" value="이후 엑터채널에&amp;nbsp; Actor 를 설정한다.&lt;br&gt;이 체널은 Actor 와 1:1 매칭으로 보이고&lt;br&gt;ActorNetGUID 를 가지고 있다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="3627.25" y="14880" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.004;entryY=0.415;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-54" target="rDn9xJna2rlMll7MN2rU-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-58" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-53" target="rDn9xJna2rlMll7MN2rU-56" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3840" y="15040" as="sourcePoint" />
+            <mxPoint x="3890" y="14990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-59" target="rDn9xJna2rlMll7MN2rU-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-59" value="UActorChannel::ReplicateActor()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3282.25" y="15100" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-62" target="rDn9xJna2rlMll7MN2rU-72" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-62" value="여기서 패킷 발송이라는데?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="3670" y="15100" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-65" target="rDn9xJna2rlMll7MN2rU-77" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-65" target="rDn9xJna2rlMll7MN2rU-76" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-65" value="&lt;pre&gt;&lt;code&gt;void UActorChannel::ReceivedBunch(FInBunch&amp;amp; Bunch)&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="4360" y="15210" width="322" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-68" target="rDn9xJna2rlMll7MN2rU-65" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-68" value="클라이언트는 서버에서 열린 ActorChannel bunch를 받습니다. 없는 채널이면 클라이언트 쪽에서도 채널을 만듭니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="4785" y="15100" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-72" value="UNetConnection::DispatchPacket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="4380" y="15100" width="285.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-76" target="rDn9xJna2rlMll7MN2rU-90" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-76" value="&lt;pre&gt;&lt;code&gt; UActorChannel::ProcessBunchInternal&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="4360" y="15330" width="322" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-77" value="초기 open bunch라면 클라이언트에서 새 Actor를 읽거나 생성합니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="4785" y="15210" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-80" target="rDn9xJna2rlMll7MN2rU-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-80" target="rDn9xJna2rlMll7MN2rU-85" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-80" value="&lt;pre&gt;&lt;code&gt;bSpawnedNewActor = Connection-&amp;gt;PackageMap-&amp;gt;SerializeNewActor(Bunch, this, NewChannelActor);&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="4549" y="15430" width="600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.506;entryY=0.133;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-76" target="rDn9xJna2rlMll7MN2rU-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-82" value="클라이언트에서 실제 동적 Actor 스폰은 여기서 일어납니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="5203" y="15430" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-85" target="rDn9xJna2rlMll7MN2rU-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-85" value="&lt;div&gt;SpawnInfo.bRemoteOwned = true;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Actor = World-&amp;gt;SpawnActorAbsolute(&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Archetype-&amp;gt;GetClass(),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; FTransform(Rotation, SpawnLocation),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; SpawnInfo&lt;/div&gt;&lt;div&gt;);&lt;br&gt;&lt;br&gt;&lt;pre&gt;&lt;code&gt;GuidCache-&amp;gt;RegisterNetGUID_Client(NetGUID, Actor);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="4621" y="15560" width="459" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-87" value="즉 클라이언트에서 생성된 Actor는 “내가 로컬에서 임의로 만든 Actor”가 아니라, &lt;strong&gt;서버 Actor의 NetGUID를 보고 생성된 복제 Actor&lt;/strong&gt;입니다.&lt;br&gt;&lt;br&gt;생성 또는 찾기에 성공하면 클라이언트 ActorChannel에 Actor를 묶습니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="5154" y="15560" width="410" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-90" target="rDn9xJna2rlMll7MN2rU-93" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-90" target="rDn9xJna2rlMll7MN2rU-100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-90" value="&lt;pre&gt;&lt;div style=&quot;background-color: rgb(18, 19, 20); line-height: 19px; color: rgb(187, 190, 191);&quot;&gt;&lt;font color=&quot;#bbbebf&quot;&gt;UActorChannel::ProcessBunchInternal&lt;/font&gt;&lt;/div&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="4360" y="15790" width="322" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-93" target="rDn9xJna2rlMll7MN2rU-94" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-93" value="&lt;pre&gt;&lt;code&gt;Replicator-&amp;gt;ReceivedBunch(Reader, RepFlags, bHasRepLayout, bHasUnmapped);&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="4640" y="15910" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-94" value="content block을 읽으면서 replicated property를 적용합니다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="5250" y="15910" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-96" value="[서버]&#xa;SpawnActor&#xa;  -&gt; AddNetworkActor&#xa;  -&gt; NetworkObjectList 등록&#xa;  -&gt; ServerReplicateActors&#xa;  -&gt; Connection별 ActorChannel 생성&#xa;  -&gt; SetChannelActor&#xa;  -&gt; ReplicateActor&#xa;  -&gt; SerializeNewActor + 초기 property 전송&#xa;&#xa;&#xa;[클라이언트]&#xa;패킷 수신&#xa;  -&gt; ActorChannel 생성&#xa;  -&gt; SerializeNewActor 읽기&#xa;  -&gt; 동적 Actor면 SpawnActorAbsolute&#xa;  -&gt; SetChannelActor&#xa;  -&gt; Replicator-&gt;ReceivedBunch&#xa;  -&gt; 초기 property 적용&#xa;  -&gt; PostNetInit&#xa;  -&gt; BeginPlay" style="text;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="3683" y="15471" width="530" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-98" value="SpawnActorAbsolute&#xa;  ↓&#xa;초기 replicated property 적용&#xa;  ↓&#xa;PostNetInit&#xa;  ↓&#xa;BeginPlay" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="4431" y="16150" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rDn9xJna2rlMll7MN2rU-100" target="rDn9xJna2rlMll7MN2rU-98" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-100" value="&lt;pre&gt;&lt;code&gt;마지막으로 새로 스폰된 Actor라면&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="4360" y="16030" width="322" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rDn9xJna2rlMll7MN2rU-103" value="&lt;pre&gt;클라이언트에서 Actor 를 생성 하면 동기화가 안된다.&lt;br/&gt;Server RPC는 보통 서버도 알고 있고, 클라이언트가 소유한 Actor에서 호출해야 합니다. &lt;br/&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="3684" y="15850" width="546" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-1" value="&lt;pre&gt;&lt;code&gt;onnection-&amp;gt;PackageMap&lt;/code&gt;은 &lt;strong&gt;UObject 포인터를 네트워크용 NetGUID로 바꾸고, &lt;/strong&gt;&lt;/pre&gt;&lt;pre&gt;&lt;strong&gt;NetGUID를 다시 로컬 UObject로 복원하는 변환기&lt;/strong&gt;입니다.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3460" y="16070" width="546" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-2" value="Connection-&gt;PackageMap-&gt;SerializeNewActor(Bunch, this, Actor);&#xa;Actor-&gt;OnSerializeNewActor(Bunch);" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3340" y="16210" width="390" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-3" value="[서버]&#xa;이 ActorChannel이 어떤 Actor를 위한 채널인지 기록&#xa;Actor NetGUID 기록&#xa;동적 Actor면 Archetype/Class, Level, Transform, Velocity 등 생성 정보 기록&#xa;추가 초기 생성 데이터가 있으면 OnSerializeNewActor로 기록" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3340" y="16290" width="420" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-4" value="Actor = World-&gt;SpawnActorAbsolute(&#xa;    Archetype-&gt;GetClass(),&#xa;    FTransform(Rotation, SpawnLocation),&#xa;    SpawnInfo&#xa;);&#xa;GuidCache-&gt;RegisterNetGUID_Client(NetGUID, Actor);" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3920" y="16195.9" width="330" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-5" value="[클라이언트]&#xa;NetGUID 읽기&#xa;이미 있는 Actor면 찾기&#xa;동적 Actor면 SpawnActorAbsolute로 생성&#xa;NetGUID &lt;-&gt; Actor 매핑 등록" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3920" y="16320" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-6" value="ActorChannelPool&#xa;  = 닫힌 ActorChannel 재사용 풀&#xa;&#xa;&#xa;SendBunch&#xa;  = Channel bunch를 Connection SendBuffer에 싣는 단계&#xa;&#xa;&#xa;실제 패킷 송신&#xa;  = UNetConnection::FlushNet -&gt; UIpConnection::LowLevelSend -&gt; Socket::SendTo&#xa;&#xa;&#xa;PackageMap&#xa;  = UObject 포인터와 NetGUID 사이의 번역기&#xa;&#xa;&#xa;SerializeNewActor&#xa;  = 새 ActorChannel의 Actor 정체성과 생성 정보를 쓰거나 읽는 함수&#xa;&#xa;&#xa;OnSerializeNewActor&#xa;  = Actor별 추가 생성 데이터를 bunch에 얹는 훅" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3475.5" y="16450" width="480" height="340" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
