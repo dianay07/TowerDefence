@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="SDnKvEwGEQ2BF1tVjAzU">
-    <mxGraphModel dx="1968" dy="1176" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3095" dy="2348" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -815,7 +815,7 @@
           <mxGeometry x="5961" y="11120" width="350" height="60" as="geometry" />
         </mxCell>
         <mxCell id="J-B9BGBhoyWyexuGGkcS-28" value="UNetConnection::AddActorChannel(Actor, this);&lt;br&gt;ActorChannels 에 Actor 추가&amp;nbsp;ReplicationConnectionDriver 에 Actor 및 채널 등록" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="5961" y="11210" width="350" height="60" as="geometry" />
+          <mxGeometry x="5960" y="11220" width="350" height="60" as="geometry" />
         </mxCell>
         <mxCell id="J-B9BGBhoyWyexuGGkcS-32" value="FRepLayout::SendPropertiesForRPC는 RPC 함수의 파라미터들을 FNetBitWriter에 직렬화해서 Bunch에 실을 수 있게 만드는 함수다." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="5961" y="11298" width="350" height="60" as="geometry" />
@@ -1989,6 +1989,153 @@
         </mxCell>
         <mxCell id="yTMjMVW8oUTsrAHUqKRr-7" value="&lt;pre&gt;Game Mode 는 서버에 하나 있다.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="3684" y="15940" width="215" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-8" value="NetDriver&#xa;  -&gt; NetConnection&#xa;      -&gt; Channel&#xa;          -&gt; Bunch&#xa;              -&gt; Packet&#xa;                  -&gt; Socket" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3322" y="17100" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-9" value="언리얼 네트워크를 큰 그림으로 보면:" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3322" y="17030" width="335.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-11" value="[서버]&#xa;World&#xa; └─ GameNetDriver&#xa;     ├─ ClientConnection[0]&#xa;     │   ├─ ControlChannel&#xa;     │   ├─ ActorChannel: PlayerController&#xa;     │   ├─ ActorChannel: Pawn&#xa;     │   └─ ActorChannel: Tower&#xa;     ├─ ClientConnection[1]&#xa;     └─ ClientConnection[2]&#xa;&#xa;&#xa;[클라이언트]&#xa;World&#xa; └─ GameNetDriver&#xa;     └─ ServerConnection&#xa;         ├─ ControlChannel&#xa;         ├─ ActorChannel: PlayerController&#xa;         ├─ ActorChannel: Pawn&#xa;         └─ ActorChannel: Tower" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3317.75" y="17320" width="250" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-12" value="전체 구조" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3310" y="17260" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-13" value="[서버] NetDriver 역할" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3892" y="17030" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-14" value="1. 클라이언트 연결 관리&#xa;2. 각 클라이언트별 UNetConnection 관리&#xa;3. 어떤 Actor를 어떤 클라이언트에게 보낼지 판단&#xa;4. ActorChannel 생성&#xa;5. Property Replication 수행&#xa;6. RPC 전송&#xa;7. 최종적으로 NetConnection에 전송 데이터 넘김" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3898" y="17130" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-15" value="대표 흐름" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3891" y="17270" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-16" value="UNetDriver::TickFlush()&#xa; -&gt; UNetDriver::ServerReplicateActors()&#xa;    -&gt; ServerReplicateActors_ForConnection()&#xa;       -&gt; Connection-&gt;CreateChannelByName(NAME_Actor, OpenedLocally)&#xa;       -&gt; UActorChannel::SetChannelActor()&#xa;       -&gt; UActorChannel::ReplicateActor()&#xa;          -&gt; FObjectReplicator::ReplicateProperties()&#xa;          -&gt; UChannel::SendBunch()" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3891" y="17340" width="430" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-17" value="즉 서버는 매 틱마다 대략:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3891" y="17500" width="350" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-18" value="각 클라이언트 연결을 돌면서&#xa;  이 클라이언트에게 보여야 하는 Actor인가?&#xa;  ActorChannel이 있는가?&#xa;  없으면 ActorChannel 생성&#xa;  변경된 프로퍼티/RPC를 Bunch로 만들어 전송" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3891" y="17570" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-19" value="[클라이언트] NetDriver 역할" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17020" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-20" value="[클라이언트]&#xa;GameNetDriver&#xa; └─ ServerConnection" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17160" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-21" value="클라이언트의 &lt;code&gt;UNetDriver&lt;/code&gt;는 보통 &lt;code&gt;ServerConnection&lt;/code&gt; 하나를 가진다." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17108" width="360" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-22" value="클라이언트는 서버에서 온 패킷을 받아서:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17250" width="360" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-24" value="1. Packet 해석&#xa;2. Bunch 해석&#xa;3. ChIndex로 Channel 찾기&#xa;4. 없으면 서버가 연 Channel 생성&#xa;5. ActorChannel이면 Actor 생성/연결&#xa;6. Replicated Property 적용&#xa;7. OnRep 호출&#xa;8. RPC 실행" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17310" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-25" value="UNetConnection::ReceivedPacket()&#xa; -&gt; Bunch.ChIndex 확인&#xa; -&gt; Channels[Bunch.ChIndex] 찾기&#xa; -&gt; 없으면 CreateChannelByName(Bunch.ChName, None, Bunch.ChIndex)&#xa; -&gt; Channel-&gt;ReceivedBunch()&#xa; -&gt; UActorChannel::ReceivedBunch()&#xa; -&gt; PackageMap-&gt;SerializeNewActor()&#xa; -&gt; SetChannelActor()&#xa; -&gt; FObjectReplicator::ReceivedBunch()" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17540" width="430" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-26" value="대표 흐름" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17480" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-27" value="Listen Server라면 서버 월드에는 &lt;code&gt;ClientConnections&lt;/code&gt;가 있고, 원격 클라이언트들과 연결된다.&lt;br&gt;Listen Server 자신의 로컬 플레이어는 네트워크를 타고 자기 자신에게 접속하지 않는다." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3317.5" y="17650" width="372.5" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-28" value="&lt;p&gt;&lt;strong&gt;Channel이란?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Channel은 &lt;strong&gt;하나의 NetConnection 안에서 사용하는 논리적 통로&lt;/strong&gt;야.&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3322" y="17820" width="372.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-29" value="ControlChannel&#xa;ActorChannel&#xa;VoiceChannel&#xa;DataStreamChannel" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3320" y="17901.67" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-30" value="서버 &lt;-&gt; 클라이언트 A : TowerActor Channel 12&#xa;서버 &lt;-&gt; 클라이언트 B : TowerActor Channel 7&#xa;서버 &lt;-&gt; 클라이언트 C : TowerActor Channel 31" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3322" y="18040" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-31" value="같은 Actor라도 클라이언트마다 다른 Channel Index를 가질 수 있다." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3325" y="18133.33" width="455" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-32" value="중요한 건 &lt;strong&gt;Channel은 전역 객체가 아니라 Connection별 객체&lt;/strong&gt;라는 점." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3317.5" y="17990" width="455" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-33" value="&lt;p&gt;&lt;strong&gt;Bunch란?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Bunch는 &lt;strong&gt;Channel을 통해 보내는 데이터 조각&lt;/strong&gt;이다.&lt;/p&gt;&lt;p&gt;예를 들면 ActorChannel의 Bunch 안에는 이런 것들이 들어갈 수 있다.&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3290.5" y="18280" width="380" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-34" value="&lt;p&gt;&lt;strong&gt;Bunch란?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Bunch는 &lt;strong&gt;Channel을 통해 보내는 데이터 조각&lt;/strong&gt;이다.&lt;/p&gt;&lt;p&gt;예를 들면 ActorChannel의 Bunch 안에는 이런 것들이 들어갈 수 있다.&lt;/p&gt;" style="text;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3290.5" y="18376.67" width="380" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-35" value="Channel = 논리적 통로&#xa;Bunch   = 그 통로로 보내는 메시지 조각&#xa;Packet  = 실제 네트워크로 나가는 묶음" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3289.5" y="18510" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-36" value="&lt;p&gt;&lt;strong&gt;[서버] Actor Property 동기화 흐름&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;예를 들어 서버에서 &lt;code&gt;CurrentHealth&lt;/code&gt;가 바뀌었다고 하자.&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3885.5" y="17750" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-37" value="UPROPERTY(ReplicatedUsing = OnRep_CurrentHealth)&#xa;float CurrentHealth;" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3885.5" y="17840" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-38" value="[서버]&#xa;CurrentHealth 변경&#xa; -&gt; NetDriver TickFlush&#xa; -&gt; ServerReplicateActors&#xa; -&gt; 각 ClientConnection 검사&#xa; -&gt; 해당 Actor의 ActorChannel 찾기/생성&#xa; -&gt; FObjectReplicator가 이전 값과 현재 값 비교&#xa; -&gt; 변경된 값만 Bunch에 기록&#xa; -&gt; SendBunch&#xa; -&gt; NetConnection SendBuffer&#xa; -&gt; FlushNet&#xa; -&gt; Socket Send" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3881" y="17950" width="270" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-39" value="서버 흐름:" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3880" y="17901.67" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-40" value="클라이언트 흐름:" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="4213" y="17910" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-41" value="[클라이언트]&#xa;Packet 수신&#xa; -&gt; Bunch 해석&#xa; -&gt; ActorChannel 찾기&#xa; -&gt; FObjectReplicator가 CurrentHealth 적용&#xa; -&gt; OnRep_CurrentHealth 호출" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="4213" y="17960" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-42" value="&lt;p&gt;서버에서 &lt;code&gt;OnRep_CurrentHealth&lt;/code&gt;는 자동으로 호출되지 않는다.&lt;br&gt;보통 서버에서도 같은 처리가 필요하면 서버 코드에서 직접 처리하거나 공통 함수를 따로 둔다.&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3880" y="18173.33" width="360" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-43" value="[클라이언트] Server RPC 흐름" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17740" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-44" value="[클라이언트]&#xa;Server_DoTowerAction 호출&#xa; -&gt; 이 Actor의 ActorChannel 찾기&#xa; -&gt; RPC 파라미터를 Bunch에 기록&#xa; -&gt; ActorChannel::SendBunch&#xa; -&gt; ServerConnection을 통해 서버로 전송" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17926.67" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-45" value="[서버]&#xa;Packet 수신&#xa; -&gt; ChIndex로 ActorChannel 찾기&#xa; -&gt; RPC Bunch 해석&#xa; -&gt; 대상 Actor 찾기&#xa; -&gt; Server_DoTowerAction_Implementation 실행" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="18090" width="290" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-46" value="클라이언트 흐름:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17886.67" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-47" value="서버 흐름:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="18050" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-48" value="&lt;pre&gt;&lt;code&gt;Server_DoTowerAction(...)&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="17820" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-49" value="중요한 점은 클라이언트가 Server RPC를 보낼 때 &lt;strong&gt;ActorChannel을 새로 여는 게 아니라&lt;/strong&gt;, 서버가 이미 만들어준 ActorChannel을 사용한다는 것." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="4561" y="18233.33" width="409" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-50" value="&lt;p&gt;&lt;strong&gt;PackageMap 역할&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;code&gt;Connection-&amp;gt;PackageMap&lt;/code&gt;은 네트워크에서 UObject 포인터를 직접 보낼 수 없기 때문에 필요하다.&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3290.5" y="18644" width="372.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-51" value="UObject* / AActor* / UClass* / Asset Reference&#xa;        &lt;-&gt; &#xa;NetGUID" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3298" y="18740" width="302" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-52" value="Actor pointer를 NetGUID로 변환&#xa;새 Actor라면 생성 정보까지 같이 보냄" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3314.5" y="18880" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-53" value="NetGUID를 보고 기존 Actor를 찾거나&#xa;없으면 SerializeNewActor 과정에서 새 Actor 생성" style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3316.25" y="19000" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-55" value="서버 에서:" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3309.5" y="18840" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-56" value="클라이언트 에서:" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="3317.5" y="18960" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-57" value="&lt;p&gt;그래서 Actor 포인터를 RPC 파라미터로 보내도 실제로는 포인터 주소가 가는 게 아니라 &lt;code&gt;NetGUID&lt;/code&gt;가 간다.&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3314.5" y="19070" width="360" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-58" value="서버와 클라이언트는 각각 NetDriver를 가진다.&#xa;&#xa;&#xa;서버 NetDriver는 여러 ClientConnection을 가진다.&#xa;클라이언트 NetDriver는 보통 하나의 ServerConnection을 가진다.&#xa;&#xa;&#xa;통신 데이터는 NetConnection 안의 Channel을 통해 논리적으로 분류된다.&#xa;&#xa;&#xa;Channel로 보내는 데이터 단위가 Bunch다.&#xa;&#xa;&#xa;Bunch들은 Packet으로 포장되어 실제 소켓으로 송수신된다.&#xa;&#xa;&#xa;Actor 동기화는 주로 ActorChannel을 통해 이루어진다.&#xa;&#xa;&#xa;Property Replication, RPC, Actor 생성 정보 모두 ActorChannel의 Bunch로 오간다." style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3885.5" y="18690" width="460" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="yTMjMVW8oUTsrAHUqKRr-59" value="NetDriver가 연결과 복제 흐름을 관리하고,&#xa;NetConnection이 상대와의 송수신 상태를 들고,&#xa;Channel이 논리적 통로를 만들고,&#xa;Bunch가 실제 복제/RPC 데이터를 담고,&#xa;Packet이 네트워크로 나간다." style="text;whiteSpace=wrap;fontFamily=Helvetica;fontSize=12;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3885.5" y="19030" width="270" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
