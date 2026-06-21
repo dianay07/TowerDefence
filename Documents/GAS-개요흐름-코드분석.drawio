@@ -1,10 +1,10 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="od5X6rvc0V59ymi1Oy_B">
-    <mxGraphModel dx="695" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2194" dy="1420" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry y="10" width="1640" height="3470" as="geometry" />
         </mxCell>
         <mxCell id="OqoHZWKOyLO8NGAee60--3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="OqoHZWKOyLO8NGAee60--1" target="OqoHZWKOyLO8NGAee60--2" edge="1">
@@ -91,296 +91,391 @@
         <mxCell id="OqoHZWKOyLO8NGAee60--37" value="&lt;p&gt;&lt;strong&gt;GameplayEffect는 언제 쓰나?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;code&gt;MakeOutgoingSpec()&lt;/code&gt;은 Ability를 “가지는 것”과는 별개야.&lt;br&gt;실제로 효과를 적용할 때 사용한다.&lt;/p&gt;&lt;p&gt;예:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;Fireball Ability 실행&#xa; -&amp;gt; 적에게 데미지 GE 적용&#xa; -&amp;gt; 자신에게 쿨다운 GE 적용&#xa; -&amp;gt; 자신에게 마나 소모 GE 적용&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;코드 느낌:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;FGameplayEffectSpecHandle DamageSpec =&#xa;    ASC-&amp;gt;MakeOutgoingSpec(GE_FireballDamage, AbilityLevel, ASC-&amp;gt;MakeEffectContext());&#xa;&#xa;TargetASC-&amp;gt;ApplyGameplayEffectSpecToSelf(*DamageSpec.Data.Get());&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;쿨다운도 비슷하게:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;FGameplayEffectSpecHandle CooldownSpec =&#xa;    ASC-&amp;gt;MakeOutgoingSpec(GE_FireballCooldown, AbilityLevel, ASC-&amp;gt;MakeEffectContext());&#xa;&#xa;ASC-&amp;gt;ApplyGameplayEffectSpecToSelf(*CooldownSpec.Data.Get());&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;즉:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;GiveAbility()&#xa;= 스킬 획득/등록 시 호출&#xa;&#xa;MakeOutgoingSpec()&#xa;= 데미지, 버프, 디버프, 쿨다운, 비용 등 효과 적용 시 호출&lt;/code&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="55" y="2710" width="560" height="500" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-1" value="[서버]&#xa;Actor 생성&#xa; -&gt; ASC 생성&#xa; -&gt; AttributeSet 생성/등록&#xa; -&gt; ASC::InitAbilityActorInfo()&#xa; -&gt; ASC::GiveAbility()&#xa; -&gt; ASC::MakeOutgoingSpec(GameplayEffect)&#xa; -&gt; AssignTagSetByCallerMagnitude()&#xa; -&gt; ASC::ApplyGameplayEffectSpecToSelf()&#xa; -&gt; AttributeSet 값 변경&#xa; -&gt; Attribute 변경 Delegate / OnRep / GameplayCue / Tag 변화&#xa;&#xa;&#xa;[클라이언트]&#xa;복제된 Actor 수신&#xa; -&gt; ASC / AttributeSet 상태 수신&#xa; -&gt; Attribute 값, Tag, Effect 상태를 보고 UI/연출 갱신" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-1" value="[서버]&#xa;Actor 생성&#xa; -&gt; ASC 생성&#xa; -&gt; AttributeSet 생성/등록&#xa; -&gt; ASC::InitAbilityActorInfo()&#xa; -&gt; ASC::GiveAbility()&#xa; -&gt; ASC::MakeOutgoingSpec(GameplayEffect)&#xa; -&gt; AssignTagSetByCallerMagnitude()&#xa; -&gt; ASC::ApplyGameplayEffectSpecToSelf()&#xa; -&gt; AttributeSet 값 변경&#xa; -&gt; Attribute 변경 Delegate / OnRep / GameplayCue / Tag 변화&#xa;&#xa;&#xa;[클라이언트]&#xa;복제된 Actor 수신&#xa; -&gt; ASC / AttributeSet 상태 수신&#xa; -&gt; Attribute 값, Tag, Effect 상태를 보고 UI/연출 갱신" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="1680" y="10" width="360" height="270" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-3" target="CCm-2qAUIBp0VJCvSnKO-4">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-3" target="CCm-2qAUIBp0VJCvSnKO-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-6" value="PostActorConstruction에서 호출됨" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CCm-2qAUIBp0VJCvSnKO-5">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-6" value="PostActorConstruction에서 호출됨" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="CCm-2qAUIBp0VJCvSnKO-5" vertex="1" connectable="0">
           <mxGeometry x="-0.3977" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-3" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;ASC 생성&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-3" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;ASC 생성&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1690" y="320" width="130" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-4" target="CCm-2qAUIBp0VJCvSnKO-7">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-4" target="CCm-2qAUIBp0VJCvSnKO-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-4" target="CCm-2qAUIBp0VJCvSnKO-9">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-4" target="CCm-2qAUIBp0VJCvSnKO-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-11" value="내부 호출 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CCm-2qAUIBp0VJCvSnKO-10">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-11" value="내부 호출 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="CCm-2qAUIBp0VJCvSnKO-10" vertex="1" connectable="0">
           <mxGeometry x="-0.1693" y="2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-4" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::InitializeComponent()&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-4" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::InitializeComponent()&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1750" y="410" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-7" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;Actor 에서 UAttributeSet 을 찾아.&lt;br&gt;SpawnedAttributes(어트리 뷰트 셋 Array )&lt;br&gt;&amp;nbsp;멤버에 등록한다.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-7" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;Actor 에서 UAttributeSet 을 찾아.&lt;br&gt;SpawnedAttributes(어트리 뷰트 셋 Array )&lt;br&gt;&amp;nbsp;멤버에 등록한다.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2120" y="410" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-9" target="CCm-2qAUIBp0VJCvSnKO-12">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-9" target="CCm-2qAUIBp0VJCvSnKO-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-16" value="내부 호출 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CCm-2qAUIBp0VJCvSnKO-15">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-16" value="내부 호출 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="CCm-2qAUIBp0VJCvSnKO-15" vertex="1" connectable="0">
           <mxGeometry x="-0.443" y="-1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-9" value="&lt;pre&gt;&lt;code&gt;UAbilitySystemComponent::InitAbilityActorInfo&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-9" value="&lt;pre&gt;&lt;code&gt;UAbilitySystemComponent::InitAbilityActorInfo&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1850" y="510" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-12" target="CCm-2qAUIBp0VJCvSnKO-17">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-12" target="CCm-2qAUIBp0VJCvSnKO-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-12" value="&lt;pre&gt;&lt;code&gt;FGameplayAbilityActorInfo::InitFromActor&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-12" value="&lt;pre&gt;&lt;code&gt;FGameplayAbilityActorInfo::InitFromActor&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1970" y="610" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-17" value="&lt;pre&gt;OwnerActor&lt;br&gt; -&amp;gt; AbilitySystemComponent를 논리적으로 소유하는 Actor&lt;br&gt;&lt;br&gt;AvatarActor&lt;br&gt; -&amp;gt; 실제 월드에서 움직이고, 맞고, 애니메이션을 재생하는 Actor&lt;br&gt;&lt;br&gt;를 지정 또한  AvatarActor와 연결된 Controller, Mesh, MovementComponent는 무엇인가?&lt;br/&gt;지정 하는 함수&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-17" value="&lt;pre&gt;OwnerActor&lt;br&gt; -&amp;gt; AbilitySystemComponent를 논리적으로 소유하는 Actor&lt;br&gt;&lt;br&gt;AvatarActor&lt;br&gt; -&amp;gt; 실제 월드에서 움직이고, 맞고, 애니메이션을 재생하는 Actor&lt;br&gt;&lt;br&gt;를 지정 또한  AvatarActor와 연결된 Controller, Mesh, MovementComponent는 무엇인가?&lt;br/&gt;지정 하는 함수&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2320" y="665" width="510" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-19" target="CCm-2qAUIBp0VJCvSnKO-21">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-19" target="CCm-2qAUIBp0VJCvSnKO-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-19" value="InitAbilityActorInfo()&#xa; -&gt; AbilityActorInfo에 Owner / Avatar / ASC 등록&#xa; -&gt; PlayerController, Mesh, MovementComponent 캐싱&#xa; -&gt; ASC 내부 OwnerActor / AvatarActor 갱신&#xa; -&gt; 밀린 GameplayCue 처리&#xa; -&gt; Avatar가 바뀌었으면 Ability들에게 OnAvatarSet 호출&#xa; -&gt; GameplayTag Response 등록&#xa; -&gt; Montage 관련 정보 초기화" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-19" value="InitAbilityActorInfo()&#xa; -&gt; AbilityActorInfo에 Owner / Avatar / ASC 등록&#xa; -&gt; PlayerController, Mesh, MovementComponent 캐싱&#xa; -&gt; ASC 내부 OwnerActor / AvatarActor 갱신&#xa; -&gt; 밀린 GameplayCue 처리&#xa; -&gt; Avatar가 바뀌었으면 Ability들에게 OnAvatarSet 호출&#xa; -&gt; GameplayTag Response 등록&#xa; -&gt; Montage 관련 정보 초기화" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2450" y="445" width="320" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.452;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-9" target="CCm-2qAUIBp0VJCvSnKO-19">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.452;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-9" target="CCm-2qAUIBp0VJCvSnKO-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-21" target="CCm-2qAUIBp0VJCvSnKO-23">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-21" target="CCm-2qAUIBp0VJCvSnKO-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-21" value="&lt;code&gt;AvatarActor&lt;/code&gt;가 바뀌는 대표적인 경우는 &lt;strong&gt;ASC를 가진 객체와 실제 몸체 Actor가 분리되어 있을 때&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-21" value="&lt;code&gt;AvatarActor&lt;/code&gt;가 바뀌는 대표적인 경우는 &lt;strong&gt;ASC를 가진 객체와 실제 몸체 Actor가 분리되어 있을 때&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2850" y="470" width="530" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-23" target="CCm-2qAUIBp0VJCvSnKO-24">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-23" target="CCm-2qAUIBp0VJCvSnKO-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-23" target="CCm-2qAUIBp0VJCvSnKO-29">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-23" target="CCm-2qAUIBp0VJCvSnKO-29" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-23" value="예를 들어 RPG에서 많이 쓰는 구조:&#xa;OwnerActor = PlayerState&#xa;AvatarActor = Character" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-23" value="예를 들어 RPG에서 많이 쓰는 구조:&#xa;OwnerActor = PlayerState&#xa;AvatarActor = Character" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3240" y="535" width="220" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-24" target="CCm-2qAUIBp0VJCvSnKO-25">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-24" target="CCm-2qAUIBp0VJCvSnKO-25" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-24" value="플레이어가 죽고 리스폰하면:PlayerState는 유지&#xa;기존 Character는 Destroy&#xa;새 Character Spawn" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-24" value="플레이어가 죽고 리스폰하면:PlayerState는 유지&#xa;기존 Character는 Destroy&#xa;새 Character Spawn" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3360" y="595" width="170" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-25" value="그러면 ASC는 계속 PlayerState에 남아 있고, AvatarActor만 새 Character로 바뀐다.ASC-&gt;InitAbilityActorInfo(PlayerState, NewCharacter);" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-25" value="그러면 ASC는 계속 PlayerState에 남아 있고, AvatarActor만 새 Character로 바뀐다.ASC-&gt;InitAbilityActorInfo(PlayerState, NewCharacter);" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3480" y="680" width="340" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-29" value="1. 플레이어 사망 후 리스폰&#xa;OwnerActor = PlayerState 유지&#xa;AvatarActor = OldCharacter -&gt; NewCharacter&#xa;&#xa;&#xa;2. 캐릭터 교체&#xa;전사 캐릭터에서 마법사 캐릭터로 교체&#xa;AvatarActor가 새 Pawn/Character로 변경&#xa;&#xa;&#xa;3. 빙의 대상 변경&#xa;PlayerController가 다른 Pawn을 Possess&#xa;ASC Owner는 유지하고 실제 조작 Pawn만 변경&#xa;&#xa;&#xa;4. 탈것 탑승&#xa;평소 AvatarActor = Character&#xa;탑승 중 AvatarActor = Vehicle 또는 탑승용 Pawn&#xa;&#xa;&#xa;5. 변신 시스템&#xa;인간 Character -&gt; 늑대 Character 같은 별도 Actor로 교체&#xa;&#xa;&#xa;6. 영구 계정/플레이어 상태는 유지하고 몸체만 계속 교체하는 구조" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-29" value="1. 플레이어 사망 후 리스폰&#xa;OwnerActor = PlayerState 유지&#xa;AvatarActor = OldCharacter -&gt; NewCharacter&#xa;&#xa;&#xa;2. 캐릭터 교체&#xa;전사 캐릭터에서 마법사 캐릭터로 교체&#xa;AvatarActor가 새 Pawn/Character로 변경&#xa;&#xa;&#xa;3. 빙의 대상 변경&#xa;PlayerController가 다른 Pawn을 Possess&#xa;ASC Owner는 유지하고 실제 조작 Pawn만 변경&#xa;&#xa;&#xa;4. 탈것 탑승&#xa;평소 AvatarActor = Character&#xa;탑승 중 AvatarActor = Vehicle 또는 탑승용 Pawn&#xa;&#xa;&#xa;5. 변신 시스템&#xa;인간 Character -&gt; 늑대 Character 같은 별도 Actor로 교체&#xa;&#xa;&#xa;6. 영구 계정/플레이어 상태는 유지하고 몸체만 계속 교체하는 구조" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3890" y="410" width="360" height="380" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-32" value="ASC에게 “내 주인은 누구고, 실제 몸체는 누구인지” 알려주고, Ability 실행에 필요한 Controller/Mesh/Movement 정보를 준비하는 함수." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-32" value="ASC에게 “내 주인은 누구고, 실제 몸체는 누구인지” 알려주고, Ability 실행에 필요한 Controller/Mesh/Movement 정보를 준비하는 함수." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2450" y="585" width="430" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-33" target="CCm-2qAUIBp0VJCvSnKO-34">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-33" target="CCm-2qAUIBp0VJCvSnKO-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-33" target="CCm-2qAUIBp0VJCvSnKO-44">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-33" target="CCm-2qAUIBp0VJCvSnKO-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-33" target="CCm-2qAUIBp0VJCvSnKO-36">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-33" target="CCm-2qAUIBp0VJCvSnKO-36" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-47" value="내부 함수 호출" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CCm-2qAUIBp0VJCvSnKO-46">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-47" value="내부 함수 호출" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="CCm-2qAUIBp0VJCvSnKO-46" vertex="1" connectable="0">
           <mxGeometry x="-0.2441" y="-5" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-33" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::GiveAbility&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-33" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::GiveAbility&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1710" y="880" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-34" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;Client 에서는 작동 안함&lt;br&gt;&lt;/font&gt;&lt;/span&gt;클라이언트는 서버가 부여한 AbilitySpec을 복제로 받는 쪽이다.&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-34" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;Client 에서는 작동 안함&lt;br&gt;&lt;/font&gt;&lt;/span&gt;클라이언트는 서버가 부여한 AbilitySpec을 복제로 받는 쪽이다.&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="2068" y="830" width="342" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-36" target="CCm-2qAUIBp0VJCvSnKO-38">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-36" target="CCm-2qAUIBp0VJCvSnKO-38" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-36" target="CCm-2qAUIBp0VJCvSnKO-49">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-36" target="CCm-2qAUIBp0VJCvSnKO-49" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-36" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::OnGiveAbility&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-36" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::OnGiveAbility&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1800" y="1045" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-38" target="CCm-2qAUIBp0VJCvSnKO-42">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-38" target="CCm-2qAUIBp0VJCvSnKO-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-38" value="&lt;code&gt;GiveAbility()&lt;/code&gt;는 Ability를 실행하는 함수가 아니라, &lt;strong&gt;ASC에 Ability를 등록하는 함수&lt;/strong&gt;다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-38" value="&lt;code&gt;GiveAbility()&lt;/code&gt;는 Ability를 실행하는 함수가 아니라, &lt;strong&gt;ASC에 Ability를 등록하는 함수&lt;/strong&gt;다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2150" y="1045" width="470" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-42" value="GiveAbility()&#xa; = Ability를 배운다 / 장착한다 / ASC의 ActivatableAbilities 목록에 추가한다&#xa;&#xa;&#xa;TryActivateAbility()&#xa; = 등록된 Ability를 실제로 발동한다" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-42" value="GiveAbility()&#xa; = Ability를 배운다 / 장착한다 / ASC의 ActivatableAbilities 목록에 추가한다&#xa;&#xa;&#xa;TryActivateAbility()&#xa; = 등록된 Ability를 실제로 발동한다" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2670" y="975" width="410" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-44" value="&lt;div style=&quot;text-align: left;&quot;&gt;ASC에 &lt;strong&gt;사용 가능한 GameplayAbility를 등록하는 함수&lt;/strong&gt;야.&lt;br&gt;즉 “스킬을 배운다 / 타워에게 공격 Ability를 준다 / 캐릭터에게 Dash Ability를 준다” 같은 의미로 보면 된다.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-44" value="&lt;div style=&quot;text-align: left;&quot;&gt;ASC에 &lt;strong&gt;사용 가능한 GameplayAbility를 등록하는 함수&lt;/strong&gt;야.&lt;br&gt;즉 “스킬을 배운다 / 타워에게 공격 Ability를 준다 / 캐릭터에게 Dash Ability를 준다” 같은 의미로 보면 된다.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2068" y="890" width="392" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-48" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;MarkAbilitySpecDirty&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-48" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;MarkAbilitySpecDirty&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1790" y="1300" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-49" target="CCm-2qAUIBp0VJCvSnKO-51">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-49" target="CCm-2qAUIBp0VJCvSnKO-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-49" value="&lt;pre&gt;&lt;code&gt;UGameplayAbility::OnGiveAbility&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-49" value="&lt;pre&gt;&lt;code&gt;UGameplayAbility::OnGiveAbility&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1900" y="1140" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-51" target="CCm-2qAUIBp0VJCvSnKO-63">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-51" target="CCm-2qAUIBp0VJCvSnKO-63" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-51" value="&lt;code&gt;OnGiveAbility()&lt;/code&gt;는 Ability를 “주는 함수”가 아니라, &lt;strong&gt;부여된 Ability를 GAS 시스템에 연결하는 후처리 함수&lt;/strong&gt;다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-51" value="&lt;code&gt;OnGiveAbility()&lt;/code&gt;는 Ability를 “주는 함수”가 아니라, &lt;strong&gt;부여된 Ability를 GAS 시스템에 연결하는 후처리 함수&lt;/strong&gt;다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="2440" y="1140" width="470" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-54" target="CCm-2qAUIBp0VJCvSnKO-62">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-54" target="CCm-2qAUIBp0VJCvSnKO-62" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-54" target="CCm-2qAUIBp0VJCvSnKO-76">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-54" target="CCm-2qAUIBp0VJCvSnKO-76" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-54" target="CCm-2qAUIBp0VJCvSnKO-96">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-54" target="CCm-2qAUIBp0VJCvSnKO-96" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-54" value="1. InstancedPerActor Ability 인스턴스 준비&#xa;2. GameplayEffect가 부여한 Ability라면 GE와 AbilityHandle 연결&#xa;3. GameplayTag / GameplayEvent 기반 Trigger 등록&#xa;4. Ability 자체의 OnGiveAbility() 콜백 호출" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-54" value="1. InstancedPerActor Ability 인스턴스 준비&#xa;2. GameplayEffect가 부여한 Ability라면 GE와 AbilityHandle 연결&#xa;3. GameplayTag / GameplayEvent 기반 Trigger 등록&#xa;4. Ability 자체의 OnGiveAbility() 콜백 호출" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3462" y="1180" width="370" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-61" value="서버에서 GiveAbility()&#xa; -&gt; OnGiveAbility()&#xa; -&gt; MarkAbilitySpecDirty()&#xa; -&gt; 클라로 AbilitySpec 복제&#xa; -&gt; 클라 PostReplicatedAdd()&#xa; -&gt; 클라 OnGiveAbility()" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-61" value="서버에서 GiveAbility()&#xa; -&gt; OnGiveAbility()&#xa; -&gt; MarkAbilitySpecDirty()&#xa; -&gt; 클라로 AbilitySpec 복제&#xa; -&gt; 클라 PostReplicatedAdd()&#xa; -&gt; 클라 OnGiveAbility()" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3462" y="1330" width="190" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-62" value="&lt;pre&gt;동기화 관점.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-62" value="&lt;pre&gt;동기화 관점.&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="3460" y="1290" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-63" value="&lt;pre&gt;핵심역활 4가지&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-63" value="&lt;pre&gt;핵심역활 4가지&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="3460" y="1140" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-68" target="CCm-2qAUIBp0VJCvSnKO-69">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-68" target="CCm-2qAUIBp0VJCvSnKO-69" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-68" value="// GameplayAbilityTypes.h&#xa;namespace EGameplayAbilityInstancingPolicy&#xa;{&#xa;    enum Type : int&#xa;    {&#xa;        // 인스턴스를 만들지 않고 Ability CDO에서 실행&#xa;        // UE5.5 기준 Deprecated 성격&#xa;        NonInstanced,&#xa;&#xa;&#xa;        // Actor/ASC 하나당 Ability 인스턴스 하나를 생성&#xa;        // 같은 Ability가 여러 번 발동되어도 같은 인스턴스를 재사용&#xa;        InstancedPerActor,&#xa;&#xa;&#xa;        // Ability 실행할 때마다 새 인스턴스 생성&#xa;        // 동시에 여러 실행이 필요할 때 사용&#xa;        InstancedPerExecution,&#xa;    };&#xa;}" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-68" value="// GameplayAbilityTypes.h&#xa;namespace EGameplayAbilityInstancingPolicy&#xa;{&#xa;    enum Type : int&#xa;    {&#xa;        // 인스턴스를 만들지 않고 Ability CDO에서 실행&#xa;        // UE5.5 기준 Deprecated 성격&#xa;        NonInstanced,&#xa;&#xa;&#xa;        // Actor/ASC 하나당 Ability 인스턴스 하나를 생성&#xa;        // 같은 Ability가 여러 번 발동되어도 같은 인스턴스를 재사용&#xa;        InstancedPerActor,&#xa;&#xa;&#xa;        // Ability 실행할 때마다 새 인스턴스 생성&#xa;        // 동시에 여러 실행이 필요할 때 사용&#xa;        InstancedPerExecution,&#xa;    };&#xa;}" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4470" y="730" width="360" height="310" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-69" target="CCm-2qAUIBp0VJCvSnKO-72">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-69" target="CCm-2qAUIBp0VJCvSnKO-72" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-69" value="장점:&#xa;- Ability 안에 멤버 변수 상태를 가질 수 있음&#xa;- OnGiveAbility(), OnAvatarSet() 같은 콜백에서 초기화 가능&#xa;- Ability 내부 RPC / 복제 인스턴스 흐름에 유리&#xa;- 같은 Actor가 가진 Ability 상태를 유지할 수 있음&#xa;&#xa;&#xa;주의:&#xa;- 같은 Ability가 동시에 여러 개 실행되는 구조에는 부적합&#xa;- 이전 실행의 상태가 다음 실행에 남을 수 있음&#xa;- activation마다 독립 상태가 필요하면 InstancedPerExecution이 더 맞음" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-69" value="장점:&#xa;- Ability 안에 멤버 변수 상태를 가질 수 있음&#xa;- OnGiveAbility(), OnAvatarSet() 같은 콜백에서 초기화 가능&#xa;- Ability 내부 RPC / 복제 인스턴스 흐름에 유리&#xa;- 같은 Actor가 가진 Ability 상태를 유지할 수 있음&#xa;&#xa;&#xa;주의:&#xa;- 같은 Ability가 동시에 여러 개 실행되는 구조에는 부적합&#xa;- 이전 실행의 상태가 다음 실행에 남을 수 있음&#xa;- activation마다 독립 상태가 필요하면 InstancedPerExecution이 더 맞음" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4942" y="730" width="400" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-72" target="CCm-2qAUIBp0VJCvSnKO-73">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-72" target="CCm-2qAUIBp0VJCvSnKO-73" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-72" value="예를 들면 이런 경우 InstancedPerActor가 적당해.&#xa;&#xa;패시브 스킬&#xa;토글 스킬&#xa;캐릭터가 항상 들고 있는 기본 공격&#xa;타워의 기본 공격 Ability&#xa;쿨다운/상태를 Ability 인스턴스 안에서 관리하는 스킬" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-72" value="예를 들면 이런 경우 InstancedPerActor가 적당해.&#xa;&#xa;패시브 스킬&#xa;토글 스킬&#xa;캐릭터가 항상 들고 있는 기본 공격&#xa;타워의 기본 공격 Ability&#xa;쿨다운/상태를 Ability 인스턴스 안에서 관리하는 스킬" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4992" y="950" width="300" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-73" value="반대로 이런 경우는 InstancedPerExecution을 고려해야 해.&#xa;동시에 여러 번 겹쳐 실행되는 스킬&#xa;각 실행마다 독립 TargetData / Task / 상태가 필요한 스킬&#xa;차징 중 여러 발을 동시에 관리하는 스킬" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-73" value="반대로 이런 경우는 InstancedPerExecution을 고려해야 해.&#xa;동시에 여러 번 겹쳐 실행되는 스킬&#xa;각 실행마다 독립 TargetData / Task / 상태가 필요한 스킬&#xa;차징 중 여러 발을 동시에 관리하는 스킬" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4982" y="1115" width="320" height="95" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-76" target="CCm-2qAUIBp0VJCvSnKO-79">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-76" target="CCm-2qAUIBp0VJCvSnKO-79" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-76" value="&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;GameplayEffect&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-76" value="&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;GameplayEffect&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="3882" y="1210" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-79" target="CCm-2qAUIBp0VJCvSnKO-82">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-79" target="CCm-2qAUIBp0VJCvSnKO-82" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-79" value="UGameplayEffect&#xa;= 효과의 설계도 / 에셋 / 클래스&#xa;&#xa;&#xa;FGameplayEffectSpec&#xa;= 이번에 적용할 효과 데이터&#xa;= 레벨, SetByCaller, Source, Target 정보 포함&#xa;&#xa;&#xa;FActiveGameplayEffect&#xa;= ASC에 실제로 적용되어 살아있는 효과 인스턴스&#xa;= 버프, 디버프, 지속효과, 무한 지속 효과 등" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-79" value="UGameplayEffect&#xa;= 효과의 설계도 / 에셋 / 클래스&#xa;&#xa;&#xa;FGameplayEffectSpec&#xa;= 이번에 적용할 효과 데이터&#xa;= 레벨, SetByCaller, Source, Target 정보 포함&#xa;&#xa;&#xa;FActiveGameplayEffect&#xa;= ASC에 실제로 적용되어 살아있는 효과 인스턴스&#xa;= 버프, 디버프, 지속효과, 무한 지속 효과 등" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4060" y="1175" width="280" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-82" target="CCm-2qAUIBp0VJCvSnKO-84">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-82" target="CCm-2qAUIBp0VJCvSnKO-84" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-82" value="GE_Poison&#xa;= 독 효과 정의&#xa;&#xa;&#xa;FGameplayEffectSpec&#xa;= 5초짜리 독, 초당 10 데미지, 시전자 A&#xa;&#xa;&#xa;FActiveGameplayEffect&#xa;= Enemy ASC에 실제로 걸려 있는 독 효과&#xa;= 시작 시간, 남은 시간, 스택, Handle, Spec 등을 가짐" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-82" value="GE_Poison&#xa;= 독 효과 정의&#xa;&#xa;&#xa;FGameplayEffectSpec&#xa;= 5초짜리 독, 초당 10 데미지, 시전자 A&#xa;&#xa;&#xa;FActiveGameplayEffect&#xa;= Enemy ASC에 실제로 걸려 있는 독 효과&#xa;= 시작 시간, 남은 시간, 스택, Handle, Spec 등을 가짐" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4050" y="1415" width="300" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-84" value="&lt;code&gt;Active Gameplay Effect&lt;/code&gt;는 단순히 “GE 클래스”가 아니라, &lt;strong&gt;ASC 안에 현재 걸려있는 런타임 효과&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-84" value="&lt;code&gt;Active Gameplay Effect&lt;/code&gt;는 단순히 “GE 클래스”가 아니라, &lt;strong&gt;ASC 안에 현재 걸려있는 런타임 효과&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3935" y="1625" width="530" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-90" target="CCm-2qAUIBp0VJCvSnKO-87">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-90" target="CCm-2qAUIBp0VJCvSnKO-87" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="3120" y="1430" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-86" value="&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;2. GameplayEffect가 부여한 Ability라면 GE와 AbilityHandle 연결하는 코드가 있는데&amp;nbsp;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-86" value="&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;2. GameplayEffect가 부여한 Ability라면 GE와 AbilityHandle 연결하는 코드가 있는데&amp;nbsp;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2910" y="1280" width="390" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-87" value="이미 ASC에 들어온 AbilitySpec을 보고&#xa;그 Ability를 부여한 ActiveGameplayEffect 쪽에 역참조 정보를 기록하는 후처리" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-87" value="이미 ASC에 들어온 AbilitySpec을 보고&#xa;그 Ability를 부여한 ActiveGameplayEffect 쪽에 역참조 정보를 기록하는 후처리" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2930" y="1440" width="430" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-86">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-86" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="3050" y="1330" as="sourcePoint" />
             <mxPoint x="3120" y="1390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-92" value="Why 시점에서 하냐?" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CCm-2qAUIBp0VJCvSnKO-91">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-92" value="Why 시점에서 하냐?" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="CCm-2qAUIBp0VJCvSnKO-91" vertex="1" connectable="0">
           <mxGeometry x="-0.5398" y="3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-90" value="&lt;code&gt;OnGiveAbility()&lt;/code&gt;에서 하냐면, 이 시점이 &lt;strong&gt;Ability 부여가 실제로 성공한 뒤&lt;/strong&gt;이기 때문이야." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-90" value="&lt;code&gt;OnGiveAbility()&lt;/code&gt;에서 하냐면, 이 시점이 &lt;strong&gt;Ability 부여가 실제로 성공한 뒤&lt;/strong&gt;이기 때문이야." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2910" y="1365" width="470" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-96" target="CCm-2qAUIBp0VJCvSnKO-68">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-96" target="CCm-2qAUIBp0VJCvSnKO-68" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-96" value="&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;InstancedPerActor&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-96" value="&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;InstancedPerActor&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="3882" y="1115" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-99" target="CCm-2qAUIBp0VJCvSnKO-87">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-99" target="CCm-2qAUIBp0VJCvSnKO-87" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-99" value="GrantedAbilityHandles 처리 하는 코드가 있는데, 인자로온 AbilitySpec 이 This 와 연결되어 있다라는 기록을 한다.&amp;nbsp;" style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-99" value="GrantedAbilityHandles 처리 하는 코드가 있는데, 인자로온 AbilitySpec 이 This 와 연결되어 있다라는 기록을 한다.&amp;nbsp;" style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2440" y="1200" width="470" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-101" value="Event.Damage.Fire&#xa; -&gt; 부모: Event.Damage&#xa; -&gt; 부모: Event" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-101" value="Event.Damage.Fire&#xa; -&gt; 부모: Event.Damage&#xa; -&gt; 부모: Event" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4480" y="1220" width="160" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-102" value="Tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-102" value="Tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="4480" y="1170" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-103" target="CCm-2qAUIBp0VJCvSnKO-106">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-103" target="CCm-2qAUIBp0VJCvSnKO-106" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-103" value="Tag 처리 하는 코드를 설명하면&lt;br&gt;“이 Ability가 어떤 GameplayTag에 의해 자동 발동될 수 있는지 ASC 안에 등록한다.”" style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-103" value="Tag 처리 하는 코드를 설명하면&lt;br&gt;“이 Ability가 어떤 GameplayTag에 의해 자동 발동될 수 있는지 ASC 안에 등록한다.”" style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2430" y="1530" width="470" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-106" value="&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;3. GameplayTag / GameplayEvent 기반 Trigger 등록&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-106" value="&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;3. GameplayTag / GameplayEvent 기반 Trigger 등록&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2930" y="1540" width="390" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-107" value="&lt;font face=&quot;monospace&quot;&gt;등록 시점에 Tag 에 Handle 을 저장&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-107" value="&lt;font face=&quot;monospace&quot;&gt;등록 시점에 Tag 에 Handle 을 저장&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2930" y="1595" width="470" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-108" value="ASC::HandleGameplayEvent(EventTag, Payload)&#xa; -&gt; GameplayEventTriggeredAbilities에서 EventTag 검색&#xa; -&gt; 등록된 AbilitySpecHandle 목록 획득&#xa; -&gt; TriggerAbilityFromGameplayEvent()&#xa; -&gt; InternalTryActivateAbility()" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-108" value="ASC::HandleGameplayEvent(EventTag, Payload)&#xa; -&gt; GameplayEventTriggeredAbilities에서 EventTag 검색&#xa; -&gt; 등록된 AbilitySpecHandle 목록 획득&#xa; -&gt; TriggerAbilityFromGameplayEvent()&#xa; -&gt; InternalTryActivateAbility()" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2920" y="1730" width="330" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-108" target="CCm-2qAUIBp0VJCvSnKO-108">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-108" target="CCm-2qAUIBp0VJCvSnKO-108" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-110" value="즉 구조는 이렇게 됨.&#xa;GameplayEventTriggeredAbilities&#xa;{&#xa;    Event.Hit -&gt; [AbilitySpecHandle_A, AbilitySpecHandle_B]&#xa;}&#xa;&#xa;&#xa;OwnedTagTriggeredAbilities&#xa;{&#xa;    State.Stunned -&gt; [AbilitySpecHandle_C]&#xa;}" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-110" value="즉 구조는 이렇게 됨.&#xa;GameplayEventTriggeredAbilities&#xa;{&#xa;    Event.Hit -&gt; [AbilitySpecHandle_A, AbilitySpecHandle_B]&#xa;}&#xa;&#xa;&#xa;OwnedTagTriggeredAbilities&#xa;{&#xa;    State.Stunned -&gt; [AbilitySpecHandle_C]&#xa;}" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2910" y="2000" width="350" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-112" target="CCm-2qAUIBp0VJCvSnKO-108">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-112" target="CCm-2qAUIBp0VJCvSnKO-108" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <UserObject label="[HandleGameplayEvent (line 2530)](C:/AAA_P/Engine/UnrealEngine/Engine/Plugins/Runtime/GameplayAbilities&lt;br&gt;/Source/GameplayAbilities/Private/AbilitySystemComponent_Abilities.cpp:2530)는 이런 식으로 동작해." link="[HandleGameplayEvent (line 2530)](C:/AAA_P/Engine/UnrealEngine/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Private/AbilitySystemComponent_Abilities.cpp:2530)는 이런 식으로 동작해." id="CCm-2qAUIBp0VJCvSnKO-112">
-          <mxCell style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxCell style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
             <mxGeometry x="2920" y="1640" width="560" height="70" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CCm-2qAUIBp0VJCvSnKO-113" target="CCm-2qAUIBp0VJCvSnKO-114">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="CCm-2qAUIBp0VJCvSnKO-113" target="CCm-2qAUIBp0VJCvSnKO-114" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-113" value="중요한 점은 &lt;code&gt;HandleGameplayEvent()&lt;/code&gt;가 부모 Tag도 검사한다는 것." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-113" value="중요한 점은 &lt;code&gt;HandleGameplayEvent()&lt;/code&gt;가 부모 Tag도 검사한다는 것." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2920" y="1840" width="370" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-114" value="Event.Damage.Fire 발생&#xa; -&gt; Event.Damage.Fire 확인&#xa; -&gt; Event.Damage 확인&#xa; -&gt; Event 확인" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-114" value="Event.Damage.Fire 발생&#xa; -&gt; Event.Damage.Fire 확인&#xa; -&gt; Event.Damage 확인&#xa; -&gt; Event 확인" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="2950" y="1910" width="180" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="tk3yG9uBVI9bDwn3KufH-1" target="tk3yG9uBVI9bDwn3KufH-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="tk3yG9uBVI9bDwn3KufH-1" target="tk3yG9uBVI9bDwn3KufH-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-1" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::MakeOutgoingSpec&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="2270" width="290" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-2" value="&lt;code&gt;MakeOutgoingSpec()&lt;/code&gt;는 &lt;strong&gt;GameplayEffect를 적용하기 위한 런타임 데이터 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt;을 생성하는 함수&lt;/strong&gt;야." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2210" y="2270" width="410" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;인자별 의미&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="2090" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-5" value="MakeOutgoingSpec(&#xa;    GE_DamageClass,  // 어떤 GameplayEffect 설계도를 사용할지&#xa;    1.f,             // Effect Level: ScalableFloat, 계산 값 등에 사용&#xa;    Context          // 누가 원인인지, 무엇이 원인인지 등 부가 정보&#xa;);" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="2142" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-6" value="FGameplayEffectSpecHandle UAbilitySystemComponent::MakeOutgoingSpec(&#xa;    TSubclassOf&lt;UGameplayEffect&gt; GameplayEffectClass,&#xa;    float Level,&#xa;    FGameplayEffectContextHandle Context) const&#xa;{&#xa;    // 이 이펙트를 발생 시키는 Actor 와 적용시키는 Actor 의 관계를 정의 하는 것으로 보임&#xa;    if (Context.IsValid() == false)&#xa;    {&#xa;        Context = MakeEffectContext();&#xa;    }&#xa;&#xa;&#xa;    // 전달받은 GameplayEffect 클래스가 유효하면&#xa;    if (GameplayEffectClass)&#xa;    {&#xa;        // GameplayEffect 클래스의 CDO, 즉 효과 설계도를 가져옴&#xa;        UGameplayEffect* GameplayEffect =&#xa;            GameplayEffectClass-&gt;GetDefaultObject&lt;UGameplayEffect&gt;();&#xa;&#xa;&#xa;        // 설계도 + Context + Level로 이번 적용 전용 Spec 생성&#xa;        FGameplayEffectSpec* NewSpec =&#xa;            new FGameplayEffectSpec(GameplayEffect, Context, Level);&#xa;&#xa;&#xa;        // 생성한 Spec을 Handle로 감싸 반환&#xa;        return FGameplayEffectSpecHandle(NewSpec);&#xa;    }&#xa;&#xa;&#xa;    // Effect 클래스가 없으면 유효하지 않은 Handle 반환&#xa;    return FGameplayEffectSpecHandle(nullptr);&#xa;}" style="text;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="2360" width="450" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-8" value="GameplayEffect 정의 저장&#xa; -&gt; Level 저장&#xa; -&gt; Context 저장&#xa; -&gt; Modifier 슬롯 준비&#xa; -&gt; Attribute Capture 정의 준비&#xa; -&gt; GameplayEffect Asset Tag를 Source Tag에 반영&#xa; -&gt; Source 관련 데이터 캡처 준비" style="text;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2360" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-13" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;모르는 부분 정리 필요.&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2320" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-14" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;code&gt;GameplayEffectClass 역활&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2520" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-15" value="GameplayEffectClass는 사용할 GameplayEffect의 클래스/설계도 선택자야.&#xa;TSubclassOf&lt;UGameplayEffect&gt; GameplayEffectClass" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2570" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-16" value="GE_Damage&#xa;GE_Heal&#xa;GE_TowerAttributes&#xa;GE_Slow&#xa;GE_Burn" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2620" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-17" value="이 인자는 “이번에는 어떤 효과 규칙을 쓸 것인가?”만 결정한다. 아직 피해량, 시전자, 피격 위치 같은 이번 사건의 데이터는 없음." style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2730" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-18" value="&lt;div style=&quot;text-align: left;&quot;&gt;왜 &lt;code&gt;UGameplayEffect&lt;/code&gt;를 만드나?&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2800" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-19" value="정확히는 새 UGameplayEffect를 만드는 게 아니라, 클래스의 CDO(Class Default Object) 를 가져온다.&#xa;" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2850" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-20" value="UGameplayEffect는 공유되는 효과 설계도다. 여기에 이런 규칙이 들어있다.&#xa;&#xa;어떤 Attribute를 수정하는가&#xa;Modifier 연산은 Add / Multiply / Override 중 무엇인가&#xa;Instant / Duration / Infinite 중 어떤 지속 정책인가&#xa;주기 효과가 있는가&#xa;부여/차단할 GameplayTag는 무엇인가&#xa;GameplayCue와 GE Component는 무엇인가&#xa;&#xa;같은 GE_Damage 설계도를 모든 공격이 재사용해도, 피해량과 출처는 매번 다르다. 그래서 GE 설계도 자체를 수정하지 않고, 매번 별도 Spec을 만든다." style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="2900" width="455" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-21" value="&lt;div style=&quot;text-align: left;&quot;&gt;왜 &lt;code&gt;UGameplayEffect + Context + Level&lt;/code&gt;로 Spec을 만드나?&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2500" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-22" value="UGameplayEffect&#xa;= 무엇을 바꿀 것인가&#xa;= Damage, Heal, Slow 같은 규칙&#xa;&#xa;&#xa;Context&#xa;= 누가, 무엇으로, 어떤 상황에서 적용했는가&#xa;= Instigator, EffectCauser, SourceObject, Ability, HitResult 등&#xa;&#xa;&#xa;Level&#xa;= 이 효과를 어느 레벨로 계산할 것인가&#xa;= ScalableFloat, Modifier 계산 등에 사용" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2560" width="350" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-23" value="&lt;code&gt;Context&lt;/code&gt;의 기본 정보는 보통 이렇게 잡힌다." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2780" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-24" value="Instigator   = OwnerActor&#xa;EffectCauser = AvatarActor" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2830" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-25" value="&lt;div style=&quot;text-align: left;&quot;&gt;왜 최종적으로 &lt;code&gt;FGameplayEffectSpecHandle&lt;/code&gt;을 반환하나?&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2923" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-26" value="FGameplayEffectSpecHandle SpecHandle =&#xa;    ASC-&gt;MakeOutgoingSpec(GE_Damage, 1.f, Context);&#xa;&#xa;&#xa;// 이번 피해에만 적용할 값 설정&#xa;AssignTagSetByCallerMagnitude(SpecHandle, DamageTag, -50.f);&#xa;&#xa;&#xa;// 이후 실제 적용&#xa;ASC-&gt;ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="3030" width="390" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-27" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;code&gt;FGameplayEffectSpec&lt;/code&gt;은 이번 한 번의 적용을 위해 계속 수정될 수 있는 런타임 데이터야.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2980" width="480" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-28" value="&lt;code&gt;FGameplayEffectSpecHandle&lt;/code&gt;은 내부에 &lt;code&gt;TSharedPtr&amp;lt;FGameplayEffectSpec&amp;gt;&lt;/code&gt;을 들고 있어서:" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="3210" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-29" value="Spec 수명을 안전하게 관리&#xa;함수/Blueprint/AbilityTask 사이에서 복사해 전달 가능&#xa;Spec 유효성 검사 가능&#xa;같은 Spec을 여러 Target에 적용 가능" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="3260" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-30" value="FGameplayEffectSpecHandle&#xa;= 적용 전, 수정 가능한 Spec의 핸들&#xa;&#xa;&#xa;FActiveGameplayEffect&#xa;= Apply 이후 ASC에 실제로 살아있는 지속/무한 효과&#xa;&#xa;즉 Handle은 “최종 적용 결과”가 아니라, 적용할 Effect 주문서의 참조에 가깝다." style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="3350" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-31" value="&lt;div style=&quot;text-align: left;&quot;&gt;객체 연관성&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3472" y="2500" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-32" value="GameplayEffectClass&#xa; -&gt; UGameplayEffect CDO&#xa;    -&gt; 공통 규칙: Modifier, Duration, Tag, Cue&#xa;&#xa;&#xa;UGameplayEffect CDO&#xa; + FGameplayEffectContextHandle&#xa; + Level&#xa; -&gt; FGameplayEffectSpec&#xa;    -&gt; 이번 적용의 실제 데이터&#xa;    -&gt; SetByCaller, DynamicTag, Capture 정보 포함&#xa;&#xa;&#xa;FGameplayEffectSpec&#xa; -&gt; FGameplayEffectSpecHandle&#xa;    -&gt; Spec 전달/수명 관리&#xa;&#xa;&#xa;SpecHandle&#xa; -&gt; AssignTagSetByCallerMagnitude() 등으로 수정&#xa; -&gt; ApplyGameplayEffectSpecToSelf() / ToTarget()&#xa;&#xa;&#xa;Apply 이후&#xa; -&gt; Instant: 즉시 실행 후 종료&#xa; -&gt; Duration / Infinite: FActiveGameplayEffect로 ASC에 유지" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3470" y="2570" width="350" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-33" value="&lt;div style=&quot;text-align: left;&quot;&gt;GAS에서의 연결과 코딩 패턴&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3467" y="3030" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-34" value="정의(UGameplayEffect)&#xa; -&gt; 실행 데이터 생성(FGameplayEffectSpec)&#xa; -&gt; 실행별 값 주입(SetByCaller / Context / Dynamic Tag)&#xa; -&gt; 적용(Apply)&#xa; -&gt; 결과 반영(Attribute / Tag / Cue / ActiveGE)" style="text;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="3467" y="3080" width="330" height="100" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;p&gt;GameplayEffectClass로 규칙을 고르고&lt;/p&gt;&lt;p&gt;Context로 이번 사건의 출처를 넣고&lt;/p&gt;&lt;p&gt;Level로 계산 기준을 넣어&lt;/p&gt;&lt;p&gt;FGameplayEffectSpec이라는 개별 실행 데이터를 만든다.&lt;/p&gt;" link="&lt;p&gt;이건 특별한 비법이라기보다, &lt;strong&gt;불변에 가까운 설계도 + 매 실행마다 다른 가변 Spec + 명시적 Apply&lt;/strong&gt; 패턴이야. 같은 &lt;code&gt;GE_Damage&lt;/code&gt;를 재사용하면서도 공격마다 피해량, 시전자, 피격 정보가 달라질 수 있는 이유다.&lt;/p&gt;&lt;p&gt;Ability 안에서 Effect를 만들 때는 보통 ASC 함수를 직접 쓰기보다:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;UGameplayAbility::MakeOutgoingGameplayEffectSpec()&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;를 사용해. 이 래퍼는 내부에서 ASC의 &lt;code&gt;MakeOutgoingSpec()&lt;/code&gt;을 호출한 뒤, Ability Tag와 AbilitySpec의 SetByCaller 값도 Spec에 반영한다. [GameplayAbility.cpp (line 1346)](C:/AAA_P/Engine/UnrealEngine/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Private/Abilities/GameplayAbility.cpp:1346)&lt;/p&gt;&lt;p&gt;현재 프로젝트는 Ability 내부가 아닌 시스템 코드에서 ASC를 직접 호출하는 형태가 많아.&lt;/p&gt;" id="tk3yG9uBVI9bDwn3KufH-35">
+          <mxCell style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+            <mxGeometry x="3467" y="3200" width="333" height="150" as="geometry" />
+          </mxCell>
+        </UserObject>
       </root>
     </mxGraphModel>
   </diagram>
