@@ -5,6 +5,8 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 ![Multiplayer](https://img.shields.io/badge/Multiplayer-Listen%20Server%20(LAN)-green)
 
+**다운로드 링크 : [Windows 빌드 (Google Drive)](https://drive.google.com/file/d/1POVyOAO6e0ciDEdxMnEzNwb74lKHMDrQ/view?usp=drive_link)**
+
 > UE5 C++로 구현한 멀티플레이 타워 디펜스 게임.  
 > GAS 어트리뷰트 시스템 · OnlineSubsystem 로비 · 서버 권위 Replication 구조를 5-Layer 아키텍처로 설계.
 
@@ -121,7 +123,7 @@
 
 ## 참여자 및 역할 (Contributors)
 
-### 이재훈 [@dianay07](추후_링크_입력)
+### 이재훈 [@dianay07](https://github.com/dianay07)
 
 | 영역 | 담당 클래스 / 시스템 |
 |------|---------------------|
@@ -134,7 +136,7 @@
 | **경로 · 유틸** | `ATDPathActor` (Spline · GetBakedWaypoints), `TowerDefence.h` (공용 열거형·구조체), `UTDFL_Utility` (전역 조회점, 부분) |
 | **로비 UI (5종)** | `UTDPlayModeSelectWidget` · `UTDMultiLobbyWidget` · `UTDWaitingRoomWidget` · `UTDSessionEntryWidget` · `UTDPlayerEntryWidget` |
 
-### 박지호 [@jiho_github](추후_링크_입력)
+### 박지호
 
 | 영역 | 담당 클래스 / 시스템 |
 |------|---------------------|
