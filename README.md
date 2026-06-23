@@ -131,18 +131,26 @@
 | **멀티 세션 로비** | `UTDLobbySessionSubsystem` (OnlineSubsystem 단일 허브), `ATDLobbyGameMode/GameState/PlayerController/PlayerState` (로비 레벨 전체 구조) |
 | **적 시스템** | `ATDEnemyActor` (GAS ASC · 경로 이동), `UTDEnemySpawnerComponent` (Enemy 스폰 전담), `UTDWaveManagerComponent` (웨이브 스폰 · DataTable 로드), `UTDEnemyDataTableSubsystem` (EnemyData 캐시) |
 | **플레이어 시스템** | `ATDPlayerController` (Server_DoTowerAction RPC 진입점 · 액션 메뉴 라이프사이클), `ATDPlayerCharacter` (카메라 · EnhancedInput · EdgeScroll), `ATDPlayerPawn` (Click-to-Move · SnapToGround) |
-| **오브젝트 풀** | `ATDPoolActor`, `ATDProjectile` (비복제 코스메틱 발사체), `UTDPoolComponent` |
-| **GAS 어트리뷰트** | `UTDEnemySet` (체력·이동속도·데미지), `UTDTowerSet` (사거리·발사속도·데미지), `UTDBaseSet` (Clamp · PreAttributeChange) |
-| **경로 · 유틸** | `ATDPathActor` (Spline · GetBakedWaypoints), `TowerDefence.h` (공용 열거형·구조체), `UTDFL_Utility` (전역 조회점, 부분) |
+| **GAS 어트리뷰트** | `UTDEnemySet` (체력·이동속도·데미지) |
 | **로비 UI (5종)** | `UTDPlayModeSelectWidget` · `UTDMultiLobbyWidget` · `UTDWaitingRoomWidget` · `UTDSessionEntryWidget` · `UTDPlayerEntryWidget` |
+| **오브젝트 풀 기반** | `ATDPoolActor`, `UTDPoolComponent` |
+| **경로 · 공용 유틸** | `ATDPathActor` (Spline · GetBakedWaypoints),`UTDFL_Utility` (전역 조회점, 부분) |
 
 ### 박지호
 
 | 영역 | 담당 클래스 / 시스템 |
 |------|---------------------|
-| **타워 시스템** | `ATDTowerBase` (배치·업그레이드·판매), `ATDTowerPawn` (GAS ASC · TowerSet), `ATD_Weapon` (FindEnemy · Multicast 발사) |
+| **타워 시스템** | `ATDTowerBase` (배치·업그레이드·판매), `ATDTowerPawn` (GAS ASC · TowerSet), `UTDTowerSet` (사거리·발사속도·데미지) |
+| **타워 발사 · 투사체** | `ATD_Weapon` (FindEnemy · Multicast 발사), `ATDProjectile` (비복제 코스메틱 발사체) |
 | **타워 스폰 · 데이터** | `UTDTowerSpawnerComponent` (초기 타워 일괄 스폰), `UTDTowerDataTableSubsystem` (TowerData 캐시), `UTDTowerActionWidgetBase` (액션 메뉴 C++ 베이스) |
 | **스테이지 전환** | `UTDLevelSessionSubsystem` (맵 전환 + DT 주입, PostLoadMapWithWorld 훅) |
+
+### 공통 영역
+
+| 영역 | 담당 클래스 / 시스템 |
+|------|---------------------|
+| **GAS 공용 어트리뷰트** | `UTDBaseSet` (Clamp · PreAttributeChange) |
+| **경로 · 공용 유틸** | `ATDPathActor` (Spline · GetBakedWaypoints), `TowerDefence.h` (공용 열거형·구조체), `UTDFL_Utility` (전역 조회점, 부분) |
 
 ---
 
