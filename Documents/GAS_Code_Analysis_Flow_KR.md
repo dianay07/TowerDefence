@@ -261,6 +261,51 @@ TryActivateAbilityByClass()
  -> 조건이 맞으면 Ability 실행
 ```
 
+GAS 시스템을 더 자세히 볼 때의 세부 흐름:
+
+```txt
+ASC::TryActivateAbilityByClass()
+ -> Ability 클래스를 기준으로 ASC에 등록된 FGameplayAbilitySpec을 찾는다.
+ -> 찾은 Spec의 Handle을 가지고 ASC::TryActivateAbility()를 호출한다.
+
+ASC::TryActivateAbility()
+ -> AbilitySpecHandle을 기준으로 실제 활성화 시도를 시작한다.
+ -> 서버 권한, 클라이언트 예측, Remote Activation 가능 여부 같은 네트워크 조건을 확인한다.
+ -> 조건이 맞으면 InternalTryActivateAbility() 흐름으로 이어진다.
+
+ASC::InternalTryActivateAbility()
+ -> Ability 인스턴스 준비, 실행 가능 조건 검사, PredictionKey 처리 등 실제 활성화의 중심 흐름이다.
+ -> 여기서 CanActivateAbility() 검사와 ActivateAbility() 호출로 이어진다.
+
+UGameplayAbility::CanActivateAbility()
+ -> Ability 실행 가능 여부를 검사한다.
+ -> 쿨다운, 비용, ActivationRequiredTags, ActivationBlockedTags 같은 조건 확인이 여기에 엮인다.
+
+UGameplayAbility::ActivateAbility()
+ -> Ability 로직이 실제로 시작되는 지점이다.
+ -> 이 안에서 GameplayEffect를 만들거나, 무기 발사, 타겟 처리, Montage, GameplayTask 등이 실행될 수 있다.
+```
+
+누가 `TryActivateAbilityByClass()`를 호출하는가:
+
+```txt
+GAS가 자동으로 아무 Ability나 실행해주는 것은 아니다.
+게임 코드, 입력 처리, AI, Tick, Blueprint 같은 외부 흐름이 ASC에 실행 요청을 해야 한다.
+
+예:
+플레이어 입력
+ -> PlayerController 또는 Character
+ -> ASC::TryActivateAbilityByClass()
+
+AI 판단
+ -> AIController 또는 Pawn
+ -> ASC::TryActivateAbilityByClass()
+
+Tick 기반 자동 공격
+ -> Actor::Tick()
+ -> ASC::TryActivateAbilityByClass()
+```
+
 현재 프로젝트 의미:
 
 ```txt
@@ -268,6 +313,20 @@ TryActivateAbilityByClass()
 타워가 매 Tick마다 발사 Ability 실행 가능 여부를 확인한다.
 가능하면 GA_FireWeapon이 실행되고, 발사 흐름으로 이어진다.
 ```
+
+현재 프로젝트의 직접 호출 지점:
+
+```cpp
+void ATDTowerBase::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+
+    AbilitySystemComponent->TryActivateAbilityByClass(DefaultAbility, true);
+}
+```
+
+현재 프로젝트 기준으로는 `ATDTowerBase::Tick()`이 호출 주체이고,
+타워가 매 프레임마다 `DefaultAbility` 실행 가능 여부를 ASC에 물어보는 구조다.
 
 ## 7. 내일 코드 분석 순서
 

@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="페이지-1" id="od5X6rvc0V59ymi1Oy_B">
-    <mxGraphModel dx="1426" dy="923" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1501" dy="972" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -116,7 +116,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-4" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::InitializeComponent()&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-4" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::InitializeComponent()&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1750" y="410" width="290" height="40" as="geometry" />
         </mxCell>
         <mxCell id="CCm-2qAUIBp0VJCvSnKO-7" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;Actor 에서 UAttributeSet 을 찾아.&lt;br&gt;SpawnedAttributes(어트리 뷰트 셋 Array )&lt;br&gt;&amp;nbsp;멤버에 등록한다.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
@@ -195,7 +195,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CCm-2qAUIBp0VJCvSnKO-33" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::GiveAbility&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="CCm-2qAUIBp0VJCvSnKO-33" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::GiveAbility&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1710" y="880" width="290" height="40" as="geometry" />
         </mxCell>
         <mxCell id="CCm-2qAUIBp0VJCvSnKO-34" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;Client 에서는 작동 안함&lt;br&gt;&lt;/font&gt;&lt;/span&gt;클라이언트는 서버가 부여한 AbilitySpec을 복제로 받는 쪽이다.&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -387,10 +387,10 @@
         <mxCell id="tk3yG9uBVI9bDwn3KufH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="tk3yG9uBVI9bDwn3KufH-1" target="tk3yG9uBVI9bDwn3KufH-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tk3yG9uBVI9bDwn3KufH-1" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::MakeOutgoingSpec&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-1" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::MakeOutgoingSpec&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1790" y="2270" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="tk3yG9uBVI9bDwn3KufH-2" value="&lt;code&gt;MakeOutgoingSpec()&lt;/code&gt;는 &lt;strong&gt;GameplayEffect를 적용하기 위한 런타임 데이터 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt;을 생성하는 함수&lt;/strong&gt;야." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+        <mxCell id="tk3yG9uBVI9bDwn3KufH-2" value="&lt;code&gt;MakeOutgoingSpec()&lt;/code&gt;는 &lt;strong&gt;GameplayEffect를 적용하기 위한 런타임 데이터 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt;을 생성하는 함수&lt;/strong&gt;야." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2210" y="2270" width="410" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tk3yG9uBVI9bDwn3KufH-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#333333&quot;&gt;인자별 의미&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -490,7 +490,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="b80gA2WQaHtk5wjLa7ba-2" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::MakeOutgoingSpec&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="b80gA2WQaHtk5wjLa7ba-2" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-align: left;&quot;&gt;UAbilitySystemComponent::MakeOutgoingSpec&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1790" y="3540" width="290" height="40" as="geometry" />
         </mxCell>
         <mxCell id="b80gA2WQaHtk5wjLa7ba-4" value="MakeEffectContext()&#xa;= Effect의 Target을 정하는 함수가 아니다.&#xa;&#xa;&#xa;= Effect가 어디서, 누구에 의해 발생했는지 기록하는 함수다." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
@@ -544,10 +544,10 @@
         <mxCell id="b80gA2WQaHtk5wjLa7ba-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="b80gA2WQaHtk5wjLa7ba-23" target="b80gA2WQaHtk5wjLa7ba-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="b80gA2WQaHtk5wjLa7ba-23" value="&lt;code&gt;AssignTagSetByCallerMagnitude&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="b80gA2WQaHtk5wjLa7ba-23" value="&lt;code&gt;AssignTagSetByCallerMagnitude&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1800" y="3960" width="290" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="b80gA2WQaHtk5wjLa7ba-24" value="이미 생성된 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt; 안에 &lt;code&gt;GameplayTag -&amp;gt; float&lt;/code&gt; 값을 기록하는 함수" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+        <mxCell id="b80gA2WQaHtk5wjLa7ba-24" value="이미 생성된 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt; 안에 &lt;code&gt;GameplayTag -&amp;gt; float&lt;/code&gt; 값을 기록하는 함수" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2140" y="3960" width="470" height="40" as="geometry" />
         </mxCell>
         <mxCell id="b80gA2WQaHtk5wjLa7ba-26" value="같은 Tag를 두 번 넣으면 누적이 아니라 덮어쓰기다.&#xa;&#xa;AssignTagSetByCallerMagnitude(SpecHandle, DamageTag, -50.f);&#xa;AssignTagSetByCallerMagnitude(SpecHandle, DamageTag, -80.f);&#xa;&#xa;// 최종값: Damage.SetByCaller -&gt; -80.f" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
@@ -570,7 +570,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="b80gA2WQaHtk5wjLa7ba-28" value="&lt;pre&gt;&lt;code&gt;ApplyGameplayEffectSpecToSelf&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+        <mxCell id="b80gA2WQaHtk5wjLa7ba-28" value="&lt;pre&gt;&lt;code&gt;ApplyGameplayEffectSpecToSelf&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1800" y="4380" width="290" height="40" as="geometry" />
         </mxCell>
         <mxCell id="b80gA2WQaHtk5wjLa7ba-29" value="Spec 전달&#xa; -&gt; 서버 권한 / Prediction 검사&#xa; -&gt; 적용 조건 검사&#xa; -&gt; Target Attribute 캡처&#xa; -&gt; Instant 또는 지속 GE로 분기&#xa; -&gt; Modifier / Execution / Tag / Cue 처리&#xa; -&gt; Delegate 호출&#xa; -&gt; ActiveGE Handle 반환" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
@@ -579,7 +579,7 @@
         <mxCell id="b80gA2WQaHtk5wjLa7ba-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="b80gA2WQaHtk5wjLa7ba-31" target="b80gA2WQaHtk5wjLa7ba-50" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="b80gA2WQaHtk5wjLa7ba-31" value="준비된 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt;을 &lt;strong&gt;현재 ASC 자신에게 실제 적용하는 핵심 함수&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+        <mxCell id="b80gA2WQaHtk5wjLa7ba-31" value="준비된 &lt;code&gt;FGameplayEffectSpec&lt;/code&gt;을 &lt;strong&gt;현재 ASC 자신에게 실제 적용하는 핵심 함수&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2200" y="4380" width="430" height="40" as="geometry" />
         </mxCell>
         <mxCell id="b80gA2WQaHtk5wjLa7ba-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="b80gA2WQaHtk5wjLa7ba-33" target="b80gA2WQaHtk5wjLa7ba-35" edge="1">
@@ -638,6 +638,286 @@
         </mxCell>
         <mxCell id="b80gA2WQaHtk5wjLa7ba-56" value="Instant&#xa; -&gt; 피해, 즉시 회복&#xa; -&gt; Attribute를 즉시 한 번 변경&#xa; -&gt; ActiveGE로 유지되지 않음&#xa;&#xa;&#xa;Duration&#xa; -&gt; 5초 Slow, Burn&#xa; -&gt; ActiveGE로 유지&#xa; -&gt; Duration 종료 시 제거&#xa;&#xa;&#xa;Infinite&#xa; -&gt; 장비 버프, 패시브&#xa; -&gt; 제거될 때까지 ActiveGE 유지" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3260" y="4840" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-1" target="_xSKm_UtACthedS2HVCP-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-1" target="_xSKm_UtACthedS2HVCP-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-1" target="_xSKm_UtACthedS2HVCP-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-11" value="내부 핵심 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-7">
+          <mxGeometry x="-0.2468" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-1" value="&lt;pre&gt;&lt;code&gt;UAbilitySystemComponent::TryActivateAbilityByClass&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="5310" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-2" value="Ability 클래스를 기준으로 ASC 안에 등록된 Ability를 찾아 실행 시도하는 함수&lt;br&gt;&lt;pre&gt;&lt;code&gt;먼저 ASC::GiveAbility()로 Ability가 등록되어 있어야 한다.&lt;/code&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2285" y="5305" width="430" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-4" value="활성화 시킬 Ability 를 CDO 를 이용해서 실행 시킬 때 사용한다.&amp;nbsp;&lt;br&gt;내부 TryActivateAbility 가 핵심 내용이고, 현재 Tick에서 매번 실행 중에 있다." style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2285" y="5370" width="345" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-6" target="_xSKm_UtACthedS2HVCP-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-12" value="Client" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-10">
+          <mxGeometry x="-0.2109" y="-4" relative="1" as="geometry">
+            <mxPoint x="157" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-6" target="_xSKm_UtACthedS2HVCP-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-14" value="Server" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-13">
+          <mxGeometry x="0.3026" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-6" target="_xSKm_UtACthedS2HVCP-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-6" value="&lt;pre&gt;&lt;code&gt;UAbilitySystemComponent::TryActivateAbility&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1990" y="5480" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-8" target="_xSKm_UtACthedS2HVCP-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-8" value="&lt;pre&gt;&lt;code&gt;ClientTryActivateAbility&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2625" y="5590" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-9" target="_xSKm_UtACthedS2HVCP-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-37" value="대략적으로 이런 기능이 있음." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-36">
+          <mxGeometry x="0.4019" y="-7" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-9" target="_xSKm_UtACthedS2HVCP-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-39" value="내부 핵심함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-38">
+          <mxGeometry x="0.1589" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-9" value="&lt;pre&gt;&lt;code&gt;CallServerTryActivateAbility&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="5590" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-15" target="_xSKm_UtACthedS2HVCP-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-15" target="_xSKm_UtACthedS2HVCP-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-15" value="&lt;pre&gt;&lt;code&gt;InternalServerTryActivateAbility - &lt;b&gt;RPC 함수임&lt;/b&gt;&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2267.5" y="5800" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-17" value="&lt;code&gt;AbilitySpecHandle&lt;/code&gt; 기준으로 Ability 실행을 시도하는 함수입니다. 핵심은 직접 Ability 로직을 실행하는 것이 아니라, &lt;strong&gt;현재 머신이 실행할 수 있는지 판단하고, 필요하면 서버/클라이언트로 요청을 보내며, 가능하면 &lt;code&gt;InternalTryActivateAbility()&lt;/code&gt;로 넘긴다&lt;/strong&gt;는 점입니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2530" y="5470" width="550" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-19" target="_xSKm_UtACthedS2HVCP-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-19" value="&amp;nbsp;서버가 직접 실행하면 안 되는 &lt;code&gt;LocalOnly&lt;/code&gt; / &lt;code&gt;LocalPredicted&lt;/code&gt; Ability를 owning client 쪽에서 실행시키기 위해 보내는 Client RPC입니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2765" y="5680" width="550" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-21" target="_xSKm_UtACthedS2HVCP-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-26" value="지연 이유" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-25">
+          <mxGeometry x="-0.1947" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-21" value="&amp;nbsp;서버가 Ability 실행 RPC 를 보냈는데, 같은 프레임에 처리를 못하는 경우&amp;nbsp;&lt;br&gt;&lt;pre&gt;&lt;code&gt;PendingServerActivatedAbilities 객체를 이용하여 처리 &lt;/code&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3380" y="5670" width="395" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-24" target="_xSKm_UtACthedS2HVCP-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-30" value="엔진 입장" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-28">
+          <mxGeometry x="0.0105" y="6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-24" value="1. 서버에서 GiveAbility() 직후 ClientTryActivateAbility()를 보냈다.&#xa;2. Client RPC가 AbilitySpec 복제보다 먼저 도착했다.&#xa;3. AbilitySpec 복제는 아직 처리되지 않았다.&#xa;4. 또는 진짜 잘못된 Handle일 수도 있다." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3392.5" y="5800" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-27" target="_xSKm_UtACthedS2HVCP-32">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3900" y="5700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-27" value="Spec이 없으면 지금은 실행할 수 없다.&#xa;하지만 곧 AbilitySpec 복제가 올 수 있으니 한 번 보류해보자." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3407.5" y="5950" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-32" target="_xSKm_UtACthedS2HVCP-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-32" value="[클라이언트]&#xa;ClientTryActivateAbility 수신&#xa; -&gt; FindAbilitySpecFromHandle 실패&#xa; -&gt; PendingServerActivatedAbilities에 저장&#xa;&#xa;&#xa;이후 AbilitySpec 복제 도착&#xa; -&gt; ActivatableAbilities OnRep 발생&#xa; -&gt; OnRep_ActivateAbilities()&#xa;&#xa;&#xa;OnRep_ActivateAbilities()&#xa; -&gt; PendingServerActivatedAbilities 복사&#xa; -&gt; 다시 ClientTryActivateAbility(Handle) 호출&#xa; -&gt; 이번에는 Spec이 있으면 InternalTryActivateAbility()" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3850" y="5670" width="320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-33" value="&lt;code&gt;Spec&lt;/code&gt; 유무만으로 복제 지연을 “확정”하는 건 아닙니다. 다만 서버가 보낸 &lt;code&gt;Handle&lt;/code&gt;을 클라이언트가 못 찾는 가장 대표적인 정상 케이스가 &lt;code&gt;AbilitySpec 복제보다 RPC가 먼저 도착한 경우&lt;/code&gt;라서, 엔진은 바로 실패시키지 않고 &lt;code&gt;PendingServerActivatedAbilities&lt;/code&gt;에 넣습니다. 이후 &lt;code&gt;ActivatableAbilities&lt;/code&gt; 복제 RepNotify인 &lt;code&gt;OnRep_ActivateAbilities()&lt;/code&gt;에서 pending을 다시 꺼내 재시도합니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3850" y="5950" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-35" value="GAS의 &lt;code&gt;RPC Batch&lt;/code&gt;는 &lt;strong&gt;클라이언트가 서버로 보내는 Ability 관련 RPC 여러 개를 하나로 묶어서 보내는 기능&lt;/strong&gt;입니다.&lt;br&gt;&lt;code&gt;RPC Batch&lt;/code&gt;는 클라이언트가 서버로 보내는 Ability 실행, TargetData, 종료 RPC를 한 번에 묶어 보내는 선택적 최적화 기능 / 기본적으로는 꺼져 있다고함." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="5690" width="590" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-40" target="_xSKm_UtACthedS2HVCP-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-40" target="_xSKm_UtACthedS2HVCP-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-55" value="핵심함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-54">
+          <mxGeometry x="-0.1707" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-40" value="&lt;pre&gt;&lt;code&gt;InternalTryActivateAbility&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="6235" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-43" target="_xSKm_UtACthedS2HVCP-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-43" value="1. 클라이언트가 보낸 AbilitySpecHandle이 서버에도 있는지 확인&#xa;2. NetSecurityPolicy로 클라이언트 요청이 허용되는지 확인&#xa;3. PredictionKey를 서버 예측 윈도우에 연결&#xa;4. 서버에서 InternalTryActivateAbility()를 호출해 최종 실행" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="5890" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-46" value="[클라이언트]&#xa;Ability 실행을 요청한다.&#xa;LocalPredicted Ability라면 먼저 예측 실행하고 PredictionKey를 서버로 보낸다.&#xa;ServerOnly / ServerInitiated Ability라면 서버에 실행 요청만 보낸다.&#xa;&#xa;&#xa;[서버]&#xa;InternalServerTryActivateAbility()에서 요청을 다시 검증한다.&#xa;클라이언트가 보낸 요청을 그대로 믿지 않는다.&#xa;Spec, Ability, 보안 정책, 실행 가능 조건을 서버 기준으로 확인한다.&#xa;성공하면 서버 Ability 실행.&#xa;실패하면 ClientActivateAbilityFailed()로 클라이언트 예측을 되돌리게 한다." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2845" y="5990" width="430" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-48" target="_xSKm_UtACthedS2HVCP-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-48" value="그 RPC가 서버에 도착한 뒤, 서버가 Ability 실행 요청을 검증하고 최종적으로 &lt;code&gt;InternalTryActivateAbility()&lt;/code&gt;로 넘기는 서버 측 관문입니다" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2780" y="5795" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-50" value="GAS Ability 활성화의 핵심 함수입니다. &lt;code&gt;CanActivateAbility()&lt;/code&gt;로 쿨다운/비용/태그 조건을 검사하고, 서버/클라이언트 예측 정책에 따라 &lt;code&gt;PredictionKey&lt;/code&gt;를 세팅한 뒤, 최종적으로 &lt;code&gt;CallActivateAbility() -&amp;gt; ActivateAbility()&lt;/code&gt;까지 연결합니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2840" y="6220" width="560" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-53" target="_xSKm_UtACthedS2HVCP-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-53" target="_xSKm_UtACthedS2HVCP-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-53" target="_xSKm_UtACthedS2HVCP-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-53" value="&lt;pre&gt;&lt;span style=&quot;font-family: Helvetica; text-align: left; white-space: normal;&quot;&gt;CanActivateAbility&lt;/span&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="2560" y="6380" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-56" value="쿨다운/비용/태그 조건을 검사하고, 서버/클라이언트 예측 정책에 따라 PredictionKey를 세팅한 뒤, 최종적으로 CallActivateAbility() -&gt; ActivateAbility()까지 연결합니다." style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3070" y="6374" width="480" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-58" target="_xSKm_UtACthedS2HVCP-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-58" value="[서버]&#xa;InternalTryActivateAbility()&#xa; -&gt; CanActivateAbility()&#xa; -&gt; ActivationInfo에 서버 PredictionKey 설정&#xa; -&gt; 필요하면 ClientActivateAbilitySucceed()&#xa; -&gt; CallActivateAbility()&#xa; -&gt; 서버 권위로 Ability 실행&#xa;&#xa;&#xa;[클라이언트: LocalPredicted]&#xa;InternalTryActivateAbility()&#xa; -&gt; CanActivateAbility()&#xa; -&gt; 새 PredictionKey 생성&#xa; -&gt; ActivationInfo를 Predicting으로 설정&#xa; -&gt; CallServerTryActivateAbility()로 서버에 요청&#xa; -&gt; 클라이언트에서 먼저 CallActivateAbility()&#xa; -&gt; 서버 응답에 따라 Confirm 또는 Reject&#xa;&#xa;&#xa;[SimulatedProxy]&#xa;InternalTryActivateAbility()&#xa; -&gt; 바로 false" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3070" y="6434" width="280" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-60" value=" 함수명 그대로 그냥 실행 할 수 있는지 여부를 확인함." style="text;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3407.5" y="6434" width="300" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-62" target="_xSKm_UtACthedS2HVCP-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-62" value="&lt;pre style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;UGameplayAbility::CallActivateAbility&lt;/span&gt;&lt;/font&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="2560" y="6820" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-64" target="_xSKm_UtACthedS2HVCP-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-76" value="C++ 네이티브일 때 호출&lt;br&gt;BP 라면 별도로 호출 함수가 있음" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_xSKm_UtACthedS2HVCP-74">
+          <mxGeometry x="-0.3364" y="-2" relative="1" as="geometry">
+            <mxPoint x="27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-64">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3157.5" y="7060" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-64" value="&lt;pre style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;ActivateAbility&lt;/span&gt;&lt;/font&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="2830" y="7040" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-65" target="_xSKm_UtACthedS2HVCP-66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-65" target="_xSKm_UtACthedS2HVCP-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-65" value="&lt;pre style=&quot;text-align: left;&quot;&gt;&lt;code&gt;PreActivate()&lt;/code&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="2830" y="6910" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-66" target="_xSKm_UtACthedS2HVCP-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-66" value="실제 스킬 로직 전의 GAS 공통 준비입니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3150" y="6920" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-68" value="현재 실행 정보 저장&#xa;ActivationOwnedTags 부여&#xa;Ability 활성화 알림&#xa;다른 Ability block/cancel 처리&#xa;ActiveCount 증가&#xa;종료 Delegate 등록" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3450" y="6910" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-71" target="_xSKm_UtACthedS2HVCP-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-71" target="_xSKm_UtACthedS2HVCP-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-71" value="&lt;pre style=&quot;text-align: left;&quot;&gt;&lt;pre&gt;&lt;code&gt;CommitAbility&lt;/code&gt;&lt;/pre&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2990" y="7170" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-72" target="_xSKm_UtACthedS2HVCP-83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-72" target="_xSKm_UtACthedS2HVCP-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-72" value="1. 아직 비용/쿨다운을 적용해도 되는지 마지막으로 확인&#xa;2. 통과하면 비용과 쿨다운을 실제로 적용&#xa;&#xa;bility 발동을 확정하는 함수&#xa;&#xa; Ability 구현에서는 보통 ActivateAbility() 초반이나 실제 효과 발생 직전에 CommitAbility()를 호출" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3290" y="7132.5" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-77" target="_xSKm_UtACthedS2HVCP-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-77" target="_xSKm_UtACthedS2HVCP-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-77" value="&lt;pre style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;EndAbility&lt;/span&gt;&lt;/font&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="2990" y="7390" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-82" value="Ablility 로직 진입 BP, C++ 일 때 별도로 호출됨.&amp;nbsp;&lt;br&gt;이 부부은 프로그래머가 작성해야함.&lt;div&gt;&lt;pre&gt;&lt;code&gt;CommitAbility() , EndAbility() 필 호출&lt;br/&gt;해야되는 것으로 보인다.&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3157.5" y="7020" width="262.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-83" value="CoolDown , Cost( 각각의 Effect 로 처리 ) 처리를 MakeOutgoing 함수를 통해 나 자신한테 적용하고 있다." style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="3672.5" y="7160" width="262.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-85" value="CommitAbility()는 GAS가 정해둔 Cost / Cooldown 표준 처리 함수다.&#xa;하지만 Ability 안에서 직접 GE를 만들어 적용하는 구조라면 CommitAbility() 없이도 효과 적용은 가능하다." style="text;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="3290" y="7280" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-87" target="_xSKm_UtACthedS2HVCP-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-87" value="&lt;pre&gt;&lt;code&gt;EndAbility()&#xa; -&amp;gt; Ability 종료&#xa; -&amp;gt; Ability 상태 정리&#xa; -&amp;gt; 태그 제거&#xa; -&amp;gt; GameplayCue 제거&#xa; -&amp;gt; AbilityTask 종료&#xa; -&amp;gt; 필요하면 서버/클라에 종료 복제&lt;/code&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3290" y="7460" width="240" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_xSKm_UtACthedS2HVCP-89" target="_xSKm_UtACthedS2HVCP-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-89" value="&lt;pre&gt;&lt;code&gt;bReplicateEndAbility&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;종료 사실을 반대편 서버/클라에 알려야 하는지입니다.&lt;/code&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3660" y="7460" width="362" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-90" value="true&#xa; -&gt; 서버 또는 클라이언트 반대편에 EndAbility를 전파&#xa;&#xa;&#xa;false&#xa; -&gt; 현재 머신에서만 종료 처리" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3660" y="7575" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_xSKm_UtACthedS2HVCP-93" value="Ability를 끝내면서 GAS 상태를 정리하는 함수입니다. &lt;code&gt;ActivationOwnedTags&lt;/code&gt;, AbilityTask, GameplayCue, block/cancel 상태, 종료 delegate, replicated data cache를 정리하고, 필요하면 서버/클라이언트 반대편에 종료 사실을 전파합니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="3290" y="7375" width="560" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
