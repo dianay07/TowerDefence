@@ -324,7 +324,30 @@ ApplyGameplayEffectSpecToSelf() // 서버에서 완성된 GE Spec을 ASC에 적�
  -> InternalExecuteMod() // 개별 Modifier 하나를 실제 Attribute 변경 명령으로 변환
  -> ApplyModToAttribute() // 어떤 Attribute에 어떤 연산을 적용할지 처리
  -> SetNumericAttribute_Internal() // AttributeSet 내부의 실제 수치 값을 갱신
- -> Attribute 값 변경 // 예: Health 100 -> 90
+ -> SetNumericValueChecked() // Reflection으로 실제 Attribute 멤버에 값 쓰기
+ -> Health 값 변경 / MARK_PROPERTY_DIRTY() // 값 변경과 복제 Dirty 표시
+```
+
+서버 실행 흐름과 클라이언트 OnRep의 연결점:
+
+```txt
+서버 GAS 함수가 OnRep_Health()를 직접 호출하는 것은 아니다.
+연결점은 Replicated Property인 Health 값이다.
+
+[미리 등록]
+GetLifetimeReplicatedProps()
+ -> DOREPLIFETIME_CONDITION_NOTIFY(Health)
+ -> Health를 복제 대상으로 등록하고 OnRep_Health()와 연결
+
+[서버 값 변경]
+SetNumericValueChecked()
+ -> Health 값 변경
+ -> MARK_PROPERTY_DIRTY()
+
+[Replication Tick]
+ActorChannel
+ -> 변경된 Health를 클라이언트로 송신
+ -> 클라이언트에서 OnRep_Health() 호출
 ```
 
 클라이언트 동기화 흐름:

@@ -1,0 +1,205 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="페이지-1" id="qQ8839N2AiOPcDqjruKK">
+    <mxGraphModel dx="908" dy="1016" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-1" value="&lt;div style=&quot;color: #bbbebf;background-color: #121314;font-family: Consolas, &#39;Courier New&#39;, monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| 이름 | 간단 설명 |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;|---|---|&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`MarkItemDirty()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | FastArray 항목이 바뀌었음을 복제 시스템에 표시한다. ActiveGE 변경분 복제의 핵심이다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`NetDeltaSerialize()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | FastArray 전체가 아니라 변경된 항목만 직렬화해서 보내는 함수다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`PostReplicatedAdd()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | 클라이언트에서 FastArray 항목이 새로 복제되어 추가됐을 때 호출된다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`PostReplicatedChange()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | 클라이언트에서 FastArray 항목이 변경 복제됐을 때 호출된다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`PreReplicatedRemove()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | 클라이언트에서 FastArray 항목이 제거되기 직전에 호출된다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`ASC::UpdateTagMap()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | GameplayTag Count를 증가/감소시켜 현재 보유 태그 상태를 갱신한다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`ASC::InvokeGameplayCueEvent()`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | GE 적용/실행/제거 시점에 GameplayCue 이벤트를 발생시킨다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`SetIsReplicated(true)`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | 컴포넌트 자체가 네트워크 복제 대상이 되도록 켠다. ASC 복제의 전제 조건이다. |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot;color: #79c0ff;&quot;&gt;`SetReplicationMode(...)`&lt;/span&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt; | ASC가 ActiveGE / Tag / Cue 정보를 어느 범위까지 복제할지 정책을 정한다. |&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry y="320" width="560" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-2" value="&lt;div style=&quot;color: #bbbebf;background-color: #121314;font-family: Consolas, &#39;Courier New&#39;, monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;[결과 4갈래]&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;1. Attribute 변경&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;-&amp;gt; AttributeSet Replication [동기화] // Health 같은 수치가 클라이언트로 복제&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;2. ActiveGE 등록&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;-&amp;gt; ActiveGameplayEffect FastArray Replication [동기화] // 버프/쿨다운 같은 적용 중 GE가 변경분 복제&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;3. Tag 변경&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;-&amp;gt; GameplayTag Replication [동기화] // 상태 태그 Count가 클라이언트 ASC에 반영&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;4. Cue 발생&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;-&amp;gt; GameplayCue Replication / RPC [동기화] // 피격/화상 같은 연출 이벤트가 전달&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;[클라이언트]&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;OnRep / FastArray 콜백 / Tag Event / Cue Notify&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;-&amp;gt; UI / 연출 갱신 // 수신된 GAS 결과를 화면과 이펙트에 반영&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;```&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry width="560" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-3" value="&lt;div style=&quot;color: #bbbebf;background-color: #121314;font-family: Consolas, &#39;Courier New&#39;, monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;Server Actor&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;└─ ASC&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;├─ AttributeSet&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; └─ Health / Damage / Range&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ AttributeSet Replication&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ OnRep_Health()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ UI 갱신&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;├─ ActiveGameplayEffects&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; └─ Buff / Debuff / Cooldown&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ FastArray Replication&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ PostReplicatedAdd/Change/Remove&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;├─ GameplayTagCountContainer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; └─ Weapon.Cooldown / Debuff.StickyMud&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ Tag Replication&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│ &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; └─ Tag Event&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;│&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;└─ ActiveGameplayCues&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;└─ Hit / Slow / Burn 연출&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;└─ GameplayCue Replication/RPC&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;└─ GameplayCueNotify&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry y="550" width="430" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-4" value="&lt;div style=&quot;color: #bbbebf;background-color: #121314;font-family: Consolas, &#39;Courier New&#39;, monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;핵심 연결:&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;```txt&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;Actor&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp;-&amp;gt; ASC&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;-&amp;gt; AttributeSet&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;-&amp;gt; ActiveGameplayEffects&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;-&amp;gt; GameplayTagCountContainer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;-&amp;gt; ActiveGameplayCues&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #bbbebf;&quot;&gt;```&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="550" width="290" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-6" target="Vepwqi47QPS1BIdAyWZW-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-6" value="&lt;code&gt;FActiveGameplayEffectsContainer::ApplyGameplayEffectSpec()&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1100" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-8" target="Vepwqi47QPS1BIdAyWZW-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-19" value="내부 핵심함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Vepwqi47QPS1BIdAyWZW-7">
+          <mxGeometry x="-0.4788" y="6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-8" target="Vepwqi47QPS1BIdAyWZW-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-8" value="&lt;code&gt;UAbilitySystemComponent::ExecuteGameplayEffect()&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1230" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-9" target="Vepwqi47QPS1BIdAyWZW-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-9" target="Vepwqi47QPS1BIdAyWZW-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-24" value="핵심 내부 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Vepwqi47QPS1BIdAyWZW-21">
+          <mxGeometry x="-0.4471" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-9" value="&lt;code&gt;ActiveGameplayEffects.ExecuteActiveEffectsFrom()&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="170" y="1330" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-11" value="이 함수가 하는 일은 크게 3개입니다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="555" y="1200" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-12" value="실행 가능한 GE인지 검증" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="555" y="1240" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-13" value="Visual Log용으로 Modifier 계산값을 찍음" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="555" y="1270" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-14" value="실제 실행을 &lt;code&gt;ActiveGameplayEffects.ExecuteActiveEffectsFrom()&lt;/code&gt;에 위임" style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="555" y="1300" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-16" value="&lt;code&gt;FActiveGameplayEffectsContainer::ExecuteActiveEffectsFrom()&lt;/code&gt;은 GE Spec을 받아서 Modifier 값을 계산하고, Tag 조건을 검사한 뒤, 실제 Attribute 변경 함수인 &lt;code&gt;InternalExecuteMod()&lt;/code&gt;로 넘기는 핵심 함수야. 또한 &lt;code&gt;ExecutionCalculation&lt;/code&gt;, &lt;code&gt;GameplayCue Execute&lt;/code&gt;, &lt;code&gt;Conditional GameplayEffect&lt;/code&gt;까지 처리한다. 수치 동기화 관점에서는 이 함수가 서버에서 Attribute 변경을 만들어내고, 그 결과가 이후 AttributeSet Replication으로 클라이언트에 전달된다고 보면 돼." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="550" y="1400" width="560" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-20" target="Vepwqi47QPS1BIdAyWZW-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-20" target="Vepwqi47QPS1BIdAyWZW-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-20" value="&lt;code&gt;FActiveGameplayEffectsContainer::InternalExecuteMod&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1570" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-22" value="GE Modifier 하나를 실제 AttributeSet 값 변경으로 연결하는 핵심 함수야. &lt;code&gt;PreGameplayEffectExecute()&lt;/code&gt;로 적용 가능 여부를 확인하고, &lt;code&gt;ApplyModToAttribute()&lt;/code&gt;로 실제 값을 바꾼 뒤, &lt;code&gt;PostGameplayEffectExecute()&lt;/code&gt;로 후처리를 호출한다. 이 함수 자체가 네트워크 패킷을 보내지는 않고, 서버에서 바뀐 Attribute 결과가 이후 Replication으로 클라이언트에 전달된다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="740" y="1580" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-25" target="Vepwqi47QPS1BIdAyWZW-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-25" target="Vepwqi47QPS1BIdAyWZW-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-25" value="&lt;code&gt;FActiveGameplayEffectsContainer::ApplyModToAttribute&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1740" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-28" target="Vepwqi47QPS1BIdAyWZW-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-28" value="&lt;code&gt;FGameplayModifierEvaluatedData&lt;/code&gt; 간단 설명" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="1037.25" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-29" value="이 객체는 &lt;strong&gt;계산이 끝난 Modifier 한 줄&lt;/strong&gt;이야.&lt;br&gt;GE는 여러 설정 값들이 있는데 이를 동일한 방법으로 처리 해줄 수 있게 사용되는 객체" style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1031.75" width="250" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-31" value="&lt;strong&gt;실행 가능한 형태로 계산이 끝난 Modifier 데이터&lt;/strong&gt;고, &lt;code&gt;ApplyModToAttribute()&lt;/code&gt;는 그 데이터를 받아 &lt;strong&gt;현재 BaseValue에 연산을 적용해서 실제 Attribute 값을 바꾸는 함수&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1790" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-34" value="Attribute 값을 가져와서 , 계산하고 이를 set 한다." style="text;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1740" width="250" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-36" target="Vepwqi47QPS1BIdAyWZW-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-36" target="Vepwqi47QPS1BIdAyWZW-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-54" value="내부 함수" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Vepwqi47QPS1BIdAyWZW-51">
+          <mxGeometry x="-0.3986" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-36" value="&lt;code&gt;FActiveGameplayEffectsContainer::SetAttributeBaseValue&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="630" y="1880" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.526;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-25" target="Vepwqi47QPS1BIdAyWZW-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-38" value="계산된 &lt;code&gt;NewBaseValue&lt;/code&gt;를 AttributeSet의 BaseValue에 반영하는 함수야. 변경 전에는 &lt;code&gt;PreAttributeBaseChange()&lt;/code&gt;로 Clamp 기회를 주고, Aggregator가 있으면 Aggregator를 통해 최종값을 갱신하며, 없으면 &lt;code&gt;InternalUpdateNumericalAttribute()&lt;/code&gt;로 실제 Attribute 값을 바로 바꾼다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1870" width="560" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-40" target="Vepwqi47QPS1BIdAyWZW-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-40" value="FAggregator 간단 설명" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1441" y="1108.25" width="189" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-41" value="&lt;strong&gt;Attribute의 최종값을 계산하는 계산기&lt;/strong&gt;라고 보면 돼." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1108.25" width="290" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-43" value="BaseValue 저장&#xa;ActiveGE Modifier 저장&#xa;Add / Multiply / Divide / Override 계산&#xa;Modifier 추가/제거 시 재계산&#xa;값이 바뀌면 OnDirty 이벤트 발생" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1168.25" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-44" value="&lt;code&gt;FAggregator&lt;/code&gt;가 중간에서 “현재 Attribute 값은 여러 효과를 합산하면 얼마인가?”를 계산해준다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1278.25" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-45" value="&lt;code&gt;AttributeAggregatorMap&lt;/code&gt;은 Attribute마다 그 계산기를 저장하는 맵이야. 이 구조가 있어야 GAS가 버프, 디버프, 지속 효과, 예측, 복제 보정을 한 Attribute 값에 안정적으로 합산할 수 있어." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="1350" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-46" target="Vepwqi47QPS1BIdAyWZW-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-46" value="&lt;code&gt;AttributeAggregatorMap&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="1355" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-50" target="Vepwqi47QPS1BIdAyWZW-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-50" target="Vepwqi47QPS1BIdAyWZW-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-50" value="&lt;code&gt;FActiveGameplayEffectsContainer::InternalUpdateNumericalAttribute&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="795" y="2000" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-52" target="Vepwqi47QPS1BIdAyWZW-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-52" value="&lt;strong&gt;계산된 최종 Attribute 값을 실제 AttributeSet에 쓰고, Attribute 변경 Delegate를 Broadcast하는 함수&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="2000" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-55" target="Vepwqi47QPS1BIdAyWZW-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-55" value="&lt;code&gt;FActiveGameplayEffectsContainer::SetNumericAttribute_Internal&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="975" y="2090" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-57" value="&lt;code&gt;FGameplayAttribute::SetNumericValueChecked&lt;/code&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="2170" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-59" value="GAS Attribute 변경 흐름의 마지막 실무 처리 지점이야. &lt;code&gt;Owner-&amp;gt;SetNumericAttribute_Internal()&lt;/code&gt;로 실제 AttributeSet 값을 바꾸고, &lt;code&gt;AttributeValueChangeDelegates&lt;/code&gt;를 통해 UI나 AbilityTask가 반응할 수 있게 알린다. 서버에서는 이 변경이 이후 복제로 클라이언트에 전달되고, 클라이언트에서는 복제 수신 후 로컬 값과 UI를 갱신하는 데 사용된다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1985" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-61" target="Vepwqi47QPS1BIdAyWZW-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-61" value="&lt;strong&gt;AttributeSet 안의 실제 Attribute 값을 쓰는 함수&lt;/strong&gt;야." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="2170" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.018;entryY=0.454;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-57" target="Vepwqi47QPS1BIdAyWZW-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-63" target="Vepwqi47QPS1BIdAyWZW-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-63" value="MARK_PROPERTY_DIRTY(Dest, StructProperty);" style="text;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="2220" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vepwqi47QPS1BIdAyWZW-64" target="Vepwqi47QPS1BIdAyWZW-66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-64" value="이 Property가 변경됐다" style="text;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="2230" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-66" value="SetNumericValueChecked()&#xa; -&gt; Property Dirty 표시&#xa; -&gt; 이후 Replication 시스템이 변경분을 클라이언트에 보냄" style="text;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2290" width="330" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Vepwqi47QPS1BIdAyWZW-68" value="&lt;code&gt;FGameplayAttribute&lt;/code&gt;가 가리키는 실제 AttributeSet 멤버를 Reflection으로 찾아서 값을 쓰는 함수야. &lt;code&gt;FGameplayAttributeData&lt;/code&gt;라면 &lt;code&gt;CurrentValue&lt;/code&gt;를 바꾸고, raw float 계열이면 해당 float 값을 직접 바꾼다. 값 변경 전후로 &lt;code&gt;PreAttributeChange()&lt;/code&gt; / &lt;code&gt;PostAttributeChange()&lt;/code&gt;를 호출하고, 마지막에 &lt;code&gt;MARK_PROPERTY_DIRTY&lt;/code&gt;로 복제 변경 대상임을 표시한다." style="text;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2030" y="2150" width="560" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
