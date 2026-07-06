@@ -127,7 +127,7 @@
 
 | 영역 | 담당 클래스 / 시스템 |
 |------|---------------------|
-| **게임 Framework** | `ATDGameMode` (서버 라이프사이클 조립), `ATDGameState` (Replicated 공유 상태 + Multicast RPC), `UTDGameInstance` (세이브 슬롯), `UTDGameUserSettings` (오디오·비디오 설정) |
+| **게임 Framework** | `ATDGameMode` (서버 라이프사이클 조립), `ATDGameState` (Replicated 공유 상태 + Multicast RPC) |
 | **멀티 세션 로비** | `UTDLobbySessionSubsystem` (OnlineSubsystem 단일 허브), `ATDLobbyGameMode/GameState/PlayerController/PlayerState` (로비 레벨 전체 구조) |
 | **적 시스템** | `ATDEnemyActor` (GAS ASC · 경로 이동), `UTDEnemySpawnerComponent` (Enemy 스폰 전담), `UTDWaveManagerComponent` (웨이브 스폰 · DataTable 로드), `UTDEnemyDataTableSubsystem` (EnemyData 캐시) |
 | **플레이어 시스템** | `ATDPlayerController` (Server_DoTowerAction RPC 진입점 · 액션 메뉴 라이프사이클), `ATDPlayerCharacter` (카메라 · EnhancedInput · EdgeScroll), `ATDPlayerPawn` (Click-to-Move · SnapToGround) |
@@ -140,16 +140,19 @@
 
 | 영역 | 담당 클래스 / 시스템 |
 |------|---------------------|
-| **타워 시스템** | `ATDTowerBase` (배치·업그레이드·판매), `ATDTowerPawn` (GAS ASC · TowerSet), `UTDTowerSet` (사거리·발사속도·데미지) |
+| **게임 Framework** | `ATDGameMode` (서버 라이프사이클 조립) |
+| **타워 시스템** | `ATDTowerBase` (배치·업그레이드·판매), `ATDTowerPawn` (GAS ASC · TowerSet) |
 | **타워 발사 · 투사체** | `ATD_Weapon` (FindEnemy · Multicast 발사), `ATDProjectile` (비복제 코스메틱 발사체) |
 | **타워 스폰 · 데이터** | `UTDTowerSpawnerComponent` (초기 타워 일괄 스폰), `UTDTowerDataTableSubsystem` (TowerData 캐시), `UTDTowerActionWidgetBase` (액션 메뉴 C++ 베이스) |
 | **스테이지 전환** | `UTDLevelSessionSubsystem` (맵 전환 + DT 주입, PostLoadMapWithWorld 훅) |
+| **Tower UI** | `TD_WBP_TowerActions` · `WBP_TowerActions` · `WBP_TowerActionSlot` (C++ 과 BP 연동 ) |
+| **GAS 어트리뷰트** | `UTDTowerSet` (사거리·발사속도·데미지) |
 
 ### 공통 영역
 
 | 영역 | 담당 클래스 / 시스템 |
 |------|---------------------|
-| **GAS 공용 어트리뷰트** | `UTDBaseSet` (Clamp · PreAttributeChange) |
+| **GAS 공용 어트리뷰트** | `UTDBaseSet` (Clamp · PreAttributeChange), `UTDGameUserSettings` (오디오·비디오 설정), `UTDGameInstance` (세이브 슬롯) |
 | **경로 · 공용 유틸** | `ATDPathActor` (Spline · GetBakedWaypoints), `TowerDefence.h` (공용 열거형·구조체), `UTDFL_Utility` (전역 조회점, 부분) |
 
 ---
